@@ -6,8 +6,8 @@ theme = "hugo-minimalist"
 
 canonifyurls = true
 
-# pygmentsuseclasses=false
-# pygmentsstyle="fruity"
+pygmentsuseclasses=true
+pygmentsstyle="monokai"
 
 [author]
 name = "Sven Steinbauer"
