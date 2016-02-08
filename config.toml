@@ -21,8 +21,8 @@ post = "/:year/:month/:day/:title"
 [params]
 header_background="images/keyboard-feature.jpg"
 header_title="Unlogic"
-site_description="I have a keyboard, a compiler, and a whole load of luck"
-site_author="Sven Steinbauer"
+description="I have a keyboard, a compiler, and a whole load of luck"
+author="Sven Steinbauer"
 avatar="images/avatar.jpg"
 copyright="Sven Steinbauer"
 
