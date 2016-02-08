@@ -21,7 +21,7 @@ The process of creating this is very simple, and I learned a few things from set
 
 So first we need to drop down a *Geometry* node and dive inside. Delete the file node and then create a *box* node. This box will be the object we will shatter. But in order to create a voronoi shatter we also need some seed points to generate the pattern with. So let's do that first. We'll use our box to generate the points we need, so drop down a *Points From Volume* node and connect the box to its input. Adjust the settings to your liking, or copy the ones below. I kept the number of points low as I wanted fewer and larger pieces.
 
-{{< figure src="content /images/content/points_from_vol.png" >}}
+{{< figure src="/images/content/points_from_vol.png" >}}
 
 Now that we have our points we can drop down a *Voronoi Fracture* node and connect the points to its second input. The only setting I changed was to turn on ``Connect Inside Edges``. Finally we need to connect the *box* node to the *Voronoi Shatter's* first input. Now make the *Voronoi shatter* visible and you should see your fractured geo.
 

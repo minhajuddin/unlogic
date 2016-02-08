@@ -19,11 +19,11 @@ This is all well and good, but isn't getting all this data manually, and then ma
 
 Here are some example images generated with this script (click for the full size picture):
 
-{{< figure src="center /images/content/album2.jpg 585 585" >}}
+{{< figure src="/images/content/album2.jpg" >}}
 
-{{< figure src="center /images/content/album3.jpg 585 585" >}}
+{{< figure src="/images/content/album3.jpg" >}}
 
-{{< figure src="center /images/content/album4.jpg 585 585" >}}
+{{< figure src="/images/content/album4.jpg" >}}
 
 <!--more-->
 
