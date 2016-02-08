@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Setup on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/setup/</link>
+    <link>https://svenito.github.io/nowhere/tags/setup/</link>
     <description>Recent content in Setup on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 07 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/setup/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Vim settings done better</title>
-      <link>http://unlogic.co.uk/2015/01/07/vim-settings-done-better/</link>
+      <link>https://svenito.github.io/nowhere/2015/01/07/vim-settings-done-better/</link>
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/01/07/vim-settings-done-better/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/01/07/vim-settings-done-better/</guid>
       <description>&lt;p&gt;Today we&amp;rsquo;ll cover a nice config setup for vim that I use. I got the idea from another
 blog post elsewhere and I am sorry to say I cannot locate the post right now. If you
 know of it, please leave a comment below and I will add it to the post as a credit.&lt;/p&gt;

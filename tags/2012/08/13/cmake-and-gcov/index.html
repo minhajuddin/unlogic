@@ -1,0 +1,93 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> cmake and gcov &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>cmake and gcov</h1>
+			  <span class="post-date">Mon, Aug 13, 2012</span>
+			      <p>Recently I setup a project that uses CMake as its build tool and <a href="https://code.google.com/p/googletest/">googletest</a> as a unit test framework. As is common place I wanted to make sure that my tests cover as much of the code as possible, so I went and grabbed the trusty gcov/lcov to analyse the tests only to find it wasn&rsquo;t as easy as I expected. I should mention this is the first time I have used CMake aswell as googletest. Granted, googletest is fairly simple and doesn&rsquo;t really complicate things when it comes to getting code coverage. I just had to figure out how we get CMake to build the test runner properly and then how to invoke lcov correctly. Turns out this was fairly easy too, once you ironed out some of the trickier bits and learned a little more about CMake.</p>
+
+<p>In the <code>CMakeLists.txt</code> file for your test suite you need to add the following (I&rsquo;ve omitted some lines that aren&rsquo;t relevant to this article):</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">SET(</span><span style="color: #e6db74">PROJECT_TEST_NAME</span> <span style="color: #f92672">${</span><span style="color: #f8f8f2">PROJECT_NAME_STR</span><span style="color: #f92672">}</span><span style="color: #e6db74">_test</span><span style="color: #f8f8f2">)</span>
+    
+<span style="color: #f8f8f2">SET(</span><span style="color: #e6db74">CMAKE_CXX_FLAGS</span> <span style="color: #e6db74">&quot;-g -O0 -Wall -fprofile-arcs -ftest-coverage&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">SET(</span><span style="color: #e6db74">CMAKE_C_FLAGS</span> <span style="color: #e6db74">&quot;-g -O0 -Wall -W -fprofile-arcs -ftest-coverage&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">SET(</span><span style="color: #e6db74">CMAKE_EXE_LINKER_FLAGS</span> <span style="color: #e6db74">&quot;-fprofile-arcs -ftest-coverage&quot;</span><span style="color: #f8f8f2">)</span>
+
+<span style="color: #960050; background-color: #1e0010">.</span>   
+<span style="color: #960050; background-color: #1e0010">.</span>
+<span style="color: #960050; background-color: #1e0010">.</span>
+
+<span style="color: #f8f8f2">target_link_libraries(</span><span style="color: #f92672">${</span><span style="color: #f8f8f2">PROJECT_TEST_NAME</span><span style="color: #f92672">}</span> <span style="color: #e6db74">&quot;gtest_main&quot;</span> <span style="color: #e6db74">&quot;gtest&quot;</span> <span style="color: #e6db74">&quot;pthread&quot;</span><span style="color: #f8f8f2">)</span>
+</pre></div>
+
+
+<p>We need to make sure a debug build is on (<code>-g</code>), that we build without optimisation (<code>-O0</code>), and enable profiling (<code>-fprofile-arcs -ftest-coverage</code>). On the link phase we need to link against the google unit test libraries and pthread. Once you have sucessfully built your unit test you can then use lcov to generate the coverage results. Although you&rsquo;ll soon notice that it might not work. CMake places its files into different directories than you&rsquo;d expect from make or other build systems. So here&rsquo;s what I did to get this to work. Assuming you have a <code>tests</code> directory in your build, where your tests are and the test runner binary is built into, you have to run the following from that directory (<code>${PROJECTDIR}/build/tests</code>):</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">$ </span>lcov --zerocounters --directory .
+<span style="color: #f8f8f2">$ </span>lcov --capture --initial --directory . --output-file app
+
+<span style="color: #75715e"># Now run your test app in the same directory</span>
+
+<span style="color: #f8f8f2">$ </span>lcov --no-checksum --directory . --capture --output-file app.info
+<span style="color: #f8f8f2">$ </span>genthml app.info
+</pre></div>
+</p>
+
+<p>Now you can point your browser to that directory and you will have the nice html view of your coverage data.</p>
+
+<p><em>Note</em>: sometimes I got an error from the second to last line saying it could not find any gcno files. In this case I just ran the test runner again and then ran the last two lines from above again.</p>
+
+<p>Hope this helps you out in case you have the same issue as me.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

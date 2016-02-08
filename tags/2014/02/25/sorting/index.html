@@ -1,0 +1,75 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Sorting &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Sorting</h1>
+			  <span class="post-date">Tue, Feb 25, 2014</span>
+			      <p>A very quick post about sorting a list of objects in python. Suppose you have a
+list of same objects and you wish to sort them based on one of these attributes, perhaps
+a return value from a method. There&rsquo;s a really nice way to do it in place:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">sort_by</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;name&#39;</span><span style="color: #f8f8f2">:</span>
+    <span style="color: #f8f8f2">people</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sort(key</span><span style="color: #f92672">=</span><span style="color: #66d9ef">lambda</span> <span style="color: #f8f8f2">x:</span> <span style="color: #f8f8f2">str(x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get_name()),</span> <span style="color: #f8f8f2">reverse</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">reverse)</span>
+<span style="color: #66d9ef">elif</span> <span style="color: #f8f8f2">sort_by</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;age&#39;</span><span style="color: #f8f8f2">:</span>
+    <span style="color: #f8f8f2">people</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sort(key</span><span style="color: #f92672">=</span><span style="color: #66d9ef">lambda</span> <span style="color: #f8f8f2">x:</span> <span style="color: #f8f8f2">x</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get_age(),</span> <span style="color: #f8f8f2">reverse</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">reverse)</span>
+</pre></div>
+
+
+<p>As you can see I wrapped the <code>get_name</code> call in a <code>str()</code> because
+in this case it was returning something else. I didn&rsquo;t have control over the
+code for the user class.</p>
+
+<p>So now the <code>people</code> list is sorted by whichever attribute you decide and
+you can iterate over it as normal.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Websec on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/websec/</link>
+    <link>https://svenito.github.io/nowhere/tags/websec/</link>
     <description>Recent content in Websec on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 11 Apr 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/websec/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/websec/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Vulnhub&#39;s &#39;TopHatSec Freshly&#39;</title>
-      <link>http://unlogic.co.uk/2015/04/11/vulnhubs-freshly/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/11/vulnhubs-freshly/</link>
       <pubDate>Sat, 11 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/11/vulnhubs-freshly/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/11/vulnhubs-freshly/</guid>
       <description>&lt;p&gt;This is my first writeup of a &lt;a href=&#34;https://vulnhub.com&#34;&gt;Vulnhub&lt;/a&gt; wargame: Freshly.&lt;/p&gt;
 
 &lt;p&gt;The challenge is:&lt;/p&gt;

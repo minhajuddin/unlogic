@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coding on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/coding/</link>
+    <link>https://svenito.github.io/nowhere/tags/coding/</link>
     <description>Recent content in Coding on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 05 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/coding/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>[dis]like</title>
-      <link>http://unlogic.co.uk/2015/01/05/dislike/</link>
+      <link>https://svenito.github.io/nowhere/2015/01/05/dislike/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/01/05/dislike/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/01/05/dislike/</guid>
       <description>
 
 &lt;p&gt;Isn&amp;rsquo;t it just like me to start a new year with a post titled &amp;ldquo;[dis]like&amp;rdquo;? It&amp;rsquo;s not as bad as it sounds. I want to write about coding challenge sites and what I like and dislike about them, specifically regarding Python challenges.&lt;/p&gt;
@@ -110,10 +110,10 @@ never get to talk to and explain your code to. But perhaps I&amp;rsquo;m just no
     
     <item>
       <title>Effort Vs Benefit</title>
-      <link>http://unlogic.co.uk/2014/03/12/effort-vs-benefit/</link>
+      <link>https://svenito.github.io/nowhere/2014/03/12/effort-vs-benefit/</link>
       <pubDate>Wed, 12 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/03/12/effort-vs-benefit/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/03/12/effort-vs-benefit/</guid>
       <description>&lt;p&gt;How often have you thought: &amp;ldquo;Everything would be a lot better if this
 tool worked faster&amp;rdquo;? Probably quite often. You&amp;rsquo;ve most likely also heard the
 saying &amp;ldquo;Don&amp;rsquo;t optimise prematurely&amp;rdquo;. It&amp;rsquo;s true, there&amp;rsquo;s no point making

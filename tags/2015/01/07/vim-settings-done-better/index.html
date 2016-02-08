@@ -1,0 +1,136 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Vim settings done better &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Vim settings done better</h1>
+			  <span class="post-date">Wed, Jan 7, 2015</span>
+			      <p>Today we&rsquo;ll cover a nice config setup for vim that I use. I got the idea from another
+blog post elsewhere and I am sorry to say I cannot locate the post right now. If you
+know of it, please leave a comment below and I will add it to the post as a credit.</p>
+
+<p>I say &lsquo;better&rsquo; rather than &lsquo;right&rsquo; because I don&rsquo;t believe there&rsquo;s necessarily a right way
+to do it, only bad and better. Also, what works for one might not work for another, so
+please adjust as required.</p>
+
+<p>The main principle for this setup is a modular rc file setup, where different files
+are responsible for different configurations. This way it&rsquo;s easier to find a specific
+setting rather than trawling through a long <code>.vimrc</code> file. So, without further delay, here&rsquo;s
+the main <code>.vimrc</code> (which we still need). The role of this file is to source all the other
+files we will create later. A <a href="http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/">previous post</a>
+covers some configuration options specific for Python, if you are interested.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">let</span> s:vim_home <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&#39;~/.vim/settings/&#39;</span>
+
+<span style="color: #66d9ef">let</span> config_list <span style="color: #f8f8f2">=</span> [
+  \ <span style="color: #e6db74">&#39;plugins.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;base.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;functions.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;theme.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;settings.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;leader.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;keymappings.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;languages.vim&#39;</span><span style="color: #f8f8f2">,</span>
+  \ <span style="color: #e6db74">&#39;plugin_settings.vim&#39;</span>
+\]
+
+<span style="color: #66d9ef">for</span> <span style="color: #66d9ef">files</span> <span style="color: #66d9ef">in</span> config_list
+  <span style="color: #66d9ef">for</span> <span style="color: #66d9ef">f</span> <span style="color: #66d9ef">in</span> split<span style="color: #f8f8f2">(</span>glob<span style="color: #f8f8f2">(</span>s:vim_home.<span style="color: #66d9ef">files</span><span style="color: #f8f8f2">),</span> <span style="color: #e6db74">&#39;\n&#39;</span><span style="color: #f8f8f2">)</span>
+    exec <span style="color: #e6db74">&#39;source &#39;</span>.<span style="color: #66d9ef">f</span>
+  <span style="color: #66d9ef">endfor</span>
+
+<span style="color: #66d9ef">endfor</span>
+</pre></div>
+
+
+<p>You can see how we&rsquo;ll divide up responsibility here. I won&rsquo;t go into details about the
+contents of each file, I will leave that up to you to decide. Basically here we set a
+directory - <code>~/.vim/settings/</code> - as the root for our setting files. Then we have a list
+of files which contain the configs:</p>
+
+<ul>
+<li><p><strong>plugins.vim</strong>
+This contains my Vundle setup and required plugins. The reason this is first is because
+Vundle needs to have specific settings set that I change.</p></li>
+
+<li><p><strong>base.vim</strong>
+Contains the basic config stuff like tab interpretation, indentation behaviour, and such.</p></li>
+
+<li><p><strong>functions.vim</strong>
+Any vim functions you have written or use go in here</p></li>
+
+<li><p><strong>theme.vim</strong>
+Theme configuration and selection</p></li>
+
+<li><p><strong>settings.vim</strong>
+I don&rsquo;t have much in here, just setting my code folding prefs, basically anything that&rsquo;s not in base</p></li>
+
+<li><p><strong>leader.vim</strong>
+Any leader customisations go in here</p></li>
+
+<li><p><strong>keymappings.vim</strong>
+Like leader, but for keymaps</p></li>
+
+<li><p><strong>languages.vim</strong>
+Any language specific settings</p></li>
+
+<li><p><strong>plugin_settings.vim</strong>
+Configurations for all plugins. You might want to split this out further if it gets big</p></li>
+</ul>
+
+<p>I&rsquo;ve been using this for a while now and am very pleased with how it works and how easy it
+is now to find that specific setting that I need to tweak. No more searching through a long
+.vimrc file, just go directly to a much smaller file and get back to your code much quicker.</p>
+
+<p>Hope you find this useful too. Feel free to share any other config tips in the comments below.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

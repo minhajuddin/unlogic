@@ -1,0 +1,110 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Brewing with a Pi &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Brewing with a Pi</h1>
+			  <span class="post-date">Fri, Dec 4, 2015</span>
+			      <p>It&rsquo;s been a while since I&rsquo;ve written here, but that doesn&rsquo;t mean I haven&rsquo;t
+been busy. I&rsquo;ve been working on a DIY version of <a href="http://www.speidels-braumeister.de/en/braumeister/id-10-20-50-litre-braumeister.html">Speidel&rsquo;s Braumeister</a>
+and the software side of things has come along quite nicely.</p>
+
+<p>The idea is to have a Raspberry Pi controlled beer brewing system for cooking
+the wort across a temperature profile. Much like the Braumeister, or Grainfather
+style brewers. A probe monitors the temperature and will switch the heating on and
+off to maintain the current temperature. You can set how long to hold each temperature
+for and it will just plod through the profile.</p>
+
+<p>You can also set and hold a temperature if you want to simply heat the wort. A
+pump running at intervals will also be operational during the brew.</p>
+
+<p>As I said, the software side is coming along, and I&rsquo;ve done a quick test with a Pi
+and the DS18B20 thermo probe, and that&rsquo;s also working. Next up I need to
+get myself a dedicated Pi (perhaps the new Pi Zero) and the rest of the kit, including
+vessels, piping, heating etc. It probably won&rsquo;t be fancy stainless steel like the
+Braumeister, but it should achieve the same end result.
+Once done I will write a complete build process, and the project will be open
+source so everyone can use and improve upon it.</p>
+
+<p>But more about the software, it&rsquo;s running on <a href="https://cherrypy.org">CherryPy</a> and
+currently looks like this:</p>
+
+<p><a href="http://i.imgur.com/c4IR4yT.png">
+<figure >
+    
+        <img src="http://i.imgur.com/c4IR4yT.png" />
+    
+    
+</figure>
+</a>
+
+<figure >
+    
+        <img src="http://i.imgur.com/c4IR4yT.png" />
+    
+    
+    <figcaption>
+        <h4>Brewpy interface</h4>
+        
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>I&rsquo;ve put the <a href="https://github.com/Svenito/brewpy">code on Github</a> already, so if
+you are keen and fancy building the rest of the kit yourself already, please
+check it out.</p>
+
+<p>Hopefully I&rsquo;ll get the time to put the rest of the project together early
+next year. Got a house to get up to speed as well, so time is a little limited.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

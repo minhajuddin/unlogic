@@ -1,0 +1,126 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Burnmail: temporary mail forwarding &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Burnmail: temporary mail forwarding</h1>
+			  <span class="post-date">Fri, May 29, 2015</span>
+			      
+
+<p>A while back I got curious about how easy it would be to setup a temporary
+email forwarding service, akin to <a href="https://meltmail.com/">Meltmail</a>. So I got
+to it and made it.</p>
+
+<p>In essence you will create a temporary email address that will forward all
+mail it receives to your inbox. Once it expires, it drops all incoming mail.</p>
+
+<p>It&rsquo;s pretty much ready now, hence why I am posting about it.</p>
+
+<p>The differences between Burnmail (yeah, best I could do for now) and other
+services is:</p>
+
+<ul>
+<li>forwarding can be expired by time or by number of received mails</li>
+<li>all tasks are accomplished through email. There&rsquo;s no web interface</li>
+<li>forwarding address is based on your original address with a short, random
+string appended, to make it easy to remember.</li>
+<li>addreses are also easy to type on a mobile device,
+as the extra string consists of digits and lowercase chars only.</li>
+<li>commands are forgiving and short</li>
+</ul>
+
+<p>The plan is to clean up the code and then release that on Github, but in the
+meantime feel free to make use of it.</p>
+
+<p>Here&rsquo;s how to use it:</p>
+
+<h2 id="creating-a-new-burnmail-address:e52eba2da256b91bcb5838bbad42c991">Creating a new Burnmail address</h2>
+
+<p>To create a new Burnmail address, send an email to <a href="mailto:burn@kthnxbai.co.uk">burn@kthnxbai.co.uk</a>,
+from the address that you want your Burnmail forwarded to. In the subject
+you need to specify the expiration term. The following commands are valid:</p>
+
+<pre><code>* time [n] - n is 3, 6, 12, 24, or 48 hours. It will automatically
+  select the closest value to the one you specify.
+* uses [n] - n is between 1 and 30. It will be automatically capped to 30.
+</code></pre>
+
+<p>By using the <code>time</code> command you will create an address that expires after <code>n</code>
+hours. The <code>uses</code> command creates an address that expires after <code>n</code> emails have
+been received through that address.</p>
+
+<p>Once your forwarder has been set up, you will receive a confirmation email with
+your Burnmaill address. Check your spam folder just in case.</p>
+
+<h2 id="getting-a-list-of-emails:e52eba2da256b91bcb5838bbad42c991">Getting a list of emails</h2>
+
+<p>To get a list of your current Burnmail addresses for an email address,
+send an email to <a href="mailto:burn@kthnxbai.co.uk">burn@kthnxbai.co.uk</a> with the subject <code>stat</code>.
+An email listing all your current forwarders for that address and their
+expiration terms will be sent to you.</p>
+
+<h2 id="deleting-burnmail:e52eba2da256b91bcb5838bbad42c991">Deleting Burnmail</h2>
+
+<p>To delete a Burnmail send an email to <a href="mailto:burn@kthnxbai.co.uk">burn@kthnxbai.co.uk</a> with the subject
+<code>kill address</code>, where <code>address</code> is the burnmail address to kill.</p>
+
+<h2 id="thoughts:e52eba2da256b91bcb5838bbad42c991">Thoughts?</h2>
+
+<p>That&rsquo;s it for now. Make sure to check your spam folder if you aren&rsquo;t
+receiving any mail.</p>
+
+<p>If you have any suggestions for features, or notice something broken,
+please let me know.</p>
+
+<p>Also bear in mind that it&rsquo;s early days so there might be bugs.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

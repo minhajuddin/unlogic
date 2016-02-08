@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project Euler on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/project-euler/</link>
+    <link>https://svenito.github.io/nowhere/tags/project-euler/</link>
     <description>Recent content in Project Euler on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 20 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/project-euler/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/project-euler/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Solving Project Euler with Rust 2</title>
-      <link>http://unlogic.co.uk/2015/01/20/solving-project-euler-with-rust-2/</link>
+      <link>https://svenito.github.io/nowhere/2015/01/20/solving-project-euler-with-rust-2/</link>
       <pubDate>Tue, 20 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/01/20/solving-project-euler-with-rust-2/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/01/20/solving-project-euler-with-rust-2/</guid>
       <description>&lt;p&gt;Carrying on with &lt;a href=&#34;http://unlogic.co.uk/2015/01/12/solving-project-euler-with-rust-1/&#34;&gt;the series&lt;/a&gt;, here&amp;rsquo;s
 how I solved Project Euler&amp;rsquo;s problem 2:&lt;/p&gt;
 
@@ -200,10 +200,10 @@ call the &lt;code&gt;fib&lt;/code&gt; function until n is 1, which is where the 
     
     <item>
       <title>Solving Project Euler with Rust 1</title>
-      <link>http://unlogic.co.uk/2015/01/12/solving-project-euler-with-rust-1/</link>
+      <link>https://svenito.github.io/nowhere/2015/01/12/solving-project-euler-with-rust-1/</link>
       <pubDate>Mon, 12 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/01/12/solving-project-euler-with-rust-1/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/01/12/solving-project-euler-with-rust-1/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s time to poke at &lt;a href=&#34;http://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt; a little bit. And what
 better way to get acquainted with a new language than to solve
 some problems with it? And seeing as there&amp;rsquo;s not always a suitably

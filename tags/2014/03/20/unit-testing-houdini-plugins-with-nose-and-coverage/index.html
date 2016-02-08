@@ -1,0 +1,216 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Unit testing Houdini Python plugins with nose and coverage &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Unit testing Houdini Python plugins with nose and coverage</h1>
+			  <span class="post-date">Thu, Mar 20, 2014</span>
+			      <p>We all know how important unit testing is, right? But often you wonder how can
+you test a not so straight forward tool. In this case we&rsquo;re talking about a
+Python script intended to run inside <a href="http://sidefx.com">Houdini</a>. In my specific
+case the python script is launched from a script on a node when the user clicks
+a button on the OTL. I want to run unit tests on this script, but the problem is
+that the script parses a set of nodes and does various things according to the
+types of nodes and layout of the nodes. It&rsquo;s clear that the HOM is required in the
+unit tests. So I need to somehow run my unit tests inside houdini and have
+some nodes available for my testing. Fortunately this isn&rsquo;t difficult to do, but
+it does require a little setup and some fiddling in order to get it to work.</p>
+
+<p>I&rsquo;ll be using <a href="https://nose.readthedocs.org">nose tests</a> as my test runner and
+<a href="http://nedbatchelder.com/code/coverage/">coverage</a> for coverage testing.
+Because I want to make sure I test as much code as possible. I created a hip file that
+contains whatever nodes and connections I need to run most of the tests and saved
+this to the same directory as my test script.</p>
+
+<p>Before we write some code you will need to install <code>nose</code> and <code>coverage</code> and make
+sure they work.</p>
+
+<p>Now that we have all our dependencies installed, we need to import all the
+modules we need and set some things up.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">nose</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">sys</span>
+<span style="color: #f8f8f2">sys</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">path</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">insert(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;../path_of_module&#39;</span><span style="color: #f8f8f2">)</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">os</span>
+<span style="color: #f8f8f2">os</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">environ[</span><span style="color: #e6db74">&#39;NOSE_WITH_COVERAGE&#39;</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;1&#39;</span>
+<span style="color: #f8f8f2">os</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">environ[</span><span style="color: #e6db74">&#39;NOSE_COVER_PACKAGE&#39;</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;module_to_test&#39;</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">hou</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">module_to_test</span>
+</pre></div>
+
+
+<p>We import the <code>nose</code> module and then we need to tell nose to make use of the
+coverage package. <code>os.environ['NOSE_WITH_COVERAGE'] = '1'</code> does just that, and
+<code>os.environ['NOSE_COVER_PACKAGE'] = 'module_to_test'</code> restricts our test results to
+the module(s) we want to test. If you want to specify multiple modules simply
+separate them with commas: <code>os.environ['NOSE_COVER_PACKAGE'] = 'module_to_test,another_module'</code></p>
+
+<p>Unfortunately for this to work properly you need to patch nose&rsquo;s cover plugin.
+There&rsquo;s a small bug in older versions, so depending on your distro you may need to
+make the following change to
+<code>nose/plugins/cover.py</code></p>
+
+<p>Change these lines
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">pkgs</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">[tolist(x)</span> <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">options</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">cover_packages]:</span>
+    <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">coverPackages</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">extends(pkgs)</span>
+</pre></div>
+</p>
+
+<p>to these lines
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">pkgs</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">tolist(options</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">cover_packages):</span>
+    <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">coverPackages</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append(pkgs)</span>
+</pre></div>
+</p>
+
+<p>Otherwise the <code>NOSE_COVER_PACKAGE</code> variable won&rsquo;t work properly.</p>
+
+<p>I also setup the <code>sys.path</code> so that I load my local module rather
+than the globally installed one. Depending on how your directories are laid out
+you might not need this.</p>
+
+<p>After this we need to import the <code>hou</code> module and finally the module(s) we want to test.</p>
+
+<p>Then we write our main function which will load our hip file and start our tests</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;__main__&#39;</span><span style="color: #f8f8f2">:</span>
+    <span style="color: #f8f8f2">hou</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">hipFile</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">load(</span><span style="color: #e6db74">&#39;/path/to/test.hip&#39;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">nose</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">run(argv</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">[__file__],</span> <span style="color: #e6db74">&#39;--cover_html&#39;</span><span style="color: #f8f8f2">])</span>
+</pre></div>
+</p>
+
+<p>As you can see, you can pass the commandline argments for nose into the run function.
+With <code>--cover_html</code> we automatically generate the html coverage information. You
+could omit this and run <code>coverage html</code> after the tests complete to generate the
+html coverage pages instead. The output from the two methods is slightly different,
+so pick the one that you prefer.</p>
+
+<p>The next bits are up to you now, here you write your tests following a format like</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">test_afunction</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">node</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">hou</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">node(</span><span style="color: #e6db74">&#39;/obj/geo/box1&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">module_to_test</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">do_stuff(node)</span>
+    <span style="color: #66d9ef">assert</span> <span style="color: #f8f8f2">(result</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span>
+</pre></div>
+</p>
+
+<p>You can access any and all <code>hou.</code> calls from your tests, so do what you must.</p>
+
+<p>Once you are happy with your tests, or you just want to go ahead and test a single
+one, we need to run the tests through hython. Bear in mind that you&rsquo;ll consume a
+batch license when you run these tests.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">hython ./test.py
+</pre></div>
+</p>
+
+<p>where <code>test.py</code> is the name of the file that contains the tests you wrote.
+After a while you&rsquo;ll see your tests run and the coverage output. It should
+look a little like this</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">...
+Name          Stmts   Miss  Cover   Missing
+-------------------------------------------
+module_to_test  <span style="color: #ae81ff">25</span>     <span style="color: #ae81ff">14</span>    44%   1-2, 6, 9, 12-15, 21, 27-32
+another_module  <span style="color: #ae81ff">314</span>    <span style="color: #ae81ff">173</span>    45%   4-20, 24, 37-38, 46
+-------------------------------------------
+TOTAL           <span style="color: #ae81ff">339</span>    <span style="color: #ae81ff">187</span>    45%   
+----------------------------------------------------------------------
+Ran <span style="color: #ae81ff">3</span> tests in 0.053s
+
+OK
+</pre></div>
+</p>
+
+<p>You&rsquo;ll also have a directory called <code>cover</code> which will contain the html output,
+assuming you have the <code>--cover_html</code> flag on. If not, run <code>coverage html</code> and
+after a short wait you will have a <code>htmlcov</code> directory with the html coverage
+info.</p>
+
+<p>I hope this helps you out if you ever wanted to unit test your Houdini Python
+script. It&rsquo;s not as difficult as I thought, but it does take a little bit of setting
+up to get everything to work right. There will still be some limitations as to what
+you can test and get results for, but any testing is always better than none at
+all I say.</p>
+
+<p>And the <code>test.py</code> file as a whole</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">nose</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">sys</span>
+<span style="color: #f8f8f2">sys</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">path</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">insert(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;../path_of_module&#39;</span><span style="color: #f8f8f2">)</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">os</span>
+<span style="color: #f8f8f2">os</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">environ[</span><span style="color: #e6db74">&#39;NOSE_WITH_COVERAGE&#39;</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;1&#39;</span>
+<span style="color: #f8f8f2">os</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">environ[</span><span style="color: #e6db74">&#39;NOSE_COVER_PACKAGE&#39;</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;module_to_test&#39;</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">hou</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">module_to_test</span>
+
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">test_afunction</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">node</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">hou</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">node(</span><span style="color: #e6db74">&#39;/obj/geo/box1&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">module_to_test</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">do_stuff(node)</span>
+    <span style="color: #66d9ef">assert</span> <span style="color: #f8f8f2">(result</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span>
+
+
+<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;__main__&#39;</span><span style="color: #f8f8f2">:</span>
+    <span style="color: #f8f8f2">hou</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">hipFile</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">load(</span><span style="color: #e6db74">&#39;/path/to/test.hip&#39;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">nose</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">run(argv</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">[__file__],</span> <span style="color: #e6db74">&#39;--cover_html&#39;</span><span style="color: #f8f8f2">])</span>
+</pre></div>
+</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

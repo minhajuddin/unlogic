@@ -1,0 +1,362 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Vim as a Python IDE &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Vim as a Python IDE</h1>
+			  <span class="post-date">Fri, Feb 8, 2013</span>
+			      
+
+<p>I&rsquo;ve been spending quite a bit of time with our good old buddy Python recently, and when
+I do, I always invite along our mutual friend Vim. He&rsquo;s a barrell of laughs and always
+knows of a quicker way to do things. So I&rsquo;ve been getting the two acquainted more and more
+and Vim&rsquo;s turned into a totally different person. So I am going to share with you how
+I setup Vim as my tool of choice when working with Python code. It&rsquo;s by no means the
+definitive way of working, but it works for me. I know there&rsquo;s quite a few posts similar to this one,
+but these are the tools <strong>I</strong> find useful and use. If you have some suggestions, comments, or
+know of additional tools that might be useful, I would like to hear about them in the comments
+below.</p>
+
+<p>If you are a Vim user you might find this useful. If you are new to Vim I suggest spending some
+time with it before installing any plugins. That way you get used to how Vim works out of the box.
+Once you&rsquo;re comfortable with using it, and you&rsquo;ve gotten to grips with the Vim-way, go ahead and
+install some extras.</p>
+
+<p>Right, let&rsquo;s get started.</p>
+
+<p>First and foremost you should install <a href="https://github.com/gmarik/vundle">Vundle</a>. Vundle will
+make installing and updating all the other tools much easier. It&rsquo;s basically pathogen with a lot
+of nice extras, like installing the bundles itself from their Github repos (and other sources).
+For more info see the README in the Github repo. To install follow the instructions from the repo,
+which are repeated below:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+</pre></div>
+
+
+<p>thenadd the following to your <code>.vimrc</code></p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">nocompatible</span>
+<span style="color: #66d9ef">filetype</span> off
+
+<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">rtp+=~</span><span style="color: #e6db74">/.vim/</span>bundle<span style="color: #e6db74">/vundle/</span>
+<span style="color: #66d9ef">call</span> vundle#rc<span style="color: #f8f8f2">()</span>
+
+<span style="color: #75715e">&quot; let Vundle manage Vundle</span>
+<span style="color: #75715e">&quot; required! </span>
+Bundle <span style="color: #e6db74">&#39;gmarik/vundle&#39;</span>
+
+<span style="color: #75715e">&quot; The bundles you install will be listed here</span>
+
+<span style="color: #66d9ef">filetype</span> plugin indent <span style="color: #66d9ef">on</span>
+
+<span style="color: #75715e">&quot; The rest of your config follows here</span>
+</pre></div>
+
+
+<p>Now if you launch Vim and run the command</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">:</span>BundleList
+</pre></div>
+
+
+<p>a new split should appear listing the Vundle bundle. Everything went ok in that case.</p>
+
+<p>As you go through this article you can install each item separately or you can add the bundles
+to your <code>.vimrc</code> one by one and then just install them all at once at the end if you prefer.</p>
+
+<p>Ok, so having done that let&rsquo;s configure a few more things.</p>
+
+<h1 id="highlight-excess-line-length:c2f6c0c20421a669648093b37836b9d8">Highlight excess line length</h1>
+
+<p>You&rsquo;ll probably want to set a restriction to line width for python files. I like to set this to 120
+chars. 80 chars is usually the standard, but with modern displays we can allow ourselves a few more,
+but you are free to adjust as you like. To enable this excess highlighting, add the following lines
+to your <code>.vimrc</code></p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">augroup vimrc_autocmds
+    autocmd<span style="color: #f8f8f2">!</span>
+<span style="color: #75715e">    &quot; highlight characters past column 120</span>
+    autocmd <span style="color: #f8f8f2">FileType</span> python <span style="color: #f8f8f2">highlight</span> Excess ctermbg<span style="color: #f8f8f2">=</span>DarkGrey guibg<span style="color: #f8f8f2">=</span>Black
+    autocmd <span style="color: #f8f8f2">FileType</span> python <span style="color: #66d9ef">match</span> Excess <span style="color: #e6db74">/\%120v.*/</span>
+    autocmd <span style="color: #f8f8f2">FileType</span> python <span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">nowrap</span>
+    augroup END
+</pre></div>
+
+
+<p>Anything that exceeds the line length will be highlighted black, feel free to change this colour
+to suit your colourscheme. It also turns off line wrapping for python files.</p>
+
+<h1 id="powerline:c2f6c0c20421a669648093b37836b9d8">Powerline</h1>
+
+<p>Next up we install <a href="https://github.com/Lokaltog/powerline">Powerline</a> which looks like this:</p>
+
+
+<figure >
+    
+        <img src="center%20/images/content/powerline.png" />
+    
+    
+</figure>
+
+
+<p>It shows you your current mode (NORMAL), the current branch in Git, the file you are editing and some other
+useful information.</p>
+
+<p>Simply add:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;Lokaltog/powerline&#39;</span><span style="color: #f8f8f2">,</span> {<span style="color: #e6db74">&#39;rtp&#39;</span>: <span style="color: #e6db74">&#39;powerline/bindings/vim/&#39;</span>}
+</pre></div>
+
+
+<p>to your <code>.vimrc</code> below the comment we added earlier <code>&quot; The bundles you install will be listed here</code>. Restart Vim
+and run <code>:BundleList</code> again. Now you should also see the Powerline bundle listed there. To install it run the command</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">:</span>BundleInstall
+</pre></div>
+
+
+<p>You&rsquo;ll see Vundle process the list and report on the status of the installation. Hopefully everything went ok.</p>
+
+<p>Powerline however does require a few more things, most notably patched fonts to display the special characters it uses.
+You can get pre-patched fonts from <a href="https://github.com/Lokaltog/powerline-fonts">the powerline-fonts repo</a>. If your
+font isn&rsquo;t listed then the powerline repo does provide a font-patcher you can use to try and patch your font. How this
+is done however is outside the scope of this article. To select your font and ensure that Powerline is always shown,
+you will also need to add these two lines to your <code>.vimrc</code></p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&quot; Powerline setup</span>
+<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">guifont=</span>DejaVu\ Sans\ Mono\ <span style="color: #66d9ef">for</span>\ Powerline\ <span style="color: #ae81ff">9</span>
+<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">laststatus=</span><span style="color: #ae81ff">2</span>
+</pre></div>
+
+
+<p><code>laststatus</code> ensures that Powerline shows up even if you don&rsquo;t have any splits.</p>
+
+<p>Restart vim and hopefully you&rsquo;ll see your powerline appear at the bottom of you window.</p>
+
+<p>Please note that this version of Powerline is a Python based version and thus requires your Vim to  be built
+with Python enabled. To check if it is run:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">$&gt;</span> vim --version <span style="color: #f8f8f2">|</span> grep -i python
+</pre></div>
+
+
+<p>from the commandline. If you see <code>+python</code> then you are ok. There is
+<a href="https://github.com/Lokaltog/vim-powerline">another Powerline</a> that is a native Vim plugin should
+you not have Python enabled or prefer to use it over the Python version.</p>
+
+<h1 id="fugitive:c2f6c0c20421a669648093b37836b9d8">Fugitive</h1>
+
+<p><a href="https://github.com/tpope/vim-fugitive">Fugitive</a> is a <a href="http://git-scm.com/">Git</a> plugin. It basically wraps
+most Git commands so that you can call them from inside Vim. They are prefixed with <code>G</code>, for example <code>Gcommit</code>
+For example it allows you to stage files directly from Vim and make the commit. It also leverages VimDiff to perform
+conflict resolution, blame and the like. There&rsquo;s a whole set of screencasts on how to use it available from
+<a href="http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/">Vim Casts</a> which I recommend watching.</p>
+
+<p>To install Fugitive, add its bundle to Vundle:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;tpope/vim-fugitive&#39;</span>
+</pre></div>
+
+
+<p>Run <code>:BundleInstall</code> again to install it.</p>
+
+<h1 id="nerdtree:c2f6c0c20421a669648093b37836b9d8">NerdTree</h1>
+
+<p><a href="https://github.com/scrooloose/nerdtree">NerdTree</a> is a filebrowser that pops up in a
+split when you need it and features a tree like file browser (hence the  <em>tree</em> part in the name).
+It looks somewhat like this:</p>
+
+
+<figure >
+    
+        <img src="center%20/images/content/nerdtree.png" />
+    
+    
+</figure>
+
+
+<p>As usual you just need to add its package to Vundle:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;scrooloose/nerdtree&#39;</span>
+</pre></div>
+
+
+<p>and <code>:BundleInstall</code> once you restart Vim. To activate with <code>F2</code> add the following to <code>.vimrc</code>:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">map <span style="color: #f8f8f2">&lt;</span>F2<span style="color: #f8f8f2">&gt;</span> :NERDTreeToggle<span style="color: #f8f8f2">&lt;</span>CR<span style="color: #f8f8f2">&gt;</span>
+</pre></div>
+
+
+<p>Press <code>F2</code> in vim and it will take you to the current working directory. Press <code>?</code> to see NerdTree&rsquo;s
+list of commands.</p>
+
+<h1 id="python-mode:c2f6c0c20421a669648093b37836b9d8">Python mode</h1>
+
+<p>This is the big one. It basically adds all the Python functionality you could ever want in Vim. Things like Lint,
+codecompletion, documentation lookup, jump to classes, refactoring tools etc. You&rsquo;ll find it in
+<a href="https://github.com/klen/python-mode">Python-mode</a></p>
+
+<p>Its bundle is:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;klen/python-mode&#39;</span>
+</pre></div>
+</p>
+
+<p>Again, <code>:BundleInstall</code> to install it and then we probably want to configure some items. There&rsquo;s a lot to
+configure, so if you want the complete picture I suggest you head over to the
+<a href="https://github.com/klen/python-mode">Github repo</a> and read the more complete docs,
+or run <code>:help python-mode</code> from inside Vim.</p>
+
+<p>I found the following settings most useful personally, but you might want to tweak some settings to suit your needs
+and workflow. The following a copy-paste from my .vimrc. The keyboard shortcuts in the comments are the ones I find
+most useful and I keep them there for reference:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&quot; Python-mode</span>
+<span style="color: #75715e">&quot; Activate rope</span>
+<span style="color: #75715e">&quot; Keys:</span>
+<span style="color: #75715e">&quot; K             Show python docs</span>
+<span style="color: #75715e">&quot; &lt;Ctrl-Space&gt;  Rope autocomplete</span>
+<span style="color: #75715e">&quot; &lt;Ctrl-c&gt;g     Rope goto definition</span>
+<span style="color: #75715e">&quot; &lt;Ctrl-c&gt;d     Rope show documentation</span>
+<span style="color: #75715e">&quot; &lt;Ctrl-c&gt;f     Rope find occurrences</span>
+<span style="color: #75715e">&quot; &lt;Leader&gt;b     Set, unset breakpoint (g:pymode_breakpoint enabled)</span>
+<span style="color: #75715e">&quot; [[            Jump on previous class or function (normal, visual, operator modes)</span>
+<span style="color: #75715e">&quot; ]]            Jump on next class or function (normal, visual, operator modes)</span>
+<span style="color: #75715e">&quot; [M            Jump on previous class or method (normal, visual, operator modes)</span>
+<span style="color: #75715e">&quot; ]M            Jump on next class or method (normal, visual, operator modes)</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_rope <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+
+<span style="color: #75715e">&quot; Documentation</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_doc <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_doc_key <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&#39;K&#39;</span>
+
+<span style="color: #75715e">&quot;Linting</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_lint <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_lint_checker <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&quot;pyflakes,pep8&quot;</span>
+<span style="color: #75715e">&quot; Auto check on save</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_lint_write <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+
+<span style="color: #75715e">&quot; Support virtualenv</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_virtualenv <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+
+<span style="color: #75715e">&quot; Enable breakpoints plugin</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_breakpoint <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_breakpoint_bind <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&#39;&lt;leader&gt;b&#39;</span>
+
+<span style="color: #75715e">&quot; syntax highlighting</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax_all <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax_indent_errors <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">g</span>:pymode_syntax_all
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax_space_errors <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">g</span>:pymode_syntax_all
+
+<span style="color: #75715e">&quot; Don&#39;t autofold code</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_folding <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">0</span>
+</pre></div>
+</p>
+
+<p>To explain the above a bit, here&rsquo;s what it does:</p>
+
+<ul>
+<li>Allow me to look up Python docs by pressing <code>K</code></li>
+<li>Automatically check my code on each save, but only use <code>PyLint</code> or <code>PyFlakes</code></li>
+<li>Support virtualenv</li>
+<li>Use <code>&lt;leader&gt;b</code> to add a pdb shortcut (inserts <code>import pdb; pdb.set_trace() # XXX BREAKPOINT</code> into your code</li>
+<li>Enhanced syntax highlighting and formatting</li>
+</ul>
+
+<p>As I said, please read the full docs and adjust the settings as you see fit.</p>
+
+<h1 id="jedi-vim:c2f6c0c20421a669648093b37836b9d8">Jedi vim</h1>
+
+<p>Since I wrote this article I have discovered <a href="https://github.com/davidhalter/jedi-vim">Jedi-vim</a>
+which I now use as the autocompletion tool instead of the rope plugin that comes with Python Mode. All you need to do is
+add the plugin to the vundle list and turn off Rope by replacing the <code>let g:pymode_rope = 1</code> with
+<code>let g:pymode_rope = 0</code>. I feel it&rsquo;s snappier and more capable than Rope. But if you want to avoid
+installing another plugin, then feel free to stay with Rope.</p>
+
+<h1 id="other-settings:c2f6c0c20421a669648093b37836b9d8">Other settings</h1>
+
+<p>I also use some specific Vim settings in <code>.vimrc</code> that make the experience a bit nicer for me:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&quot; Use &lt;leader&gt;l to toggle display of whitespace</span>
+nmap <span style="color: #f8f8f2">&lt;</span>leader<span style="color: #f8f8f2">&gt;</span><span style="color: #66d9ef">l</span> :<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">list!&lt;</span>CR<span style="color: #f8f8f2">&gt;</span>
+<span style="color: #75715e">&quot; automatically change window&#39;s cwd to file&#39;s dir</span>
+<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">autochdir</span>
+
+<span style="color: #75715e">&quot; I&#39;m prefer spaces to tabs</span>
+<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">tabstop=</span><span style="color: #ae81ff">4</span>
+<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">shiftwidth=</span><span style="color: #ae81ff">4</span>
+<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">expandtab</span>
+
+<span style="color: #75715e">&quot; more subtle popup colors </span>
+<span style="color: #66d9ef">if</span> has <span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;gui_running&#39;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">highlight</span> Pmenu guibg<span style="color: #f8f8f2">=</span><span style="color: #ae81ff">#cccccc</span> <span style="color: #66d9ef">gui</span><span style="color: #f8f8f2">=bold</span>    
+<span style="color: #66d9ef">endif</span>
+</pre></div>
+</p>
+
+<h1 id="summary:c2f6c0c20421a669648093b37836b9d8">Summary</h1>
+
+<p>This is basically the crux of my Python and Vim development setup. I think the core of the whole thing really is
+python mode as it provides the most Python specific tools. The other plugins however do add some really useful
+functionality to make your life a little easier. You might ask why I don&rsquo;t list things like <code>fuzzy file search</code>
+and such, and that&rsquo;s because I don&rsquo;t use it. I&rsquo;ve tried it before and didn&rsquo;t really get on with it very well and I
+prefer to either just open the files directly or using <code>NerdTree</code>.</p>
+
+<p>I hope that this post provides some pointers to help you setup your Vim based Python development environment. As
+I said above, feel free to leave a comment with any plugins or settings that you find useful, always happy to hear
+about what else is out there.</p>
+
+<p>Thanks for reading.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

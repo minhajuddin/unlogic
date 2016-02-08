@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unlogic</title>
-    <link>http://unlogic.co.uk/</link>
+    <link>https://svenito.github.io/nowhere/</link>
     <description>Recent content on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Brewing with a Pi</title>
-      <link>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</link>
+      <link>https://svenito.github.io/nowhere/2015/12/04/brewing-with-a-pi/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/12/04/brewing-with-a-pi/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been a while since I&amp;rsquo;ve written here, but that doesn&amp;rsquo;t mean I haven&amp;rsquo;t
 been busy. I&amp;rsquo;ve been working on a DIY version of &lt;a href=&#34;http://www.speidels-braumeister.de/en/braumeister/id-10-20-50-litre-braumeister.html&#34;&gt;Speidel&amp;rsquo;s Braumeister&lt;/a&gt;
 and the software side of things has come along quite nicely.&lt;/p&gt;
@@ -71,10 +71,10 @@ next year. Got a house to get up to speed as well, so time is a little limited.&
     
     <item>
       <title>SpyderSec solution</title>
-      <link>http://unlogic.co.uk/2015/09/09/spydersec-solution/</link>
+      <link>https://svenito.github.io/nowhere/2015/09/09/spydersec-solution/</link>
       <pubDate>Wed, 09 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/09/09/spydersec-solution/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/09/09/spydersec-solution/</guid>
       <description>&lt;p&gt;Another day, another VM. Today it&amp;rsquo;s the &lt;a href=&#34;https://www.vulnhub.com/entry/spydersec-challenge,128/&#34;&gt;SpyderSec Challenge&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;So let me start it up and get on it.&lt;/p&gt;
@@ -283,10 +283,10 @@ for the challenge, and thanks to you for stopping by to read this.&lt;/p&gt;
     
     <item>
       <title>Extracting bup files in Linux</title>
-      <link>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</link>
+      <link>https://svenito.github.io/nowhere/2015/09/03/extracting-bup-files-in-linux/</link>
       <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/09/03/extracting-bup-files-in-linux/</guid>
       <description>&lt;p&gt;I recently got hold of some malware that got snapped up by McAfee and stored in a bup file.
 Keen to take a look at it, I researched how to &amp;lsquo;unbup&amp;rsquo; files and found this page:&lt;/p&gt;
 
@@ -305,10 +305,10 @@ at fixing it. Otherwise feel free to fork it and make your own fixes.&lt;/p&gt;
     
     <item>
       <title>Nullbyte 1 solution</title>
-      <link>http://unlogic.co.uk/2015/08/25/nullbyte-1-solution/</link>
+      <link>https://svenito.github.io/nowhere/2015/08/25/nullbyte-1-solution/</link>
       <pubDate>Tue, 25 Aug 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/08/25/nullbyte-1-solution/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/08/25/nullbyte-1-solution/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve been AFK for a while because of various reasons, but now I&amp;rsquo;m back and have
@@ -531,10 +531,10 @@ challenges. Thanks to ly0n for creating it.&lt;/p&gt;
     
     <item>
       <title>Honeypotting with Dionaea and Raspi</title>
-      <link>http://unlogic.co.uk/2015/07/16/honeypotting-with-dionaea-and-raspi/</link>
+      <link>https://svenito.github.io/nowhere/2015/07/16/honeypotting-with-dionaea-and-raspi/</link>
       <pubDate>Thu, 16 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/07/16/honeypotting-with-dionaea-and-raspi/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/07/16/honeypotting-with-dionaea-and-raspi/</guid>
       <description>&lt;p&gt;I recently setup a &lt;a href=&#34;http://dionaea.carnivore.it/&#34;&gt;dionaea&lt;/a&gt; honeypot on my Raspberry Pi
 and after tweaking and configuring it for a few days have now got a working setup.
 It&amp;rsquo;s a low interaction honeypot aimed to capture malware rather than ssh bruteforce
@@ -563,10 +563,10 @@ uptime.&lt;/p&gt;
     
     <item>
       <title>Infosec Institute CTF2.0</title>
-      <link>http://unlogic.co.uk/2015/06/25/infosec-institute-ctf2-dot-0/</link>
+      <link>https://svenito.github.io/nowhere/2015/06/25/infosec-institute-ctf2-dot-0/</link>
       <pubDate>Thu, 25 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/06/25/infosec-institute-ctf2-dot-0/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/06/25/infosec-institute-ctf2-dot-0/</guid>
       <description>
 
 &lt;p&gt;The folks over at the &lt;a href=&#34;https://infosecinstitute.com&#34;&gt;Infosec Institue&lt;/a&gt; have released
@@ -1137,10 +1137,10 @@ relative, which means if I strip off the protocol off the URL, I should be able 
     
     <item>
       <title>Vulnhub Darknet1.0 write up</title>
-      <link>http://unlogic.co.uk/2015/06/08/vulnhub-darknet1-dot-0-write-up/</link>
+      <link>https://svenito.github.io/nowhere/2015/06/08/vulnhub-darknet1-dot-0-write-up/</link>
       <pubDate>Mon, 08 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/06/08/vulnhub-darknet1-dot-0-write-up/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/06/08/vulnhub-darknet1-dot-0-write-up/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://www.vulnhub.com/entry/darknet-10,120/&#34;&gt;Darknet 1.0&lt;/a&gt; by &lt;a href=&#34;https://www.vulnhub.com/author/q3rv0,111/&#34;&gt;q3rv0&lt;/a&gt;
@@ -1753,10 +1753,10 @@ as well as all the other fun puzzles.&lt;/p&gt;
     
     <item>
       <title>Hacky Easter 2015</title>
-      <link>http://unlogic.co.uk/2015/06/01/hacky-easter-2015/</link>
+      <link>https://svenito.github.io/nowhere/2015/06/01/hacky-easter-2015/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/06/01/hacky-easter-2015/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/06/01/hacky-easter-2015/</guid>
       <description>
 
 &lt;p&gt;Another year, another Hacky Easter and a month, of fun, learning, and
@@ -2531,10 +2531,10 @@ sentence.&lt;/p&gt;
     
     <item>
       <title>Burnmail: temporary mail forwarding</title>
-      <link>http://unlogic.co.uk/2015/05/29/burnmail-temporary-mail-forwarding/</link>
+      <link>https://svenito.github.io/nowhere/2015/05/29/burnmail-temporary-mail-forwarding/</link>
       <pubDate>Fri, 29 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/05/29/burnmail-temporary-mail-forwarding/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/05/29/burnmail-temporary-mail-forwarding/</guid>
       <description>
 
 &lt;p&gt;A while back I got curious about how easy it would be to setup a temporary
@@ -2608,10 +2608,10 @@ please let me know.&lt;/p&gt;
     
     <item>
       <title>I made this: Purplescraper</title>
-      <link>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</link>
+      <link>https://svenito.github.io/nowhere/2015/05/14/i-made-this-purplescraper/</link>
       <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/05/14/i-made-this-purplescraper/</guid>
       <description>&lt;p&gt;Had this script sitting around for a while and I figured I would clean it up
 a bit and share it.&lt;/p&gt;
 
@@ -2628,10 +2628,10 @@ authorised users via slack file permissions.&lt;/p&gt;
     
     <item>
       <title>The joys of server ownership</title>
-      <link>http://unlogic.co.uk/2015/05/08/the-joys-of-server-ownership/</link>
+      <link>https://svenito.github.io/nowhere/2015/05/08/the-joys-of-server-ownership/</link>
       <pubDate>Fri, 08 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/05/08/the-joys-of-server-ownership/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/05/08/the-joys-of-server-ownership/</guid>
       <description>
 
 &lt;p&gt;This post serves mostly as a &amp;ldquo;note to self&amp;rdquo;.&lt;/p&gt;
@@ -2723,10 +2723,10 @@ can do&lt;/p&gt;
     
     <item>
       <title>How&#39;s that Pizza coming along?</title>
-      <link>http://unlogic.co.uk/2015/04/15/hows-that-pizza-coming-along/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/15/hows-that-pizza-coming-along/</link>
       <pubDate>Wed, 15 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/15/hows-that-pizza-coming-along/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/15/hows-that-pizza-coming-along/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;UPDATE&lt;/strong&gt;: Published what I have done so far &lt;a href=&#34;https://github.com/Svenito/dominos&#34;&gt;on my Github&lt;/a&gt;&lt;/p&gt;
@@ -2761,10 +2761,10 @@ by adding support for ordering in their own country.&lt;/p&gt;
     
     <item>
       <title>Revisiting strong passwords</title>
-      <link>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/14/revisiting-strong-passwords/</link>
       <pubDate>Tue, 14 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/14/revisiting-strong-passwords/</guid>
       <description>
 
 &lt;p&gt;Some time ago I wrote a post about &lt;a href=&#34;http://unlogic.co.uk/2012/06/06/strong-passwords/&#34;&gt;strong passwords&lt;/a&gt;.
@@ -2956,10 +2956,10 @@ from a large vat of possibilities.&lt;/p&gt;
     
     <item>
       <title>Solving Narnia Part 2</title>
-      <link>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</link>
       <pubDate>Mon, 13 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</guid>
       <description>
 
 &lt;p&gt;Carrying on from &lt;a href=&#34;http://unlogic.co.uk/2015/04/08/solving-narnia-part1/&#34;&gt;Part 1&lt;/a&gt;&lt;/p&gt;
@@ -3702,10 +3702,10 @@ level, I decided to post anyway. I&amp;rsquo;ll update this when I have this fig
     
     <item>
       <title>Vulnhub&#39;s &#39;TopHatSec Freshly&#39;</title>
-      <link>http://unlogic.co.uk/2015/04/11/vulnhubs-freshly/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/11/vulnhubs-freshly/</link>
       <pubDate>Sat, 11 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/11/vulnhubs-freshly/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/11/vulnhubs-freshly/</guid>
       <description>&lt;p&gt;This is my first writeup of a &lt;a href=&#34;https://vulnhub.com&#34;&gt;Vulnhub&lt;/a&gt; wargame: Freshly.&lt;/p&gt;
 
 &lt;p&gt;The challenge is:&lt;/p&gt;

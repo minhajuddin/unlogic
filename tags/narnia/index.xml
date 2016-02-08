@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Narnia on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/narnia/</link>
+    <link>https://svenito.github.io/nowhere/tags/narnia/</link>
     <description>Recent content in Narnia on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 13 Apr 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/narnia/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/narnia/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Solving Narnia Part 2</title>
-      <link>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</link>
       <pubDate>Mon, 13 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</guid>
       <description>
 
 &lt;p&gt;Carrying on from &lt;a href=&#34;http://unlogic.co.uk/2015/04/08/solving-narnia-part1/&#34;&gt;Part 1&lt;/a&gt;&lt;/p&gt;
@@ -756,10 +756,10 @@ level, I decided to post anyway. I&amp;rsquo;ll update this when I have this fig
     
     <item>
       <title>Solving Narnia Part 1</title>
-      <link>http://unlogic.co.uk/2015/04/08/solving-narnia-part1/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/08/solving-narnia-part1/</link>
       <pubDate>Wed, 08 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/08/solving-narnia-part1/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/08/solving-narnia-part1/</guid>
       <description>
 
 &lt;p&gt;Next up we take on &lt;a href=&#34;http://overthewire.org/wargames/narnia/&#34;&gt;Narnia&lt;/a&gt;. This is a

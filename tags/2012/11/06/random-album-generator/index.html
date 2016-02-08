@@ -1,0 +1,213 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Random album generator in python &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Random album generator in python</h1>
+			  <span class="post-date">Tue, Nov 6, 2012</span>
+			      <p>You may have heard about the &ldquo;random music album&rdquo; thing. Basically it goes like this:</p>
+
+<ul>
+<li>The album cover is the 4th image from a random page of Flickr&rsquo;s interesting pics</li>
+<li>The band name is the title of a random Wikipedia article</li>
+<li>The album name comes from the last 3 or 5 words of a famous quote</li>
+</ul>
+
+<p>This is all well and good, but isn&rsquo;t getting all this data manually, and then making the album cover a bit tedious? Sure it is, so let&rsquo;s see how we can do this in python</p>
+
+<p>Here are some example images generated with this script (click for the full size picture):</p>
+
+
+<figure >
+    
+        <img src="center%20/images/content/album2.jpg%20585%20585" />
+    
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="center%20/images/content/album3.jpg%20585%20585" />
+    
+    
+</figure>
+
+
+
+<figure >
+    
+        <img src="center%20/images/content/album4.jpg%20585%20585" />
+    
+    
+</figure>
+
+
+<p>Let&rsquo;s cover our dependencies first. You will need:</p>
+
+<ul>
+<li>python 2.6 (or similar)</li>
+<li>PIL (<a href="http://www.pythonware.com/products/pil/">python Image Library</a>)</li>
+<li>A <a href="http://www.flickr.com/services/apps/create/apply/">Flickr API key</a></li>
+<li><a href="http://www.gnu.org/software/wget/">wget</a></li>
+</ul>
+
+<p>Not much to ask for is it? So once you&rsquo;ve made sure you have all that, let&rsquo;s start by getting the album cover. This is handled by the <a href="http://www.flickr.com/services/api/flickr.interestingness.getList.html">interestingness</a> part of the API and is a very simple call that will return an XML structure of the photos on that page. Once we have a response we parse the XML and get the elements we need to construct the photo URL. It&rsquo;s a short function and here it is:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">getAlbumImage</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">page</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">random</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randint(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">80</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">url</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;http://api.flickr.com/services/rest/?method=flickr.interestingness.getList&amp;api_key=YOURAPIKEYHERE&amp;per_page=6&amp;page=%d&amp;format=rest&quot;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(page)</span>
+    <span style="color: #f8f8f2">dom</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">minidom</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">parse(urllib</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">urlopen(url))</span>
+
+    <span style="color: #f8f8f2">elem</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dom</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getElementsByTagName(</span><span style="color: #e6db74">&#39;photo&#39;</span><span style="color: #f8f8f2">)[</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span>
+    <span style="color: #f8f8f2">farm_id</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">elem</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getAttributeNode(</span><span style="color: #e6db74">&#39;farm&#39;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">nodeValue</span>
+    <span style="color: #f8f8f2">server_id</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">elem</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getAttributeNode(</span><span style="color: #e6db74">&#39;server&#39;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">nodeValue</span>
+    <span style="color: #f8f8f2">the_id</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">elem</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getAttributeNode(</span><span style="color: #e6db74">&#39;id&#39;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">nodeValue</span>
+    <span style="color: #f8f8f2">secret</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">elem</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getAttributeNode(</span><span style="color: #e6db74">&#39;secret&#39;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">nodeValue</span>
+    
+    <span style="color: #f8f8f2">photo_url</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;http://farm%s.staticflickr.com/%s/%s_%s_b.jpg&quot;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(farm_id,</span> <span style="color: #f8f8f2">server_id,</span> <span style="color: #f8f8f2">the_id,</span> <span style="color: #f8f8f2">secret)</span>
+    <span style="color: #f8f8f2">target_photo</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;band.jpg&#39;</span>
+    <span style="color: #f8f8f2">subprocess</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">call([</span><span style="color: #e6db74">&quot;/usr/bin/wget&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;-O&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">target_photo,</span> <span style="color: #f8f8f2">photo_url])</span>
+</pre></div>
+
+
+<p>First we generate a random number which will be the page number we use in constructing the API URL. Once constructed we use <code>minidom</code> to parse it and start extracting our data. If you paste the URL into your browser (with your valid API key) you can see the response format. Now that we have all the data we need, we construct our image URL (the format for this is in the docs) and save it to <code>band.jpg</code> using <code>wget</code>. You can of course use something else, but this is just easy here.</p>
+
+<p>Right, onto getting our band name. This is the random Wikipedia article. Luckily Wikipedia has an API also, and doesn&rsquo;t require an API key for this purpose. This is an even shorter function:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">getBandName</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">random_wiki_url</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;http://en.wikipedia.org/w/api.php?format=xml&amp;action=query&amp;list=random&amp;rnnamespace=0&amp;rnlimit=1&quot;</span>
+    <span style="color: #f8f8f2">dom</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">minidom</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">parse(urllib</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">urlopen(random_wiki_url))</span>
+
+    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">line</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">dom</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getElementsByTagName(</span><span style="color: #e6db74">&#39;page&#39;</span><span style="color: #f8f8f2">):</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">line</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getAttributeNode(</span><span style="color: #e6db74">&#39;title&#39;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">nodeValue</span>
+</pre></div>
+</p>
+
+<p>As above we create the URL, parse the output with minidom and fetch our page title. Done.</p>
+
+<p>Album title is a little trickier. I couldn&rsquo;t find a decent quote page that offered a free, easy to use API, so I decided to be a little more hacky and just parse the HTML itself. Hey, it works, don&rsquo;t judge me. We need a helper class for this called <code>MyHTMLParser</code> that derives from python&rsquo;s <a href="http://docs.python.org/2/library/htmlparser.html?highlight=htmlparser#HTMLParser">HTMLParser</a> class.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">class</span> <span style="color: #a6e22e">MyHTMLParser</span><span style="color: #f8f8f2">(HTMLParser):</span>
+    <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">__init__</span><span style="color: #f8f8f2">(self):</span>
+        <span style="color: #f8f8f2">HTMLParser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">__init__(self)</span>
+        <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get_data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">False;</span>
+        <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">quotes</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[]</span>
+
+    <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">handle_starttag</span><span style="color: #f8f8f2">(self,</span> <span style="color: #f8f8f2">tag,</span> <span style="color: #f8f8f2">attrs):</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">tag</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;dt&quot;</span><span style="color: #f8f8f2">:</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">attrs[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">][</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;class&#39;</span> <span style="color: #f92672">and</span> <span style="color: #f8f8f2">attrs[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">][</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;quote&#39;</span><span style="color: #f8f8f2">:</span>
+                <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get_data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">True</span>
+
+    <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">handle_endtag</span><span style="color: #f8f8f2">(self,</span> <span style="color: #f8f8f2">data):</span>
+        <span style="color: #66d9ef">pass</span>
+
+    <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">handle_data</span><span style="color: #f8f8f2">(self,</span> <span style="color: #f8f8f2">data):</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get_data:</span>
+            <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">quotes</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append(data)</span>
+            <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">get_data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">False</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">getAlbumTitle</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">random_quote_url</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;http://www.quotationspage.com/random.php3&quot;</span>
+    <span style="color: #f8f8f2">page</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">urllib</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">urlopen(random_quote_url)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">read()</span>
+    <span style="color: #f8f8f2">parser</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MyHTMLParser()</span>
+    <span style="color: #f8f8f2">parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">feed(page)</span>
+
+    <span style="color: #f8f8f2">num_quotes</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">len(parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">quotes)</span>
+    <span style="color: #f8f8f2">quote</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">parser</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">quotes[random</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randint(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">num_quotes)]</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rstrip(</span><span style="color: #e6db74">&#39;.&#39;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #f8f8f2">last_set</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">random</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randint(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">words</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">quote</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">last_set</span> <span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">len(words):</span>
+        <span style="color: #f8f8f2">last_set</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">len(words)</span>
+
+    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot; &quot;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(words[</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">last_set:])</span>
+</pre></div>
+</p>
+
+<p>The class here is used to parse the HTML from <a href="http://www.quotationspage.com/random.php3">http://www.quotationspage.com/random.php3</a>, specifically the tag that starts with <code>quote</code>. Once we have that we start capturing the data between that tag and store it in an array. Our <code>getAlbumTitle</code> function will use this data to select a random quote and then get the last 3 or 5 words from it and join them with spaces before returning that new string.</p>
+
+<p>So now we have the data that we need, we just need to wrap it all up and generate our final image using <code>PIL</code>. Surprise, surprise, this isn&rsquo;t a big deal either.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">def</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #f8f8f2">band_name</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getBandName()</span>
+    <span style="color: #f8f8f2">album_title</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getAlbumTitle()</span>
+    <span style="color: #f8f8f2">cover</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getAlbumImage()</span>
+
+    <span style="color: #f92672">from</span> <span style="color: #f8f8f2">PIL</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">ImageFont</span>
+    <span style="color: #f92672">from</span> <span style="color: #f8f8f2">PIL</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Image</span>
+    <span style="color: #f92672">from</span> <span style="color: #f8f8f2">PIL</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">ImageDraw</span>
+
+    <span style="color: #f8f8f2">fnt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ImageFont</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">truetype(</span><span style="color: #e6db74">&quot;/usr/share/fonts/dejavu/DejaVuSans.ttf&quot;</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">25</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">lineWidth</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">20</span>
+    <span style="color: #f8f8f2">image</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">open(</span><span style="color: #e6db74">&quot;band.jpg&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">imagebg</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">new(</span><span style="color: #e6db74">&#39;RGBA&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size,</span> <span style="color: #e6db74">&quot;#000000&quot;</span><span style="color: #f8f8f2">)</span> <span style="color: #75715e"># make an entirely black image</span>
+    <span style="color: #f8f8f2">mask</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">new(</span><span style="color: #e6db74">&#39;L&#39;</span><span style="color: #f8f8f2">,image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size,</span><span style="color: #e6db74">&quot;#000000&quot;</span><span style="color: #f8f8f2">)</span>       <span style="color: #75715e"># make a mask that masks out all</span>
+    <span style="color: #f8f8f2">draw</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ImageDraw</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Draw(image)</span>                     <span style="color: #75715e"># setup to draw on the main image</span>
+    <span style="color: #f8f8f2">drawmask</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ImageDraw</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">Draw(mask)</span>                <span style="color: #75715e"># setup to draw on the mask</span>
+    <span style="color: #f8f8f2">drawmask</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">line((</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">lineWidth,</span> <span style="color: #f8f8f2">image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">],lineWidth),</span>
+                  <span style="color: #f8f8f2">fill</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;#999999&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">width</span><span style="color: #f92672">=</span><span style="color: #ae81ff">100</span><span style="color: #f8f8f2">)</span>        <span style="color: #75715e"># draw a line on the mask to allow some bg through</span>
+    <span style="color: #f8f8f2">image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">paste(imagebg,</span> <span style="color: #f8f8f2">mask</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">mask)</span>                    <span style="color: #75715e"># put the (somewhat) transparent bg on the main</span>
+    <span style="color: #f8f8f2">draw</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">text((</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">band_name,</span> <span style="color: #f8f8f2">font</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">fnt,</span> <span style="color: #f8f8f2">fill</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;#ffffff&quot;</span><span style="color: #f8f8f2">)</span>      <span style="color: #75715e"># add some text to the main</span>
+    <span style="color: #f8f8f2">draw</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">text((</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">40</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">album_title,</span> <span style="color: #f8f8f2">font</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">fnt,</span> <span style="color: #f8f8f2">fill</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;#ffffff&quot;</span><span style="color: #f8f8f2">)</span>      <span style="color: #75715e"># add some text to the main</span>
+    <span style="color: #66d9ef">del</span> <span style="color: #f8f8f2">draw</span>
+    <span style="color: #f8f8f2">image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">save(</span><span style="color: #e6db74">&quot;out.jpg&quot;</span><span style="color: #f8f8f2">,</span><span style="color: #e6db74">&quot;JPEG&quot;</span><span style="color: #f8f8f2">,quality</span><span style="color: #f92672">=</span><span style="color: #ae81ff">100</span><span style="color: #f8f8f2">)</span>
+</pre></div>
+</p>
+
+<p>Let&rsquo;s go over what&rsquo;s happening here. You&rsquo;re welcome to clean it up as an exercise if you wish or think some values (like filenames) etc need configuring. Firstly we call the previously defined functions to fetch our album data and then we start the drawing. I use the <code>DejaVuSans.ttf</code> font for this example, but you can use any font you have, or even use different fonts for the title and band name, to make your cover look a bit more pleasing. Once the image we saved from Flickr is open, we start writing our title and band name on the album cover, and save out the result as a <code>JPEG</code>. The code here is commented so I won&rsquo;t go over the details here.</p>
+
+<p>And that&rsquo;s all there is to it. If you want the the script as a whole file, you can <a href="https://gist.github.com/4025200">get it from this gist</a></p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

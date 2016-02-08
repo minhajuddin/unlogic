@@ -1,0 +1,640 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Solving Infosec n00bsCTF &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Solving Infosec n00bsCTF</h1>
+			  <span class="post-date">Wed, Mar 11, 2015</span>
+			      
+
+<p>The InfoSec Institue is running a <a href="http://ctf.infosecinstitute.com/index.php">n00bsCTF</a>,
+and I can&rsquo;t resist a CTF really. Plus this will be a nice warmup for Hackyeaster 2015.
+So let&rsquo;s jump on it and get some flags&hellip;</p>
+
+<p>I haven&rsquo;t managed to get all of them, but I will be updating this post when
+I manage to solve some of the others.</p>
+
+<h2 id="level-01:aad69195db02279e47989643f4843312">Level 01</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelone.php">http://ctf.infosecinstitute.com/levelone.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/ebnLRwp.png" />
+    
+    
+</figure>
+
+
+<p>May the source be with you, eh? Sounds to me like someone wants us to look at the
+page source. Right click, select <code>view page source</code> and&hellip;</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&lt;!-- infosec_flagis_welcome --&gt;</span>
+<span style="color: #75715e">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #f92672">&lt;html</span> <span style="color: #a6e22e">lang=</span><span style="color: #e6db74">&quot;en&quot;</span><span style="color: #f92672">&gt;</span>
+  <span style="color: #f92672">&lt;head&gt;</span>
+</pre></div>
+
+
+<p>And there it is, right at the top.</p>
+
+<pre><code>infosec_flagis_welcome
+</code></pre>
+
+<h2 id="level-02:aad69195db02279e47989643f4843312">Level 02</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/leveltwo.php">http://ctf.infosecinstitute.com/leveltwo.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/TVGZFKU.png" />
+    
+    
+</figure>
+
+
+<p>A broken image you say? Let&rsquo;s download it and have a look. We notice it&rsquo;s very small,
+only 45 bytes. So let&rsquo;s open it in a hex editor and examine its contents. I opened
+it in vim (to use it as a hex editor enter <code>:!xxd</code>),
+and was instantly greeted with this string. Didn&rsquo;t even have to convert it to hex.</p>
+
+<pre><code>aW5mb3NlY19mbGFnaXNfd2VhcmVqdXN0c3RhcnRpbmc=
+</code></pre>
+
+<p>Base64 encoded text. Let&rsquo;s run it through a decoder and see what we get&hellip;.</p>
+
+<pre><code>infosec_flagis_wearejuststarting
+</code></pre>
+
+<p>Level02&rsquo;s flag done.</p>
+
+<h2 id="level-03:aad69195db02279e47989643f4843312">Level 03</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelthree.php">http://ctf.infosecinstitute.com/levelthree.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/lL8OkTO.png" />
+    
+    
+</figure>
+
+
+<p>We are presented with a QR code. So I grabbed my phone, scanned it, and was presented
+with a series of dots and dashes. Morse code no doubt. Being lazy I didn&rsquo;t want to type
+it into a decoder manually,
+so I used <a href="http://zxing.org/w/decode.jspx">this tool</a> to decode the QR code
+and then copy/pasted the output into a <a href="http://www.onlineconversion.com/morse_code.htm">morse code translator</a>
+and ended up with:</p>
+
+<pre><code>INFOSECFLAGISMORSING
+</code></pre>
+
+<h2 id="level-04:aad69195db02279e47989643f4843312">Level 04</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelfour.php">http://ctf.infosecinstitute.com/levelfour.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/yFiSrus.png" />
+    
+    
+</figure>
+
+
+<p>A picture and a tidbit of information. Hrmm&hellip; Ok, not much to go with here. Mousing
+over the image pops up a dialog. Investigating that didn&rsquo;t lead me anywhere. Time
+to get the thinking hats on and think about what info we have here that might be
+relevant. Because everything we need to solve this level is somewhere here.
+Of course the biggest clue is the picture: Cookie Monster. Right, let&rsquo;s check the cookie
+cache. Only one cookie by infosecinstitute. It&rsquo;s garbage! Or is it perhaps just a
+caesar cipher? Each letter is shifted by a certain amount, and we need to figure out
+that amount. Due to the number of characters and _ in the string, it looks like it.</p>
+
+<p>Knowing the format of previous flags we can figure out how much to shift by.</p>
+
+<p>So <code>vasbfrp_syntvf_jrybirpbbxvrf</code> should be <code>infosec_flag_xxxxxxx</code>. Knowing this
+we can work out the shift. Simple write out the alphabet once and
+then, write the letters we know below.</p>
+
+<pre><code>abcdefghijklmnopqrstuvwxyz
+n                 f   i
+</code></pre>
+
+<p>That&rsquo;s enough for us to fill in the rest of the alphabet.
+Then transpose and solve the final part to get:</p>
+
+<pre><code>infosec_flag_welovecookies
+</code></pre>
+
+<p>Flag has been nommed.</p>
+
+<h2 id="level-05:aad69195db02279e47989643f4843312">Level 05</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelfive.php">http://ctf.infosecinstitute.com/levelfive.php</a></p>
+
+<p>A pesky popup saying I&rsquo;m a hacker? What an accusation. Well, let&rsquo;s top it from
+popping up and get ourselves a script blocker to see what else there might be.
+Once done, we examine the source and see it&rsquo;s loading an image too.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;img</span> <span style="color: #a6e22e">src=</span><span style="color: #e6db74">&quot;img/aliens.jpg&quot;</span> <span style="color: #f92672">/&gt;</span> <span style="color: #f92672">&lt;br</span> <span style="color: #f92672">/&gt;</span> <span style="color: #f92672">&lt;br</span> <span style="color: #f92672">/&gt;</span>
+</pre></div>
+
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/JwFtmSw.png" />
+    
+    
+</figure>
+
+
+<p>Let&rsquo;s load up that image, or even better, let&rsquo;s just browse to <code>http://ctf.infosecinstitute.com/img/</code>
+(Since writing directory listing has been disabled for this path).
+Nothing particularily odd about the image. Let&rsquo;s try seeing if there&rsquo;s anything hidden in
+it by way of steganography. I loaded up the image into <a href="http://www.futureboy.us/stegano/decinput.html">this site</a>
+and sure enough, selecting a type of <code>text/plain</code> we get a stream of 1s and 0s. Binary data.
+Let&rsquo;s try to convert that to a string and see what, if anything, it says. Using any
+binary to text decoder on the internet, we are given the flag:</p>
+
+<pre><code>infosec_flagis_stegaliens
+</code></pre>
+
+<p>Gotcha</p>
+
+<h2 id="level-06:aad69195db02279e47989643f4843312">Level 06</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelsix.php">http://ctf.infosecinstitute.com/levelsix.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/w81ZV0N.png" />
+    
+    
+</figure>
+
+
+<p>At first I was a bit lost, but when you stare at a lot of data, it&rsquo;s easy to be overwhelmed.
+Especially when you don&rsquo;t know really what you are looking for. I decided to give it another go
+and have located the flag. It&rsquo;s actually in the very first packet. The hex string for <em>infosec_flag</em>
+is starting to look very familiar now. It appears as the data of the first packet:</p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/aO8ojXG.png" />
+    
+    
+</figure>
+
+
+<p>Enter the string with <code>696e66...</code> into a hex to string converter and you get</p>
+
+<pre><code>infosec_flagis_sniffed
+</code></pre>
+
+<p>Sniffed right out.</p>
+
+<h2 id="level-07:aad69195db02279e47989643f4843312">Level 07</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/404.php">http://ctf.infosecinstitute.com/404.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/PZu5CIK.png" />
+    
+    
+</figure>
+
+
+<p>We get an error saying <em>f00 not found</em> and the URL reads 404.php. Going by the other URLs
+I would assume we actually need <code>levelseven.php</code>, so let&rsquo;s enter that and see what we get.
+It seems to return an empty page. That&rsquo;s not much use, but it&rsquo;s better than a real
+404. Because there&rsquo;s no error and no content, we must be getting back a 200 status (all OK).
+Perhaps there&rsquo;s something else to look at too?</p>
+
+<p>In this case let&rsquo;s examine what&rsquo;s going back and forth between us and the server.
+You can either fire up a proxy like <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">ZAP</a>
+or use a request inspection plugin for Firefox like <a href="https://addons.mozilla.org/en-US/firefox/addon/httprequester/">httpRequester</a>.</p>
+
+<p>So let&rsquo;s send off a GET request for <code>levelseven.php</code> and see what we get back.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">HTTP/1.0 200 aW5mb3NlY19mbGFnaXNfeW91Zm91bmRpdA==
+Date: Thu, 12 Mar 2015 09:26:48 GMT
+Server: Apache/2.4.7 (Ubuntu)
+X-Powered-By: PHP/5.5.9-1ubuntu4.6
+Content-Length: 0
+Connection: close
+Content-Type: text/html
+</pre></div>
+
+
+<p>Heh, very nice. We have a 200 response with, what is clearly a base64 encoded string.
+Copypasta that into a decoder and let&rsquo;s see what we get:</p>
+
+<pre><code>infosec_flagis_youfoundit
+</code></pre>
+
+<p>Yes, I did find it.</p>
+
+<h2 id="level-08:aad69195db02279e47989643f4843312">Level 08</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/leveleight.php">http://ctf.infosecinstitute.com/leveleight.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/OSKPz0g.png" />
+    
+    
+</figure>
+
+
+<p>Ok, let&rsquo;s download <code>app.exe</code> and give this a go. It&rsquo;s a wrapper around <code>netstat</code> that
+just shows you what your current connections are. It takes no arguments, so there&rsquo;s
+not anyway to attack this thing with overflows. And this being a n00bs level CTF, it&rsquo;s
+unlikely we&rsquo;ll be thrown this kind of exploit development.
+So the other thing we can do is check its strings.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">strings app.exe
+</pre></div>
+
+
+<p>Sure enough, there&rsquo;s <code>infosec_flagis_0x1a</code>. At first I was reluctant to go with this, as
+it&rsquo;s a bit too simple, so I looked a bit further. I dumped the source with <code>objdump</code></p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">objdump -s app.exe | less
+</pre></div>
+
+
+<p>And I found <code>infosec_flagis_0x1a</code> in it. It sits at <code>0x403000</code>, so let&rsquo;s run this
+through <code>gdb</code> too.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">$&gt; gdb app.exe
+gdb$ disass main
+Dump of assembler code for function main:
+   0x00401290 &lt;+0&gt;:	push   %ebp
+   0x00401291 &lt;+1&gt;:	mov    %esp,%ebp
+   0x00401293 &lt;+3&gt;:	sub    $0x18,%esp
+   0x00401296 &lt;+6&gt;:	and    $0xfffffff0,%esp
+   0x00401299 &lt;+9&gt;:	mov    $0x0,%eax
+   0x0040129e &lt;+14&gt;:	add    $0xf,%eax
+   0x004012a1 &lt;+17&gt;:	add    $0xf,%eax
+   0x004012a4 &lt;+20&gt;:	shr    $0x4,%eax
+   0x004012a7 &lt;+23&gt;:	shl    $0x4,%eax
+   0x004012aa &lt;+26&gt;:	mov    %eax,-0x8(%ebp)
+   0x004012ad &lt;+29&gt;:	mov    -0x8(%ebp),%eax
+   0x004012b0 &lt;+32&gt;:	call   0x401740 &lt;_alloca&gt;
+   0x004012b5 &lt;+37&gt;:	call   0x4013e0 &lt;__main&gt;
+   0x004012ba &lt;+42&gt;:	mov    $0x403000,%eax       &lt;------ aha oho
+   0x004012bf &lt;+47&gt;:	mov    %al,-0x1(%ebp)
+   0x004012c2 &lt;+50&gt;:	movl   $0x403014,(%esp)
+   0x004012c9 &lt;+57&gt;:	call   0x401850 &lt;printf&gt;
+   0x004012ce &lt;+62&gt;:	movl   $0x403044,(%esp)
+   0x004012d5 &lt;+69&gt;:	call   0x401850 &lt;printf&gt;
+   0x004012da &lt;+74&gt;:	movl   $0x403014,(%esp)
+   0x004012e1 &lt;+81&gt;:	call   0x401850 &lt;printf&gt;
+   0x004012e6 &lt;+86&gt;:	movl   $0x403072,(%esp)
+   0x004012ed &lt;+93&gt;:	call   0x401840 &lt;system&gt;
+   0x004012f2 &lt;+98&gt;:	call   0x4017c0 &lt;getch&gt;
+   0x004012f7 &lt;+103&gt;:	mov    $0x0,%eax
+   0x004012fc &lt;+108&gt;:	leave  
+   0x004012fd &lt;+109&gt;:	ret
+   0x004012fe &lt;+110&gt;:	nop
+   0x004012ff &lt;+111&gt;:	nop
+End of assembler dump
+</pre></div>
+
+
+<p>There we see a fimilar address. Checking its contents</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">gdb$ x/s 0x403000
+0x403000:	 &quot;infosec_flagis_0x1a&quot;
+</pre></div>
+
+
+<p>There&rsquo;s nothing that would indicate that this string changes, so for now, I&rsquo;m
+going to say the flag is:</p>
+
+<pre><code>infosec_flagis_0x1a
+</code></pre>
+
+<p>Leave a comment below to correct me if I am wrong though, I&rsquo;d really appreciate that.</p>
+
+<h2 id="level-09:aad69195db02279e47989643f4843312">Level 09</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelnine.php">http://ctf.infosecinstitute.com/levelnine.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/5XnlOL9.png" />
+    
+    
+</figure>
+
+
+<p>Initially I struggled with this. I tried the usual default passwords without success.
+Attacked it with SQL injections, nothing. Then I had a brainwave. Because I already had level15,
+I could just look at the <code>levelnine.php</code> file. So I did. Issue <code>test.com &amp;&amp; cat ../levelnine.php</code>
+and at the end we see what happens if we get the flag:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">alert</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;ssaptluafed_sigalf_cesofni&#39;</span><span style="color: #f8f8f2">)</span><span style="color: #960050; background-color: #1e0010">&quot;</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span>
+</pre></div>
+
+
+<p>It&rsquo;s the flag reversed, so let&rsquo;s flip it to get:</p>
+
+<pre><code>infosec_flagis_defaultpass
+</code></pre>
+
+<p>ti tog yllaniF</p>
+
+<p>PS: What&rsquo;s even cuter is if you run <code>test.com &amp;&amp; tac ../levelnine.php</code>. You actually
+get the popup. <code>tac</code> does the same as <code>cat</code>, but reverses the lines in the output.
+The reason this works is because it will encounter the javascript pop up code before
+the conditional that checks the input.</p>
+
+<p>It also prints out the username and password for us:
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">?&gt; } echo &quot;&quot;; if ($username == &#39;root&#39; and $password == &#39;attack&#39;) { 
+    $password = $_POST[&#39;password&#39;]; 
+    $username = $_POST[&#39;username&#39;];
+</pre></div>
+</p>
+
+<p>Now you can go to the levelnine url and enter that to get the flag. Either way should
+be valid, as the aim of the game is to get the flag. It shouldn&rsquo;t matter how you get it :)</p>
+
+<p>Level15 has been a huge help in all of this!</p>
+
+<h2 id="level-10:aad69195db02279e47989643f4843312">Level 10</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelten.php">http://ctf.infosecinstitute.com/levelten.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/QENqipl.png" />
+    
+    
+</figure>
+
+
+<p>Let&rsquo;s listen to the sound. Hrmm Squeaky. Could be anything. Maybe some weirdly pitched morse.
+But let&rsquo;s download and open it in Audacity. My initial hunch is that it&rsquo;s sped up, due
+to the highpitched sound. So I started reducing the playback speed, and it turns out that
+at around 0.15 times the original speed, we hear someone talking. He&rsquo;s actually telling us
+the name of the flag</p>
+
+<pre><code>infosec_flagis_sound
+</code></pre>
+
+<p>Thanks kind stranger</p>
+
+<h2 id="level-11:aad69195db02279e47989643f4843312">Level 11</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/leveleleven.php">http://ctf.infosecinstitute.com/leveleleven.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/L2tFy5t.png" />
+    
+    
+</figure>
+
+
+<p>Hrmm.. there&rsquo;s no sound this time, instead we get the PHP logo. Well, it&rsquo;s all
+we have so let&rsquo;s open it up. I loaded it into vim, changed to hex mode (:%!xxd)
+and right at the top we have</p>
+
+<pre><code>infosec_flagis_aHR0cDovL3d3dy5yb2xsZXJza2kuY28udWsvaW1hZ2VzYi9wb3dlcnNsaWRlX2xvZ29fbGFyZ2UuZ2lm
+</code></pre>
+
+<p>Yeah, that won&rsquo;t be it will it? We&rsquo;re very familiar with base64 now aren&rsquo;t we? Ok, decode</p>
+
+<pre><code>http://www.rollerski.co.uk/imagesb/powerslide_logo_large.gif
+</code></pre>
+
+<p>Open it up and we get an image. Because the domain is outside of the control of
+this CTF, we can assume that the image hasn&rsquo;t been tampered with or anything
+is embedded in it and that the actual flag is:</p>
+
+<pre><code>infosec_flagis_powerslide
+</code></pre>
+
+<p>I&rsquo;ll take it, thanks!</p>
+
+<h2 id="level-12:aad69195db02279e47989643f4843312">Level 12</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/leveltwelve.php">http://ctf.infosecinstitute.com/leveltwelve.php</a></p>
+
+
+<figure >
+    
+        <img src="http://i.imgur.com/WdLl96v.png" />
+    
+    
+</figure>
+
+
+<p>Ok we recognise this image. We had it in level 1 and we had to look at the source.
+Our clue is dig deeper and that could mean a number of things. Let&rsquo;s try some directory
+traversal by appending a slash and some random text at the end. Hrm, we just
+get a list of the levels and no css. Ok, that&rsquo;s not it. Let&rsquo;s dig into the source again.
+There&rsquo;s nothing obvious, but I reckon it might be one of the files included in the source.
+It would make sense given the clue we&rsquo;ve been given.</p>
+
+<p>To cut a long story short, there&rsquo;s a css file <code>design.css</code> that&rsquo;s not included
+in the other pages. I know this because I&rsquo;ve pretty much looked at the source for each
+level. Force of habit. Anyway, let&rsquo;s take a look at it:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">.thisloveis</span><span style="color: #f8f8f2">{</span>
+	<span style="color: #66d9ef">color</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">#696e666</span><span style="color: #f8f8f2">f7365635f666c616769735f686579696d6e6f7461636f6c6f72;</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+
+
+<p>Aha, that&rsquo;s not a valid colour is it? It&rsquo;s also not base64. Looks like hex values
+to me. Run it through a hex to text converter and&hellip;..</p>
+
+<pre><code>infosec_flagis_heyimnotacolor
+</code></pre>
+
+<p>Yeah, you weren&rsquo;t a colour, that&rsquo;s for sure.</p>
+
+<h2 id="level-13:aad69195db02279e47989643f4843312">Level 13</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelthirteen.php">http://ctf.infosecinstitute.com/levelthirteen.php</a></p>
+
+<p>
+<figure >
+    
+        <img src="http://i.imgur.com/JX3Je1g.png" />
+    
+    
+</figure>
+</p>
+
+<p>Ok, this was a bit of a cheat, because I skipped to level 15 and now I have a a few more
+tools available. I ran <code>test.com &amp;&amp; ls -la ..</code> and voila, there&rsquo;s the backup file:
+<code>levelthirteen.php.old</code>. Much easier than guessing, right?
+Looking at this file we see it will prompt us to download a file called <code>misc/imadecoy</code>.
+This seems to be a network capture involving a project called <a href="https://github.com/shipcod3/honeypy">HoneyPy</a>.</p>
+
+<p>I opened it up in wireshark and spent quite a bit of time on it. There&rsquo;s really nothing
+interesting in it for the most part. However near the end we get a PNG image called
+<code>HoneyPY.PNG</code>. For some reason this just stood out to me. I took a chance and exported it
+by rightclicking the packet and selecting <code>Export Selected Packet Bytes</code> as shown</p>
+
+<p>
+<figure >
+    
+        <img src="http://i.imgur.com/jhH2v19.png" />
+    
+    
+</figure>
+</p>
+
+<p>Opening this image surprises us with a flag! W00t! That flag is:</p>
+
+<pre><code>infosec_flagis_morepackets
+</code></pre>
+
+<p>A wireshark level I managed to do. Yay</p>
+
+<h2 id="level-14:aad69195db02279e47989643f4843312">Level 14</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelfourteen.php">http://ctf.infosecinstitute.com/levelfourteen.php</a></p>
+
+<p>
+<figure >
+    
+        <img src="http://i.imgur.com/0akB0Ni.png" />
+    
+    
+</figure>
+</p>
+
+<p>UPDATE: The <code>level14.db</code> file has been removed and the <code>misc</code> directory can
+no longer be listed. Use the second method below to solve this level</p>
+
+<p>Once downloaded we get a database backup file. This one was quite interesting because
+there are two places where the flag is. So first I looked at what else is in the
+<code>misc</code> directory where this file lives. There&rsquo;s a <code>level14.db</code> file. Let&rsquo;s
+take a look at that.</p>
+
+<p>It adds an entry to the flag db. It&rsquo;s a hex string, so like above, simply decode it and
+get</p>
+
+<pre><code>infosec_flagis_whatsorceryisthis
+</code></pre>
+
+<p>But, look at the <code>level14</code> file again. Scroll through and notice that in the
+<code>friends</code> table there&rsquo;s a fimilar entry. Decoding that will also give you the flag.</p>
+
+<h2 id="level-15:aad69195db02279e47989643f4843312">Level 15</h2>
+
+<p><a href="http://ctf.infosecinstitute.com/levelfifteen/index.php">http://ctf.infosecinstitute.com/levelfifteen/index.php</a></p>
+
+<p>
+<figure >
+    
+        <img src="http://i.imgur.com/EVJuDmC.png" />
+    
+    
+</figure>
+</p>
+
+<p>So here we can lookup a dns entry by typing a domain in the text field. So let&rsquo;s try
+that and see what we get. I used <code>test.com</code> and as a result I get the output
+from the <code>dig</code> command. Interesting. It could be that the php script is merely
+calling <code>dig</code> with the search term appended to it. This is a bad way to execute
+a command, and we will see why. In Linux you can append a command to another using <code>&amp;&amp;</code>.
+So let&rsquo;s try listing the directory with <code>test.com&amp;&amp;ls</code> as our search query. Sure enough,
+we see <code>index.php</code> at the bottom of the output. Well, perhaps there&rsquo;s some hidden files so
+let&rsquo;s run <code>test.com &amp;&amp; ls -la</code>. Aha, there&rsquo;s a file called <code>.hey</code>, let&rsquo;s cat that with
+<code>test.com &amp;&amp; cat .hey</code> and we get <code>Miux+mT6Kkcx+IhyMjTFnxT6KjAa+i6ZLibC</code></p>
+
+<p>Not sure however where to go from here. The ZlibC at the end of the string might
+be a clue.</p>
+
+<p>Please leave any comments with ideas on this. I&rsquo;m a bit stumped.</p>
+
+<p>UPDATE: Turns out it&rsquo;s Atom 128 adn you can use <a href="http://crypo.in.ua/tools/eng_atom128c.php">this site</a>
+to decode it to <code>infosec_flagis_rceatomized</code></p>
+
+<p>Thanks to Anon and @fr1t3 for the info</p>
+
+<p>ALL FLAGS DONE</p>
+
+<h2 id="the-lost-level:aad69195db02279e47989643f4843312">The lost level</h2>
+
+<p>UPDATED: This has since been removed, but I&rsquo;ve left this here for posterity.</p>
+
+<p>Not sure where this belongs, but in the misc folder is a file called <code>readme.wav</code>
+which contains the morsecode for</p>
+
+<pre><code>INFOSECFLAGISMORSECODETONES
+</code></pre>
+
+<p>Which level this belongs to, I don&rsquo;t know.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>
