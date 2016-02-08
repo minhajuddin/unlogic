@@ -1,131 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Network on Unlogic</title>
+      <title>Network on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/network/</link>
-    <description>Recent content in Network on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 16 May 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Fri, 16 May 2014 00:00:00 UTC</updated>
     
     <item>
       <title>Capturing smartphone traffic - Part 1</title>
       <link>http://unlogic.co.uk/2014/05/16/capturing-traffic-from-your-smartphone/</link>
-      <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 16 May 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/05/16/capturing-traffic-from-your-smartphone/</guid>
-      <description>
-
-&lt;p&gt;We all carry phones around that are connected to some of network at all times.
-Unless you are the truly paranoid or battery saving type, then there will be periods
-when your phone is dark.&lt;/p&gt;
-
-&lt;p&gt;But even so, I often wonder what my phone is transmitting when I&amp;rsquo;m not using it,
-or even when I am using it. So in this series I plan on doing some investigation
-into what goes in and out of my phone.&lt;/p&gt;
-
-&lt;p&gt;In this post I&amp;rsquo;ll just set up all the bits and pieces to start the monitoring
-process and run a quick check to make sure everything works. In the following
-parts I&amp;rsquo;ll be taking a look at some common apps and their network chatter. The
-idea is to analyse the data and understand their communications. Hopefully we&amp;rsquo;ll
-also unearth some interesting things along the way.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-we-ll-need:41796c2feda068943018a98e7c373755&#34;&gt;What we&amp;rsquo;ll need&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A smartphone&lt;/li&gt;
-&lt;li&gt;A laptop (or similar) to turn into a wireless access point&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.wireshark.org/&#34;&gt;Wireshark&lt;/a&gt; running on that laptop&lt;/li&gt;
-&lt;li&gt;An internet connection&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;setting-up-the-wireless-access-point:41796c2feda068943018a98e7c373755&#34;&gt;Setting up the wireless access point&lt;/h2&gt;
-
-&lt;p&gt;I&amp;rsquo;m going to cover how to do this part in OSX for now. If I get round
-to it I&amp;rsquo;ll add a Linux way to do it too.&lt;/p&gt;
-
-&lt;h3 id=&#34;osx:41796c2feda068943018a98e7c373755&#34;&gt;OSX&lt;/h3&gt;
-
-&lt;p&gt;First connect the laptop to an ethernet connection. You can&amp;rsquo;t be connected to
-a wireless network and create a wireless access point at the same time.
-So we will connect to the internet via ethernet and use the wireless radio
-for the access point. Once the ethernet connection is up and running, open
-&lt;em&gt;System Preferences -&amp;gt; Sharing&lt;/em&gt;. In the list click on the &lt;em&gt;Internet sharing&lt;/em&gt;
-entry (not the check box) and select &lt;em&gt;Ethernet&lt;/em&gt; in the &lt;em&gt;Share your connection
-from&lt;/em&gt; dropdown. In the &lt;em&gt;To computers using&lt;/em&gt; select &lt;em&gt;Wi-Fi&lt;/em&gt;. Now select the
-check box next to &lt;em&gt;Internet Sharing&lt;/em&gt; to turn sharing on.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/K2Zeyoy.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/K2Zeyoy.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If everything went to plan your Wi-Fi indicator should now look like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/ecXJUc8.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/ecXJUc8.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;connect-the-phone:41796c2feda068943018a98e7c373755&#34;&gt;Connect the phone&lt;/h2&gt;
-
-&lt;p&gt;Now we connect tbe phone to the new access point. Go to your wireless network
-settings and select the name of the network we created. &lt;strong&gt;slaptop&lt;/strong&gt; in my case.
-Once do we need to&lt;/p&gt;
-
-&lt;h2 id=&#34;start-wireshark:41796c2feda068943018a98e7c373755&#34;&gt;Start Wireshark&lt;/h2&gt;
-
-&lt;p&gt;Fireup Wireshark and then select the capture interface. The default will be
-eth0 usually. That&amp;rsquo;s the ethernet port, but we want to capture traffic on the
-wireless access point. So we need to select &lt;em&gt;en1&lt;/em&gt; (in my case). It&amp;rsquo;s the one
-with the wireless icon next to it.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/9wyI6s6.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/9wyI6s6.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Once this is done we&amp;rsquo;ll want to filter out ARP packets as these are of little
-interest and there will be quite a few of them. See the screenshot below to
-see where to set this.&lt;/p&gt;
-
-&lt;p&gt;Now we press the &lt;em&gt;Capture&lt;/em&gt; button to begin bapturing traffic. Once running we
-can check to see if it&amp;rsquo;s working by browsing to a site. I chose this site at
-&lt;code&gt;192.30.252.153&lt;/code&gt;. You should see the capture window scroll past with some
-traffic going between your phone ip and the site your browsed to.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/XjFuoOQ.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/XjFuoOQ.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;in-the-next-post:41796c2feda068943018a98e7c373755&#34;&gt;In the next post&lt;/h2&gt;
-
-&lt;p&gt;So I&amp;rsquo;m all set to capture any and all traffic now that goes to and from my phone.
-With this I can now open various apps and see what traffic they generate. In
-the next posts I plan to see what idle traffic there is (no apps being actively
-used) and what traffic some common apps generate. If I&amp;rsquo;m lucky I might even
-discover some interesting things about some apps.&lt;/p&gt;
-
-&lt;p&gt;Stay tuned for part 2.&lt;/p&gt;
-</description>
+      <description>We all carry phones around that are connected to some of network at all times. Unless you are the truly paranoid or battery saving type, then there will be periods when your phone is dark. But even so, I often wonder what my phone is transmitting when I&amp;rsquo;m not using it, or even when I am using it. So in this series I plan on doing some investigation into what goes in and out of my phone.</description>
     </item>
     
   </channel>
 </rss>
+

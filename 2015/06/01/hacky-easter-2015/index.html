@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hacky Easter 2015 - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/06/01/hacky-easter-2015/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Hacky Easter 2015 &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Hacky Easter 2015</h1>
+        <span class="post-meta">Jun 1, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Hacky Easter 2015</h1>
-			  <span class="post-date">Mon, Jun 1, 2015</span>
-			      
+      <article class="post-content">
+      
 
 <p>Another year, another Hacky Easter and a month, of fun, learning, and
 frustrations. All in all this was another great year and I&rsquo;m already looking
@@ -123,8 +124,8 @@ waited for the 5 second bar to fill up to collect my egg.</p>
 
 <h1 id="challenge-06:00aa8d5840836b6803fb0a2203b66750">Challenge 06</h1>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">dah-dah-dit dit dah-dah-dah di-dah-dit dah-dah-dit dit dah-dah dah-di-dah-dit di-di-dah-dit di-dah-di-dit dah-di-dah-dah
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">dah-dah-dit dit dah-dah-dah di-dah-dit dah-dah-dit dit dah-dah dah-di-dah-dit di-di-dah-dit di-dah-di-dit dah-di-dah-dah</span>
+</code></pre></div>
 
 
 <p>This is clearly morse code. <code>dit</code> and <code>di</code> are dots and the <code>dah</code> is dash. Decoded this to get
@@ -275,22 +276,22 @@ that&rsquo;s the <code>chaining</code> part, as well as indicating we should use
 
 <p>This PHP script ended up doing the work for me</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&lt;?php</span>
-<span style="color: #f8f8f2">$hash1</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">base64_decode(</span><span style="color: #e6db74">&#39;d5++xytj6RiGwmqEecm63Kow7RZGAAHh&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">$hash2</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">base64_decode(</span><span style="color: #e6db74">&#39;VFsksHFuj/Anap7pWHDZ1XQw8DAApUEN&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">$hash3</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">base64_decode(</span><span style="color: #e6db74">&#39;R5ExOGUKTzGOtvSAlCHkHq6NneL6ZUTX&#39;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">$hash4</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">base64_decode(</span><span style="color: #e6db74">&#39;ej8Taxz+kHK9w9U8dxTOSksZ4HKS2YYD&#39;</span><span style="color: #f8f8f2">);</span>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$hash1</span> <span class="o">=</span> <span class="nb">base64_decode</span><span class="p">(</span><span class="s1">&#39;d5++xytj6RiGwmqEecm63Kow7RZGAAHh&#39;</span><span class="p">);</span>
+<span class="nv">$hash2</span> <span class="o">=</span> <span class="nb">base64_decode</span><span class="p">(</span><span class="s1">&#39;VFsksHFuj/Anap7pWHDZ1XQw8DAApUEN&#39;</span><span class="p">);</span>
+<span class="nv">$hash3</span> <span class="o">=</span> <span class="nb">base64_decode</span><span class="p">(</span><span class="s1">&#39;R5ExOGUKTzGOtvSAlCHkHq6NneL6ZUTX&#39;</span><span class="p">);</span>
+<span class="nv">$hash4</span> <span class="o">=</span> <span class="nb">base64_decode</span><span class="p">(</span><span class="s1">&#39;ej8Taxz+kHK9w9U8dxTOSksZ4HKS2YYD&#39;</span><span class="p">);</span>
 
-<span style="color: #f8f8f2">$res</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">mcrypt_decrypt(</span><span style="color: #a6e22e">MCRYPT_GOST</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;spooky&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">$hash1</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">$hash2</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">$hash3</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">$hash4,</span> <span style="color: #a6e22e">MCRYPT_MODE_CBC</span><span style="color: #f8f8f2">);</span>
-<span style="color: #66d9ef">echo</span> <span style="color: #f8f8f2">base64_encode($res)</span><span style="color: #f92672">.</span><span style="color: #e6db74">&quot;</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">;</span>
-</pre></div>
+<span class="nv">$res</span> <span class="o">=</span> <span class="nb">mcrypt_decrypt</span><span class="p">(</span><span class="nx">MCRYPT_GOST</span><span class="p">,</span> <span class="s1">&#39;spooky&#39;</span><span class="p">,</span> <span class="nv">$hash1</span><span class="o">.</span><span class="nv">$hash2</span><span class="o">.</span><span class="nv">$hash3</span><span class="o">.</span><span class="nv">$hash4</span><span class="p">,</span> <span class="nx">MCRYPT_MODE_CBC</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="nv">$res</span><span class="p">)</span><span class="o">.</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+</code></pre></div>
 
 
 <p>Running it:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">$&gt; php ./gost.php <span style="color: #f8f8f2">|</span> base64 -d
-http://hackyeaster.hacking-lab.com/hackyeaster/images/egg_16_a3eIIACKSy02sJ6LxXeh.png
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span>&gt; php ./gost.php <span class="p">|</span> base64 -d
+<span class="go">http://hackyeaster.hacking-lab.com/hackyeaster/images/egg_16_a3eIIACKSy02sJ6LxXeh.png</span>
+</code></pre></div>
 
 
 <p>No initialisation vector was required, so you can ignore the warning.</p>
@@ -361,29 +362,29 @@ and we have our egg.</p>
 <p>The big clue here is robots. Why do we love robots? <code>robots.txt</code> is why. Taking a
 look at it I can see</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">User-agent: EasterBot
+<div class="highlight"><pre><code class="language-html" data-lang="html">User-agent: EasterBot
 Disallow: /
 Allow: /hackyeaster/bots/bots.
 
 User-agent: *
 Disallow: /
-</pre></div>
+</code></pre></div>
 
 
 <p>Visiting the url <code>/hackyeaster/bots/bots.html</code> takes me to the CP30 Wiki page. That can&rsquo;t be right. So I decided
 to spoof my user agent to be <code>EasterBot</code> and I get a different result. An image
 with the following text</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">BAMA WABOKI PISAL FATATU FOMU WOSEBI SEJU SOWU SEJU - BAMAS MUFE WAFUB FOMU MOWEWE
-</pre></div>
+<div class="highlight"><pre><code class="language-text" data-lang="text">BAMA WABOKI PISAL FATATU FOMU WOSEBI SEJU SOWU SEJU - BAMAS MUFE WAFUB FOMU MOWEWE
+</code></pre></div>
 
 
 <p>Hrmm. I tried to decipher this many ways before I gave up and Googled it. It turns
 out this is actually <a href="http://roila.org/language-guide/vocabulary/">ROILA</a> and
 comes with a nice dictionary. So I set about translating it and got:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">you must make word of addition two and two - this be name of page
-</pre></div>
+<div class="highlight"><pre><code class="language-text" data-lang="text">you must make word of addition two and two - this be name of page
+</code></pre></div>
 
 
 <p>Right, so I add two and two to give four and I load up
@@ -391,9 +392,9 @@ comes with a nice dictionary. So I set about translating it and got:</p>
 word <code>MetAE</code>. Well meta can only mean I need to look at the page metadata. Viewing the source
 I see</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;meta</span> <span style="color: #a6e22e">name=</span><span style="color: #e6db74">&quot;description&quot;</span> <span style="color: #a6e22e">content=</span><span style="color: #e6db74">&quot;Robots talk in ROILA language: eman egap eht esrever tsum&quot;</span><span style="color: #f92672">&gt;</span>
-<span style="color: #f92672">&lt;meta</span> <span style="color: #a6e22e">name=</span><span style="color: #e6db74">&quot;keywords&quot;</span> <span style="color: #a6e22e">content=</span><span style="color: #e6db74">&quot;secret, page, robots, fun, hacky easter, blrt, five, beep&quot;</span><span style="color: #f92672">&gt;</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">content=</span><span class="s">&quot;Robots talk in ROILA language: eman egap eht esrever tsum&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;secret, page, robots, fun, hacky easter, blrt, five, beep&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
 
 
 <p>More ROILA? No, it&rsquo;s just backwards english. I&rsquo;ll just go to
@@ -406,33 +407,33 @@ green <code>101</code>. Basically the binary represents the RGB values inverted.
 I wrote a script to translate the colours to a binary string and then conver that to ASCII
 which gave me the egg&rsquo;s URL.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#!/bin/env python</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">PIL</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Image</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/bin/env python</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 
-<span style="color: #f8f8f2">codes</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;111&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;110&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;101&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;100&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;011&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;010&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;001&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;000&#39;</span><span style="color: #f8f8f2">]</span>
+<span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;111&#39;</span><span class="p">,</span> <span class="s">&#39;110&#39;</span><span class="p">,</span> <span class="s">&#39;101&#39;</span><span class="p">,</span> <span class="s">&#39;100&#39;</span><span class="p">,</span> <span class="s">&#39;011&#39;</span><span class="p">,</span> <span class="s">&#39;010&#39;</span><span class="p">,</span> <span class="s">&#39;001&#39;</span><span class="p">,</span> <span class="s">&#39;000&#39;</span><span class="p">]</span>
 
-<span style="color: #f8f8f2">im</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Image</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">open(</span><span style="color: #e6db74">&#39;conycode.png&#39;</span><span style="color: #f8f8f2">)</span>
-<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size</span>
-<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span><span style="color: #f92672">/</span><span style="color: #ae81ff">14.0</span>
-<span style="color: #f8f8f2">pixels</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">list(im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">getdata())</span>
-<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">pixels[im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]]</span>
-<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">pixels[im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span><span style="color: #f92672">+</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">18</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">12</span><span style="color: #f8f8f2">)]</span>
-<span style="color: #66d9ef">print</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;conycode.png&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span>
+<span class="k">print</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mf">14.0</span>
+<span class="n">pixels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">getdata</span><span class="p">())</span>
+<span class="k">print</span> <span class="n">pixels</span><span class="p">[</span><span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="k">print</span> <span class="n">pixels</span><span class="p">[</span><span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="mi">18</span> <span class="o">*</span> <span class="mi">12</span><span class="p">)]</span>
+<span class="k">print</span>
 
-<span style="color: #f8f8f2">output</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[]</span>
-<span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">h</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">xrange(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">],</span> <span style="color: #ae81ff">18</span><span style="color: #f8f8f2">):</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">w</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">xrange(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">],</span> <span style="color: #ae81ff">18</span><span style="color: #f8f8f2">):</span>
-        <span style="color: #f8f8f2">output</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append(codes[pixels[w</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">(im</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">h)]])</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">18</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">18</span><span class="p">):</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">codes</span><span class="p">[</span><span class="n">pixels</span><span class="p">[</span><span class="n">w</span> <span class="o">+</span> <span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">h</span><span class="p">)]])</span>
 
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">sys</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-<span style="color: #f8f8f2">bin_string</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(output)</span>
-<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">len(bin_string)</span>
-<span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">x</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">xrange(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">len(bin_string),</span> <span style="color: #ae81ff">8</span><span style="color: #f8f8f2">):</span>
-    <span style="color: #f8f8f2">t</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">int(bin_string[x:x</span><span style="color: #f92672">+</span><span style="color: #ae81ff">8</span><span style="color: #f8f8f2">],</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
-    <span style="color: #f8f8f2">ba</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">bytearray([t])</span>
-    <span style="color: #f8f8f2">sys</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">stdout</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">write(str(ba))</span>
-</pre></div>
+<span class="n">bin_string</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_string</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_string</span><span class="p">),</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_string</span><span class="p">[</span><span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="mi">8</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ba</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">([</span><span class="n">t</span><span class="p">])</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ba</span><span class="p">))</span>
+</code></pre></div>
 
 
 <h1 id="challenge-22:00aa8d5840836b6803fb0a2203b66750">Challenge 22</h1>
@@ -447,8 +448,8 @@ a lot! I decided to use <a href="https://hashcat.net/oclhashcat/">hashcat</a> fo
 <p>A 16 digit pin takes a long time to bruteforce, but the hint tells me that the only
 numbers in the PIN are 1, 7, 9, and 0.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">hashcat -m100 -1 1790 --pw-min=16 --pw-max=16 -a3 hash1.txt ?1?1?1?1?1?1?1?1?1?1?1?1?1?1?1?1
-</pre></div>
+<p><div class="highlight"><pre><code class="language-text" data-lang="text">hashcat -m100 -1 1790 --pw-min=16 --pw-max=16 -a3 hash1.txt ?1?1?1?1?1?1?1?1?1?1?1?1?1?1?1?1
+</code></pre></div>
 </p>
 
 <p>time taken: 4:40 minutes</p>
@@ -470,19 +471,19 @@ list of words that had one substitution and one upper case letter. Only the
 punctuation and digit missing now. For this step I wrote a python script
 that would generate the required rule table:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">puncs</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;! @ # $ % ^ &amp; * ( ) _ + { } [ ] : ; . , / ? ~ `&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span>
-<span style="color: #f8f8f2">nums</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;1 2 3 4 5 6 7 8 9 0&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">split()</span>
+<p><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">puncs</span> <span class="o">=</span> <span class="s">&#39;! @ # $ % ^ &amp; * ( ) _ + { } [ ] : ; . , / ? ~ `&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="s">&#39;1 2 3 4 5 6 7 8 9 0&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 
-<span style="color: #f8f8f2">fh</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">open(</span><span style="color: #e6db74">&#39;pn.rule&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;w&#39;</span><span style="color: #f8f8f2">)</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;pn.rule&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span>
 
 
-<span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">punc</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">puncs:</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">n</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">nums:</span>
-        <span style="color: #f8f8f2">fh</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">write(</span><span style="color: #e6db74">&#39;$%s$%s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&#39;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(punc,</span> <span style="color: #f8f8f2">n))</span>
-        <span style="color: #f8f8f2">fh</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">write(</span><span style="color: #e6db74">&#39;$%s$%s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&#39;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(n,</span> <span style="color: #f8f8f2">punc))</span>
+<span class="k">for</span> <span class="n">punc</span> <span class="ow">in</span> <span class="n">puncs</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;$</span><span class="si">%s</span><span class="s">$</span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">punc</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+        <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;$</span><span class="si">%s</span><span class="s">$</span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">punc</span><span class="p">))</span>
 
-<span style="color: #f8f8f2">fh</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">close()</span>
-</pre></div>
+<span class="n">fh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
 </p>
 
 <p>I then used this rule to run it over the word list, then</p>
@@ -498,9 +499,9 @@ that would generate the required rule table:</p>
 What this does is append each word of a wordlist to every other word.
 Running this a few times will give me the list I need:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">hashcat -a1 wordlist.txt --stdout &gt; pass1.txt
+<p><div class="highlight"><pre><code class="language-text" data-lang="text">hashcat -a1 wordlist.txt --stdout &gt; pass1.txt
 hashcat -a1 -m1400 hash4.txt pass1.txt
-</pre></div>
+</code></pre></div>
 </p>
 
 <p>Scoop the plaintext in 8 minutes.</p>
@@ -522,184 +523,184 @@ to him. Then use his replies as respsonses to his taunts.</p>
 played against the bot a few times I managed to get myself the list of comebacks and
 wrote a Python script to pwn the Nerd Master</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">socket</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">random</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">re</span>
+<p><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">socket</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
 
-<span style="color: #f8f8f2">challs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #e6db74">&#39;Pna lbh ernq guvf?&#39;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&#39;EBG13 vf sbe ynzref.&#39;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;You&#39;re so slow, you must have been written in BASIC.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;At least I don&#39;t have memory leaks like you.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;Go 127.0.0.1 to your mummy.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;go 127.0.0.1 to your mom&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;I have more friends than you.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Yeah, but only until you update your Facebook profile with a real picture of you!&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;You should leave your cave and socialize a bit.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;I&#39;m not anti-social. I&#39;m just not user friendly.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;This fight is like a hash function - it works in one direction only.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Too bad you picked LM hashing.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;I bet you don&#39;t even understand binary.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Sure I do. Me and you, we are 10 different kind of persons.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;1f u c4n r34d th1s u r s70p1d.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;You better check your spelling. Stoopid has two &#39;o&#39;s.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;After loosing to me, your life won&#39;t be the same anymore.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;A Life? Cool! Where can I download one of those?&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;You&#39;ll be 0xdeadbeef soon.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Not as long as I have my 0xcafebabe.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;Af7ter th1s f1gh7, I w1ll pwn ur b0x3n.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Check your settings - you seem to have chosen the Klingon keyboard layout.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;I have more friends than you.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Yeah, but only until you update your Facebook profile with a real picture of you!&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;I&#39;ll check you out - any last words?&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;svn:ignore&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;Tell me your name, hobo. I need to check your records.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;My name is bob&#39;; DROP TABLE VALJ;--&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;format C:&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Specified drive does not exist.&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;You must be jealous when seeing my phone&#39;s display.&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;Not really - Your pixels are so big, some of them have their own region code!&quot;</span><span style="color: #f8f8f2">,</span>
-          <span style="color: #e6db74">&quot;Ping! Anybody there?&quot;</span><span style="color: #f8f8f2">:</span> <span style="color: #e6db74">&quot;ICMP type 3, code 13: Communication Administratively Prohibited&quot;</span>
-          <span style="color: #f8f8f2">}</span>
+<span class="n">challs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;Pna lbh ernq guvf?&#39;</span><span class="p">:</span> <span class="s">&#39;EBG13 vf sbe ynzref.&#39;</span><span class="p">,</span>
+          <span class="s">&quot;You&#39;re so slow, you must have been written in BASIC.&quot;</span><span class="p">:</span> <span class="s">&quot;At least I don&#39;t have memory leaks like you.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;Go 127.0.0.1 to your mummy.&quot;</span><span class="p">:</span> <span class="s">&quot;go 127.0.0.1 to your mom&quot;</span><span class="p">,</span>
+          <span class="s">&quot;I have more friends than you.&quot;</span><span class="p">:</span> <span class="s">&quot;Yeah, but only until you update your Facebook profile with a real picture of you!&quot;</span><span class="p">,</span>
+          <span class="s">&quot;You should leave your cave and socialize a bit.&quot;</span><span class="p">:</span> <span class="s">&quot;I&#39;m not anti-social. I&#39;m just not user friendly.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;This fight is like a hash function - it works in one direction only.&quot;</span><span class="p">:</span> <span class="s">&quot;Too bad you picked LM hashing.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;I bet you don&#39;t even understand binary.&quot;</span><span class="p">:</span> <span class="s">&quot;Sure I do. Me and you, we are 10 different kind of persons.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;1f u c4n r34d th1s u r s70p1d.&quot;</span><span class="p">:</span> <span class="s">&quot;You better check your spelling. Stoopid has two &#39;o&#39;s.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;After loosing to me, your life won&#39;t be the same anymore.&quot;</span><span class="p">:</span> <span class="s">&quot;A Life? Cool! Where can I download one of those?&quot;</span><span class="p">,</span>
+          <span class="s">&quot;You&#39;ll be 0xdeadbeef soon.&quot;</span><span class="p">:</span> <span class="s">&quot;Not as long as I have my 0xcafebabe.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;Af7ter th1s f1gh7, I w1ll pwn ur b0x3n.&quot;</span><span class="p">:</span> <span class="s">&quot;Check your settings - you seem to have chosen the Klingon keyboard layout.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;I have more friends than you.&quot;</span><span class="p">:</span> <span class="s">&quot;Yeah, but only until you update your Facebook profile with a real picture of you!&quot;</span><span class="p">,</span>
+          <span class="s">&quot;I&#39;ll check you out - any last words?&quot;</span><span class="p">:</span> <span class="s">&quot;svn:ignore&quot;</span><span class="p">,</span>
+          <span class="s">&quot;Tell me your name, hobo. I need to check your records.&quot;</span><span class="p">:</span> <span class="s">&quot;My name is bob&#39;; DROP TABLE VALJ;--&quot;</span><span class="p">,</span>
+          <span class="s">&quot;format C:&quot;</span><span class="p">:</span> <span class="s">&quot;Specified drive does not exist.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;You must be jealous when seeing my phone&#39;s display.&quot;</span><span class="p">:</span> <span class="s">&quot;Not really - Your pixels are so big, some of them have their own region code!&quot;</span><span class="p">,</span>
+          <span class="s">&quot;Ping! Anybody there?&quot;</span><span class="p">:</span> <span class="s">&quot;ICMP type 3, code 13: Communication Administratively Prohibited&quot;</span>
+          <span class="p">}</span>
 
-<span style="color: #f8f8f2">tosends</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">challs</span>
+<span class="n">tosends</span> <span class="o">=</span> <span class="n">challs</span>
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">removekey</span><span style="color: #f8f8f2">(d,</span> <span style="color: #f8f8f2">key):</span>
-    <span style="color: #f8f8f2">r</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">dict(d)</span>
-    <span style="color: #66d9ef">del</span> <span style="color: #f8f8f2">r[key]</span>
-    <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">r</span>
+<span class="k">def</span> <span class="nf">removekey</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">r</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">r</span>
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">sendchall</span><span style="color: #f8f8f2">(s,</span> <span style="color: #f8f8f2">chall):</span>
-    <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sendall(challs[chall]</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&#39;</span><span style="color: #ae81ff">\r</span><span style="color: #e6db74">&#39;</span><span style="color: #f8f8f2">)</span>
-
-
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">netcat</span><span style="color: #f8f8f2">(hostname,</span> <span style="color: #f8f8f2">port):</span>
-    <span style="color: #66d9ef">global</span> <span style="color: #f8f8f2">tosends</span>
-    <span style="color: #f8f8f2">s</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">socket(socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">AF_INET,</span> <span style="color: #f8f8f2">socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">SOCK_STREAM)</span>
-    <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">connect((hostname,</span> <span style="color: #f8f8f2">port))</span>
-    <span style="color: #66d9ef">while</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">:</span>
-        <span style="color: #f8f8f2">data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">recv(</span><span style="color: #ae81ff">1024</span><span style="color: #f8f8f2">)</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f92672">not</span> <span style="color: #f8f8f2">data:</span>
-            <span style="color: #66d9ef">continue</span>
-        <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&quot;Received:&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">repr(data)</span>
-
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">(data</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;Speechless?</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span> <span style="color: #f92672">or</span>
-            <span style="color: #f8f8f2">data</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;Go play with your toys, yellow-belly.</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&#39;</span><span style="color: #f8f8f2">):</span>
-            <span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">data</span>
-            <span style="color: #66d9ef">break</span>
-
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">data</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;Do you feel brave enough to challenge the mighty nerdmaster? (y|n)</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&#39;</span><span style="color: #f8f8f2">:</span>
-            <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sendall(</span><span style="color: #e6db74">&#39;y</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&#39;</span><span style="color: #f8f8f2">)</span>
-            <span style="color: #66d9ef">continue</span>
-
-        <span style="color: #f8f8f2">m</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">search(</span><span style="color: #e6db74">&quot;.*YOUR TURN ----</span><span style="color: #ae81ff">\\</span><span style="color: #e6db74">n&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">data)</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">m:</span>
-            <span style="color: #f8f8f2">chal</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">tosends</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">keys()[random</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">randint(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">len(tosends)</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)]</span>
-            <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">sendall(chal</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&#39;</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&#39;</span><span style="color: #f8f8f2">)</span>
-            <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;send challenge: &#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">chal</span>
-            <span style="color: #f8f8f2">tosends</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">removekey(tosends,</span> <span style="color: #f8f8f2">chal)</span>
-            <span style="color: #66d9ef">continue</span>
+<span class="k">def</span> <span class="nf">sendchall</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">chall</span><span class="p">):</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">challs</span><span class="p">[</span><span class="n">chall</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\r</span><span class="s">&#39;</span><span class="p">)</span>
 
 
+<span class="k">def</span> <span class="nf">netcat</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">tosends</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">hostname</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">print</span> <span class="s">&quot;Received:&quot;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span style="color: #f8f8f2">m</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">re</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">search(</span><span style="color: #e6db74">&#39;.*MY TURN ----</span><span style="color: #ae81ff">\\</span><span style="color: #e6db74">n(.*)</span><span style="color: #ae81ff">\\</span><span style="color: #e6db74">n&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">data)</span>
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">m:</span>
-            <span style="color: #f8f8f2">chal</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">m</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">groups()[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span>
-            <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">chal</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">challs</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">keys():</span>
-                <span style="color: #f8f8f2">sendchall(s,</span> <span style="color: #f8f8f2">chal)</span>
-            <span style="color: #66d9ef">else</span><span style="color: #f8f8f2">:</span>
-                <span style="color: #f8f8f2">challs[chal]</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span>
-                <span style="color: #66d9ef">continue</span>
-            <span style="color: #66d9ef">continue</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="s">&quot;Speechless?</span><span class="se">\n</span><span class="s">&quot;</span> <span class="ow">or</span>
+            <span class="n">data</span> <span class="o">==</span> <span class="s">&#39;Go play with your toys, yellow-belly.</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">):</span>
+            <span class="k">print</span> <span class="n">data</span>
+            <span class="k">break</span>
 
-        <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;::::::&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">data</span>
+        <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="s">&#39;Do you feel brave enough to challenge the mighty nerdmaster? (y|n)</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="s">&#39;y</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&quot;.*YOUR TURN ----</span><span class="se">\\</span><span class="s">n&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">chal</span> <span class="o">=</span> <span class="n">tosends</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tosends</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">chal</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+            <span class="k">print</span> <span class="s">&#39;send challenge: &#39;</span><span class="p">,</span> <span class="n">chal</span>
+            <span class="n">tosends</span> <span class="o">=</span> <span class="n">removekey</span><span class="p">(</span><span class="n">tosends</span><span class="p">,</span> <span class="n">chal</span><span class="p">)</span>
+            <span class="k">continue</span>
 
 
-    <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&quot;Connection closed.&quot;</span>
-    <span style="color: #f8f8f2">s</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">close()</span>
 
-<span style="color: #f8f8f2">nc</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">netcat(</span><span style="color: #e6db74">&#39;hackyeaster.hacking-lab.com&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">1400</span><span style="color: #f8f8f2">)</span>
-</pre></div>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;.*MY TURN ----</span><span class="se">\\</span><span class="s">n(.*)</span><span class="se">\\</span><span class="s">n&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">chal</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">chal</span> <span class="ow">in</span> <span class="n">challs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">sendchall</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">chal</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">challs</span><span class="p">[</span><span class="n">chal</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+                <span class="k">continue</span>
+            <span class="k">continue</span>
+
+        <span class="k">print</span> <span class="s">&#39;::::::&#39;</span><span class="p">,</span> <span class="n">data</span>
+
+
+    <span class="k">print</span> <span class="s">&quot;Connection closed.&quot;</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">nc</span> <span class="o">=</span> <span class="n">netcat</span><span class="p">(</span><span class="s">&#39;hackyeaster.hacking-lab.com&#39;</span><span class="p">,</span> <span class="mi">1400</span><span class="p">)</span>
+</code></pre></div>
 </p>
 
 <h1 id="challenge-24:00aa8d5840836b6803fb0a2203b66750">Challenge 24</h1>
 
 <p>Hrm, this really isn&rsquo;t a secure hash at all. A Python script can do this</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">from</span> <span style="color: #f8f8f2">Crypto.Hash</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">MD2,</span> <span style="color: #f8f8f2">MD5,</span> <span style="color: #f8f8f2">SHA,</span> <span style="color: #f8f8f2">SHA256,</span> <span style="color: #f8f8f2">SHA512</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">itertools</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">string</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">os</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">sys</span>
+<p><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">Crypto.Hash</span> <span class="kn">import</span> <span class="n">MD2</span><span class="p">,</span> <span class="n">MD5</span><span class="p">,</span> <span class="n">SHA</span><span class="p">,</span> <span class="n">SHA256</span><span class="p">,</span> <span class="n">SHA512</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">part_1</span><span style="color: #f8f8f2">():</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">p</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">gen:</span>
-        <span style="color: #f8f8f2">word</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(p)</span>
-        <span style="color: #f8f8f2">h</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MD2</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">new()</span>
-        <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update(word)</span>
-        <span style="color: #f8f8f2">hashed</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">hexdigest()</span>
+<span class="k">def</span> <span class="nf">part_1</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">MD2</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">hashed[:</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">target[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]:</span>
-            <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;[*] First part is:&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">word</span>
-            <span style="color: #66d9ef">return</span>
+        <span class="k">if</span> <span class="n">hashed</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="k">print</span> <span class="s">&#39;[*] First part is:&#39;</span><span class="p">,</span> <span class="n">word</span>
+            <span class="k">return</span>
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">part_2</span><span style="color: #f8f8f2">():</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">p</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">gen:</span>
-        <span style="color: #f8f8f2">word</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(p)</span>
-        <span style="color: #f8f8f2">h</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MD5</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">new()</span>
-        <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update(word)</span>
-        <span style="color: #f8f8f2">hashed</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">hexdigest()</span>
+<span class="k">def</span> <span class="nf">part_2</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">MD5</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">hashed[</span><span style="color: #ae81ff">6</span><span style="color: #f8f8f2">:</span><span style="color: #ae81ff">12</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">target[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]:</span>
-            <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;[*] Second part is:&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">word</span>
-            <span style="color: #66d9ef">return</span>
+        <span class="k">if</span> <span class="n">hashed</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">12</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">print</span> <span class="s">&#39;[*] Second part is:&#39;</span><span class="p">,</span> <span class="n">word</span>
+            <span class="k">return</span>
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">part_3</span><span style="color: #f8f8f2">():</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">p</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">gen:</span>
-        <span style="color: #f8f8f2">word</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(p)</span>
-        <span style="color: #f8f8f2">h</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">SHA</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">new()</span>
-        <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update(word)</span>
-        <span style="color: #f8f8f2">hashed</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">hexdigest()</span>
+<span class="k">def</span> <span class="nf">part_3</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">SHA</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">hashed[</span><span style="color: #ae81ff">12</span><span style="color: #f8f8f2">:</span><span style="color: #ae81ff">18</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">target[</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">]:</span>
-            <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;[*] Third part is:&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">word</span>
-            <span style="color: #66d9ef">return</span>
+        <span class="k">if</span> <span class="n">hashed</span><span class="p">[</span><span class="mi">12</span><span class="p">:</span><span class="mi">18</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="k">print</span> <span class="s">&#39;[*] Third part is:&#39;</span><span class="p">,</span> <span class="n">word</span>
+            <span class="k">return</span>
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">part_4</span><span style="color: #f8f8f2">():</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">p</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">gen:</span>
-        <span style="color: #f8f8f2">word</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(p)</span>
-        <span style="color: #f8f8f2">h</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">SHA256</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">new()</span>
-        <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update(word)</span>
-        <span style="color: #f8f8f2">hashed</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">hexdigest()</span>
+<span class="k">def</span> <span class="nf">part_4</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">SHA256</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">hashed[</span><span style="color: #ae81ff">18</span><span style="color: #f8f8f2">:</span><span style="color: #ae81ff">24</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">target[</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">]:</span>
-            <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;[*] Fourth part is:&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">word</span>
-            <span style="color: #66d9ef">return</span>
+        <span class="k">if</span> <span class="n">hashed</span><span class="p">[</span><span class="mi">18</span><span class="p">:</span><span class="mi">24</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+            <span class="k">print</span> <span class="s">&#39;[*] Fourth part is:&#39;</span><span class="p">,</span> <span class="n">word</span>
+            <span class="k">return</span>
 
-<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">part_5</span><span style="color: #f8f8f2">():</span>
-    <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">p</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">gen:</span>
-        <span style="color: #f8f8f2">word</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">join(p)</span>
-        <span style="color: #f8f8f2">h</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">SHA512</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">new()</span>
-        <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">update(word)</span>
-        <span style="color: #f8f8f2">hashed</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">hexdigest()</span>
+<span class="k">def</span> <span class="nf">part_5</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">SHA512</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">hashed</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-        <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">hashed[</span><span style="color: #ae81ff">24</span><span style="color: #f8f8f2">:</span><span style="color: #ae81ff">30</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">target[</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]:</span>
-            <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;[*] Fifth part is:&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">word</span>
-            <span style="color: #66d9ef">return</span>
+        <span class="k">if</span> <span class="n">hashed</span><span class="p">[</span><span class="mi">24</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span>
+            <span class="k">print</span> <span class="s">&#39;[*] Fifth part is:&#39;</span><span class="p">,</span> <span class="n">word</span>
+            <span class="k">return</span>
 
 
-<span style="color: #f8f8f2">my_chars</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">string</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">printable</span>
+<span class="n">my_chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span>
 
-<span style="color: #f8f8f2">target</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;757c47&#39;</span><span style="color: #f8f8f2">,</span><span style="color: #e6db74">&#39;9895d6&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;845b2b&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;0530cd&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;9a2b11&#39;</span><span style="color: #f8f8f2">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;757c47&#39;</span><span class="p">,</span><span class="s">&#39;9895d6&#39;</span><span class="p">,</span> <span class="s">&#39;845b2b&#39;</span><span class="p">,</span> <span class="s">&#39;0530cd&#39;</span><span class="p">,</span> <span class="s">&#39;9a2b11&#39;</span><span class="p">]</span>
 
-<span style="color: #f8f8f2">which_part</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">sys</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span>
+<span class="n">which_part</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span style="color: #f8f8f2">gen</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">itertools</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">combinations_with_replacement(my_chars,</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">)</span>
-<span style="color: #f8f8f2">i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span>
-<span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;[+] Here we go....&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">which_part</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations_with_replacement</span><span class="p">(</span><span class="n">my_chars</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">print</span> <span class="s">&#39;[+] Here we go....&#39;</span><span class="p">,</span> <span class="n">which_part</span>
 
-<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">which_part</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;1&#39;</span><span style="color: #f8f8f2">:</span>
-    <span style="color: #f8f8f2">part_1()</span>
+<span class="k">if</span> <span class="n">which_part</span> <span class="o">==</span> <span class="s">&#39;1&#39;</span><span class="p">:</span>
+    <span class="n">part_1</span><span class="p">()</span>
 
-<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">which_part</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;2&#39;</span><span style="color: #f8f8f2">:</span>
-    <span style="color: #f8f8f2">part_2()</span>
+<span class="k">if</span> <span class="n">which_part</span> <span class="o">==</span> <span class="s">&#39;2&#39;</span><span class="p">:</span>
+    <span class="n">part_2</span><span class="p">()</span>
 
-<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">which_part</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;3&#39;</span><span style="color: #f8f8f2">:</span>
-    <span style="color: #f8f8f2">part_3()</span>
+<span class="k">if</span> <span class="n">which_part</span> <span class="o">==</span> <span class="s">&#39;3&#39;</span><span class="p">:</span>
+    <span class="n">part_3</span><span class="p">()</span>
 
-<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">which_part</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;4&#39;</span><span style="color: #f8f8f2">:</span>
-    <span style="color: #f8f8f2">part_4()</span>
+<span class="k">if</span> <span class="n">which_part</span> <span class="o">==</span> <span class="s">&#39;4&#39;</span><span class="p">:</span>
+    <span class="n">part_4</span><span class="p">()</span>
 
-<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">which_part</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;5&#39;</span><span style="color: #f8f8f2">:</span>
-    <span style="color: #f8f8f2">part_5()</span>
+<span class="k">if</span> <span class="n">which_part</span> <span class="o">==</span> <span class="s">&#39;5&#39;</span><span class="p">:</span>
+    <span class="n">part_5</span><span class="p">()</span>
 
-<span style="color: #66d9ef">print</span> <span style="color: #e6db74">&#39;[+] Finished&#39;</span>
-</pre></div>
+<span class="k">print</span> <span class="s">&#39;[+] Finished&#39;</span>
+</code></pre></div>
 </p>
 
 <h1 id="challenge-25:00aa8d5840836b6803fb0a2203b66750">Challenge 25</h1>
@@ -717,82 +718,82 @@ some hashing and ultimately the app will download the egg.</p>
 so I just entered them until I got a valid download:
 (disclaimer: I am not very good at Java at all)</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.File</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.FileOutputStream</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.security.MessageDigest</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.security.SecureRandom</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.regex.Matcher</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.regex.Pattern</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.security.*</span><span style="color: #f92672">;</span> <span style="color: #75715e">//MessageDigest;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.crypto.*</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.crypto.spec.*</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.crypto.spec.SecretKeySpec</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.awt.Graphics</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.util.Arrays</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.awt.image.BufferedImage</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.nio.file.Files</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.nio.file.Paths</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.ByteArrayInputStream</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.security.*</span><span style="color: #f92672">;</span> <span style="color: #75715e">//MessageDigest;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.crypto.*</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.crypto.spec.*</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.imageio.ImageIO</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.swing.JFrame</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">javax.swing.JPanel</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">java.io.File</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">sun.misc.BASE64Decoder</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">import</span> <span style="color: #f8f8f2">sun.misc.BASE64Encoder</span><span style="color: #f92672">;</span>
+<p><div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.MessageDigest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.SecureRandom</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.regex.Matcher</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.regex.Pattern</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.*</span><span class="o">;</span> <span class="c1">//MessageDigest;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.SecretKeySpec</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Graphics</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.image.BufferedImage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Paths</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ByteArrayInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.security.*</span><span class="o">;</span> <span class="c1">//MessageDigest;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.crypto.spec.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.ImageIO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JFrame</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.JPanel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">sun.misc.BASE64Decoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">sun.misc.BASE64Encoder</span><span class="o">;</span>
 
-<span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">HelloWorld</span>
-<span style="color: #f92672">{</span>
-    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">byte</span><span style="color: #f92672">[]</span> <span style="color: #a6e22e">do_sha</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s1</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">i1</span><span style="color: #f92672">)</span> <span style="color: #66d9ef">throws</span> <span style="color: #f8f8f2">NoSuchAlgorithmException</span>
-    <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">MessageDigest</span> <span style="color: #f8f8f2">messagedigest</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MessageDigest</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getInstance</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;SHA1&quot;</span><span style="color: #f92672">);</span>
-        <span style="color: #66d9ef">byte</span> <span style="color: #f8f8f2">abyte0</span><span style="color: #f92672">[]</span> <span style="color: #f92672">=</span> <span style="color: #f92672">(</span><span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">StringBuilder</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">.</span><span style="color: #a6e22e">valueOf</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">s1</span><span style="color: #f92672">))).</span><span style="color: #a6e22e">append</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">s</span><span style="color: #f92672">).</span><span style="color: #a6e22e">toString</span><span style="color: #f92672">().</span><span style="color: #a6e22e">getBytes</span><span style="color: #f92672">();</span>
-        <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">j1</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">;</span>
-        <span style="color: #66d9ef">do</span>
-        <span style="color: #f92672">{</span>
-            <span style="color: #66d9ef">if</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">j1</span> <span style="color: #f92672">&gt;=</span> <span style="color: #f8f8f2">i1</span><span style="color: #f92672">)</span>
-            <span style="color: #f92672">{</span>
-                <span style="color: #66d9ef">byte</span> <span style="color: #f8f8f2">abyte1</span><span style="color: #f92672">[]</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #66d9ef">byte</span><span style="color: #f92672">[</span><span style="color: #ae81ff">16</span><span style="color: #f92672">];</span>
-                <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">arraycopy</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">abyte0</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">abyte1</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">15</span><span style="color: #f92672">);</span>
-                <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">abyte1</span><span style="color: #f92672">;</span>
-            <span style="color: #f92672">}</span>
-            <span style="color: #f8f8f2">abyte0</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">messagedigest</span><span style="color: #f92672">.</span><span style="color: #a6e22e">digest</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">abyte0</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">j1</span><span style="color: #f92672">++;</span>
-        <span style="color: #f92672">}</span> <span style="color: #66d9ef">while</span><span style="color: #f92672">(</span><span style="color: #66d9ef">true</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span>
+<span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">byte</span><span class="o">[]</span> <span class="nf">do_sha</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">String</span> <span class="n">s1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i1</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">NoSuchAlgorithmException</span>
+    <span class="o">{</span>
+        <span class="n">MessageDigest</span> <span class="n">messagedigest</span> <span class="o">=</span> <span class="n">MessageDigest</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;SHA1&quot;</span><span class="o">);</span>
+        <span class="kt">byte</span> <span class="n">abyte0</span><span class="o">[]</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">StringBuilder</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">s1</span><span class="o">))).</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">).</span><span class="na">toString</span><span class="o">().</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">j1</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">do</span>
+        <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">j1</span> <span class="o">&gt;=</span> <span class="n">i1</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="kt">byte</span> <span class="n">abyte1</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">16</span><span class="o">];</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">abyte0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">abyte1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">15</span><span class="o">);</span>
+                <span class="k">return</span> <span class="n">abyte1</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="n">abyte0</span> <span class="o">=</span> <span class="n">messagedigest</span><span class="o">.</span><span class="na">digest</span><span class="o">(</span><span class="n">abyte0</span><span class="o">);</span>
+            <span class="n">j1</span><span class="o">++;</span>
+        <span class="o">}</span> <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
 
-    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">hardwork</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s</span><span style="color: #f92672">)</span>
-    <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">s1</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">String</span><span style="color: #f92672">();</span>
-        <span style="color: #66d9ef">try</span>
-        <span style="color: #f92672">{</span>
-            <span style="color: #f8f8f2">Cipher</span> <span style="color: #f8f8f2">cipher</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Cipher</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getInstance</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;AES&quot;</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">SecretKeySpec</span> <span style="color: #f8f8f2">secretkeyspec</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">SecretKeySpec</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">do_sha</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">s</span><span style="color: #f92672">,</span> <span style="color: #e6db74">&quot;ovaederecumsale&quot;</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">10000</span><span style="color: #f92672">),</span> <span style="color: #e6db74">&quot;AES&quot;</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">cipher</span><span style="color: #f92672">.</span><span style="color: #a6e22e">init</span><span style="color: #f92672">(</span><span style="color: #ae81ff">2</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">secretkeyspec</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">BASE64Decoder</span> <span style="color: #f8f8f2">decoder</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">BASE64Decoder</span><span style="color: #f92672">();</span>
-            <span style="color: #66d9ef">byte</span><span style="color: #f92672">[]</span> <span style="color: #f8f8f2">decodedBytes</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">decoder</span><span style="color: #f92672">.</span><span style="color: #a6e22e">decodeBuffer</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;8QeNdEdkspV6+1I77SEEEF4aWs5dl/auahJ46MMufkg=&quot;</span><span style="color: #f92672">);</span>
-            <span style="color: #66d9ef">byte</span><span style="color: #f92672">[]</span> <span style="color: #f8f8f2">plaintxt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">cipher</span><span style="color: #f92672">.</span><span style="color: #a6e22e">doFinal</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">decodedBytes</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">BASE64Encoder</span> <span style="color: #f8f8f2">encoder</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">BASE64Encoder</span><span style="color: #f92672">();</span>
-            <span style="color: #f8f8f2">s1</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">encoder</span><span style="color: #f92672">.</span><span style="color: #a6e22e">encodeBuffer</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">plaintxt</span><span style="color: #f92672">);</span>
-        <span style="color: #f92672">}</span>
-        <span style="color: #66d9ef">catch</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Exception</span> <span style="color: #f8f8f2">exception</span><span style="color: #f92672">)</span>
-        <span style="color: #f92672">{</span>
-            <span style="color: #66d9ef">return</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f92672">;</span>
-        <span style="color: #f92672">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">hardwork</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">();</span>
+        <span class="k">try</span>
+        <span class="o">{</span>
+            <span class="n">Cipher</span> <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="s">&quot;AES&quot;</span><span class="o">);</span>
+            <span class="n">SecretKeySpec</span> <span class="n">secretkeyspec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecretKeySpec</span><span class="o">(</span><span class="n">do_sha</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="s">&quot;ovaederecumsale&quot;</span><span class="o">,</span> <span class="mi">10000</span><span class="o">),</span> <span class="s">&quot;AES&quot;</span><span class="o">);</span>
+            <span class="n">cipher</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">secretkeyspec</span><span class="o">);</span>
+            <span class="n">BASE64Decoder</span> <span class="n">decoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BASE64Decoder</span><span class="o">();</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">decodedBytes</span> <span class="o">=</span> <span class="n">decoder</span><span class="o">.</span><span class="na">decodeBuffer</span><span class="o">(</span><span class="s">&quot;8QeNdEdkspV6+1I77SEEEF4aWs5dl/auahJ46MMufkg=&quot;</span><span class="o">);</span>
+            <span class="kt">byte</span><span class="o">[]</span> <span class="n">plaintxt</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="na">doFinal</span><span class="o">(</span><span class="n">decodedBytes</span><span class="o">);</span>
+            <span class="n">BASE64Encoder</span> <span class="n">encoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BASE64Encoder</span><span class="o">();</span>
+            <span class="n">s1</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="na">encodeBuffer</span><span class="o">(</span><span class="n">plaintxt</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+        <span class="o">}</span>
 
-        <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">s</span><span style="color: #f92672">);</span>
-        <span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">s1</span><span style="color: #f92672">);</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">s1</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">s1</span><span class="o">;</span>
+    <span class="o">}</span>
 
-    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">main</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span><span style="color: #f92672">[]</span> <span style="color: #f8f8f2">args</span><span style="color: #f92672">)</span>  <span style="color: #66d9ef">throws</span> <span style="color: #f8f8f2">Exception</span>
-    <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">hardwork</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">args</span><span style="color: #f92672">[</span><span style="color: #ae81ff">0</span><span style="color: #f92672">]);</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>  <span class="kd">throws</span> <span class="n">Exception</span>
+    <span class="o">{</span>
+        <span class="n">hardwork</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 </p>
 
 <h1 id="challenge-27:00aa8d5840836b6803fb0a2203b66750">Challenge 27</h1>
@@ -818,10 +819,65 @@ sentence.</p>
 
 <p><a href="https://asciinema.org/a/65rhh2rqofe51f0yst1nktmbu"><img src="https://asciinema.org/a/65rhh2rqofe51f0yst1nktmbu.png" alt="asciicast" /></a></p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/hacky%20easter">hacky easter</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/ctf">ctf</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/white%20hat">white hat</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/06\/01\/hacky-easter-2015\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

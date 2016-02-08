@@ -1,99 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wat on Unlogic</title>
+      <title>Wat on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/wat/</link>
-    <description>Recent content in Wat on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/wat/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Fri, 23 Jan 2015 00:00:00 UTC</updated>
     
     <item>
       <title>Python: expect the unexpected</title>
       <link>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</link>
-      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;ve not really had much of a play with Python 3, but I&amp;rsquo;m aware of some of its
-differences. Yesterday I found out about a difference that took me by surprise.
-Enough of a surprise that I felt the urge to write this post.&lt;/p&gt;
-
-&lt;h1 id=&#34;opinion-divided:3294e7ffbfda40bfebd468b4c32cfa57&#34;&gt;Opinion Divided&lt;/h1&gt;
-
-&lt;p&gt;What surprised me was how &lt;code&gt;/&lt;/code&gt; has changed in Python 3. In Python 2.7 it returns
-the result of the division of two numbers.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Checks out to me. &lt;code&gt;10 / 3&lt;/code&gt; is 3.3333, and because we are using integers in
-the expression, we expect an integer as the result.
-Change the input to floats (or at least one of the inputs)&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3.3333333333333335&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;and we get a float. Right, nothing weird there. Where it starts getting odd is
-that in Python 3 you &lt;strong&gt;always&lt;/strong&gt; get a float back, unless you use the &lt;code&gt;//&lt;/code&gt; operator.
-Apparently that is because too many people expected integer division to return a float.
-Maybe it&amp;rsquo;s just me and my fellow oldies who think that the original behaviour is
-correct and integer division should yield an integer, not a float. Pretty much all
-main stream languages behave like this. In C/C++ you need to cast one of the arguments
-to a float to get a float back.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;main&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cout&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;endl;&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cout&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;endl;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; ./a.out 
-3
-3.33333
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;I understand that if you are dividing numbers you will want to have
-the accuracy of the float type, but I find this a bit of an odd choice
-for the Python devs to make. But perhaps this is the future, and I&amp;rsquo;m
-just too old to accept what you whippersnappers are up to with your
-fancy &lt;a href=&#34;http://i.imgur.com/GUum4gy.gif&#34;&gt;languages and tools&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ultimately, does it really matter? Well yes and no. No, because Python is
-dynamically typed, so it doesn&amp;rsquo;t really matter what type the result is, whatever
-it gets assigned too will become what it needs to. Yes, because there may be
-times when getting a float might cause unexpected behaviour.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s not the end of the world as such, because the &lt;em&gt;no&lt;/em&gt; above greatly
-outweighs the &lt;em&gt;yes&lt;/em&gt;, but I&amp;rsquo;m still a little surprised at this change. I would
-perhaps have kept &lt;code&gt;/&lt;/code&gt; as it is and made &lt;code&gt;//&lt;/code&gt; the one that always returns a float.&lt;/p&gt;
-
-&lt;p&gt;And just to finish:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Python&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3.4&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/WEllYN3.gif&#34;&gt;Yeah, sure, why not?&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;ve not really had much of a play with Python 3, but I&amp;rsquo;m aware of some of its differences. Yesterday I found out about a difference that took me by surprise. Enough of a surprise that I felt the urge to write this post. Opinion Divided What surprised me was how / has changed in Python 3. In Python 2.7 it returns the result of the division of two numbers. &amp;gt;&amp;gt;&amp;gt; 8/2 4 &amp;gt;&amp;gt;&amp;gt; 10/3 3 Checks out to me.</description>
     </item>
     
   </channel>
 </rss>
+

@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Let&#39;s crack Bandit Part 1 - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Let&#39;s crack Bandit Part 1 &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Let&#39;s crack Bandit Part 1</h1>
+        <span class="post-meta">Mar 13, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Let&#39;s crack Bandit Part 1</h1>
-			  <span class="post-date">Fri, Mar 13, 2015</span>
-			      
+      <article class="post-content">
+      
 
 <p>Let&rsquo;s give Bandit from the <a href="http://overthewire.org/wargames">overthewire war games</a>
 a going over. I did this a while back, but never really wrote it up,
@@ -90,17 +91,17 @@ are useful.</p>
 <code>-</code>. The trick here is that <code>-</code> is a bit tricky to pass as an argument. Try
 it to see what happens. All we need to do it prefix it with the path:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit1@melinda:~$ ls -la
-total 24
--rw-r-----   1 bandit2 bandit1   33 Jun  6  2013 -
-drwxr-xr-x   2 root    root    4096 Jun  6  2013 .
-drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..
--rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout
--rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc
--rw-r--r--   1 root    root     675 Apr  3  2012 .profile
-bandit1@melinda:~$ cat ./-
-CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit1@melinda:~$</span> ls -la
+<span class="go">total 24</span>
+<span class="go">-rw-r-----   1 bandit2 bandit1   33 Jun  6  2013 -</span>
+<span class="go">drwxr-xr-x   2 root    root    4096 Jun  6  2013 .</span>
+<span class="go">drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..</span>
+<span class="go">-rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout</span>
+<span class="go">-rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc</span>
+<span class="go">-rw-r--r--   1 root    root     675 Apr  3  2012 .profile</span>
+<span class="gp">bandit1@melinda:~$</span> cat ./-
+<span class="go">CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9</span>
+</code></pre></div>
 
 
 <h1 id="level-2-3:c0b338e2f736b59776da7641378921cf">Level 2 -&gt; 3</h1>
@@ -110,17 +111,17 @@ CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 <p>Not much trickiness here, merely the spaces in the filename. But with TAB
 completion the escaping of the spaces will be handled for us:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit2@melinda:~$ ls -la
-total 24
-drwxr-xr-x   2 root    root    4096 Jun  6  2013 .
-drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..
--rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout
--rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc
--rw-r--r--   1 root    root     675 Apr  3  2012 .profile
--rw-r-----   1 bandit3 bandit2   33 Jun  6  2013 spaces in this filename
-bandit2@melinda:~$ cat ./spaces<span style="color: #ae81ff">\ </span>in<span style="color: #ae81ff">\ </span>this<span style="color: #ae81ff">\ </span>filename
-UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit2@melinda:~$</span> ls -la
+<span class="go">total 24</span>
+<span class="go">drwxr-xr-x   2 root    root    4096 Jun  6  2013 .</span>
+<span class="go">drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..</span>
+<span class="go">-rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout</span>
+<span class="go">-rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc</span>
+<span class="go">-rw-r--r--   1 root    root     675 Apr  3  2012 .profile</span>
+<span class="go">-rw-r-----   1 bandit3 bandit2   33 Jun  6  2013 spaces in this filename</span>
+<span class="gp">bandit2@melinda:~$</span> cat ./spaces<span class="se">\ </span>in<span class="se">\ </span>this<span class="se">\ </span>filename
+<span class="go">UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK</span>
+</code></pre></div>
 
 
 <h1 id="level-3-4:c0b338e2f736b59776da7641378921cf">Level 3 -&gt; 4</h1>
@@ -129,24 +130,24 @@ UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 
 <p>Hidden file? Just do a long listing with <code>ls -la</code></p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit3@melinda:~$ ls -la
-total 24
-drwxr-xr-x   3 root root 4096 Jun  6  2013 .
-drwxr-xr-x 160 root root 4096 Oct 17  2013 ..
--rw-r--r--   1 root root  220 Apr  3  2012 .bash_logout
--rw-r--r--   1 root root 3486 Apr  3  2012 .bashrc
--rw-r--r--   1 root root  675 Apr  3  2012 .profile
-drwxr-xr-x   2 root root 4096 Jun  6  2013 inhere
-bandit3@melinda:~$ <span style="color: #f8f8f2">cd </span>inhere/
-bandit3@melinda:~/inhere$ ls
-bandit3@melinda:~/inhere$ ls -la
-total 12
-drwxr-xr-x 2 root    root    4096 Jun  6  2013 .
-drwxr-xr-x 3 root    root    4096 Jun  6  2013 ..
--rw-r----- 1 bandit4 bandit3   33 Jun  6  2013 .hidden
-bandit3@melinda:~/inhere$ cat .hidden
-pIwrPrtPN36QITSp3EQaw936yaFoFgAB
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit3@melinda:~$</span> ls -la
+<span class="go">total 24</span>
+<span class="go">drwxr-xr-x   3 root root 4096 Jun  6  2013 .</span>
+<span class="go">drwxr-xr-x 160 root root 4096 Oct 17  2013 ..</span>
+<span class="go">-rw-r--r--   1 root root  220 Apr  3  2012 .bash_logout</span>
+<span class="go">-rw-r--r--   1 root root 3486 Apr  3  2012 .bashrc</span>
+<span class="go">-rw-r--r--   1 root root  675 Apr  3  2012 .profile</span>
+<span class="go">drwxr-xr-x   2 root root 4096 Jun  6  2013 inhere</span>
+<span class="gp">bandit3@melinda:~$</span> <span class="nb">cd </span>inhere/
+<span class="gp">bandit3@melinda:~/inhere$</span> ls
+<span class="gp">bandit3@melinda:~/inhere$</span> ls -la
+<span class="go">total 12</span>
+<span class="go">drwxr-xr-x 2 root    root    4096 Jun  6  2013 .</span>
+<span class="go">drwxr-xr-x 3 root    root    4096 Jun  6  2013 ..</span>
+<span class="go">-rw-r----- 1 bandit4 bandit3   33 Jun  6  2013 .hidden</span>
+<span class="gp">bandit3@melinda:~/inhere$</span> cat .hidden
+<span class="go">pIwrPrtPN36QITSp3EQaw936yaFoFgAB</span>
+</code></pre></div>
 
 
 <h1 id="level-4-5:c0b338e2f736b59776da7641378921cf">Level 4 -&gt; 5</h1>
@@ -156,21 +157,21 @@ pIwrPrtPN36QITSp3EQaw936yaFoFgAB
 <p>We need to find a human readable file in the <code>inhere</code> directory. Using the
 power of bash:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit4@melinda:~$ <span style="color: #f8f8f2">cd </span>inhere/
-bandit4@melinda:~/inhere$ <span style="color: #66d9ef">for</span> f in <span style="color: #66d9ef">$(</span>ls<span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span> file ./<span style="color: #e6db74">${</span><span style="color: #f8f8f2">f</span><span style="color: #e6db74">}</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">done</span>
-./-file00: data
-./-file01: data
-./-file02: data
-./-file03: data
-./-file04: data
-./-file05: data
-./-file06: data
-./-file07: ASCII text
-./-file08: data
-./-file09: data
-bandit4@melinda:~/inhere$ cat ./-file07
-koReBOKuIDDepwhWk7jZC0RTdopnAYKh
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit4@melinda:~$</span> <span class="nb">cd </span>inhere/
+<span class="gp">bandit4@melinda:~/inhere$</span> <span class="k">for</span> f in <span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span> <span class="k">do</span> file ./<span class="si">${</span><span class="nv">f</span><span class="si">}</span><span class="p">;</span> <span class="k">done</span>
+<span class="go">./-file00: data</span>
+<span class="go">./-file01: data</span>
+<span class="go">./-file02: data</span>
+<span class="go">./-file03: data</span>
+<span class="go">./-file04: data</span>
+<span class="go">./-file05: data</span>
+<span class="go">./-file06: data</span>
+<span class="go">./-file07: ASCII text</span>
+<span class="go">./-file08: data</span>
+<span class="go">./-file09: data</span>
+<span class="gp">bandit4@melinda:~/inhere$</span> cat ./-file07
+<span class="go">koReBOKuIDDepwhWk7jZC0RTdopnAYKh</span>
+</code></pre></div>
 
 
 <p>Change into the <code>inhere</code> directory and then for each file returned by the <code>ls</code>
@@ -184,14 +185,14 @@ that&rsquo;s a good candidate. Sure enough, it&rsquo;s the one we are after.</p>
 <p>This is similar to the previous level, except now we are looking for something
 with a specific size. Luckily the <code>find</code> command is just right for this:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit5@melinda:~$ find ./ -size 1033c
-./inhere/maybehere07/.file2
-bandit5@melinda:~$ file ./inhere/maybehere07/.file2
-./inhere/maybehere07/.file2: ASCII text, with very long lines
-bandit5@melinda:~$ cat !<span style="color: #960050; background-color: #1e0010">$</span>
-cat ./inhere/maybehere07/.file2
-DXjZPULLxYr17uwoI01bNLQbtFemEgo7
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit5@melinda:~$</span> find ./ -size 1033c
+<span class="go">./inhere/maybehere07/.file2</span>
+<span class="gp">bandit5@melinda:~$</span> file ./inhere/maybehere07/.file2
+<span class="go">./inhere/maybehere07/.file2: ASCII text, with very long lines</span>
+<span class="gp">bandit5@melinda:~$</span> cat !<span class="err">$</span>
+<span class="go">cat ./inhere/maybehere07/.file2</span>
+<span class="go">DXjZPULLxYr17uwoI01bNLQbtFemEgo7</span>
+</code></pre></div>
 
 
 <h1 id="level-6-7:c0b338e2f736b59776da7641378921cf">Level 6 -&gt; 7</h1>
@@ -202,12 +203,12 @@ DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 the user and group that own the file and its size. The user and group might
 be enough already, so let&rsquo;s give that a go</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit6@melinda:~$ <span style="color: #f8f8f2">cd</span> /
-bandit6@melinda:/$ find -user bandit7 -group bandit6  2&gt; /dev/null 
-./var/lib/dpkg/info/bandit7.password
-bandit6@melinda:/$ cat ./var/lib/dpkg/info/bandit7.password
-HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit6@melinda:~$</span> <span class="nb">cd</span> /
+<span class="gp">bandit6@melinda:/$</span> find -user bandit7 -group bandit6  2&gt; /dev/null 
+<span class="go">./var/lib/dpkg/info/bandit7.password</span>
+<span class="gp">bandit6@melinda:/$</span> cat ./var/lib/dpkg/info/bandit7.password
+<span class="go">HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs</span>
+</code></pre></div>
 
 
 <p>Perfect. I piped the <code>stderr</code> to <code>/dev/null</code> so it doesn&rsquo;t clutter the output
@@ -221,21 +222,21 @@ with files that it can&rsquo;t read.</p>
 wise to check the file format first in case all the words are smushed together
 and we need to filter grep again.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit7@melinda:~$ head data.txt 
-Kunming&#39;s	0D0KZ3TdLRBXD8lyd7Bj2hAqnxaMInQe
-multitude&#39;s	8MFZa8yOjTt6m8PvxteTp7XTDFLiuFAk
-audibility	ZeLj0yAw7ylmEoLxSUEqF4iB43c9DN4h
-unadvised	Pgp8X2LSVdNrmIKcJ7Oe8eqTzEVfhGbR
-Brecht&#39;s	uKyKryNUZYFuTQpwRlDqucLLIUbiIMF0
-Alvin	IpQIV6mpjticdB790obqXAvYkAgnDV8E
-insufficient	cgHhWVJahfDqFIe82vOliryQQ8ihGlGN
-Sauterne	UhPBp0A04GkIRfvZnUt1UdwlKU2ViYUd
-cluster	1GeFZ0B6rsEtJ5Sqb5h8Wv7UwG15DQzb
-ember&#39;s	f2XPIE1iDHW9oHPyodPyfTz87DAbWmXu
-bandit7@melinda:~$ grep millionth data.txt 
-millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
-</pre></div>
-
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit7@melinda:~$</span> head data.txt 
+<span class="go">Kunming&#39;s	0D0KZ3TdLRBXD8lyd7Bj2hAqnxaMInQe</span>
+<span class="go">multitude&#39;s	8MFZa8yOjTt6m8PvxteTp7XTDFLiuFAk</span>
+<span class="go">audibility	ZeLj0yAw7ylmEoLxSUEqF4iB43c9DN4h</span>
+<span class="go">unadvised	Pgp8X2LSVdNrmIKcJ7Oe8eqTzEVfhGbR</span>
+<span class="go">Brecht&#39;s	uKyKryNUZYFuTQpwRlDqucLLIUbiIMF0</span>
+<span class="go">Alvin	IpQIV6mpjticdB790obqXAvYkAgnDV8E</span>
+<span class="go">insufficient	cgHhWVJahfDqFIe82vOliryQQ8ihGlGN</span>
+<span class="go">Sauterne	UhPBp0A04GkIRfvZnUt1UdwlKU2ViYUd</span>
+<span class="go">cluster	1GeFZ0B6rsEtJ5Sqb5h8Wv7UwG15DQzb</span>
+<span class="go">ember&#39;s	f2XPIE1iDHW9oHPyodPyfTz87DAbWmXu</span>
+<span class="gp">bandit7@melinda:~$</span> grep millionth data.txt 
+<span class="go">millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV</span>
+</code></pre></div>
+</p>
 
 <p>Luckily it was one word and password per line, so grepping the file worked
 fine.</p>
@@ -250,9 +251,9 @@ only detect duplicate lines if they are next to each other. To fix this
 we also need to sort the contents of the file and then display only
 unique lines:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit8@melinda:~$ cat data.txt <span style="color: #f8f8f2">|</span> sort <span style="color: #f8f8f2">|</span> uniq -u
-UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit8@melinda:~$</span> cat data.txt <span class="p">|</span> sort <span class="p">|</span> uniq -u
+<span class="go">UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR</span>
+</code></pre></div>
 </p>
 
 <h1 id="level-9-10:c0b338e2f736b59776da7641378921cf">Level 9 -&gt; 10</h1>
@@ -262,12 +263,12 @@ UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 <p>This <code>data.txt</code> file is in binary. So in order to find the strings we need
 to dump it as hex, or, even simpler, run it through <code>strings</code>:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit9@melinda:~$ strings data.txt  <span style="color: #f8f8f2">|</span> <span style="color: #f8f8f2">grep</span> <span style="color: #f92672">==</span>
-I========== the6
-========== password
-========== ism
-========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit9@melinda:~$</span> strings data.txt  <span class="p">|</span> <span class="nv">grep</span> <span class="o">==</span>
+<span class="go">I========== the6</span>
+<span class="go">========== password</span>
+<span class="go">========== ism</span>
+<span class="go">========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk</span>
+</code></pre></div>
 </p>
 
 <h1 id="level-10-11:c0b338e2f736b59776da7641378921cf">Level 10 -&gt; 11</h1>
@@ -277,9 +278,9 @@ I========== the6
 <p>Good ol base64. If you haven&rsquo;t seen it before, you&rsquo;ll get to see it a lot
 more if you carry on doing these kind of challenges. Simply done though:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit10@melinda:~$ cat data.txt  <span style="color: #f8f8f2">|</span> base64 -d
-The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit10@melinda:~$</span> cat data.txt  <span class="p">|</span> base64 -d
+<span class="go">The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR</span>
+</code></pre></div>
 </p>
 
 <h1 id="level-11-12:c0b338e2f736b59776da7641378921cf">Level 11 -&gt; 12</h1>
@@ -290,11 +291,11 @@ The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 has been encoded with rot13. The quickest way for me to un-rotate it, is
 using python:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit11@melinda:~$ cat data.txt 
-Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
-bandit11@melinda:~$ python -c <span style="color: #e6db74">&#39;import codecs;print codecs.decode(&quot;5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh&quot;, &quot;rot13&quot;)&#39;</span>
-5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit11@melinda:~$</span> cat data.txt 
+<span class="go">Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh</span>
+<span class="gp">bandit11@melinda:~$</span> python -c <span class="s1">&#39;import codecs;print codecs.decode(&quot;5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh&quot;, &quot;rot13&quot;)&#39;</span>
+<span class="go">5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu</span>
+</code></pre></div>
 </p>
 
 <h1 id="level-12-13:c0b338e2f736b59776da7641378921cf">Level 12 -&gt; 13</h1>
@@ -304,59 +305,59 @@ bandit11@melinda:~$ python -c <span style="color: #e6db74">&#39;import codecs;pr
 <p>From here on it&rsquo;s going to get a little trickier. We know that data.txt is a hexdump
 of a binary, so first let&rsquo;s convert it back to a binary first with <code>xxd</code></p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ cat data.txt <span style="color: #f8f8f2">|</span> xxd -r &gt; data2
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit12@melinda:/tmp/unl$</span> cat data.txt <span class="p">|</span> xxd -r &gt; data2
+</code></pre></div>
 </p>
 
 <p>Then we can find out the filetype of data2</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ file data2
-data2: gzip compressed data, was &quot;data2.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit12@melinda:/tmp/unl$</span> file data2
+<span class="go">data2: gzip compressed data, was &quot;data2.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression</span>
+</code></pre></div>
 </p>
 
 <p><code>gzip</code> it is. So uncompress that to data3</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ cat data2 <span style="color: #f8f8f2">|</span> zcat &gt; data3
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit12@melinda:/tmp/unl$</span> cat data2 <span class="p">|</span> zcat &gt; data3
+</code></pre></div>
 </p>
 
 <p>and get its filetype next. I won&rsquo;t go over each step in detail as there&rsquo;s quite
 a few iterations. I&rsquo;ll post the console log of how I got to the flag and hopefully
 that should be clear enough.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ file data3
-data3: bzip2 compressed data, block size = 900k
-bandit12@melinda:/tmp/unl$ bzcat data3 &gt; data4
-bandit12@melinda:/tmp/unl$ file data4
-data4: gzip compressed data, was &quot;data4.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
-bandit12@melinda:/tmp/unl$ cat data4 <span style="color: #f8f8f2">|</span> zcat &gt; data5
-bandit12@melinda:/tmp/unl$ file data5
-data5: POSIX tar archive (GNU)
-bandit12@melinda:/tmp/unl$ tar xf data5
-bandit12@melinda:/tmp/unl$ ls
-data.txt  data2  data2.bin  data3  data4  data5  data5.bin
-bandit12@melinda:/tmp/unl$ file data5.bin
-data5.bin: POSIX tar archive (GNU)
-bandit12@melinda:/tmp/unl$ tar xf data5.bin
-bandit12@melinda:/tmp/unl$ ls
-data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin
-bandit12@melinda:/tmp/unl$ file data6.bin 
-data6.bin: bzip2 compressed data, block size = 900k
-bandit12@melinda:/tmp/unl$ bzcat data6.bin &gt; data7
-bandit12@melinda:/tmp/unl$ file data7
-data7: POSIX tar archive (GNU)
-bandit12@melinda:/tmp/unl$ tar xf data7
-bandit12@melinda:/tmp/unl$ ls
-data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin  data7  data8.bin
-bandit12@melinda:/tmp/unl$ file data8.bin
-data8.bin: gzip compressed data, was &quot;data9.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
-bandit12@melinda:/tmp/unl$ cat data8.bin <span style="color: #f8f8f2">|</span> zcat &gt; data9
-bandit12@melinda:/tmp/unl$ file data9
-data9: ASCII text
-bandit12@melinda:/tmp/unl$ cat data9 
-The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit12@melinda:/tmp/unl$</span> file data3
+<span class="go">data3: bzip2 compressed data, block size = 900k</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> bzcat data3 &gt; data4
+<span class="gp">bandit12@melinda:/tmp/unl$</span> file data4
+<span class="go">data4: gzip compressed data, was &quot;data4.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> cat data4 <span class="p">|</span> zcat &gt; data5
+<span class="gp">bandit12@melinda:/tmp/unl$</span> file data5
+<span class="go">data5: POSIX tar archive (GNU)</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> tar xf data5
+<span class="gp">bandit12@melinda:/tmp/unl$</span> ls
+<span class="go">data.txt  data2  data2.bin  data3  data4  data5  data5.bin</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> file data5.bin
+<span class="go">data5.bin: POSIX tar archive (GNU)</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> tar xf data5.bin
+<span class="gp">bandit12@melinda:/tmp/unl$</span> ls
+<span class="go">data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> file data6.bin 
+<span class="go">data6.bin: bzip2 compressed data, block size = 900k</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> bzcat data6.bin &gt; data7
+<span class="gp">bandit12@melinda:/tmp/unl$</span> file data7
+<span class="go">data7: POSIX tar archive (GNU)</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> tar xf data7
+<span class="gp">bandit12@melinda:/tmp/unl$</span> ls
+<span class="go">data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin  data7  data8.bin</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> file data8.bin
+<span class="go">data8.bin: gzip compressed data, was &quot;data9.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> cat data8.bin <span class="p">|</span> zcat &gt; data9
+<span class="gp">bandit12@melinda:/tmp/unl$</span> file data9
+<span class="go">data9: ASCII text</span>
+<span class="gp">bandit12@melinda:/tmp/unl$</span> cat data9 
+<span class="go">The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL</span>
+</code></pre></div>
 </p>
 
 <p>Basically we identify, extract, repeat, until we&rsquo;re at the plain text file with the
@@ -370,16 +371,16 @@ password.</p>
 key for the <code>bandit14</code> user. We can use this to login as that user without knowing
 the password:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit13@melinda:~$ ssh -i ./sshkey.private bandit14@localhost 
-Could not create directory &#39;/home/bandit13/.ssh&#39;.
-The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
-ECDSA key fingerprint is 05:3a:1c:25:35:0a:ed:2f:cd:87:1c:f6:fe:69:e4:f6.
-Are you sure you want to continue connecting (yes/no)? yes
-.
-.
-bandit14@melinda:~$ cat /etc/bandit_pass/bandit14
-4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit13@melinda:~$</span> ssh -i ./sshkey.private bandit14@localhost 
+<span class="go">Could not create directory &#39;/home/bandit13/.ssh&#39;.</span>
+<span class="go">The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.</span>
+<span class="go">ECDSA key fingerprint is 05:3a:1c:25:35:0a:ed:2f:cd:87:1c:f6:fe:69:e4:f6.</span>
+<span class="go">Are you sure you want to continue connecting (yes/no)? yes</span>
+<span class="go">.</span>
+<span class="go">.</span>
+<span class="gp">bandit14@melinda:~$</span> cat /etc/bandit_pass/bandit14
+<span class="go">4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e</span>
+</code></pre></div>
 </p>
 
 <p>We pass the key as an argument to the ssh command, and connect to the localhost
@@ -394,11 +395,11 @@ hosts. Well, in this case it&rsquo;s localhost, but the principle is the same.
 We need to connect to a specific port on localhost and then supply
 the current password. I&rsquo;m using <code>netcat</code> to do this</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit14@melinda:~$ nc localhost 30000
-4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
-Correct!
-BfMYroe26WYalil77FoDi9qh59eK5xNr
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">bandit14@melinda:~$</span> nc localhost 30000
+<span class="go">4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e</span>
+<span class="go">Correct!</span>
+<span class="go">BfMYroe26WYalil77FoDi9qh59eK5xNr</span>
+</code></pre></div>
 </p>
 
 <p>All you get is a blank line when you&rsquo;ve connected. The simply paste in the
@@ -406,10 +407,71 @@ password you logged in with and hit enter.</p>
 
 <p>Continues with <a href="http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2">Let&rsquo;s crack Bandit Part 2</a></p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/ctf">ctf</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/security">security</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/hack">hack</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/overthewire">overthewire</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/bandit">bandit</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/03\/13\/lets-crack-bandit-part1\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

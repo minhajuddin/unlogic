@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Vim as a Python IDE - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Vim as a Python IDE &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Vim as a Python IDE</h1>
+        <span class="post-meta">Feb 8, 2013 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Vim as a Python IDE</h1>
-			  <span class="post-date">Fri, Feb 8, 2013</span>
-			      
+      <article class="post-content">
+      
 
 <p>I&rsquo;ve been spending quite a bit of time with our good old buddy Python recently, and when
 I do, I always invite along our mutual friend Vim. He&rsquo;s a barrell of laughs and always
@@ -73,34 +74,34 @@ of nice extras, like installing the bundles itself from their Github repos (and 
 For more info see the README in the Github repo. To install follow the instructions from the repo,
 which are repeated below:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-</pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+</code></pre></div>
 
 
 <p>thenadd the following to your <code>.vimrc</code></p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">nocompatible</span>
-<span style="color: #66d9ef">filetype</span> off
+<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="k">set</span> <span class="nb">nocompatible</span>
+<span class="k">filetype</span> off
 
-<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">rtp+=~</span><span style="color: #e6db74">/.vim/</span>bundle<span style="color: #e6db74">/vundle/</span>
-<span style="color: #66d9ef">call</span> vundle#rc<span style="color: #f8f8f2">()</span>
+<span class="k">set</span> <span class="nb">rtp</span><span class="p">+=~</span><span class="sr">/.vim/</span>bundle<span class="sr">/vundle/</span>
+<span class="k">call</span> vundle#rc<span class="p">()</span>
 
-<span style="color: #75715e">&quot; let Vundle manage Vundle</span>
-<span style="color: #75715e">&quot; required! </span>
-Bundle <span style="color: #e6db74">&#39;gmarik/vundle&#39;</span>
+<span class="c">&quot; let Vundle manage Vundle</span>
+<span class="c">&quot; required! </span>
+Bundle <span class="s1">&#39;gmarik/vundle&#39;</span>
 
-<span style="color: #75715e">&quot; The bundles you install will be listed here</span>
+<span class="c">&quot; The bundles you install will be listed here</span>
 
-<span style="color: #66d9ef">filetype</span> plugin indent <span style="color: #66d9ef">on</span>
+<span class="k">filetype</span> plugin indent <span class="k">on</span>
 
-<span style="color: #75715e">&quot; The rest of your config follows here</span>
-</pre></div>
+<span class="c">&quot; The rest of your config follows here</span>
+</code></pre></div>
 
 
 <p>Now if you launch Vim and run the command</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">:</span>BundleList
-</pre></div>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="p">:</span>BundleList
+</code></pre></div>
 
 
 <p>a new split should appear listing the Vundle bundle. Everything went ok in that case.</p>
@@ -117,14 +118,14 @@ chars. 80 chars is usually the standard, but with modern displays we can allow o
 but you are free to adjust as you like. To enable this excess highlighting, add the following lines
 to your <code>.vimrc</code></p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">augroup vimrc_autocmds
-    autocmd<span style="color: #f8f8f2">!</span>
-<span style="color: #75715e">    &quot; highlight characters past column 120</span>
-    autocmd <span style="color: #f8f8f2">FileType</span> python <span style="color: #f8f8f2">highlight</span> Excess ctermbg<span style="color: #f8f8f2">=</span>DarkGrey guibg<span style="color: #f8f8f2">=</span>Black
-    autocmd <span style="color: #f8f8f2">FileType</span> python <span style="color: #66d9ef">match</span> Excess <span style="color: #e6db74">/\%120v.*/</span>
-    autocmd <span style="color: #f8f8f2">FileType</span> python <span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">nowrap</span>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">augroup vimrc_autocmds
+    autocmd<span class="p">!</span>
+<span class="c">    &quot; highlight characters past column 120</span>
+    autocmd <span class="nb">FileType</span> python <span class="nb">highlight</span> Excess ctermbg<span class="p">=</span>DarkGrey guibg<span class="p">=</span>Black
+    autocmd <span class="nb">FileType</span> python <span class="k">match</span> Excess <span class="sr">/\%120v.*/</span>
+    autocmd <span class="nb">FileType</span> python <span class="k">set</span> <span class="nb">nowrap</span>
     augroup END
-</pre></div>
+</code></pre></div>
 
 
 <p>Anything that exceeds the line length will be highlighted black, feel free to change this colour
@@ -148,15 +149,15 @@ useful information.</p>
 
 <p>Simply add:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;Lokaltog/powerline&#39;</span><span style="color: #f8f8f2">,</span> {<span style="color: #e6db74">&#39;rtp&#39;</span>: <span style="color: #e6db74">&#39;powerline/bindings/vim/&#39;</span>}
-</pre></div>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">Bundle <span class="s1">&#39;Lokaltog/powerline&#39;</span><span class="p">,</span> {<span class="s1">&#39;rtp&#39;</span>: <span class="s1">&#39;powerline/bindings/vim/&#39;</span>}
+</code></pre></div>
 
 
 <p>to your <code>.vimrc</code> below the comment we added earlier <code>&quot; The bundles you install will be listed here</code>. Restart Vim
 and run <code>:BundleList</code> again. Now you should also see the Powerline bundle listed there. To install it run the command</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">:</span>BundleInstall
-</pre></div>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="p">:</span>BundleInstall
+</code></pre></div>
 
 
 <p>You&rsquo;ll see Vundle process the list and report on the status of the installation. Hopefully everything went ok.</p>
@@ -167,10 +168,10 @@ font isn&rsquo;t listed then the powerline repo does provide a font-patcher you 
 is done however is outside the scope of this article. To select your font and ensure that Powerline is always shown,
 you will also need to add these two lines to your <code>.vimrc</code></p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&quot; Powerline setup</span>
-<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">guifont=</span>DejaVu\ Sans\ Mono\ <span style="color: #66d9ef">for</span>\ Powerline\ <span style="color: #ae81ff">9</span>
-<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">laststatus=</span><span style="color: #ae81ff">2</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="c">&quot; Powerline setup</span>
+<span class="k">set</span> <span class="nb">guifont</span><span class="p">=</span>DejaVu\ Sans\ Mono\ <span class="k">for</span>\ Powerline\ <span class="m">9</span>
+<span class="k">set</span> <span class="nb">laststatus</span><span class="p">=</span><span class="m">2</span>
+</code></pre></div>
 
 
 <p><code>laststatus</code> ensures that Powerline shows up even if you don&rsquo;t have any splits.</p>
@@ -180,8 +181,8 @@ you will also need to add these two lines to your <code>.vimrc</code></p>
 <p>Please note that this version of Powerline is a Python based version and thus requires your Vim to  be built
 with Python enabled. To check if it is run:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">$&gt;</span> vim --version <span style="color: #f8f8f2">|</span> grep -i python
-</pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$&gt;</span> vim --version <span class="p">|</span> grep -i python
+</code></pre></div>
 
 
 <p>from the commandline. If you see <code>+python</code> then you are ok. There is
@@ -198,8 +199,8 @@ conflict resolution, blame and the like. There&rsquo;s a whole set of screencast
 
 <p>To install Fugitive, add its bundle to Vundle:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;tpope/vim-fugitive&#39;</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">Bundle <span class="s1">&#39;tpope/vim-fugitive&#39;</span>
+</code></pre></div>
 
 
 <p>Run <code>:BundleInstall</code> again to install it.</p>
@@ -221,14 +222,14 @@ It looks somewhat like this:</p>
 
 <p>As usual you just need to add its package to Vundle:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;scrooloose/nerdtree&#39;</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">Bundle <span class="s1">&#39;scrooloose/nerdtree&#39;</span>
+</code></pre></div>
 
 
 <p>and <code>:BundleInstall</code> once you restart Vim. To activate with <code>F2</code> add the following to <code>.vimrc</code>:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">map <span style="color: #f8f8f2">&lt;</span>F2<span style="color: #f8f8f2">&gt;</span> :NERDTreeToggle<span style="color: #f8f8f2">&lt;</span>CR<span style="color: #f8f8f2">&gt;</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">map <span class="p">&lt;</span>F2<span class="p">&gt;</span> :NERDTreeToggle<span class="p">&lt;</span>CR<span class="p">&gt;</span>
+</code></pre></div>
 
 
 <p>Press <code>F2</code> in vim and it will take you to the current working directory. Press <code>?</code> to see NerdTree&rsquo;s
@@ -242,9 +243,9 @@ codecompletion, documentation lookup, jump to classes, refactoring tools etc. Yo
 
 <p>Its bundle is:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">Bundle <span style="color: #e6db74">&#39;klen/python-mode&#39;</span>
-</pre></div>
-</p>
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">Bundle <span class="s1">&#39;klen/python-mode&#39;</span>
+</code></pre></div>
+
 
 <p>Again, <code>:BundleInstall</code> to install it and then we probably want to configure some items. There&rsquo;s a lot to
 configure, so if you want the complete picture I suggest you head over to the
@@ -255,47 +256,47 @@ or run <code>:help python-mode</code> from inside Vim.</p>
 and workflow. The following a copy-paste from my .vimrc. The keyboard shortcuts in the comments are the ones I find
 most useful and I keep them there for reference:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&quot; Python-mode</span>
-<span style="color: #75715e">&quot; Activate rope</span>
-<span style="color: #75715e">&quot; Keys:</span>
-<span style="color: #75715e">&quot; K             Show python docs</span>
-<span style="color: #75715e">&quot; &lt;Ctrl-Space&gt;  Rope autocomplete</span>
-<span style="color: #75715e">&quot; &lt;Ctrl-c&gt;g     Rope goto definition</span>
-<span style="color: #75715e">&quot; &lt;Ctrl-c&gt;d     Rope show documentation</span>
-<span style="color: #75715e">&quot; &lt;Ctrl-c&gt;f     Rope find occurrences</span>
-<span style="color: #75715e">&quot; &lt;Leader&gt;b     Set, unset breakpoint (g:pymode_breakpoint enabled)</span>
-<span style="color: #75715e">&quot; [[            Jump on previous class or function (normal, visual, operator modes)</span>
-<span style="color: #75715e">&quot; ]]            Jump on next class or function (normal, visual, operator modes)</span>
-<span style="color: #75715e">&quot; [M            Jump on previous class or method (normal, visual, operator modes)</span>
-<span style="color: #75715e">&quot; ]M            Jump on next class or method (normal, visual, operator modes)</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_rope <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<p><div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="c">&quot; Python-mode</span>
+<span class="c">&quot; Activate rope</span>
+<span class="c">&quot; Keys:</span>
+<span class="c">&quot; K             Show python docs</span>
+<span class="c">&quot; &lt;Ctrl-Space&gt;  Rope autocomplete</span>
+<span class="c">&quot; &lt;Ctrl-c&gt;g     Rope goto definition</span>
+<span class="c">&quot; &lt;Ctrl-c&gt;d     Rope show documentation</span>
+<span class="c">&quot; &lt;Ctrl-c&gt;f     Rope find occurrences</span>
+<span class="c">&quot; &lt;Leader&gt;b     Set, unset breakpoint (g:pymode_breakpoint enabled)</span>
+<span class="c">&quot; [[            Jump on previous class or function (normal, visual, operator modes)</span>
+<span class="c">&quot; ]]            Jump on next class or function (normal, visual, operator modes)</span>
+<span class="c">&quot; [M            Jump on previous class or method (normal, visual, operator modes)</span>
+<span class="c">&quot; ]M            Jump on next class or method (normal, visual, operator modes)</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_rope <span class="p">=</span> <span class="m">1</span>
 
-<span style="color: #75715e">&quot; Documentation</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_doc <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_doc_key <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&#39;K&#39;</span>
+<span class="c">&quot; Documentation</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_doc <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_doc_key <span class="p">=</span> <span class="s1">&#39;K&#39;</span>
 
-<span style="color: #75715e">&quot;Linting</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_lint <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_lint_checker <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&quot;pyflakes,pep8&quot;</span>
-<span style="color: #75715e">&quot; Auto check on save</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_lint_write <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span class="c">&quot;Linting</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_lint <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_lint_checker <span class="p">=</span> <span class="s2">&quot;pyflakes,pep8&quot;</span>
+<span class="c">&quot; Auto check on save</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_lint_write <span class="p">=</span> <span class="m">1</span>
 
-<span style="color: #75715e">&quot; Support virtualenv</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_virtualenv <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span class="c">&quot; Support virtualenv</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_virtualenv <span class="p">=</span> <span class="m">1</span>
 
-<span style="color: #75715e">&quot; Enable breakpoints plugin</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_breakpoint <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_breakpoint_bind <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&#39;&lt;leader&gt;b&#39;</span>
+<span class="c">&quot; Enable breakpoints plugin</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_breakpoint <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_breakpoint_bind <span class="p">=</span> <span class="s1">&#39;&lt;leader&gt;b&#39;</span>
 
-<span style="color: #75715e">&quot; syntax highlighting</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax_all <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax_indent_errors <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">g</span>:pymode_syntax_all
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_syntax_space_errors <span style="color: #f8f8f2">=</span> <span style="color: #66d9ef">g</span>:pymode_syntax_all
+<span class="c">&quot; syntax highlighting</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_syntax <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_syntax_all <span class="p">=</span> <span class="m">1</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_syntax_indent_errors <span class="p">=</span> <span class="k">g</span>:pymode_syntax_all
+<span class="k">let</span> <span class="k">g</span>:pymode_syntax_space_errors <span class="p">=</span> <span class="k">g</span>:pymode_syntax_all
 
-<span style="color: #75715e">&quot; Don&#39;t autofold code</span>
-<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:pymode_folding <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">0</span>
-</pre></div>
+<span class="c">&quot; Don&#39;t autofold code</span>
+<span class="k">let</span> <span class="k">g</span>:pymode_folding <span class="p">=</span> <span class="m">0</span>
+</code></pre></div>
 </p>
 
 <p>To explain the above a bit, here&rsquo;s what it does:</p>
@@ -322,21 +323,21 @@ installing another plugin, then feel free to stay with Rope.</p>
 
 <p>I also use some specific Vim settings in <code>.vimrc</code> that make the experience a bit nicer for me:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&quot; Use &lt;leader&gt;l to toggle display of whitespace</span>
-nmap <span style="color: #f8f8f2">&lt;</span>leader<span style="color: #f8f8f2">&gt;</span><span style="color: #66d9ef">l</span> :<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">list!&lt;</span>CR<span style="color: #f8f8f2">&gt;</span>
-<span style="color: #75715e">&quot; automatically change window&#39;s cwd to file&#39;s dir</span>
-<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">autochdir</span>
+<p><div class="highlight"><pre><code class="language-vim" data-lang="vim"><span class="c">&quot; Use &lt;leader&gt;l to toggle display of whitespace</span>
+nmap <span class="p">&lt;</span>leader<span class="p">&gt;</span><span class="k">l</span> :<span class="k">set</span> <span class="nb">list</span><span class="p">!&lt;</span>CR<span class="p">&gt;</span>
+<span class="c">&quot; automatically change window&#39;s cwd to file&#39;s dir</span>
+<span class="k">set</span> <span class="nb">autochdir</span>
 
-<span style="color: #75715e">&quot; I&#39;m prefer spaces to tabs</span>
-<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">tabstop=</span><span style="color: #ae81ff">4</span>
-<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">shiftwidth=</span><span style="color: #ae81ff">4</span>
-<span style="color: #66d9ef">set</span> <span style="color: #f8f8f2">expandtab</span>
+<span class="c">&quot; I&#39;m prefer spaces to tabs</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span>
+<span class="k">set</span> <span class="nb">expandtab</span>
 
-<span style="color: #75715e">&quot; more subtle popup colors </span>
-<span style="color: #66d9ef">if</span> has <span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;gui_running&#39;</span><span style="color: #f8f8f2">)</span>
-    <span style="color: #f8f8f2">highlight</span> Pmenu guibg<span style="color: #f8f8f2">=</span><span style="color: #ae81ff">#cccccc</span> <span style="color: #66d9ef">gui</span><span style="color: #f8f8f2">=bold</span>    
-<span style="color: #66d9ef">endif</span>
-</pre></div>
+<span class="c">&quot; more subtle popup colors </span>
+<span class="k">if</span> has <span class="p">(</span><span class="s1">&#39;gui_running&#39;</span><span class="p">)</span>
+    <span class="nb">highlight</span> Pmenu guibg<span class="p">=</span><span class="mh">#cccccc</span> <span class="k">gui</span><span class="p">=</span><span class="nb">bold</span>    
+<span class="k">endif</span>
+</code></pre></div>
 </p>
 
 <h1 id="summary:c2f6c0c20421a669648093b37836b9d8">Summary</h1>
@@ -353,10 +354,62 @@ about what else is out there.</p>
 
 <p>Thanks for reading.</p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/python">python</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/vim">vim</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2013\/02\/08\/vim-as-a-python-ide\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

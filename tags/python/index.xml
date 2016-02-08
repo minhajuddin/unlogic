@@ -1,503 +1,84 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Unlogic</title>
+      <title>Python on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/python/</link>
-    <description>Recent content in Python on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Fri, 04 Dec 2015 00:00:00 UTC</updated>
     
     <item>
       <title>Brewing with a Pi</title>
       <link>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</link>
-      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s been a while since I&amp;rsquo;ve written here, but that doesn&amp;rsquo;t mean I haven&amp;rsquo;t
-been busy. I&amp;rsquo;ve been working on a DIY version of &lt;a href=&#34;http://www.speidels-braumeister.de/en/braumeister/id-10-20-50-litre-braumeister.html&#34;&gt;Speidel&amp;rsquo;s Braumeister&lt;/a&gt;
-and the software side of things has come along quite nicely.&lt;/p&gt;
-
-&lt;p&gt;The idea is to have a Raspberry Pi controlled beer brewing system for cooking
-the wort across a temperature profile. Much like the Braumeister, or Grainfather
-style brewers. A probe monitors the temperature and will switch the heating on and
-off to maintain the current temperature. You can set how long to hold each temperature
-for and it will just plod through the profile.&lt;/p&gt;
-
-&lt;p&gt;You can also set and hold a temperature if you want to simply heat the wort. A
-pump running at intervals will also be operational during the brew.&lt;/p&gt;
-
-&lt;p&gt;As I said, the software side is coming along, and I&amp;rsquo;ve done a quick test with a Pi
-and the DS18B20 thermo probe, and that&amp;rsquo;s also working. Next up I need to
-get myself a dedicated Pi (perhaps the new Pi Zero) and the rest of the kit, including
-vessels, piping, heating etc. It probably won&amp;rsquo;t be fancy stainless steel like the
-Braumeister, but it should achieve the same end result.
-Once done I will write a complete build process, and the project will be open
-source so everyone can use and improve upon it.&lt;/p&gt;
-
-&lt;p&gt;But more about the software, it&amp;rsquo;s running on &lt;a href=&#34;https://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt; and
-currently looks like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/c4IR4yT.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/c4IR4yT.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/c4IR4yT.png&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;h4&gt;Brewpy interface&lt;/h4&gt;
-        
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ve put the &lt;a href=&#34;https://github.com/Svenito/brewpy&#34;&gt;code on Github&lt;/a&gt; already, so if
-you are keen and fancy building the rest of the kit yourself already, please
-check it out.&lt;/p&gt;
-
-&lt;p&gt;Hopefully I&amp;rsquo;ll get the time to put the rest of the project together early
-next year. Got a house to get up to speed as well, so time is a little limited.&lt;/p&gt;
-</description>
+      <description>It&amp;rsquo;s been a while since I&amp;rsquo;ve written here, but that doesn&amp;rsquo;t mean I haven&amp;rsquo;t been busy. I&amp;rsquo;ve been working on a DIY version of Speidel&amp;rsquo;s Braumeister and the software side of things has come along quite nicely. The idea is to have a Raspberry Pi controlled beer brewing system for cooking the wort across a temperature profile. Much like the Braumeister, or Grainfather style brewers. A probe monitors the temperature and will switch the heating on and off to maintain the current temperature.</description>
     </item>
     
     <item>
       <title>Extracting bup files in Linux</title>
       <link>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</link>
-      <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 03 Sep 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</guid>
-      <description>&lt;p&gt;I recently got hold of some malware that got snapped up by McAfee and stored in a bup file.
-Keen to take a look at it, I researched how to &amp;lsquo;unbup&amp;rsquo; files and found this page:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.opensecurityresearch.com/2012/07/unbup-mcafee-bup-extractor-for-linux.html&#34;&gt;http://blog.opensecurityresearch.com/2012/07/unbup-mcafee-bup-extractor-for-linux.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;A slow bash script? A faster script in Perl? No, that won&amp;rsquo;t do. Rather than search
-for a Python implementation I decided to use this as an opportunity to write
-something, and thus my &lt;code&gt;unbup.py&lt;/code&gt; was born. You can get it from my &lt;a href=&#34;https://github.com/Svenito/unbup&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s about as simple as the bash script in terms of features, but it works, and
-it is also fairly fast. I&amp;rsquo;ve only tested it with the one file I have, but if
-you decide to use it, and it doesn&amp;rsquo;t work, send me the bup file and I&amp;rsquo;ll take a look
-at fixing it. Otherwise feel free to fork it and make your own fixes.&lt;/p&gt;
-</description>
+      <description>I recently got hold of some malware that got snapped up by McAfee and stored in a bup file. Keen to take a look at it, I researched how to &amp;lsquo;unbup&amp;rsquo; files and found this page: http://blog.opensecurityresearch.com/2012/07/unbup-mcafee-bup-extractor-for-linux.html A slow bash script? A faster script in Perl? No, that won&amp;rsquo;t do. Rather than search for a Python implementation I decided to use this as an opportunity to write something, and thus my unbup.py was born.</description>
     </item>
     
     <item>
       <title>CLI Pizza</title>
       <link>http://unlogic.co.uk/2015/03/04/cli-pizza/</link>
-      <pubDate>Wed, 04 Mar 2015 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 04 Mar 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/03/04/cli-pizza/</guid>
-      <description>&lt;p&gt;Recently someone was talking about ordering Pizza from within
-&lt;a href=&#34;http://sidefx.com&#34;&gt;Houdini&lt;/a&gt;. I figured that it must be possible somehow.
-I looked for an API and only found a US based, possibly out of date,
-&lt;a href=&#34;https://www.npmjs.com/package/dominos&#34;&gt;API for Dominos&lt;/a&gt; written in node.js.
-However I needed one that worked with the UK version of the Dominos site.
-So I began working on deconstructing the URLs that the Dominos site uses to get
-menus, place orders and such, and started building a Python API around that.&lt;/p&gt;
-
-&lt;p&gt;So far I&amp;rsquo;ve got a few features working and am happy with the progress. Here&amp;rsquo;s
-a little video of how it works at this stage:&lt;/p&gt;
-
-&lt;script type=&#34;text/javascript&#34; src=&#34;https://asciinema.org/a/17295.js&#34; id=&#34;asciicast-17295&#34; async&gt;&lt;/script&gt;
-
-&lt;p&gt;Quite a bit to do still, but happy with the progress. I&amp;rsquo;m planning to write up how
-I figured out all the API calls in order to interact with their backend, so stay
-tuned for that. Follow on &lt;a href=&#34;https://www.titter.com/binaryheadache&#34;&gt;Twitter&lt;/a&gt; or
-subscribe to the &lt;a href=&#34;http://unlogic.co.uk/feed.xml&#34;&gt;RSS&lt;/a&gt;. The code will go up
-on Github once it&amp;rsquo;s more feature complete.&lt;/p&gt;
-
-&lt;p&gt;UPDATE: &lt;a href=&#34;https://github.com/Svenito/dominos&#34;&gt;it&amp;rsquo;s on github&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Recently someone was talking about ordering Pizza from within Houdini. I figured that it must be possible somehow. I looked for an API and only found a US based, possibly out of date, API for Dominos written in node.js. However I needed one that worked with the UK version of the Dominos site. So I began working on deconstructing the URLs that the Dominos site uses to get menus, place orders and such, and started building a Python API around that.</description>
     </item>
     
     <item>
       <title>Python: expect the unexpected</title>
       <link>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</link>
-      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;ve not really had much of a play with Python 3, but I&amp;rsquo;m aware of some of its
-differences. Yesterday I found out about a difference that took me by surprise.
-Enough of a surprise that I felt the urge to write this post.&lt;/p&gt;
-
-&lt;h1 id=&#34;opinion-divided:3294e7ffbfda40bfebd468b4c32cfa57&#34;&gt;Opinion Divided&lt;/h1&gt;
-
-&lt;p&gt;What surprised me was how &lt;code&gt;/&lt;/code&gt; has changed in Python 3. In Python 2.7 it returns
-the result of the division of two numbers.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Checks out to me. &lt;code&gt;10 / 3&lt;/code&gt; is 3.3333, and because we are using integers in
-the expression, we expect an integer as the result.
-Change the input to floats (or at least one of the inputs)&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3.3333333333333335&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;and we get a float. Right, nothing weird there. Where it starts getting odd is
-that in Python 3 you &lt;strong&gt;always&lt;/strong&gt; get a float back, unless you use the &lt;code&gt;//&lt;/code&gt; operator.
-Apparently that is because too many people expected integer division to return a float.
-Maybe it&amp;rsquo;s just me and my fellow oldies who think that the original behaviour is
-correct and integer division should yield an integer, not a float. Pretty much all
-main stream languages behave like this. In C/C++ you need to cast one of the arguments
-to a float to get a float back.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;main&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cout&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;endl;&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cout&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;endl;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; ./a.out 
-3
-3.33333
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;I understand that if you are dividing numbers you will want to have
-the accuracy of the float type, but I find this a bit of an odd choice
-for the Python devs to make. But perhaps this is the future, and I&amp;rsquo;m
-just too old to accept what you whippersnappers are up to with your
-fancy &lt;a href=&#34;http://i.imgur.com/GUum4gy.gif&#34;&gt;languages and tools&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ultimately, does it really matter? Well yes and no. No, because Python is
-dynamically typed, so it doesn&amp;rsquo;t really matter what type the result is, whatever
-it gets assigned too will become what it needs to. Yes, because there may be
-times when getting a float might cause unexpected behaviour.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s not the end of the world as such, because the &lt;em&gt;no&lt;/em&gt; above greatly
-outweighs the &lt;em&gt;yes&lt;/em&gt;, but I&amp;rsquo;m still a little surprised at this change. I would
-perhaps have kept &lt;code&gt;/&lt;/code&gt; as it is and made &lt;code&gt;//&lt;/code&gt; the one that always returns a float.&lt;/p&gt;
-
-&lt;p&gt;And just to finish:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Python&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3.4&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
-&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/WEllYN3.gif&#34;&gt;Yeah, sure, why not?&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;ve not really had much of a play with Python 3, but I&amp;rsquo;m aware of some of its differences. Yesterday I found out about a difference that took me by surprise. Enough of a surprise that I felt the urge to write this post. Opinion Divided What surprised me was how / has changed in Python 3. In Python 2.7 it returns the result of the division of two numbers. &amp;gt;&amp;gt;&amp;gt; 8/2 4 &amp;gt;&amp;gt;&amp;gt; 10/3 3 Checks out to me.</description>
     </item>
     
     <item>
       <title>[dis]like</title>
       <link>http://unlogic.co.uk/2015/01/05/dislike/</link>
-      <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 05 Jan 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/01/05/dislike/</guid>
-      <description>
-
-&lt;p&gt;Isn&amp;rsquo;t it just like me to start a new year with a post titled &amp;ldquo;[dis]like&amp;rdquo;? It&amp;rsquo;s not as bad as it sounds. I want to write about coding challenge sites and what I like and dislike about them, specifically regarding Python challenges.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-i-like:c115de6831872c5792ce99c89a150515&#34;&gt;What I Like&lt;/h2&gt;
-
-&lt;p&gt;I take part in coding challenges regularily for various reasons and I get a great deal of benefit from them. Albeit some challenges are a bit contrived, they do offer some great practice in problem solving and writing clean code.&lt;/p&gt;
-
-&lt;p&gt;I recommend to anyone interesting in improving their coding skills to go to some programming challenge sites and home your skills. The problems are very varied and of different difficulties so there&amp;rsquo;s something for everyone.&lt;/p&gt;
-
-&lt;p&gt;I frequent &lt;a href=&#34;https://checkio.org&#34;&gt;checkIO&lt;/a&gt; and &lt;a href=&#34;https://codewars.com&#34;&gt;Codewars&lt;/a&gt; and have even submitted some challenges to the Codewars site. The benefit of attempting to solve the challenges is one thing, but to me the best return is from reading other people&amp;rsquo;s solutions. Solving a problem one way, and then seeing how someone else solved it is very interesting and great learning experience.&lt;/p&gt;
-
-&lt;p&gt;But this is also where the trouble begins.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-i-dislike:c115de6831872c5792ce99c89a150515&#34;&gt;What I Dislike&lt;/h2&gt;
-
-&lt;p&gt;Let me begin by going over some parts of the &lt;a href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;&gt;PEP20&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;Readability counts.&lt;/li&gt;
-&lt;li&gt;Special cases aren&amp;rsquo;t special enough to break the rules.&lt;/li&gt;
-&lt;li&gt;Although practicality beats purity.&lt;/li&gt;
-&lt;li&gt;Errors should never pass silently.&lt;/li&gt;
-&lt;li&gt;Unless explicitly silenced.&lt;/li&gt;
-&lt;li&gt;In the face of ambiguity, refuse the temptation to guess.&lt;/li&gt;
-&lt;li&gt;There should be one&amp;ndash; and preferably only one &amp;ndash;obvious way to do it.&lt;/li&gt;
-&lt;li&gt;Although that way may not be obvious at first unless you&amp;rsquo;re Dutch.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In this case I want to refer to &lt;em&gt;There should be one&amp;ndash; and preferably only one &amp;ndash;obvious way to do it.&lt;/em&gt;
-I admit, this is ambiguous for a good reason. What is this &lt;em&gt;obvious&lt;/em&gt; way? Taking the rest of the PEP20
-into account we can sort of gleen a definition for this, but it&amp;rsquo;s still open to interpretation by the
-developer. So what&amp;rsquo;s my issue here? Head over to one of these sites and look at a list of submitted solutions.
-You get a lot of variety, some clever, some clear, some long, some short. A whole mixture of ways of doing it.
-To me this goes against the whole Python way of &lt;em&gt;only one way&lt;/em&gt;. Sure, there&amp;rsquo;s a wrong and a right, or to be more
-precise, a bad, good and a better way to complete the task.&lt;/p&gt;
-
-&lt;p&gt;The sites will let people vote on solutions that other developers like or think are best. I however don&amp;rsquo;t always
-agree with the general concensus. Sometimes I look at the top few solutions, and while clever, and quite pythonic in
-certain ways, they are often not very clear. &lt;em&gt;Readability counts&lt;/em&gt;. Of course you are clever and can make use
-of some of Python&amp;rsquo;s awesome features and libraries, but not everyone you are going to be working with is going to
-be that clever, or that well versed in Python.&lt;/p&gt;
-
-&lt;p&gt;This is what matters to me. I look for readable code, because in a shared development environment you cannot rely on
-the original developer to be around forever. One day they will leave and their smarts will go with them.
-Then the slightly more elaborate code will be easier for the next person to pick up and the smart code will be left
-to degrade and possibly be re-written. While you might think that the next developer will love your smart and
-cryptic one-liners, they are most likely cursing your name. Consider having to debug someone else&amp;rsquo;s
-regular expression.&lt;/p&gt;
-
-&lt;p&gt;I don&amp;rsquo;t mean that &lt;em&gt;all&lt;/em&gt; top posts are bad, not by a long run. I have seen some very nice, elegant solutions in the top
-3 voted posts, but a lot of the time people tend to reward cleverness over clarity or maintainability. Of course
-in a programming challenge game that&amp;rsquo;s ok, I guess it&amp;rsquo;s part of the game, but outside of this, I look for different
-values. CheckIO has a nice feature where solutions can be divided into different categories: clear, creative, speedy,
-and uncategorised. I find that people on Codewars tend to favour the less readable (to me) solutions.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll give you an example from CheckIO&amp;rsquo;s &amp;ldquo;Weak Point&amp;rdquo; challenge. The aim was to calculate the sum of
-each column and row of a matrix and return the row, column with the lowest sum. The top clear answer is this:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;weak_point&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(matrix):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(matrix)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;row&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;min(range(n),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;r:sum(matrix[r][c]&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;range(n)))&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;col&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;min(range(n),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;c:sum(matrix[r][c]&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;r&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;range(n)))&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;row,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;col&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;I like this. It&amp;rsquo;s concise, makes use of some handy Python features and is readable. However, compare to this:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;weak_point&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(matrix):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;rows,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;cols&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;map(sum,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;matrix),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;map(sum,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;zip(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;matrix))&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;rows&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;index(min(rows)),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;cols&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;index(min(cols))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;This is the second most popular answer, and I would prefer this over the top one. To me this is more readable
-and easier to understand. There are fewer nested conditionals and statements, and it makes sense (assuming you
-understand how &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;zip&lt;/code&gt; work).
-Granted, this is my opinion and that doesn&amp;rsquo;t mean anyone who voted for the other answer is wrong,
-I am merely trying to say that if there is one way to do it, then how come there are so many ways to do it, and
-most of them don&amp;rsquo;t seem wrong? Should we also go for cleverness over maintainability and clarity? Perhaps I
-am expecting the wrong thing from challenge site submissions.&lt;/p&gt;
-
-&lt;h2 id=&#34;summary-tl-dr:c115de6831872c5792ce99c89a150515&#34;&gt;Summary (TL;DR)&lt;/h2&gt;
-
-&lt;p&gt;Programming challenge sites are great for improving your skills but be careful about learning how to be too
-clever. Being clever on your own and on challenge sites is great practice, but isn&amp;rsquo;t always the best way
-to solve an issue on a project that is or will me maintained by other people who you may
-never get to talk to and explain your code to. But perhaps I&amp;rsquo;m just not as good at reading Python anymore.&lt;/p&gt;
-</description>
+      <description>Isn&amp;rsquo;t it just like me to start a new year with a post titled &amp;ldquo;[dis]like&amp;rdquo;? It&amp;rsquo;s not as bad as it sounds. I want to write about coding challenge sites and what I like and dislike about them, specifically regarding Python challenges. What I Like I take part in coding challenges regularily for various reasons and I get a great deal of benefit from them. Albeit some challenges are a bit contrived, they do offer some great practice in problem solving and writing clean code.</description>
     </item>
     
     <item>
       <title>Threading Python</title>
       <link>http://unlogic.co.uk/2014/04/11/threading-python/</link>
-      <pubDate>Fri, 11 Apr 2014 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 11 Apr 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/04/11/threading-python/</guid>
-      <description>&lt;p&gt;Having helped my colleague deal with PyQt threads, I feel that
-this gif sums up threading in Python very well:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/h7mePfx.gif&#34; alt=&#34;threads&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Happy Friday&lt;/p&gt;
-</description>
+      <description>Having helped my colleague deal with PyQt threads, I feel that this gif sums up threading in Python very well: Happy Friday</description>
     </item>
     
     <item>
       <title>Unit testing Houdini Python plugins with nose and coverage</title>
       <link>http://unlogic.co.uk/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</link>
-      <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 20 Mar 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</guid>
-      <description>&lt;p&gt;We all know how important unit testing is, right? But often you wonder how can
-you test a not so straight forward tool. In this case we&amp;rsquo;re talking about a
-Python script intended to run inside &lt;a href=&#34;http://sidefx.com&#34;&gt;Houdini&lt;/a&gt;. In my specific
-case the python script is launched from a script on a node when the user clicks
-a button on the OTL. I want to run unit tests on this script, but the problem is
-that the script parses a set of nodes and does various things according to the
-types of nodes and layout of the nodes. It&amp;rsquo;s clear that the HOM is required in the
-unit tests. So I need to somehow run my unit tests inside houdini and have
-some nodes available for my testing. Fortunately this isn&amp;rsquo;t difficult to do, but
-it does require a little setup and some fiddling in order to get it to work.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll be using &lt;a href=&#34;https://nose.readthedocs.org&#34;&gt;nose tests&lt;/a&gt; as my test runner and
-&lt;a href=&#34;http://nedbatchelder.com/code/coverage/&#34;&gt;coverage&lt;/a&gt; for coverage testing.
-Because I want to make sure I test as much code as possible. I created a hip file that
-contains whatever nodes and connections I need to run most of the tests and saved
-this to the same directory as my test script.&lt;/p&gt;
-
-&lt;p&gt;Before we write some code you will need to install &lt;code&gt;nose&lt;/code&gt; and &lt;code&gt;coverage&lt;/code&gt; and make
-sure they work.&lt;/p&gt;
-
-&lt;p&gt;Now that we have all our dependencies installed, we need to import all the
-modules we need and set some things up.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;nose&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;sys&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;sys&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;insert(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;../path_of_module&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;os&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;os&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;environ[&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;NOSE_WITH_COVERAGE&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;1&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;os&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;environ[&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;NOSE_COVER_PACKAGE&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;module_to_test&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;hou&lt;/span&gt;
-
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;module_to_test&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;We import the &lt;code&gt;nose&lt;/code&gt; module and then we need to tell nose to make use of the
-coverage package. &lt;code&gt;os.environ[&#39;NOSE_WITH_COVERAGE&#39;] = &#39;1&#39;&lt;/code&gt; does just that, and
-&lt;code&gt;os.environ[&#39;NOSE_COVER_PACKAGE&#39;] = &#39;module_to_test&#39;&lt;/code&gt; restricts our test results to
-the module(s) we want to test. If you want to specify multiple modules simply
-separate them with commas: &lt;code&gt;os.environ[&#39;NOSE_COVER_PACKAGE&#39;] = &#39;module_to_test,another_module&#39;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Unfortunately for this to work properly you need to patch nose&amp;rsquo;s cover plugin.
-There&amp;rsquo;s a small bug in older versions, so depending on your distro you may need to
-make the following change to
-&lt;code&gt;nose/plugins/cover.py&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Change these lines
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;pkgs&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;[tolist(x)&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;x&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;options&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cover_packages]:&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;coverPackages&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;extends(pkgs)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;to these lines
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;pkgs&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tolist(options&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cover_packages):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;coverPackages&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;append(pkgs)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Otherwise the &lt;code&gt;NOSE_COVER_PACKAGE&lt;/code&gt; variable won&amp;rsquo;t work properly.&lt;/p&gt;
-
-&lt;p&gt;I also setup the &lt;code&gt;sys.path&lt;/code&gt; so that I load my local module rather
-than the globally installed one. Depending on how your directories are laid out
-you might not need this.&lt;/p&gt;
-
-&lt;p&gt;After this we need to import the &lt;code&gt;hou&lt;/code&gt; module and finally the module(s) we want to test.&lt;/p&gt;
-
-&lt;p&gt;Then we write our main function which will load our hip file and start our tests&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;__name__&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;hou&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;hipFile&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;load(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;/path/to/test.hip&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;nose&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;run(argv&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;[__file__],&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;--cover_html&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;As you can see, you can pass the commandline argments for nose into the run function.
-With &lt;code&gt;--cover_html&lt;/code&gt; we automatically generate the html coverage information. You
-could omit this and run &lt;code&gt;coverage html&lt;/code&gt; after the tests complete to generate the
-html coverage pages instead. The output from the two methods is slightly different,
-so pick the one that you prefer.&lt;/p&gt;
-
-&lt;p&gt;The next bits are up to you now, here you write your tests following a format like&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;test_afunction&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;node&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;hou&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;node(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;/obj/geo/box1&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;result&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;module_to_test&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;do_stuff(node)&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;assert&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(result&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;You can access any and all &lt;code&gt;hou.&lt;/code&gt; calls from your tests, so do what you must.&lt;/p&gt;
-
-&lt;p&gt;Once you are happy with your tests, or you just want to go ahead and test a single
-one, we need to run the tests through hython. Bear in mind that you&amp;rsquo;ll consume a
-batch license when you run these tests.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;hython ./test.py
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;where &lt;code&gt;test.py&lt;/code&gt; is the name of the file that contains the tests you wrote.
-After a while you&amp;rsquo;ll see your tests run and the coverage output. It should
-look a little like this&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;...
-Name          Stmts   Miss  Cover   Missing
--------------------------------------------
-module_to_test  &lt;span style=&#34;color: #ae81ff&#34;&gt;25&lt;/span&gt;     &lt;span style=&#34;color: #ae81ff&#34;&gt;14&lt;/span&gt;    44%   1-2, 6, 9, 12-15, 21, 27-32
-another_module  &lt;span style=&#34;color: #ae81ff&#34;&gt;314&lt;/span&gt;    &lt;span style=&#34;color: #ae81ff&#34;&gt;173&lt;/span&gt;    45%   4-20, 24, 37-38, 46
--------------------------------------------
-TOTAL           &lt;span style=&#34;color: #ae81ff&#34;&gt;339&lt;/span&gt;    &lt;span style=&#34;color: #ae81ff&#34;&gt;187&lt;/span&gt;    45%   
-----------------------------------------------------------------------
-Ran &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; tests in 0.053s
-
-OK
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;You&amp;rsquo;ll also have a directory called &lt;code&gt;cover&lt;/code&gt; which will contain the html output,
-assuming you have the &lt;code&gt;--cover_html&lt;/code&gt; flag on. If not, run &lt;code&gt;coverage html&lt;/code&gt; and
-after a short wait you will have a &lt;code&gt;htmlcov&lt;/code&gt; directory with the html coverage
-info.&lt;/p&gt;
-
-&lt;p&gt;I hope this helps you out if you ever wanted to unit test your Houdini Python
-script. It&amp;rsquo;s not as difficult as I thought, but it does take a little bit of setting
-up to get everything to work right. There will still be some limitations as to what
-you can test and get results for, but any testing is always better than none at
-all I say.&lt;/p&gt;
-
-&lt;p&gt;And the &lt;code&gt;test.py&lt;/code&gt; file as a whole&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;nose&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;sys&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;sys&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;insert(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;../path_of_module&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;os&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;os&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;environ[&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;NOSE_WITH_COVERAGE&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;1&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;os&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;environ[&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;NOSE_COVER_PACKAGE&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;module_to_test&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;hou&lt;/span&gt;
-
-&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;module_to_test&lt;/span&gt;
-
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;test_afunction&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;node&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;hou&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;node(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;/obj/geo/box1&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;result&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;module_to_test&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;do_stuff(node)&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;assert&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(result&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;__name__&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;hou&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;hipFile&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;load(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;/path/to/test.hip&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;nose&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;run(argv&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;[__file__],&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;--cover_html&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-</description>
+      <description>We all know how important unit testing is, right? But often you wonder how can you test a not so straight forward tool. In this case we&amp;rsquo;re talking about a Python script intended to run inside Houdini. In my specific case the python script is launched from a script on a node when the user clicks a button on the OTL. I want to run unit tests on this script, but the problem is that the script parses a set of nodes and does various things according to the types of nodes and layout of the nodes.</description>
     </item>
     
     <item>
       <title>Vim as a Python IDE</title>
       <link>http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/</link>
-      <pubDate>Fri, 08 Feb 2013 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 Feb 2013 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;ve been spending quite a bit of time with our good old buddy Python recently, and when
+      <description>&lt;p&gt;I&amp;rsquo;ve been spending quite a bit of time with our good old buddy Python recently, and when
 I do, I always invite along our mutual friend Vim. He&amp;rsquo;s a barrell of laughs and always
 knows of a quicker way to do things. So I&amp;rsquo;ve been getting the two acquainted more and more
 and Vim&amp;rsquo;s turned into a totally different person. So I am going to share with you how
@@ -513,299 +94,13 @@ Once you&amp;rsquo;re comfortable with using it, and you&amp;rsquo;ve gotten to 
 install some extras.&lt;/p&gt;
 
 &lt;p&gt;Right, let&amp;rsquo;s get started.&lt;/p&gt;
-
-&lt;p&gt;First and foremost you should install &lt;a href=&#34;https://github.com/gmarik/vundle&#34;&gt;Vundle&lt;/a&gt;. Vundle will
-make installing and updating all the other tools much easier. It&amp;rsquo;s basically pathogen with a lot
-of nice extras, like installing the bundles itself from their Github repos (and other sources).
-For more info see the README in the Github repo. To install follow the instructions from the repo,
-which are repeated below:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;thenadd the following to your &lt;code&gt;.vimrc&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;nocompatible&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;filetype&lt;/span&gt; off
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;rtp+=~&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;/.vim/&lt;/span&gt;bundle&lt;span style=&#34;color: #e6db74&#34;&gt;/vundle/&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;call&lt;/span&gt; vundle#rc&lt;span style=&#34;color: #f8f8f2&#34;&gt;()&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; let Vundle manage Vundle&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; required! &lt;/span&gt;
-Bundle &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;gmarik/vundle&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; The bundles you install will be listed here&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;filetype&lt;/span&gt; plugin indent &lt;span style=&#34;color: #66d9ef&#34;&gt;on&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; The rest of your config follows here&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now if you launch Vim and run the command&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;BundleList
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;a new split should appear listing the Vundle bundle. Everything went ok in that case.&lt;/p&gt;
-
-&lt;p&gt;As you go through this article you can install each item separately or you can add the bundles
-to your &lt;code&gt;.vimrc&lt;/code&gt; one by one and then just install them all at once at the end if you prefer.&lt;/p&gt;
-
-&lt;p&gt;Ok, so having done that let&amp;rsquo;s configure a few more things.&lt;/p&gt;
-
-&lt;h1 id=&#34;highlight-excess-line-length:c2f6c0c20421a669648093b37836b9d8&#34;&gt;Highlight excess line length&lt;/h1&gt;
-
-&lt;p&gt;You&amp;rsquo;ll probably want to set a restriction to line width for python files. I like to set this to 120
-chars. 80 chars is usually the standard, but with modern displays we can allow ourselves a few more,
-but you are free to adjust as you like. To enable this excess highlighting, add the following lines
-to your &lt;code&gt;.vimrc&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;augroup vimrc_autocmds
-    autocmd&lt;span style=&#34;color: #f8f8f2&#34;&gt;!&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;    &amp;quot; highlight characters past column 120&lt;/span&gt;
-    autocmd &lt;span style=&#34;color: #f8f8f2&#34;&gt;FileType&lt;/span&gt; python &lt;span style=&#34;color: #f8f8f2&#34;&gt;highlight&lt;/span&gt; Excess ctermbg&lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt;DarkGrey guibg&lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt;Black
-    autocmd &lt;span style=&#34;color: #f8f8f2&#34;&gt;FileType&lt;/span&gt; python &lt;span style=&#34;color: #66d9ef&#34;&gt;match&lt;/span&gt; Excess &lt;span style=&#34;color: #e6db74&#34;&gt;/\%120v.*/&lt;/span&gt;
-    autocmd &lt;span style=&#34;color: #f8f8f2&#34;&gt;FileType&lt;/span&gt; python &lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;nowrap&lt;/span&gt;
-    augroup END
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Anything that exceeds the line length will be highlighted black, feel free to change this colour
-to suit your colourscheme. It also turns off line wrapping for python files.&lt;/p&gt;
-
-&lt;h1 id=&#34;powerline:c2f6c0c20421a669648093b37836b9d8&#34;&gt;Powerline&lt;/h1&gt;
-
-&lt;p&gt;Next up we install &lt;a href=&#34;https://github.com/Lokaltog/powerline&#34;&gt;Powerline&lt;/a&gt; which looks like this:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;center%20/images/content/powerline.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;It shows you your current mode (NORMAL), the current branch in Git, the file you are editing and some other
-useful information.&lt;/p&gt;
-
-&lt;p&gt;Simply add:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Bundle &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;Lokaltog/powerline&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; {&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;rtp&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;powerline/bindings/vim/&amp;#39;&lt;/span&gt;}
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;to your &lt;code&gt;.vimrc&lt;/code&gt; below the comment we added earlier &lt;code&gt;&amp;quot; The bundles you install will be listed here&lt;/code&gt;. Restart Vim
-and run &lt;code&gt;:BundleList&lt;/code&gt; again. Now you should also see the Powerline bundle listed there. To install it run the command&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;BundleInstall
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You&amp;rsquo;ll see Vundle process the list and report on the status of the installation. Hopefully everything went ok.&lt;/p&gt;
-
-&lt;p&gt;Powerline however does require a few more things, most notably patched fonts to display the special characters it uses.
-You can get pre-patched fonts from &lt;a href=&#34;https://github.com/Lokaltog/powerline-fonts&#34;&gt;the powerline-fonts repo&lt;/a&gt;. If your
-font isn&amp;rsquo;t listed then the powerline repo does provide a font-patcher you can use to try and patch your font. How this
-is done however is outside the scope of this article. To select your font and ensure that Powerline is always shown,
-you will also need to add these two lines to your &lt;code&gt;.vimrc&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Powerline setup&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;guifont=&lt;/span&gt;DejaVu\ Sans\ Mono\ &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt;\ Powerline\ &lt;span style=&#34;color: #ae81ff&#34;&gt;9&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;laststatus=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;&lt;code&gt;laststatus&lt;/code&gt; ensures that Powerline shows up even if you don&amp;rsquo;t have any splits.&lt;/p&gt;
-
-&lt;p&gt;Restart vim and hopefully you&amp;rsquo;ll see your powerline appear at the bottom of you window.&lt;/p&gt;
-
-&lt;p&gt;Please note that this version of Powerline is a Python based version and thus requires your Vim to  be built
-with Python enabled. To check if it is run:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;$&amp;gt;&lt;/span&gt; vim --version &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; grep -i python
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;from the commandline. If you see &lt;code&gt;+python&lt;/code&gt; then you are ok. There is
-&lt;a href=&#34;https://github.com/Lokaltog/vim-powerline&#34;&gt;another Powerline&lt;/a&gt; that is a native Vim plugin should
-you not have Python enabled or prefer to use it over the Python version.&lt;/p&gt;
-
-&lt;h1 id=&#34;fugitive:c2f6c0c20421a669648093b37836b9d8&#34;&gt;Fugitive&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/tpope/vim-fugitive&#34;&gt;Fugitive&lt;/a&gt; is a &lt;a href=&#34;http://git-scm.com/&#34;&gt;Git&lt;/a&gt; plugin. It basically wraps
-most Git commands so that you can call them from inside Vim. They are prefixed with &lt;code&gt;G&lt;/code&gt;, for example &lt;code&gt;Gcommit&lt;/code&gt;
-For example it allows you to stage files directly from Vim and make the commit. It also leverages VimDiff to perform
-conflict resolution, blame and the like. There&amp;rsquo;s a whole set of screencasts on how to use it available from
-&lt;a href=&#34;http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/&#34;&gt;Vim Casts&lt;/a&gt; which I recommend watching.&lt;/p&gt;
-
-&lt;p&gt;To install Fugitive, add its bundle to Vundle:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Bundle &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;tpope/vim-fugitive&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Run &lt;code&gt;:BundleInstall&lt;/code&gt; again to install it.&lt;/p&gt;
-
-&lt;h1 id=&#34;nerdtree:c2f6c0c20421a669648093b37836b9d8&#34;&gt;NerdTree&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/scrooloose/nerdtree&#34;&gt;NerdTree&lt;/a&gt; is a filebrowser that pops up in a
-split when you need it and features a tree like file browser (hence the  &lt;em&gt;tree&lt;/em&gt; part in the name).
-It looks somewhat like this:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;center%20/images/content/nerdtree.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;As usual you just need to add its package to Vundle:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Bundle &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;scrooloose/nerdtree&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;and &lt;code&gt;:BundleInstall&lt;/code&gt; once you restart Vim. To activate with &lt;code&gt;F2&lt;/code&gt; add the following to &lt;code&gt;.vimrc&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;map &lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;F2&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;&lt;/span&gt; :NERDTreeToggle&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;CR&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Press &lt;code&gt;F2&lt;/code&gt; in vim and it will take you to the current working directory. Press &lt;code&gt;?&lt;/code&gt; to see NerdTree&amp;rsquo;s
-list of commands.&lt;/p&gt;
-
-&lt;h1 id=&#34;python-mode:c2f6c0c20421a669648093b37836b9d8&#34;&gt;Python mode&lt;/h1&gt;
-
-&lt;p&gt;This is the big one. It basically adds all the Python functionality you could ever want in Vim. Things like Lint,
-codecompletion, documentation lookup, jump to classes, refactoring tools etc. You&amp;rsquo;ll find it in
-&lt;a href=&#34;https://github.com/klen/python-mode&#34;&gt;Python-mode&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Its bundle is:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Bundle &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;klen/python-mode&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Again, &lt;code&gt;:BundleInstall&lt;/code&gt; to install it and then we probably want to configure some items. There&amp;rsquo;s a lot to
-configure, so if you want the complete picture I suggest you head over to the
-&lt;a href=&#34;https://github.com/klen/python-mode&#34;&gt;Github repo&lt;/a&gt; and read the more complete docs,
-or run &lt;code&gt;:help python-mode&lt;/code&gt; from inside Vim.&lt;/p&gt;
-
-&lt;p&gt;I found the following settings most useful personally, but you might want to tweak some settings to suit your needs
-and workflow. The following a copy-paste from my .vimrc. The keyboard shortcuts in the comments are the ones I find
-most useful and I keep them there for reference:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Python-mode&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Activate rope&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Keys:&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; K             Show python docs&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; &amp;lt;Ctrl-Space&amp;gt;  Rope autocomplete&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; &amp;lt;Ctrl-c&amp;gt;g     Rope goto definition&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; &amp;lt;Ctrl-c&amp;gt;d     Rope show documentation&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; &amp;lt;Ctrl-c&amp;gt;f     Rope find occurrences&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; &amp;lt;Leader&amp;gt;b     Set, unset breakpoint (g:pymode_breakpoint enabled)&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; [[            Jump on previous class or function (normal, visual, operator modes)&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; ]]            Jump on next class or function (normal, visual, operator modes)&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; [M            Jump on previous class or method (normal, visual, operator modes)&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; ]M            Jump on next class or method (normal, visual, operator modes)&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_rope &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Documentation&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_doc &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_doc_key &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;K&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot;Linting&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_lint &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_lint_checker &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;pyflakes,pep8&amp;quot;&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Auto check on save&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_lint_write &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Support virtualenv&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_virtualenv &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Enable breakpoints plugin&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_breakpoint &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_breakpoint_bind &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;&amp;lt;leader&amp;gt;b&amp;#39;&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; syntax highlighting&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_syntax &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_syntax_all &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_syntax_indent_errors &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_syntax_all
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_syntax_space_errors &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_syntax_all
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Don&amp;#39;t autofold code&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:pymode_folding &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;To explain the above a bit, here&amp;rsquo;s what it does:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Allow me to look up Python docs by pressing &lt;code&gt;K&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Automatically check my code on each save, but only use &lt;code&gt;PyLint&lt;/code&gt; or &lt;code&gt;PyFlakes&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Support virtualenv&lt;/li&gt;
-&lt;li&gt;Use &lt;code&gt;&amp;lt;leader&amp;gt;b&lt;/code&gt; to add a pdb shortcut (inserts &lt;code&gt;import pdb; pdb.set_trace() # XXX BREAKPOINT&lt;/code&gt; into your code&lt;/li&gt;
-&lt;li&gt;Enhanced syntax highlighting and formatting&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As I said, please read the full docs and adjust the settings as you see fit.&lt;/p&gt;
-
-&lt;h1 id=&#34;jedi-vim:c2f6c0c20421a669648093b37836b9d8&#34;&gt;Jedi vim&lt;/h1&gt;
-
-&lt;p&gt;Since I wrote this article I have discovered &lt;a href=&#34;https://github.com/davidhalter/jedi-vim&#34;&gt;Jedi-vim&lt;/a&gt;
-which I now use as the autocompletion tool instead of the rope plugin that comes with Python Mode. All you need to do is
-add the plugin to the vundle list and turn off Rope by replacing the &lt;code&gt;let g:pymode_rope = 1&lt;/code&gt; with
-&lt;code&gt;let g:pymode_rope = 0&lt;/code&gt;. I feel it&amp;rsquo;s snappier and more capable than Rope. But if you want to avoid
-installing another plugin, then feel free to stay with Rope.&lt;/p&gt;
-
-&lt;h1 id=&#34;other-settings:c2f6c0c20421a669648093b37836b9d8&#34;&gt;Other settings&lt;/h1&gt;
-
-&lt;p&gt;I also use some specific Vim settings in &lt;code&gt;.vimrc&lt;/code&gt; that make the experience a bit nicer for me:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; Use &amp;lt;leader&amp;gt;l to toggle display of whitespace&lt;/span&gt;
-nmap &lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;lt;&lt;/span&gt;leader&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;l&lt;/span&gt; :&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;list!&amp;lt;&lt;/span&gt;CR&lt;span style=&#34;color: #f8f8f2&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; automatically change window&amp;#39;s cwd to file&amp;#39;s dir&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;autochdir&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; I&amp;#39;m prefer spaces to tabs&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tabstop=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;shiftwidth=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;set&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;expandtab&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;&amp;quot; more subtle popup colors &lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; has &lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;gui_running&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;highlight&lt;/span&gt; Pmenu guibg&lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;#cccccc&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;gui&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;=bold&lt;/span&gt;    
-&lt;span style=&#34;color: #66d9ef&#34;&gt;endif&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;h1 id=&#34;summary:c2f6c0c20421a669648093b37836b9d8&#34;&gt;Summary&lt;/h1&gt;
-
-&lt;p&gt;This is basically the crux of my Python and Vim development setup. I think the core of the whole thing really is
-python mode as it provides the most Python specific tools. The other plugins however do add some really useful
-functionality to make your life a little easier. You might ask why I don&amp;rsquo;t list things like &lt;code&gt;fuzzy file search&lt;/code&gt;
-and such, and that&amp;rsquo;s because I don&amp;rsquo;t use it. I&amp;rsquo;ve tried it before and didn&amp;rsquo;t really get on with it very well and I
-prefer to either just open the files directly or using &lt;code&gt;NerdTree&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;I hope that this post provides some pointers to help you setup your Vim based Python development environment. As
-I said above, feel free to leave a comment with any plugins or settings that you find useful, always happy to hear
-about what else is out there.&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Random album generator in python</title>
       <link>http://unlogic.co.uk/2012/11/06/random-album-generator/</link>
-      <pubDate>Tue, 06 Nov 2012 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 06 Nov 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/11/06/random-album-generator/</guid>
       <description>&lt;p&gt;You may have heard about the &amp;ldquo;random music album&amp;rdquo; thing. Basically it goes like this:&lt;/p&gt;
@@ -838,158 +133,32 @@ about what else is out there.&lt;/p&gt;
 &lt;/figure&gt;
 
 
-
+&lt;p&gt;
 &lt;figure &gt;
     
         &lt;img src=&#34;http://unlogic.co.uk/images/content/album4.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
-
-
-&lt;p&gt;Let&amp;rsquo;s cover our dependencies first. You will need:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;python 2.6 (or similar)&lt;/li&gt;
-&lt;li&gt;PIL (&lt;a href=&#34;http://www.pythonware.com/products/pil/&#34;&gt;python Image Library&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;A &lt;a href=&#34;http://www.flickr.com/services/apps/create/apply/&#34;&gt;Flickr API key&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.gnu.org/software/wget/&#34;&gt;wget&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Not much to ask for is it? So once you&amp;rsquo;ve made sure you have all that, let&amp;rsquo;s start by getting the album cover. This is handled by the &lt;a href=&#34;http://www.flickr.com/services/api/flickr.interestingness.getList.html&#34;&gt;interestingness&lt;/a&gt; part of the API and is a very simple call that will return an XML structure of the photos on that page. Once we have a response we parse the XML and get the elements we need to construct the photo URL. It&amp;rsquo;s a short function and here it is:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getAlbumImage&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;page&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;random&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;randint(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;80&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://api.flickr.com/services/rest/?method=flickr.interestingness.getList&amp;amp;api_key=YOURAPIKEYHERE&amp;amp;per_page=6&amp;amp;page=%d&amp;amp;format=rest&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(page)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;minidom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;parse(urllib&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;urlopen(url))&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getElementsByTagName(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;photo&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;farm_id&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;farm&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;server_id&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;server&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;the_id&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;secret&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;secret&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
-    
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;photo_url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://farm%s.staticflickr.com/%s/%s_%s_b.jpg&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(farm_id,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;server_id,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;the_id,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;secret)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;target_photo&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;band.jpg&amp;#39;&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;subprocess&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;call([&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/usr/bin/wget&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-O&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;target_photo,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;photo_url])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;First we generate a random number which will be the page number we use in constructing the API URL. Once constructed we use &lt;code&gt;minidom&lt;/code&gt; to parse it and start extracting our data. If you paste the URL into your browser (with your valid API key) you can see the response format. Now that we have all the data we need, we construct our image URL (the format for this is in the docs) and save it to &lt;code&gt;band.jpg&lt;/code&gt; using &lt;code&gt;wget&lt;/code&gt;. You can of course use something else, but this is just easy here.&lt;/p&gt;
-
-&lt;p&gt;Right, onto getting our band name. This is the random Wikipedia article. Luckily Wikipedia has an API also, and doesn&amp;rsquo;t require an API key for this purpose. This is an even shorter function:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getBandName&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;random_wiki_url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://en.wikipedia.org/w/api.php?format=xml&amp;amp;action=query&amp;amp;list=random&amp;amp;rnnamespace=0&amp;amp;rnlimit=1&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;minidom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;parse(urllib&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;urlopen(random_wiki_url))&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;line&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getElementsByTagName(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;page&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;):&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;line&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
-
-&lt;p&gt;As above we create the URL, parse the output with minidom and fetch our page title. Done.&lt;/p&gt;
-
-&lt;p&gt;Album title is a little trickier. I couldn&amp;rsquo;t find a decent quote page that offered a free, easy to use API, so I decided to be a little more hacky and just parse the HTML itself. Hey, it works, don&amp;rsquo;t judge me. We need a helper class for this called &lt;code&gt;MyHTMLParser&lt;/code&gt; that derives from python&amp;rsquo;s &lt;a href=&#34;http://docs.python.org/2/library/htmlparser.html?highlight=htmlparser#HTMLParser&#34;&gt;HTMLParser&lt;/a&gt; class.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;MyHTMLParser&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(HTMLParser):&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;__init__&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self):&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;HTMLParser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;__init__(self)&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;False;&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;[]&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;handle_starttag&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tag,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;attrs):&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tag&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;dt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
-            &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;attrs[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;][&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;attrs[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;][&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;quote&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
-                &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;True&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;handle_endtag&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;data):&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;pass&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;handle_data&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;data):&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data:&lt;/span&gt;
-            &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;append(data)&lt;/span&gt;
-            &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;False&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getAlbumTitle&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;random_quote_url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://www.quotationspage.com/random.php3&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;page&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;urllib&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;urlopen(random_quote_url)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;read()&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;parser&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;MyHTMLParser()&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;parser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;feed(page)&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;num_quotes&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(parser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;quote&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;parser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes[random&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;randint(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;num_quotes)]&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;rstrip(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;random&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;randint(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;words&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;quote&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;split()&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(words):&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(words)&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;join(words[&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set:])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;The class here is used to parse the HTML from &lt;a href=&#34;http://www.quotationspage.com/random.php3&#34;&gt;http://www.quotationspage.com/random.php3&lt;/a&gt;, specifically the tag that starts with &lt;code&gt;quote&lt;/code&gt;. Once we have that we start capturing the data between that tag and store it in an array. Our &lt;code&gt;getAlbumTitle&lt;/code&gt; function will use this data to select a random quote and then get the last 3 or 5 words from it and join them with spaces before returning that new string.&lt;/p&gt;
-
-&lt;p&gt;So now we have the data that we need, we just need to wrap it all up and generate our final image using &lt;code&gt;PIL&lt;/code&gt;. Surprise, surprise, this isn&amp;rsquo;t a big deal either.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;band_name&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;getBandName()&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;album_title&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;getAlbumTitle()&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;cover&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;getAlbumImage()&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;PIL&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageFont&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;PIL&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;PIL&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageDraw&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;fnt&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageFont&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;truetype(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/usr/share/fonts/dejavu/DejaVuSans.ttf&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;lineWidth&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;20&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;open(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;band.jpg&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;imagebg&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;new(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;RGBA&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;size,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#000000&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #75715e&#34;&gt;# make an entirely black image&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;mask&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;new(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;size,&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#000000&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;       &lt;span style=&#34;color: #75715e&#34;&gt;# make a mask that masks out all&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageDraw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Draw(image)&lt;/span&gt;                     &lt;span style=&#34;color: #75715e&#34;&gt;# setup to draw on the main image&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;drawmask&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageDraw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Draw(mask)&lt;/span&gt;                &lt;span style=&#34;color: #75715e&#34;&gt;# setup to draw on the mask&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;drawmask&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;line((&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;lineWidth,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;size[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;],lineWidth),&lt;/span&gt;
-                  &lt;span style=&#34;color: #f8f8f2&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#999999&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;        &lt;span style=&#34;color: #75715e&#34;&gt;# draw a line on the mask to allow some bg through&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;paste(imagebg,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;mask&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask)&lt;/span&gt;                    &lt;span style=&#34;color: #75715e&#34;&gt;# put the (somewhat) transparent bg on the main&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;text((&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;band_name,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;font&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fnt,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;      &lt;span style=&#34;color: #75715e&#34;&gt;# add some text to the main&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;text((&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;40&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;album_title,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;font&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fnt,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;      &lt;span style=&#34;color: #75715e&#34;&gt;# add some text to the main&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;del&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;save(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;out.jpg&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;JPEG&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,quality&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s go over what&amp;rsquo;s happening here. You&amp;rsquo;re welcome to clean it up as an exercise if you wish or think some values (like filenames) etc need configuring. Firstly we call the previously defined functions to fetch our album data and then we start the drawing. I use the &lt;code&gt;DejaVuSans.ttf&lt;/code&gt; font for this example, but you can use any font you have, or even use different fonts for the title and band name, to make your cover look a bit more pleasing. Once the image we saved from Flickr is open, we start writing our title and band name on the album cover, and save out the result as a &lt;code&gt;JPEG&lt;/code&gt;. The code here is commented so I won&amp;rsquo;t go over the details here.&lt;/p&gt;
-
-&lt;p&gt;And that&amp;rsquo;s all there is to it. If you want the the script as a whole file, you can &lt;a href=&#34;https://gist.github.com/4025200&#34;&gt;get it from this gist&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Parsing email in python</title>
       <link>http://unlogic.co.uk/2012/10/11/parsing-email-in-python/</link>
-      <pubDate>Thu, 11 Oct 2012 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 11 Oct 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/10/11/parsing-email-in-python/</guid>
       <description>&lt;p&gt;I have a domain where I host images. It&amp;rsquo;s nothing fancy, just a collection where gifs and generally humerous images get stored in a custom gallery script.
 I also have a script on my host that I can pass a URL to and it will get the image with wget, put it in the right directory and then curl the import URL for the gallery. So if you&amp;rsquo;ve ever wanted to parse email addresses for content via a script, read on. Example code inside.&lt;/p&gt;
-
-&lt;p&gt;Now this in principle is great, but sometimes I need to add an image from my phone and the whole ssh thing becomes a bit cumbersome. Usually I&amp;rsquo;ll see something in Reeder or some other iPhone app which allows me to email the URL. Perfect. So I wrote a quick script that would do the work for me, and set up an email address that passes any content to this script. The script in question is here:&lt;/p&gt;
-
-&lt;p&gt;{% gist 3872497 %}&lt;/p&gt;
-
-&lt;p&gt;I use the &lt;code&gt;fileinput&lt;/code&gt; module to read the data from stdin and then join it all to a single text chunk. I&amp;rsquo;m not expecting too much data in the email, so this isn&amp;rsquo;t a big issue. Then I extract the message via the &lt;code&gt;email&lt;/code&gt; module and parse the payload in order to get the actual email body, discarding the headers and all the other things I don&amp;rsquo;t need. Assuming people have good etiquette and have the correct signature separator (&lt;code&gt;-- \n&lt;/code&gt;), I also strip off the signature.
-Once I have the body I extract the image URL(s) using regular expressions, and then pass the URL to my import script.&lt;/p&gt;
-
-&lt;p&gt;As you can see this only works with image URLs that are prefixed with &lt;code&gt;http://&lt;/code&gt;. The email address is a random collection of letters and numbers to reduce the likelyhood of just anyone emailling links.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Tube status for Conky</title>
       <link>http://unlogic.co.uk/2012/06/07/tube-status/</link>
-      <pubDate>Thu, 07 Jun 2012 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 07 Jun 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/06/07/tube-status/</guid>
       <description>&lt;p&gt;Last night I was affected by &amp;ldquo;severe delays on the Central line&amp;rdquo; caused by a burst watermain and bringing part of the line to its knees. Unfortunately I only found this out once I got to the station. Usually the line is well behaved and I have little need to check it often. I know it&amp;rsquo;s really quick to do so and there&amp;rsquo;s a whole host of ways to dit too. But the problems I have with them are:&lt;/p&gt;
@@ -1001,140 +170,28 @@ Once I have the body I extract the image URL(s) using regular expressions, and t
 &lt;/ol&gt;
 
 &lt;p&gt;So here&amp;rsquo;s what I&amp;rsquo;ve come up with&lt;/p&gt;
-
-&lt;p&gt;A CLI app that checks the tube status for any number of given lines. &amp;ldquo;Yeah, how does that help?&amp;rdquo; I hear you ask. &amp;ldquo;You still have to use it to check it&amp;rdquo; you say. True. But there&amp;rsquo;s another way to use it: Conky.&lt;/p&gt;
-
-&lt;p&gt;I use &lt;a href=&#34;http://conky.sourceforge.net/&#34;&gt;Conky&lt;/a&gt; and I love it. So what better than to have the tube status for the relevant lines &lt;strong&gt;always&lt;/strong&gt; on my desktop and updating every few seconds? So I quickly put together this python script to accomplish the task:&lt;/p&gt;
-
-&lt;p&gt;{% gist 2888187 %}&lt;/p&gt;
-
-&lt;p&gt;And it looks like this:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;center%20/images/content/conky.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;To add it to Conky just edit the &lt;code&gt;.conkyrc&lt;/code&gt; file and add a line like so: &lt;code&gt;$alignr${execi 2 /path/to/tube.py central -s}&lt;/code&gt; where &lt;em&gt;central&lt;/em&gt; is the name(s)  of the line(s) (separate multiple lines with spaces) you want to get statuses for. The full list of lines is &lt;a href=&#34;http://tubeupdates.com/documentation/&#34;&gt;here&lt;/a&gt;. The -s simply tells the script to supress the output of the full message and shows only the line name and short status.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;d be good to know if you find it useful or if you have any suggestions for it.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Sitting is bad</title>
       <link>http://unlogic.co.uk/2012/06/06/sitting-is-bad/</link>
-      <pubDate>Wed, 06 Jun 2012 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 06 Jun 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/06/06/sitting-is-bad/</guid>
-      <description>&lt;p&gt;So the internet has recently been telling me that sitting is bad. Really bad. Well only if you &lt;a href=&#34;http://www.msnbc.msn.com/id/34956099/ns/health-fitness/t/you-sitting-down-experts-say-itll-kill-you/&#34;&gt;sit&lt;/a&gt; &lt;a href=&#34;http://mashable.com/2011/05/09/sitting-down-infographic/&#34;&gt;for&lt;/a&gt; &lt;a href=&#34;http://lifehacker.com/5800720/the-sitting-is-killing-you-infographic-illustrates-the-stress-of-prolonged-sitting-importance-of-getting-up&#34;&gt;long&lt;/a&gt; &lt;a href=&#34;http://www.sciencedaily.com/releases/2011/07/110712093859.htm&#34;&gt;periods&lt;/a&gt; of time. At my office it is very unlikely that they will be willing to furnish me with a standing desk unless my doctor tells them to. The latter also being unlikely as my back isn&amp;rsquo;t in a bad enough shape (yet).&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m also not willing to &lt;a href=&#34;http://gregschlom.com/post/4555981908/standing-desk&#34;&gt;make my own&lt;/a&gt; version of a standing desk either, unless it was a better looking one :) So now what? Fear not. It turns out that if you stand for about 5 minutes every hour it already helps &lt;strong&gt;A LOT&lt;/strong&gt;. So that I don&amp;rsquo;t miss my standing breaks, I need a timer. An unobtrusive little app that sits in my taskbar and just alerts me at intervals to take a break and have a stand. Far be it for me to actually go looking for something that does this just how I want it. That sounds like too much work really. Thus I decided to turn it into a project for myself and write my own. I mean, how hard can it be?&lt;/p&gt;
-
-&lt;p&gt;Turns out: not so hard at all. After about an hour of hacking around with some PyQt I made this: &lt;a href=&#34;https://github.com/Svenito/EasyTimer&#34;&gt;https://github.com/Svenito/EasyTimer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It runs in the system tray, lets you set a custom timer period and then it pops up a window once the time expires. Not tested to destruction or particularily pretty, but it does what it needs to do. I&amp;rsquo;ll need to tweak some dialogs and add some little features, but if you want to do yourself a favour and take regular breaks, grab the timer and give it a go.&lt;/p&gt;
-
-&lt;p&gt;Right, time for a stand me thinks&amp;hellip;.&lt;/p&gt;
-</description>
+      <description>So the internet has recently been telling me that sitting is bad. Really bad. Well only if you sit for long periods of time. At my office it is very unlikely that they will be willing to furnish me with a standing desk unless my doctor tells them to. The latter also being unlikely as my back isn&amp;rsquo;t in a bad enough shape (yet). I&amp;rsquo;m also not willing to make my own version of a standing desk either, unless it was a better looking one :) So now what?</description>
     </item>
     
     <item>
       <title>Shapely Window in PyQT</title>
       <link>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</link>
-      <pubDate>Fri, 27 May 2011 15:38:21 +0000</pubDate>
+      <pubDate>Fri, 27 May 2011 15:38:21 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</guid>
       <description>&lt;p&gt;Recently I needed to make a PyQt app where the &lt;strong&gt;window&lt;/strong&gt; is the shape of an image and doesn’t have a border. I say needed, that’s not strictly true, more like wanted to because it’d be more interesting.&lt;/p&gt;
-
-&lt;p&gt;It wasn’t as straight forward as I had hoped but I managed to get it working in the end and here I am about to share it with the world. Here’s what we will need:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;python, Qt, and PyQt installed&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;The image you want to use as the background with transparency. PNG will do nicely&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;A texteditor&lt;/li&gt;
-&lt;li&gt;A cup of coffee&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Set the coffee aside so you don’t knock it over, but keep it within reach. First we need to open up Designer.&lt;/p&gt;
-
-&lt;p&gt;Once open create a new Dialog or MainWindow. Open the resource browser and add your background image to the list of resources. Now right click on the &lt;strong&gt;window&lt;/strong&gt; and select &lt;code&gt;Change styleSheet&lt;/code&gt; (I am using Designer4 in case it looks different for you). Enter the following in the popup, adjusting for names and path as appropriate.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;#Dialog{&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;color:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;rgb(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;image:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;url(:&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;img&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;windowshape&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;png);&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Adjusting the &lt;code&gt;#Dialog&lt;/code&gt; to the &lt;strong&gt;window&lt;/strong&gt; name and the url path to your image.&lt;/p&gt;
-
-&lt;p&gt;You should now see the image in the &lt;strong&gt;window&lt;/strong&gt; with a black surround. At this point it’s also good to set the &lt;strong&gt;window&lt;/strong&gt; size to something suitable for your image.&lt;/p&gt;
-
-&lt;p&gt;As per usual you will need to compile your .ui and resource files with pyuic and pyrcc, but details on that are outside the scope of this post.
-So in order to remove the border we call this in our &lt;code&gt;__init__&lt;/code&gt; function&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QMainWindow()&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;setWindowFlags(self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;windowFlags()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;FramelessWindowHint&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;WindowSystemMenuHint)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;It’s important to derive your class from &lt;code&gt;QtGui.QMainWindow&lt;/code&gt; otherwise this won’t work.&lt;/p&gt;
-
-&lt;p&gt;Don’t be surprised if under certain &lt;strong&gt;window&lt;/strong&gt; managers you still see a border, not all &lt;strong&gt;window&lt;/strong&gt; managers will render windows without borders from &lt;strong&gt;Qt&lt;/strong&gt;. The settings are just a request rather than a demand. In Fluxbox for instance the border still shows. Gnome and KDE work fine.&lt;/p&gt;
-
-&lt;p&gt;Right, time for a sip of coffee. You earned it. But wait, what about the black colour? We want the &lt;strong&gt;window&lt;/strong&gt; in the shape of the image. Ah yes, we do that by adding this function&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;resizeEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;pixmap&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QPixmap(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;:/img/windowshape.png&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;region&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QRegion(pixmap&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask())&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;setMask(pixmap&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask());&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;This will tell &lt;strong&gt;Qt&lt;/strong&gt; to use the image as a mask for the &lt;strong&gt;window&lt;/strong&gt; region, effectively hiding any parts where the image is transparent.&lt;/p&gt;
-
-&lt;p&gt;More coffee, we&amp;rsquo;re almost there. Right now, as you&amp;rsquo;re swallowing that last sip, you&amp;rsquo;re wondering &amp;ldquo;How do I move or close the &lt;strong&gt;window&lt;/strong&gt; without a border?&amp;ldquo;. Fear not fellow coder for there is a solution for each of these:&lt;/p&gt;
-
-&lt;p&gt;To close the &lt;strong&gt;window&lt;/strong&gt; we just need to add a context menu. Simply done by adding one more function to your class:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;contextMenuEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QMenu(self)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;quitAction&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;addAction(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Quit&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;exec_(self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mapToGlobal(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;pos()))&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;quitAction:&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;close()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;You can of course replace the &lt;code&gt;self.close()&lt;/code&gt; with a call to some confirmation dialog if you want, but that will now enable a right-click menu on your GUI with a quit option. Also you can add keyboard shortcuts to the application as well if you are so inclined.&lt;/p&gt;
-
-&lt;p&gt;Now for moving the thing. Here we need two extra functions, one for the mouse move and one for the mouse press:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;mouseMoveEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;buttons()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;LeftButton):&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;move(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x(),&lt;/span&gt;
-            &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;y()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;y());&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;accept();&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;mousePressEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;button()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;LeftButton):&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;pos();&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;accept();&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We just get the click position when the mouse button is pressed, work out the offset from the top left corner of the &lt;strong&gt;window&lt;/strong&gt; (this is what the move function uses) and then when the mouse moves, we move the &lt;strong&gt;window&lt;/strong&gt; with it.&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s it really. Pretty simple once you know how. Now go and enjoy the rest of that coffee.&lt;/p&gt;
 </description>
     </item>
     
   </channel>
 </rss>
+

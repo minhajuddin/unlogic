@@ -1,63 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Misc on Unlogic</title>
+      <title>Misc on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/misc/</link>
-    <description>Recent content in Misc on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 26 May 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Mon, 26 May 2014 00:00:00 UTC</updated>
     
     <item>
       <title>London Hacker Olympics 2014</title>
       <link>http://unlogic.co.uk/2014/05/26/london-hacker-olympics-2014/</link>
-      <pubDate>Mon, 26 May 2014 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 26 May 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/05/26/london-hacker-olympics-2014/</guid>
-      <description>&lt;p&gt;I recently attended the &lt;a href=&#34;http://thehackerolympics.com/&#34;&gt;2014 London Hacker Olympics&lt;/a&gt;
-and had a blast. Amidst meeting some amazing people and having a lot of
-fun, our team managed to get first (second actually, as it was 0 indexed) place,
-but only because it went into over time (even though it wasn&amp;rsquo;t a draw), but who&amp;rsquo;s bitter,
-right :). Either way, we won some awesome medals&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/K4ftxMo.jpg&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/K4ftxMo.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s the score board at game close (we&amp;rsquo;re Minor Zeta): &lt;a href=&#34;http://i.imgur.com/ILD2eAn.jpg&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/ILD2eAn.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;There was a lot of good competition and a lot of fluxuation on the scoreboard.
-At times there wasn&amp;rsquo;t much separating the top teams.
-Here&amp;rsquo;s some of them hard at work:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/q58o9LN.jpg&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/q58o9LN.jpg&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The challenges were well thought out and balanced for coders and non coders alike.
-I&amp;rsquo;ll be there at the next one, will you? If so, I hope to see you there.&lt;/p&gt;
-
-&lt;p&gt;Anyway it was great and I hope that a few of the people who I told about this URL
-are going to be reading this.&lt;/p&gt;
-</description>
+      <description>I recently attended the 2014 London Hacker Olympics and had a blast. Amidst meeting some amazing people and having a lot of fun, our team managed to get first (second actually, as it was 0 indexed) place, but only because it went into over time (even though it wasn&amp;rsquo;t a draw), but who&amp;rsquo;s bitter, right :). Either way, we won some awesome medals Here&amp;rsquo;s the score board at game close (we&amp;rsquo;re Minor Zeta): There was a lot of good competition and a lot of fluxuation on the scoreboard.</description>
     </item>
     
   </channel>
 </rss>
+

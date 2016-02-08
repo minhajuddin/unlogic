@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python Coding on Unlogic</title>
+      <title>Python Coding on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/categories/python-coding/</link>
-    <description>Recent content in Python Coding on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 25 Feb 2014 09:31:03 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/categories/python-coding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Tue, 25 Feb 2014 09:31:03 UTC</updated>
     
     <item>
       <title>Sorting</title>
       <link>http://unlogic.co.uk/2014/02/25/sorting/</link>
-      <pubDate>Tue, 25 Feb 2014 09:31:03 +0000</pubDate>
+      <pubDate>Tue, 25 Feb 2014 09:31:03 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/02/25/sorting/</guid>
-      <description>&lt;p&gt;A very quick post about sorting a list of objects in python. Suppose you have a
-list of same objects and you wish to sort them based on one of these attributes, perhaps
-a return value from a method. There&amp;rsquo;s a really nice way to do it in place:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;sort_by&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;people&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;sort(key&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;x:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;str(x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_name()),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;reverse&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;reverse)&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;elif&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;sort_by&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;people&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;sort(key&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;x:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_age(),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;reverse&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;reverse)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;As you can see I wrapped the &lt;code&gt;get_name&lt;/code&gt; call in a &lt;code&gt;str()&lt;/code&gt; because
-in this case it was returning something else. I didn&amp;rsquo;t have control over the
-code for the user class.&lt;/p&gt;
-
-&lt;p&gt;So now the &lt;code&gt;people&lt;/code&gt; list is sorted by whichever attribute you decide and
-you can iterate over it as normal.&lt;/p&gt;
-</description>
+      <description>A very quick post about sorting a list of objects in python. Suppose you have a list of same objects and you wish to sort them based on one of these attributes, perhaps a return value from a method. There&amp;rsquo;s a really nice way to do it in place: if sort_by == &amp;#39;name&amp;#39;: people.sort(key=lambda x: str(x.get_name()), reverse=reverse) elif sort_by == &amp;#39;age&amp;#39;: people.sort(key=lambda x: x.get_age(), reverse=reverse) As you can see I wrapped the get_name call in a str() because in this case it was returning something else.</description>
     </item>
     
   </channel>
 </rss>
+
