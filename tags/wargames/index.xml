@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wargames on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/tags/wargames/</link>
+    <link>http://unlogic.co.uk/tags/wargames/</link>
     <description>Recent content in Wargames on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 23 Mar 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/tags/wargames/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/tags/wargames/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Solving Leviathan</title>
-      <link>https://svenito.github.io/nowhere/2015/03/23/solving-leviathan/</link>
+      <link>http://unlogic.co.uk/2015/03/23/solving-leviathan/</link>
       <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2015/03/23/solving-leviathan/</guid>
+      <guid>http://unlogic.co.uk/2015/03/23/solving-leviathan/</guid>
       <description>
 
 &lt;p&gt;After having done &lt;a href=&#34;http://overthewire.org/wargames/bandit/&#34;&gt;Bandit&lt;/a&gt;, let&amp;rsquo;s move

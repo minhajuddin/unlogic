@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python Coding on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/categories/python-coding/</link>
+    <link>http://unlogic.co.uk/categories/python-coding/</link>
     <description>Recent content in Python Coding on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 25 Feb 2014 09:31:03 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/categories/python-coding/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/categories/python-coding/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sorting</title>
-      <link>https://svenito.github.io/nowhere/2014/02/25/sorting/</link>
+      <link>http://unlogic.co.uk/2014/02/25/sorting/</link>
       <pubDate>Tue, 25 Feb 2014 09:31:03 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2014/02/25/sorting/</guid>
+      <guid>http://unlogic.co.uk/2014/02/25/sorting/</guid>
       <description>&lt;p&gt;A very quick post about sorting a list of objects in python. Suppose you have a
 list of same objects and you wish to sort them based on one of these attributes, perhaps
 a return value from a method. There&amp;rsquo;s a really nice way to do it in place:&lt;/p&gt;

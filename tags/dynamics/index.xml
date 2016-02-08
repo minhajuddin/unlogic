@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dynamics on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/tags/dynamics/</link>
+    <link>http://unlogic.co.uk/tags/dynamics/</link>
     <description>Recent content in Dynamics on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 08 Dec 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/tags/dynamics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/tags/dynamics/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Houdini voronoi shatter</title>
-      <link>https://svenito.github.io/nowhere/2012/12/08/houdini-voronoi-shatter/</link>
+      <link>http://unlogic.co.uk/2012/12/08/houdini-voronoi-shatter/</link>
       <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2012/12/08/houdini-voronoi-shatter/</guid>
+      <guid>http://unlogic.co.uk/2012/12/08/houdini-voronoi-shatter/</guid>
       <description>&lt;p&gt;Thought I would write about creating a very simple voronoi shatter effect in Houdini and how to explode it. The video below demonstrates the effect we&amp;rsquo;re looking to achieve:&lt;/p&gt;
 
 &lt;p&gt;{% vimeo 55168444 %}&lt;/p&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cherrypy on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/tags/cherrypy/</link>
+    <link>http://unlogic.co.uk/tags/cherrypy/</link>
     <description>Recent content in Cherrypy on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/tags/cherrypy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/tags/cherrypy/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Brewing with a Pi</title>
-      <link>https://svenito.github.io/nowhere/2015/12/04/brewing-with-a-pi/</link>
+      <link>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2015/12/04/brewing-with-a-pi/</guid>
+      <guid>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been a while since I&amp;rsquo;ve written here, but that doesn&amp;rsquo;t mean I haven&amp;rsquo;t
 been busy. I&amp;rsquo;ve been working on a DIY version of &lt;a href=&#34;http://www.speidels-braumeister.de/en/braumeister/id-10-20-50-litre-braumeister.html&#34;&gt;Speidel&amp;rsquo;s Braumeister&lt;/a&gt;
 and the software side of things has come along quite nicely.&lt;/p&gt;
