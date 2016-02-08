@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Conky on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/tags/conky/</link>
+    <link>http://unlogic.co.uk/tags/conky/</link>
     <description>Recent content in Conky on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 07 Jun 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/tags/conky/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/tags/conky/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Tube status for Conky</title>
-      <link>https://svenito.github.io/nowhere/2012/06/07/tube-status/</link>
+      <link>http://unlogic.co.uk/2012/06/07/tube-status/</link>
       <pubDate>Thu, 07 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2012/06/07/tube-status/</guid>
+      <guid>http://unlogic.co.uk/2012/06/07/tube-status/</guid>
       <description>&lt;p&gt;Last night I was affected by &amp;ldquo;severe delays on the Central line&amp;rdquo; caused by a burst watermain and bringing part of the line to its knees. Unfortunately I only found this out once I got to the station. Usually the line is well behaved and I have little need to check it often. I know it&amp;rsquo;s really quick to do so and there&amp;rsquo;s a whole host of ways to dit too. But the problems I have with them are:&lt;/p&gt;
 
 &lt;ol&gt;

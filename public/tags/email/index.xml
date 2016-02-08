@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Email on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/tags/email/</link>
+    <link>http://unlogic.co.uk/tags/email/</link>
     <description>Recent content in Email on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 29 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/tags/email/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/tags/email/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Burnmail: temporary mail forwarding</title>
-      <link>https://svenito.github.io/nowhere/2015/05/29/burnmail-temporary-mail-forwarding/</link>
+      <link>http://unlogic.co.uk/2015/05/29/burnmail-temporary-mail-forwarding/</link>
       <pubDate>Fri, 29 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2015/05/29/burnmail-temporary-mail-forwarding/</guid>
+      <guid>http://unlogic.co.uk/2015/05/29/burnmail-temporary-mail-forwarding/</guid>
       <description>
 
 &lt;p&gt;A while back I got curious about how easy it would be to setup a temporary

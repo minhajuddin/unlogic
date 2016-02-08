@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/tags/c/</link>
+    <link>http://unlogic.co.uk/tags/c/</link>
     <description>Recent content in C on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 10 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/tags/c/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Rekindling old flames</title>
-      <link>https://svenito.github.io/nowhere/2014/04/10/rekindling-old-flames/</link>
+      <link>http://unlogic.co.uk/2014/04/10/rekindling-old-flames/</link>
       <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2014/04/10/rekindling-old-flames/</guid>
+      <guid>http://unlogic.co.uk/2014/04/10/rekindling-old-flames/</guid>
       <description>&lt;p&gt;Some time ago, some long, long time ago, I started working on a ray tracer. Yes, you&amp;rsquo;re
 right, the world doesn&amp;rsquo;t need another ray tracer. I wasn&amp;rsquo;t writing another ray tracer though.
 I was writing the ray tracer from &lt;a href=&#34;http://www.raytracegroundup.com/&#34;&gt;this book&lt;/a&gt;. Well,
@@ -33,10 +33,10 @@ building on the code from the book, chapter by chapter until, one day, Lemon wil
     
     <item>
       <title>vim clang autocompletion</title>
-      <link>https://svenito.github.io/nowhere/2012/07/13/vim-clang/</link>
+      <link>http://unlogic.co.uk/2012/07/13/vim-clang/</link>
       <pubDate>Fri, 13 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2012/07/13/vim-clang/</guid>
+      <guid>http://unlogic.co.uk/2012/07/13/vim-clang/</guid>
       <description>&lt;p&gt;Code completion. Isn&amp;rsquo;t it nice? Especially when you have a so many APIs that you can&amp;rsquo;t always remember EVERY method, member or class name in it.&lt;/p&gt;
 
 &lt;p&gt;Vim. Isn&amp;rsquo;t it powerful? The ease and speed with which it allows you to edit your code and do your work is just lovely.&lt;/p&gt;

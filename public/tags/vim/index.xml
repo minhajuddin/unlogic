@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on Unlogic</title>
-    <link>https://svenito.github.io/nowhere/tags/vim/</link>
+    <link>http://unlogic.co.uk/tags/vim/</link>
     <description>Recent content in Vim on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 07 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://svenito.github.io/nowhere/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://unlogic.co.uk/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Vim settings done better</title>
-      <link>https://svenito.github.io/nowhere/2015/01/07/vim-settings-done-better/</link>
+      <link>http://unlogic.co.uk/2015/01/07/vim-settings-done-better/</link>
       <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2015/01/07/vim-settings-done-better/</guid>
+      <guid>http://unlogic.co.uk/2015/01/07/vim-settings-done-better/</guid>
       <description>&lt;p&gt;Today we&amp;rsquo;ll cover a nice config setup for vim that I use. I got the idea from another
 blog post elsewhere and I am sorry to say I cannot locate the post right now. If you
 know of it, please leave a comment below and I will add it to the post as a credit.&lt;/p&gt;
@@ -97,10 +97,10 @@ is now to find that specific setting that I need to tweak. No more searching thr
     
     <item>
       <title>YouCompleteMe</title>
-      <link>https://svenito.github.io/nowhere/2013/11/07/you-complete-me/</link>
+      <link>http://unlogic.co.uk/2013/11/07/you-complete-me/</link>
       <pubDate>Thu, 07 Nov 2013 12:50:23 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2013/11/07/you-complete-me/</guid>
+      <guid>http://unlogic.co.uk/2013/11/07/you-complete-me/</guid>
       <description>&lt;p&gt;If you haven&amp;rsquo;t heard of the YouCompleteMe plugin for Vim, headover to
 &lt;a href=&#34;http://valloric.github.io/YouCompleteMe/&#34;&gt;http://valloric.github.io/YouCompleteMe/&lt;/a&gt; and take a look.
 It&amp;rsquo;s a very competent auto completer for a variety of languages. But as always the C style completer takes
@@ -135,10 +135,10 @@ Use &lt;code&gt;CC=&amp;quot;/usr/bin/gcc&amp;quot; CXX=&amp;quot;/usr/bin/g++&a
     
     <item>
       <title>Vim as a Python IDE</title>
-      <link>https://svenito.github.io/nowhere/2013/02/08/vim-as-a-python-ide/</link>
+      <link>http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/</link>
       <pubDate>Fri, 08 Feb 2013 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2013/02/08/vim-as-a-python-ide/</guid>
+      <guid>http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve been spending quite a bit of time with our good old buddy Python recently, and when
@@ -448,10 +448,10 @@ about what else is out there.&lt;/p&gt;
     
     <item>
       <title>vim clang autocompletion</title>
-      <link>https://svenito.github.io/nowhere/2012/07/13/vim-clang/</link>
+      <link>http://unlogic.co.uk/2012/07/13/vim-clang/</link>
       <pubDate>Fri, 13 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>https://svenito.github.io/nowhere/2012/07/13/vim-clang/</guid>
+      <guid>http://unlogic.co.uk/2012/07/13/vim-clang/</guid>
       <description>&lt;p&gt;Code completion. Isn&amp;rsquo;t it nice? Especially when you have a so many APIs that you can&amp;rsquo;t always remember EVERY method, member or class name in it.&lt;/p&gt;
 
 &lt;p&gt;Vim. Isn&amp;rsquo;t it powerful? The ease and speed with which it allows you to edit your code and do your work is just lovely.&lt;/p&gt;
