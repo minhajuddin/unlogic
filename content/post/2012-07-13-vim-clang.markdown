@@ -1,0 +1,37 @@
+---
+comments: true
+date: 2012-07-13T00:00:00Z
+published: true
+tags:
+- vim
+- linux
+- clang
+- C++
+title: vim clang autocompletion
+url: /2012/07/13/vim-clang/
+---
+
+Code completion. Isn't it nice? Especially when you have a so many APIs that you can't always remember EVERY method, member or class name in it.
+
+Vim. Isn't it powerful? The ease and speed with which it allows you to edit your code and do your work is just lovely.
+
+But code completion in vim? Well yes. You can use ctags. Yes, you can make tag files for ALL your APIs and autocompletion works rather well. I did this and the Qt tags file is 1.7GB. So, urm yeah, that's not entirely awesome either. Plus it doesn't handle things like smart pointers, which you will no doubt come across at some stage.
+
+<!--more-->
+
+So come on down [clang_complete](https://github.com/Rip-Rip/clang_complete). A little plugin for vim that uses [clang](http://clang.llvm.org/) to resolve the necessary symbols. Plus it's reasonably easy to set up. All you need to do is follow the instructions that come with the plugin to install it. You will also need to install/build clang. For our purposes we will only need ``libclang.so`` as we will be using the library to do the completion instead of the binary - this is also the faster way. In order to use the library you need to add two things to your ``.vimrc`` file
+
+{{< highlight vim >}}
+let g:clang_use_library = 1
+let g:clang_library_path = "/path/to/libclang"
+{{< / highlight >}}
+
+The ``/path/to/libclang`` is the path where libclang.so is located, not including the file name itself. Once you have set this up we should already see the autocomplete working when you start typing ``.``, ``->``, or ``::`` after a variable. But in order to specify the right paths to header files, we also need to make a ``.clang_complete`` file in our project's root directory. This includes the compiler's include flags like ``-I/path/to/boost``. Luckily there's a handy tool that can generate this file from the current Makefile. It's located in ``~/.vim/bin``. All you need to do is build your project by passing ``CXX='~/.vim/bin/cc_args.py g++'`` to the make command. For example:
+
+{{< highlight make >}}
+make CXX='~/.vim/bin/cc_args.py g++'
+{{< / highlight >}}
+
+I should also mention that symbol resolution is scope dependant in case you see some weird completions. Enjoy.
+
+EDIT 17/11/2012 The ``.clang_include`` file should actually be called ``.clang_complete``

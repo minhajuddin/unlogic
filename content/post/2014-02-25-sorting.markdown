@@ -1,0 +1,25 @@
+---
+categories: Python, coding
+comments: true
+date: 2014-02-25T09:31:03Z
+title: Sorting
+url: /2014/02/25/sorting/
+---
+
+A very quick post about sorting a list of objects in python. Suppose you have a 
+list of same objects and you wish to sort them based on one of these attributes, perhaps
+a return value from a method. There's a really nice way to do it in place:
+
+{{< highlight python >}}
+if sort_by == 'name':
+    people.sort(key=lambda x: str(x.get_name()), reverse=reverse)
+elif sort_by == 'age':
+    people.sort(key=lambda x: x.get_age(), reverse=reverse)
+{{< / highlight >}}
+
+As you can see I wrapped the ```get_name``` call in a ```str()``` because
+in this case it was returning something else. I didn't have control over the 
+code for the user class.
+
+So now the ```people``` list is sorted by whichever attribute you decide and
+you can iterate over it as normal.

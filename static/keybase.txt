@@ -1,0 +1,64 @@
+https://keybase.io/svenito
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://unlogic.co.uk
+  * I am svenito (https://keybase.io/svenito) on keybase.
+  * I have a public key with fingerprint 48D7 41EB 5838 B174 83D4  DECF 5F5E 5288 41A7 43E2
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "48d741eb5838b17483d4decf5f5e528841a743e2",
+            "host": "keybase.io",
+            "key_id": "5f5e528841a743e2",
+            "uid": "e77f7c3389dda8829df0edbaf34fa600",
+            "username": "svenito"
+        },
+        "service": {
+            "hostname": "unlogic.co.uk",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1414487981,
+    "expire_in": 157680000,
+    "prev": "984caccdba9a52f9e72fd7226a804cbd5c30cec3ea932d70d32878c5889bf799",
+    "seqno": 2,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v1.1.3
+Comment: https://keybase.io/crypto
+
+yMHuAnicbZFdSBRRFMd3K0VXDBMi6ENq7EHKltn52LmzkoFlUJg+qGQobDN37uyO
+rjPr7uz6XUiYCEkbQZYWBaXZx/ZBSSB+LKZtIYWGIUUPlmhZiS71UILRnbC37svh
+nvP7/885nJHktSaLefpU7Hjc+PtB81gkFjAVFTjD9YSoSbWEo56oQH+DrKgu5PP6
+FFUnHAQDJI6xIZEFNBBtHANoiZEQlFmZRSwFAGMTOIZGFJFJuDW/ocA2ouBHVkXD
+OfxxKhLO/ocP/C0gjpM5SNOAlyQBAIqXZBJJoiDTjCzYSdIA/cinCpUI0/4gUhVd
+IxozCZwMKhAZIxudV4GA6tFcCrRCzRqowFqvT9M1qHlwya3rXoeh1Gu9BlqNROeq
+iVNUVAnvjQVB5PMrmko4bJiEumK42hgbwwCOB7ZMAtV4FR9yKgbBcnZA4me0QUFs
+yQMGChDi8XmBpWQecZQscRRlFwDJQFFiIU1CBGkk8DQlcaREU4ADkAWAF2WO5wlj
+rSpVIxwUHlNwGRsrLlXQAz5ENA5HytaZzBZTfNwa43ImS2LKv3vW1SSYbrsvjadF
+T26bfDE3sO/33fwLs1m7S9vehprOdzLCpJp2ru/qVuUdNdsS7mnuGJyZ+nJnyF3n
+785aKGk0d5fPfchLjk9NWprlep4ObV/wP1sfCyZcb9obuhKmJqKpLcsbOvt6neJ8
+K2WdWM7LeJXrHjjbVfowWrRSPLI5Ozp8xrl46Gf4zZZjS9M1BY97b05+u9i9c09s
+tGfsY2c7HfNk51v6PcX77z/ZmHag/Fft1OiJl82t7afLZqQdVTmbvEdKDi82LBOh
+/qO533eNHnxdp4ZSFgsbpn9ExuarCx9l3Oq6kXyPS18JmZ+bc0rbPpFF6Snwwdek
+hcrLkZWGRHvH52t/AOiXH6w=
+=kpgk
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/svenito
+
+==================================================================
