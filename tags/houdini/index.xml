@@ -203,18 +203,18 @@ all I say.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;center%20/images/content/fracture.png&#34; /&gt;
+        &lt;img src=&#34;http://unlogic.co.uk/images/content/fracture.png&#34; /&gt;
     
     
 &lt;/figure&gt;
 
 
-&lt;p&gt;Next we&amp;rsquo;ll turn on the dynamics via the rigid bodies shelf at the top. Click &lt;em&gt;RBD Fracture&lt;/em&gt; and make sure the voronoi geo is selected and press enter. If you press play now your object will fall down. Hrmmm, not totally awesome, as we wanted to explode it a little too. So the plan is to make all the pieces explode from the center outwards, like, for example, along the normals of a sphere say? Yes, that sounds about right. Ok, so let&amp;rsquo;s put down a &lt;em&gt;Sphere&lt;/em&gt; and scale it so that it&amp;rsquo;s roughly the same size as the box. Append a &lt;em&gt;Point&lt;/em&gt; node to the sphere and add a &lt;em&gt;Normal&lt;/em&gt; and &lt;em&gt;Velocity&lt;/em&gt; attribute. The &lt;em&gt;Velocity&lt;/em&gt; attribute is under the &lt;em&gt;Particle&lt;/em&gt; tab and we&amp;rsquo;ll set its value to be a facture of the point&amp;rsquo;s normal. Feel free to play with this value to get the efect you want. Basically this will set the point&amp;rsquo;s velocity to the normal at that point, causing the pieces to rediate outwards when the sim starts.&lt;/p&gt;
+&lt;p&gt;Next we&amp;rsquo;ll turn on the dynamics via the rigid bodies shelf at the top. Click &lt;em&gt;RBD Fracture&lt;/em&gt; and make sure the voronoi geo is selected and press enter. If you press play now your object will fall down. Hrmmm, not totally awesome, as we wanted to explode it a little too. So the plan is to make all the pieces explode from the outwards, like, for example, along the normals of a sphere say? Yes, that sounds about right. Ok, so let&amp;rsquo;s put down a &lt;em&gt;Sphere&lt;/em&gt; and scale it so that it&amp;rsquo;s roughly the same size as the box. Append a &lt;em&gt;Point&lt;/em&gt; node to the sphere and add a &lt;em&gt;Normal&lt;/em&gt; and &lt;em&gt;Velocity&lt;/em&gt; attribute. The &lt;em&gt;Velocity&lt;/em&gt; attribute is under the &lt;em&gt;Particle&lt;/em&gt; tab and we&amp;rsquo;ll set its value to be a facture of the point&amp;rsquo;s normal. Feel free to play with this value to get the efect you want. Basically this will set the point&amp;rsquo;s velocity to the normal at that point, causing the pieces to rediate outwards when the sim starts.&lt;/p&gt;
 
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;center%20/images/content/vel_attribute.png&#34; /&gt;
+        &lt;img src=&#34;http://unlogic.co.uk/images/content/vel_attribute.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -225,7 +225,7 @@ all I say.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;center%20/images/content/finalnetwork.png&#34; /&gt;
+        &lt;img src=&#34;http://unlogic.co.uk/images/content/finalnetwork.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -236,7 +236,7 @@ all I say.&lt;/p&gt;
 &lt;p&gt;
 &lt;figure &gt;
     
-        &lt;img src=&#34;center%20/images/content/inherit_pv.png&#34; /&gt;
+        &lt;img src=&#34;http://unlogic.co.uk/images/content/inherit_pv.png&#34; /&gt;
     
     
 &lt;/figure&gt;
