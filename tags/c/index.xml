@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/c/</link>
+    <description>Recent content in C on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 10 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rekindling old flames</title>
+      <link>http://unlogic.co.uk/2014/04/10/rekindling-old-flames/</link>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2014/04/10/rekindling-old-flames/</guid>
+      <description>&lt;p&gt;Some time ago, some long, long time ago, I started working on a ray tracer. Yes, you&amp;rsquo;re
+right, the world doesn&amp;rsquo;t need another ray tracer. I wasn&amp;rsquo;t writing another ray tracer though.
+I was writing the ray tracer from &lt;a href=&#34;http://www.raytracegroundup.com/&#34;&gt;this book&lt;/a&gt;. Well,
+not line for line, but I was using it for the most part and just adjusting a few things
+to my liking and style. Initially I started it because I was curious how these things
+really work under the hood. The principles and concepts of a ray tracer weren&amp;rsquo;t
+foreign to me, but to actually implement one, component by component, that was new.
+Then the project ground to a halt for what reason(s) I can&amp;rsquo;t recall.&lt;/p&gt;
+
+&lt;p&gt;So fast forward today and, feeling somewhat ashamed about it, I&amp;rsquo;ve decided to revive the project and
+post the code on github. Right now I need to make sure the build still works and
+that my system has all the dependencies, after that I&amp;rsquo;ll push the code to
+&lt;a href=&#34;https://github.com/Svenito/lemon&#34;&gt;https://github.com/Svenito/lemon&lt;/a&gt; then I&amp;rsquo;ll continue
+building on the code from the book, chapter by chapter until, one day, Lemon will be complete.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>vim clang autocompletion</title>
+      <link>http://unlogic.co.uk/2012/07/13/vim-clang/</link>
+      <pubDate>Fri, 13 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2012/07/13/vim-clang/</guid>
+      <description>&lt;p&gt;Code completion. Isn&amp;rsquo;t it nice? Especially when you have a so many APIs that you can&amp;rsquo;t always remember EVERY method, member or class name in it.&lt;/p&gt;
+
+&lt;p&gt;Vim. Isn&amp;rsquo;t it powerful? The ease and speed with which it allows you to edit your code and do your work is just lovely.&lt;/p&gt;
+
+&lt;p&gt;But code completion in vim? Well yes. You can use ctags. Yes, you can make tag files for ALL your APIs and autocompletion works rather well. I did this and the Qt tags file is 1.7GB. So, urm yeah, that&amp;rsquo;s not entirely awesome either. Plus it doesn&amp;rsquo;t handle things like smart pointers, which you will no doubt come across at some stage.&lt;/p&gt;
+
+&lt;p&gt;So come on down &lt;a href=&#34;https://github.com/Rip-Rip/clang_complete&#34;&gt;clang_complete&lt;/a&gt;. A little plugin for vim that uses &lt;a href=&#34;http://clang.llvm.org/&#34;&gt;clang&lt;/a&gt; to resolve the necessary symbols. Plus it&amp;rsquo;s reasonably easy to set up. All you need to do is follow the instructions that come with the plugin to install it. You will also need to install/build clang. For our purposes we will only need &lt;code&gt;libclang.so&lt;/code&gt; as we will be using the library to do the completion instead of the binary - this is also the faster way. In order to use the library you need to add two things to your &lt;code&gt;.vimrc&lt;/code&gt; file&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:clang_use_library &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:clang_library_path &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/path/to/libclang&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The &lt;code&gt;/path/to/libclang&lt;/code&gt; is the path where libclang.so is located, not including the file name itself. Once you have set this up we should already see the autocomplete working when you start typing &lt;code&gt;.&lt;/code&gt;, &lt;code&gt;-&amp;gt;&lt;/code&gt;, or &lt;code&gt;::&lt;/code&gt; after a variable. But in order to specify the right paths to header files, we also need to make a &lt;code&gt;.clang_complete&lt;/code&gt; file in our project&amp;rsquo;s root directory. This includes the compiler&amp;rsquo;s include flags like &lt;code&gt;-I/path/to/boost&lt;/code&gt;. Luckily there&amp;rsquo;s a handy tool that can generate this file from the current Makefile. It&amp;rsquo;s located in &lt;code&gt;~/.vim/bin&lt;/code&gt;. All you need to do is build your project by passing &lt;code&gt;CXX=&#39;~/.vim/bin/cc_args.py g++&#39;&lt;/code&gt; to the make command. For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;make&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;CXX&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;~/.vim/bin/cc_args.py g++&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I should also mention that symbol resolution is scope dependant in case you see some weird completions. Enjoy.&lt;/p&gt;
+
+&lt;p&gt;EDIT 17/11/2012 The &lt;code&gt;.clang_include&lt;/code&gt; file should actually be called &lt;code&gt;.clang_complete&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

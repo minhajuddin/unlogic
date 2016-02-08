@@ -1,0 +1,259 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Unlogic</title>
+        <meta name="author">
+        <meta name="description" content="I have a keyboard, a compiler, and a whole load of luck">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.15" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="alternate" type="application/rss+xml" title="Unlogic" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="feed" type="application/rss+xml" title="Unlogic" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/styles.css">
+        <link rel="icon" href="http://unlogic.co.ukfavicon.ico">
+        <link rel="apple-touch-icon" href="http://unlogic.co.ukapple-touch-icon.png" />
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/highlightjs/monokai.css">
+        <script src="http://unlogic.co.ukjs/vendor/modernizr-2.8.0.min.js"></script>
+        <style>
+        .site-header h2 .logo {
+        background: url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(http://unlogic.co.ukimages/keyboard-feature.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat center center;
+         z-index: -1;
+         color: #BBB;
+         height: 170px;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2><a style="color: #EEE" href="http://unlogic.co.uk">Unlogic</a></h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn" href="http://unlogic.co.uk" title="">&laquo; </a>
+            
+<h1><a href="http://unlogic.co.uk/2014/05/16/capturing-traffic-from-your-smartphone/" title="Capturing smartphone traffic - Part 1">Capturing smartphone traffic - Part 1</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2014.05.16">2014.05.16</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/security">security</a>, 
+    
+    <a href="http://unlogic.co.uktags/network">network</a>
+    
+
+</span>
+</footer>
+
+            
+            
+
+<p>We all carry phones around that are connected to some of network at all times.
+Unless you are the truly paranoid or battery saving type, then there will be periods
+when your phone is dark.</p>
+
+<p>But even so, I often wonder what my phone is transmitting when I&rsquo;m not using it,
+or even when I am using it. So in this series I plan on doing some investigation
+into what goes in and out of my phone.</p>
+
+<p>In this post I&rsquo;ll just set up all the bits and pieces to start the monitoring
+process and run a quick check to make sure everything works. In the following
+parts I&rsquo;ll be taking a look at some common apps and their network chatter. The
+idea is to analyse the data and understand their communications. Hopefully we&rsquo;ll
+also unearth some interesting things along the way.</p>
+
+<h2 id="what-we-ll-need:41796c2feda068943018a98e7c373755">What we&rsquo;ll need</h2>
+
+<ul>
+<li>A smartphone</li>
+<li>A laptop (or similar) to turn into a wireless access point</li>
+<li><a href="https://www.wireshark.org/">Wireshark</a> running on that laptop</li>
+<li>An internet connection</li>
+</ul>
+
+<h2 id="setting-up-the-wireless-access-point:41796c2feda068943018a98e7c373755">Setting up the wireless access point</h2>
+
+<p>I&rsquo;m going to cover how to do this part in OSX for now. If I get round
+to it I&rsquo;ll add a Linux way to do it too.</p>
+
+<h3 id="osx:41796c2feda068943018a98e7c373755">OSX</h3>
+
+<p>First connect the laptop to an ethernet connection. You can&rsquo;t be connected to
+a wireless network and create a wireless access point at the same time.
+So we will connect to the internet via ethernet and use the wireless radio
+for the access point. Once the ethernet connection is up and running, open
+<em>System Preferences -&gt; Sharing</em>. In the list click on the <em>Internet sharing</em>
+entry (not the check box) and select <em>Ethernet</em> in the <em>Share your connection
+from</em> dropdown. In the <em>To computers using</em> select <em>Wi-Fi</em>. Now select the
+check box next to <em>Internet Sharing</em> to turn sharing on.</p>
+
+<p><a href="http://i.imgur.com/K2Zeyoy.png">
+<figure >
+    
+        <img src="http://i.imgur.com/K2Zeyoy.png" />
+    
+    
+</figure>
+</a></p>
+
+<p>If everything went to plan your Wi-Fi indicator should now look like this:</p>
+
+<p><a href="http://i.imgur.com/ecXJUc8.png">
+<figure >
+    
+        <img src="http://i.imgur.com/ecXJUc8.png" />
+    
+    
+</figure>
+</a></p>
+
+<h2 id="connect-the-phone:41796c2feda068943018a98e7c373755">Connect the phone</h2>
+
+<p>Now we connect tbe phone to the new access point. Go to your wireless network
+settings and select the name of the network we created. <strong>slaptop</strong> in my case.
+Once do we need to</p>
+
+<h2 id="start-wireshark:41796c2feda068943018a98e7c373755">Start Wireshark</h2>
+
+<p>Fireup Wireshark and then select the capture interface. The default will be
+eth0 usually. That&rsquo;s the ethernet port, but we want to capture traffic on the
+wireless access point. So we need to select <em>en1</em> (in my case). It&rsquo;s the one
+with the wireless icon next to it.</p>
+
+<p><a href="http://i.imgur.com/9wyI6s6.png">
+<figure >
+    
+        <img src="http://i.imgur.com/9wyI6s6.png" />
+    
+    
+</figure>
+</a></p>
+
+<p>Once this is done we&rsquo;ll want to filter out ARP packets as these are of little
+interest and there will be quite a few of them. See the screenshot below to
+see where to set this.</p>
+
+<p>Now we press the <em>Capture</em> button to begin bapturing traffic. Once running we
+can check to see if it&rsquo;s working by browsing to a site. I chose this site at
+<code>192.30.252.153</code>. You should see the capture window scroll past with some
+traffic going between your phone ip and the site your browsed to.</p>
+
+<p><a href="http://i.imgur.com/XjFuoOQ.png">
+<figure >
+    
+        <img src="http://i.imgur.com/XjFuoOQ.png" />
+    
+    
+</figure>
+</a></p>
+
+<h2 id="in-the-next-post:41796c2feda068943018a98e7c373755">In the next post</h2>
+
+<p>So I&rsquo;m all set to capture any and all traffic now that goes to and from my phone.
+With this I can now open various apps and see what traffic they generate. In
+the next posts I plan to see what idle traffic there is (no apps being actively
+used) and what traffic some common apps generate. If I&rsquo;m lucky I might even
+discover some interesting things about some apps.</p>
+
+<p>Stay tuned for part 2.</p>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2funlogic.co.uk%2f2014%2f05%2f16%2fcapturing-traffic-from-your-smartphone%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Capturing%20smartphone%20traffic%20-%20Part%201&amp;url=http%3a%2f%2funlogic.co.uk%2f2014%2f05%2f16%2fcapturing-traffic-from-your-smartphone%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=http%3a%2f%2funlogic.co.uk%2f2014%2f05%2f16%2fcapturing-traffic-from-your-smartphone%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2funlogic.co.uk%2f2014%2f05%2f16%2fcapturing-traffic-from-your-smartphone%2f&title=Capturing%20smartphone%20traffic%20-%20Part%201" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'unlogic';
+    var disqus_identifier = 'http:\/\/unlogic.co.uk\/2014\/05\/16\/capturing-traffic-from-your-smartphone\/';
+    var disqus_title = 'Capturing smartphone traffic - Part 1';
+    var disqus_url = 'http:\/\/unlogic.co.uk\/2014\/05\/16\/capturing-traffic-from-your-smartphone\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="http://unlogic.co.ukimages/avatar.jpg" alt="Sven Steinbauer" />
+  <p class="name"> 
+  <strong>Sven Steinbauer</strong></p>
+  <p class="address"></p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/binaryheadache" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/svenito" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="http://unlogic.co.ukpost/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="http://unlogic.co.ukpost/index.xml" title="RSS"></a>
+        <p>&copy; 2016 &middot; Sven Steinbauer</p>
+  </div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="http:\/\/unlogic.co.ukjs/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://unlogic.co.ukjs/plugins.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Setup on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/setup/</link>
+    <description>Recent content in Setup on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 07 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Vim settings done better</title>
+      <link>http://unlogic.co.uk/2015/01/07/vim-settings-done-better/</link>
+      <pubDate>Wed, 07 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/01/07/vim-settings-done-better/</guid>
+      <description>&lt;p&gt;Today we&amp;rsquo;ll cover a nice config setup for vim that I use. I got the idea from another
+blog post elsewhere and I am sorry to say I cannot locate the post right now. If you
+know of it, please leave a comment below and I will add it to the post as a credit.&lt;/p&gt;
+
+&lt;p&gt;I say &amp;lsquo;better&amp;rsquo; rather than &amp;lsquo;right&amp;rsquo; because I don&amp;rsquo;t believe there&amp;rsquo;s necessarily a right way
+to do it, only bad and better. Also, what works for one might not work for another, so
+please adjust as required.&lt;/p&gt;
+
+&lt;p&gt;The main principle for this setup is a modular rc file setup, where different files
+are responsible for different configurations. This way it&amp;rsquo;s easier to find a specific
+setting rather than trawling through a long &lt;code&gt;.vimrc&lt;/code&gt; file. So, without further delay, here&amp;rsquo;s
+the main &lt;code&gt;.vimrc&lt;/code&gt; (which we still need). The role of this file is to source all the other
+files we will create later. A &lt;a href=&#34;http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/&#34;&gt;previous post&lt;/a&gt;
+covers some configuration options specific for Python, if you are interested.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; s:vim_home &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;~/.vim/settings/&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; config_list &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; [
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;plugins.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;base.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;functions.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;theme.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;settings.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;leader.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;keymappings.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;languages.vim&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+  \ &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;plugin_settings.vim&amp;#39;&lt;/span&gt;
+\]
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;files&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;in&lt;/span&gt; config_list
+  &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;f&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;in&lt;/span&gt; split&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;glob&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;s:vim_home.&lt;span style=&#34;color: #66d9ef&#34;&gt;files&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    exec &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;source &amp;#39;&lt;/span&gt;.&lt;span style=&#34;color: #66d9ef&#34;&gt;f&lt;/span&gt;
+  &lt;span style=&#34;color: #66d9ef&#34;&gt;endfor&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;endfor&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can see how we&amp;rsquo;ll divide up responsibility here. I won&amp;rsquo;t go into details about the
+contents of each file, I will leave that up to you to decide. Basically here we set a
+directory - &lt;code&gt;~/.vim/settings/&lt;/code&gt; - as the root for our setting files. Then we have a list
+of files which contain the configs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;plugins.vim&lt;/strong&gt;
+This contains my Vundle setup and required plugins. The reason this is first is because
+Vundle needs to have specific settings set that I change.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;base.vim&lt;/strong&gt;
+Contains the basic config stuff like tab interpretation, indentation behaviour, and such.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;functions.vim&lt;/strong&gt;
+Any vim functions you have written or use go in here&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;theme.vim&lt;/strong&gt;
+Theme configuration and selection&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;settings.vim&lt;/strong&gt;
+I don&amp;rsquo;t have much in here, just setting my code folding prefs, basically anything that&amp;rsquo;s not in base&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;leader.vim&lt;/strong&gt;
+Any leader customisations go in here&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;keymappings.vim&lt;/strong&gt;
+Like leader, but for keymaps&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;languages.vim&lt;/strong&gt;
+Any language specific settings&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;plugin_settings.vim&lt;/strong&gt;
+Configurations for all plugins. You might want to split this out further if it gets big&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been using this for a while now and am very pleased with how it works and how easy it
+is now to find that specific setting that I need to tweak. No more searching through a long
+.vimrc file, just go directly to a much smaller file and get back to your code much quicker.&lt;/p&gt;
+
+&lt;p&gt;Hope you find this useful too. Feel free to share any other config tips in the comments below.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

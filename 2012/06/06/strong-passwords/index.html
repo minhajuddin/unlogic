@@ -1,0 +1,197 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Unlogic</title>
+        <meta name="author">
+        <meta name="description" content="I have a keyboard, a compiler, and a whole load of luck">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.15" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="alternate" type="application/rss+xml" title="Unlogic" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="feed" type="application/rss+xml" title="Unlogic" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/styles.css">
+        <link rel="icon" href="http://unlogic.co.ukfavicon.ico">
+        <link rel="apple-touch-icon" href="http://unlogic.co.ukapple-touch-icon.png" />
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/highlightjs/monokai.css">
+        <script src="http://unlogic.co.ukjs/vendor/modernizr-2.8.0.min.js"></script>
+        <style>
+        .site-header h2 .logo {
+        background: url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(http://unlogic.co.ukimages/keyboard-feature.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat center center;
+         z-index: -1;
+         color: #BBB;
+         height: 170px;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2><a style="color: #EEE" href="http://unlogic.co.uk">Unlogic</a></h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn" href="http://unlogic.co.uk" title="">&laquo; </a>
+            
+<h1><a href="http://unlogic.co.uk/2012/06/06/strong-passwords/" title="Strong passwords?">Strong passwords?</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2012.06.06">2012.06.06</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/passwords">passwords</a>, 
+    
+    <a href="http://unlogic.co.uktags/security">security</a>
+    
+
+</span>
+</footer>
+
+            
+            
+
+<p>As I&rsquo;m just going around and updating the passwords to some of my online accounts, which was prompted by <a href="http://translate.google.com/translate?hl=en&amp;sl=no&amp;tl=en&amp;u=http://www.dagensit.no/article2411857.ece">this</a> article, I was wonderingwhat a good password really is. Not just in terms of security but also in terms of user friendliness.</p>
+
+<p>I use <a href="http://www.lastpass.com">Lastpass</a> to manage my passwords and have it auto fill in my credentials on various sites. This works well until I need to manually enter them on another device (iPhone for example - I haven&rsquo;t got a premium subscription yet) or have to type it in just because.</p>
+
+<p>We know that everywhere suggests some wonderfully random characters of at least 8 characters in length and Lastpass actually provides a tool to generate these:</p>
+
+<ul>
+<li>k%U94*7r</li>
+<li>66ds}9R</li>
+<li>9^wtH7xo</li>
+</ul>
+
+<p>Here we have some 8 character examples for apparently fairly secure options. Fine. They probably are secure. But do you really want to type those in using a touch keyboard on a phone?</p>
+
+<p>Now here&rsquo;s my suggestion: <strong>Three or more random, unrelated words making one password.</strong>
+For example:</p>
+
+<ul>
+<li>tarnishedmoleclouds</li>
+<li>refriedchutneygarbage</li>
+<li>turkeyloadedparasol</li>
+</ul>
+
+<p>Those of you who read <a href="http://xkcd.com/936/">XKCD</a> should already be on the same page as me. Not only are these more memorable (which if you use a password manager is irrelevant) but also much easier to type in on any type of keyboard. But that&rsquo;s not all. Let&rsquo;s have a look at bruteforce times using <a href="http://www.lockdown.co.uk/?pg=combi">these tables</a></p>
+
+<p>In the first case we have 8 character passwords made up of &ldquo;Mixed upper and lower case alphabet and common symbols.&rdquo;. According to the relevant table (and we are assuming a reasonably competent team of crackers using a <a href="http://www.lockdown.co.uk/?pg=combi#classE">class E</a> attack) these passwords can be cracked in 346days. Not too bad really. But let&rsquo;s see how that compares to &ldquo;The full alphabet, either upper or lower case (not both in this case)&rdquo;. Picking one password from above (refriedchutneygarbage) with 21 characters it would take at least 6.3trillions years to break. Much better. Heck, even with 1000,000,000 guesses per second you&rsquo;re still looking at 631billion years.</p>
+
+<p>I can&rsquo;t say how much of an impact adding/removing spaces has on the timings though - if any one knows, or has any insights, do share in the comments. Is using spaces better, the same, or worse than not using spaces? Theoretically I&rsquo;d imagine that it&rsquo;d be better with spaces as that&rsquo;s an extra character to add to the list.</p>
+
+<h2 id="update:abb71b3d5285572362ebe516c3dc67ed">UPDATE</h2>
+
+<p>Having said the above, it&rsquo;s worth also assuming that any competent cracker will be using wordlists too, and not just brute forcing the password. According to the <a href="http://oxforddictionaries.com/words/how-many-words-are-there-in-the-english-language">Oxford English Dictionary</a> there are about 140,000 words in use. This number is a bit high as most of us won&rsquo;t know, or use them all. So to get a more realistic number, I&rsquo;ve looked at some common wordlists you can find on the internet and the word count we&rsquo;re looking at is around 50,000 to 70,000.</p>
+
+<p>Given that (as mentioned in the comments) we essentially have a 3 character password with a much larger search space, we can do the math. Three words, 60,000 (taking the middle word count) words will give us 216trillion possibilities. At a rate of 10,000,000 passwords per second it would take around 250 days to crack. Not too shabby still, but not as good as initially hoped, and also worse than your &lsquo;messy&rsquo; passwords.</p>
+
+<p>So my solution to generating secure, but still easily typeable passwords, is to generate 15-20 character long passwords made only of random alphabetical characters rather than words. In this case the figures above will still hold true.</p>
+
+<p>As a quick sampler of a generated password with 16 characters, lowercase only, and pronouncable:</p>
+
+<ul>
+<li>alicattervetonstou</li>
+<li>molyciontivenzagol</li>
+<li>audentophitendowdy</li>
+</ul>
+
+<p>harder to remember, harder to crack but still easily typed out even with an onscreen keyboard. The pronounceable part is optional but it might aid in remembering the password better.</p>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2funlogic.co.uk%2f2012%2f06%2f06%2fstrong-passwords%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Strong%20passwords%3f&amp;url=http%3a%2f%2funlogic.co.uk%2f2012%2f06%2f06%2fstrong-passwords%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=http%3a%2f%2funlogic.co.uk%2f2012%2f06%2f06%2fstrong-passwords%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2funlogic.co.uk%2f2012%2f06%2f06%2fstrong-passwords%2f&title=Strong%20passwords%3f" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'unlogic';
+    var disqus_identifier = 'http:\/\/unlogic.co.uk\/2012\/06\/06\/strong-passwords\/';
+    var disqus_title = 'Strong passwords?';
+    var disqus_url = 'http:\/\/unlogic.co.uk\/2012\/06\/06\/strong-passwords\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="http://unlogic.co.ukimages/avatar.jpg" alt="Sven Steinbauer" />
+  <p class="name"> 
+  <strong>Sven Steinbauer</strong></p>
+  <p class="address"></p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/binaryheadache" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/svenito" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="http://unlogic.co.ukpost/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="http://unlogic.co.ukpost/index.xml" title="RSS"></a>
+        <p>&copy; 2016 &middot; Sven Steinbauer</p>
+  </div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="http:\/\/unlogic.co.ukjs/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://unlogic.co.ukjs/plugins.js"></script>
+
+</body>
+</html>
+

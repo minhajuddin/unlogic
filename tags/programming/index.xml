@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/programming/</link>
+    <description>Recent content in Programming on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 23 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Python: expect the unexpected</title>
+      <link>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</link>
+      <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;ve not really had much of a play with Python 3, but I&amp;rsquo;m aware of some of its
+differences. Yesterday I found out about a difference that took me by surprise.
+Enough of a surprise that I felt the urge to write this post.&lt;/p&gt;
+
+&lt;h1 id=&#34;opinion-divided:3294e7ffbfda40bfebd468b4c32cfa57&#34;&gt;Opinion Divided&lt;/h1&gt;
+
+&lt;p&gt;What surprised me was how &lt;code&gt;/&lt;/code&gt; has changed in Python 3. In Python 2.7 it returns
+the result of the division of two numbers.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Checks out to me. &lt;code&gt;10 / 3&lt;/code&gt; is 3.3333, and because we are using integers in
+the expression, we expect an integer as the result.
+Change the input to floats (or at least one of the inputs)&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;3.3333333333333335&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and we get a float. Right, nothing weird there. Where it starts getting odd is
+that in Python 3 you &lt;strong&gt;always&lt;/strong&gt; get a float back, unless you use the &lt;code&gt;//&lt;/code&gt; operator.
+Apparently that is because too many people expected integer division to return a float.
+Maybe it&amp;rsquo;s just me and my fellow oldies who think that the original behaviour is
+correct and integer division should yield an integer, not a float. Pretty much all
+main stream languages behave like this. In C/C++ you need to cast one of the arguments
+to a float to get a float back.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;main&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cout&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;endl;&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;cout&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;endl;&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; ./a.out 
+3
+3.33333
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I understand that if you are dividing numbers you will want to have
+the accuracy of the float type, but I find this a bit of an odd choice
+for the Python devs to make. But perhaps this is the future, and I&amp;rsquo;m
+just too old to accept what you whippersnappers are up to with your
+fancy &lt;a href=&#34;http://i.imgur.com/GUum4gy.gif&#34;&gt;languages and tools&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ultimately, does it really matter? Well yes and no. No, because Python is
+dynamically typed, so it doesn&amp;rsquo;t really matter what type the result is, whatever
+it gets assigned too will become what it needs to. Yes, because there may be
+times when getting a float might cause unexpected behaviour.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s not the end of the world as such, because the &lt;em&gt;no&lt;/em&gt; above greatly
+outweighs the &lt;em&gt;yes&lt;/em&gt;, but I&amp;rsquo;m still a little surprised at this change. I would
+perhaps have kept &lt;code&gt;/&lt;/code&gt; as it is and made &lt;code&gt;//&lt;/code&gt; the one that always returns a float.&lt;/p&gt;
+
+&lt;p&gt;And just to finish:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Python&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;3.4&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;//&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;3.0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/WEllYN3.gif&#34;&gt;Yeah, sure, why not?&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Solving Project Euler with Rust 2</title>
+      <link>http://unlogic.co.uk/2015/01/20/solving-project-euler-with-rust-2/</link>
+      <pubDate>Tue, 20 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/01/20/solving-project-euler-with-rust-2/</guid>
+      <description>&lt;p&gt;Carrying on with &lt;a href=&#34;http://unlogic.co.uk/2015/01/12/solving-project-euler-with-rust-1/&#34;&gt;the series&lt;/a&gt;, here&amp;rsquo;s
+how I solved Project Euler&amp;rsquo;s problem 2:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Even Fibonacci numbers
+Problem 2
+Each new term in the Fibonacci sequence is generated by adding the previous 
+two terms. By starting with 1 and 2, the first 10 terms will be:
+
+    1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+
+By considering the terms in the Fibonacci sequence whose values do not 
+exceed four million, find the sum of the even-valued terms.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Fairly similar to the previous one, in terms that we need to sum a sequence
+of filtered numbers. This time though the sequence is not a straight run,
+but the fibonacci sequence.&lt;/p&gt;
+
+&lt;p&gt;As usual with these issues I assume we will need a recursive function to generate
+our fibonacci numbers:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; n &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; { &lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    } &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;else&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; n &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    } &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;else&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    }    &lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As I am still learning Rust, I am not sure if there&amp;rsquo;s more Rustacean way of doing it.
+I couldn&amp;rsquo;t find anything relevant to this in the docs, so for now I will leave it
+as it is until I get some feedback on it. I wonder if a closure would be better?&lt;/p&gt;
+
+&lt;p&gt;EDIT: From the comments below (thanks pf), this is a much more Rust like implementation IMO:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;{&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;match&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; n {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        _ &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    }    &lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now I need to get a list of numbers while the return of the &lt;code&gt;fib&lt;/code&gt; function
+is &amp;lt; 4,000,000. I cheated a bit here, as I figured out that the max number
+to pass to the function in this case is 34.
+I would assume that in the &lt;em&gt;more correct&lt;/em&gt; way of doing it, the limit is
+defined in a better way.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; vals &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; (&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;34&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;).map(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(x));&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Thinking back to the previous example I already know about filter and sum.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; vals &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; (&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;34&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;).map(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(x))&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;                .filter(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; x &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;                .sum();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;But there&amp;rsquo;s a problem:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;   Compiling euler_2 v0.0.1 (file:////work/sandbox/euler_rust/euler_2)
+/work/sandbox/euler_rust/euler_2/src/main.rs:16:10: 16:15 error: type `core::iter::Filter&amp;lt;i32, core::iter::Map&amp;lt;i32, i32, core::ops::Range&amp;lt;i32&amp;gt;, closure[/work/sandbox/euler_rust/euler_2/src/main.rs:14:32: 14:42]&amp;gt;, closure[/work/sandbox/euler_rust/euler_2/src/main.rs:15:17: 15:31]&amp;gt;` does not implement any method in scope named `sum`
+/work/sandbox/euler_rust/euler_2/src/main.rs:16         .sum();
+                                                        ^~~~~
+error: aborting due to previous error
+Could not compile `euler_2`.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Seems like &lt;code&gt;sum&lt;/code&gt; won&amp;rsquo;t work here due to the &lt;code&gt;map&lt;/code&gt;. Not to worry, I used &lt;code&gt;fold&lt;/code&gt; in the previous example,
+before the helpful folks at &lt;a href=&#34;http://reddit.com/r/rust&#34;&gt;/r/rust&lt;/a&gt; told me about &lt;code&gt;sum&lt;/code&gt;,
+so let&amp;rsquo;s use that instead, as that should work.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; vals &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; (&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;34&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;).map(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fib(x))&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;                .filter(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; x &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;                .fold(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;a, b&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; a &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; b);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;   println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;{}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, vals);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;EDIT: &lt;code&gt;sum&lt;/code&gt; does work, I just forgot to add &lt;code&gt;use std::iter::AdditiveIterator;&lt;/code&gt; at the
+top of the file. The Github file contains this fix.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s run it:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cargo run
+     Running `target/euler_2`
+4613732
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The result checks out, so Project Euler 2 has been solved.&lt;/p&gt;
+
+&lt;p&gt;What I would like to know though: Is there a better way to generate the
+fibonacci sequence? If you have suggestions (or about anything else on this page),
+please leave me a message below. After all, this is a learning exercise for me
+and for anyone else interested.&lt;/p&gt;
+
+&lt;p&gt;EDIT: With some marvellous feedback (which is a great benefit of posting
+these) I have edited the code on Github to use an iterator instead of the recursive call.&lt;/p&gt;
+
+&lt;p&gt;The code is now (main credit to /u/emk and others):&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;use&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;iter&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;AdditiveIterator;&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;#[derive(Copy)]&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;pub&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;struct&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; FibonacciSequence {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    n_minus_1&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;u32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    n_minus_2&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;u32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;impl&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; Iterator &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; FibonacciSequence {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;type&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; Item &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;u32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; next(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;mut&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; self) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; Option&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;u32&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;mut&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; result &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; self.n_minus_1 &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; self.n_minus_2;&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #75715e&#34;&gt;// Special case: If all our fields are zero, we want to generate&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #75715e&#34;&gt;// our initial 1.  Everything else will work correctly from here.&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; result &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; { result &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;; }&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        self.n_minus_2 &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; self.n_minus_1;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        self.n_minus_1 &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; result;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        Some(result)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    }&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;pub&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fibonacci_sequence() &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; FibonacciSequence {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    FibonacciSequence{n_minus_1&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, n_minus_2&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; sum &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; fibonacci_sequence()&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        .filter(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;v&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; v &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        .take_while(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;v&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; v &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;4000000&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;u32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        .sum();&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Result: {}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, sum);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The interesting thing is the performance difference between the iterator
+implementation and the recursive call. The recursive implementation timings
+are:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;real    0m0.311s
+user    0m0.255s
+sys 0m0.035s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Versus the timings of the iterator:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;real    0m0.079s
+user    0m0.025s
+sys 0m0.035s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clearly a vast improvement there at the cost of a little extra code.
+With the iterator the benefit stems from the fact that we track where we
+are in the sequence. So for each number we don&amp;rsquo;t need to recursively
+call the &lt;code&gt;fib&lt;/code&gt; function until n is 1, which is where the big saving comes from.&lt;/p&gt;
+
+&lt;p&gt;This and all future solutions are on &lt;a href=&#34;https://github.com/Svenito/euler_rust&#34;&gt;my Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Also posted to &lt;a href=&#34;https://www.reddit.com/r/rust/comments/2t23ow/still_learning_rust_following_on_with_a_write_up/&#34;&gt;/r/rust&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Solving Project Euler with Rust 1</title>
+      <link>http://unlogic.co.uk/2015/01/12/solving-project-euler-with-rust-1/</link>
+      <pubDate>Mon, 12 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/01/12/solving-project-euler-with-rust-1/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s time to poke at &lt;a href=&#34;http://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt; a little bit. And what
+better way to get acquainted with a new language than to solve
+some problems with it? And seeing as there&amp;rsquo;s not always a suitably
+simple problem handy, I&amp;rsquo;ve picked some problems from &lt;a href=&#34;https://projecteuler.net&#34;&gt;Project Euler&lt;/a&gt;
+to tackle. I am using Rust 1.0.0Alpha in this post.&lt;/p&gt;
+
+&lt;p&gt;The first problem is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Multiples of 3 and 5
+Problem 1
+If we list all the natural numbers below 10 that are multiples of 3 or 5, 
+we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Find the sum of all the multiples of 3 or 5 below 1000.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ok, so sounds fairly ok and I&amp;rsquo;m going to add another requirement: To prompt the
+user for the max number (in this case the 1000). Just a little extra exercise. I&amp;rsquo;ve
+read the &lt;a href=&#34;http://rustbyexample.com/&#34;&gt;Rust By Example&lt;/a&gt; pages and the new and official
+&lt;a href=&#34;http://doc.rust-lang.org/1.0.0-alpha/book&#34;&gt;Rust book&lt;/a&gt; and let&amp;rsquo;s see how we get on.&lt;/p&gt;
+
+&lt;p&gt;First let&amp;rsquo;s define some structure:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; solve(max_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; result &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; max_num;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    result&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Total sum: {}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, solve(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;));&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;cargo run&lt;/code&gt; simply prints out &lt;code&gt;Total sum: 10&lt;/code&gt;. That&amp;rsquo;s what we expect. I use &lt;code&gt;let result = 10;&lt;/code&gt;
+because I will be putting the result into a variable. The &lt;code&gt;result&lt;/code&gt; with the semicolon
+omitted is our return value. So far, so good.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s try to sum up the relevant numbers with a hard coded max value of 10.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; solve(max_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; numbers &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; range(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, max_num).filter(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    numbers.fold(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;acc, x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; acc &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; x)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Total sum: {}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, solve(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;));&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Looks fun, right? So what&amp;rsquo;s going on? First we generate a range iterator of numbers
+divisible by 3 and 5. Pay attention to the &lt;code&gt;*i&lt;/code&gt; which we need to use because the
+filter value &lt;code&gt;i&lt;/code&gt; is of type &lt;code&gt;&amp;amp;i32&lt;/code&gt; and without it Rust handily tells you the same:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;error: binary operation `%` cannot be applied to type `&amp;amp;i32`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we use &lt;code&gt;fold&lt;/code&gt; to sum all the entries. The &lt;a href=&#34;http://doc.rust-lang.org/1.0.0-alpha/core/iter/trait.IteratorExt.html#method.fold&#34;&gt;docs&lt;/a&gt;
+explain fold like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Performs a fold operation over the entire iterator, returning the eventual
+state at the end of the iteration.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case we can liken it to Python&amp;rsquo;s &lt;code&gt;map&lt;/code&gt; function if you like, but a little different.
+The first argument is the initial value that gets assigned to &lt;code&gt;acc&lt;/code&gt;. Then the result of &lt;code&gt;acc + x&lt;/code&gt;
+gets assigned to &lt;code&gt;acc&lt;/code&gt; to each entry &lt;code&gt;x&lt;/code&gt;. Ultimately it&amp;rsquo;s a &lt;code&gt;sum&lt;/code&gt; in Python world.&lt;/p&gt;
+
+&lt;p&gt;Functionally we&amp;rsquo;re done. The problem is solved as far as the initial requirement are concerned.
+But I want to add some user input, so let&amp;rsquo;s go over that part next.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; solve(max_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; numbers &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; range(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, max_num).filter(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    numbers.fold(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;acc, x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; acc &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; x)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    print&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Enter the max number: &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;io&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;stdin().read_line().ok().expect(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Failed to read line&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; Option&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input.trim().parse();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Total sum: {}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, solve(input_num));&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We read the user input and make sure it was read ok (this is explained in detail in the book)
+then we convert the input to &lt;code&gt;i32&lt;/code&gt;. The &lt;code&gt;trim&lt;/code&gt; is required to remove the newline char
+at the nd of the input and the &lt;code&gt;parse&lt;/code&gt; does the conversion.&lt;/p&gt;
+
+&lt;p&gt;But if we try to run this we get the following error:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;error: mismatched types: expected `i32`, found `core::option::Option&amp;lt;i32&amp;gt;` 
+(expected i32, found enum core::option::Option)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Right, because it&amp;rsquo;s still an &lt;code&gt;Option&amp;lt;i32&amp;gt;&lt;/code&gt; type. Helpfully the book explains that we need to
+unwrap the &lt;code&gt;Option&lt;/code&gt;, and the best way to do this is with &lt;code&gt;match&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; solve(max_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; numbers &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; range(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, max_num).filter(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    numbers.fold(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;acc, x&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; acc &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; x)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    print&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Enter the max number: &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;io&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;stdin().read_line().ok().expect(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Failed to read line&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; Option&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input.trim().parse();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; num &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;match&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input_num {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        Some(num) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; num,&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        None      &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;            println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Please input a number!&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        }&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    };&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Total sum: {}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, solve(num));&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s run this and see what happens:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ninja:euler_1 unlogic$ cargo run
+   Compiling euler_1 v0.0.1 (file:///work/code/rust/euler/euler_1)
+/work/code/rust/euler/euler_1/src/main.rs:2:19: 2:24 warning: use of unstable item: will be replaced by range notation, #[warn(unstable)] on by default
+/work/code/rust/euler/euler_1/src/main.rs:2     let numbers = range(1, max_num).filter(|i| *i % 3 == 0 || *i % 5 == 0);
+                                                              ^~~~~
+/work/code/rust/euler/euler_1/src/main.rs:8:34: 8:45 warning: use of unstable item, #[warn(unstable)] on by default
+/work/code/rust/euler/euler_1/src/main.rs:8     let input = std::io::stdin().read_line().ok().expect(&amp;quot;Failed to read line&amp;quot;);
+                                                                             ^~~~~~~~~~~
+/work/code/rust/euler/euler_1/src/main.rs:8:17: 8:31 warning: use of unstable item, #[warn(unstable)] on by default
+/work/code/rust/euler/euler_1/src/main.rs:8     let input = std::io::stdin().read_line().ok().expect(&amp;quot;Failed to read line&amp;quot;);
+                                                            ^~~~~~~~~~~~~~
+/work/code/rust/euler/euler_1/src/main.rs:9:47: 9:54 warning: use of unstable item: this method was just created, #[warn(unstable)] on by default
+/work/code/rust/euler/euler_1/src/main.rs:9     let input_num: Option&amp;lt;i32&amp;gt; = input.trim().parse();
+                                                                                          ^~~~~~~
+     Running `target/euler_1`
+Enter the max number: 1000
+Total sum: 233168
+ninja:euler_1 unlogic$
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Some warnings about unstable calls, but it&amp;rsquo;s an Alpha release, so what else can we expect? But the end
+result is there.&lt;/p&gt;
+
+&lt;p&gt;Well that was a nice little trip into Rust land, wasn&amp;rsquo;t it?&lt;/p&gt;
+
+&lt;p&gt;UPDATE: I posted this on &lt;a href=&#34;https://www.reddit.com/r/rust/comments/2s9lam/just_started_playing_with_rust_heres_a_write_up/&#34;&gt;reddit&lt;/a&gt;
+and having taken some suggestions on board, I have made some small changes:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;use&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;iter&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;AdditiveIterator;&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; solve(max_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;mut&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; numbers &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; (&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;.max_num).filter(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;||&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    numbers.sum()&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;fn&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; main() {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    print&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Enter the max number: &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; std&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;io&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;stdin().read_line().ok().expect(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Failed to read line&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input_num&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; Option&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;i32&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input.trim().parse();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;            &lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; num &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;match&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; input_num {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        Some(num) &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; num,&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        None      &lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt; {&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;            println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Please input a number!&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;            &lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;        }&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    };&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;    println&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Total sum: {}&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;, solve(num));&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Also made the code (and all future solutions) available on &lt;a href=&#34;https://github.com/Svenito/euler_rust&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>On YAGNI and TEFNAR</title>
+      <link>http://unlogic.co.uk/2014/05/29/on-yagni-and-tefnar/</link>
+      <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2014/05/29/on-yagni-and-tefnar/</guid>
+      <description>&lt;p&gt;You&amp;rsquo;ve probably heard of &lt;a href=&#34;https://en.wikipedia.org/wiki/You_Ain%27t_Gonna_Need_It&#34;&gt;YAGNI&lt;/a&gt;
+but not of TEFNAR. To recap YAGNI stands for &lt;strong&gt;Y&lt;/strong&gt;ou &lt;strong&gt;A&lt;/strong&gt;in&amp;rsquo;t &lt;strong&gt;G&lt;/strong&gt;onna &lt;strong&gt;N&lt;/strong&gt;eed &lt;strong&gt;I&lt;/strong&gt;t and
+refers to the development principle of that you shouldn&amp;rsquo;t write a feature that no one has asked for
+in the first place as it&amp;rsquo;s probably never going to be needed. Instead wait until
+it&amp;rsquo;s a requirement and implement it then. This saves wasted effort and keeps the code base
+clean and as small as possible.&lt;/p&gt;
+
+&lt;p&gt;TEFNAR stands for &lt;strong&gt;TE&lt;/strong&gt;chnology &lt;strong&gt;F&lt;/strong&gt;or &lt;strong&gt;N&lt;/strong&gt;o &lt;strong&gt;A&lt;/strong&gt;pparent &lt;strong&gt;R&lt;/strong&gt;eason and is a term
+my boss coined (AFAIK). It basically refers to any unnecessary technology that
+doesn&amp;rsquo;t really add any functionality to the product. Sure it might look nice, but
+is there a reason that&amp;rsquo;s there or does that?&lt;/p&gt;
+
+&lt;p&gt;From this you can probably also see that YAGNI applies &lt;em&gt;before&lt;/em&gt; and TEFNAR for &lt;em&gt;after&lt;/em&gt;
+the implementation. So with the background information done let me explain why I am writing
+about this. A few people might not like the idea of YAGI and think it&amp;rsquo;s better to
+add a feature and make a useful app than omit it. Well allow me to give you an example
+from the real world.&lt;/p&gt;
+
+&lt;p&gt;A fellow dev here implemented a feature that showed graphs to the user. He added a
+feature to animate the graph points from 0 to their actual value each time you
+were shown a graph. A very pretty feature indeed, but it doesn&amp;rsquo;t add anything to
+the graph. The animation doesn&amp;rsquo;t represent another bit of data or a sort of
+progress bar, it&amp;rsquo;s just eye candy. I argued that although it&amp;rsquo;s pretty people will
+tire of it after a while. Much like you tire of most little animations you have to sit
+through when you just want the end result. I also argued it&amp;rsquo;s unnecessary complexity
+that adds to the risk of introducing bugs and also adds another thing for future devs
+to debug. Granted, it didn&amp;rsquo;t take him long to code up, but stay tuned, here comes the
+lesson.&lt;/p&gt;
+
+&lt;p&gt;Fast forward a day and I get called over&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Hey Sven, fancy a Python puzzle?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I took the bait and headed over.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;So in the interpreter &lt;code&gt;1.0 &amp;lt; 1.0&lt;/code&gt; is &lt;code&gt;False&lt;/code&gt;, which is correct.
+But now look at this *runs small python script*. See here, &lt;code&gt;1.0 &amp;lt; 1.0 True&lt;/code&gt;
+How is that?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I look at the code and notice he&amp;rsquo;s got a loop that adds 0.1 to a variable and
+compares that to 1.0. I chuckled.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Yeah, that&amp;rsquo;s a different kettle of fish. Floats aren&amp;rsquo;t that accurate that you
+can accumulate like that and expect it to be &lt;em&gt;exactly&lt;/em&gt; 1.0. That&amp;rsquo;s the issue.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;He looked a little confused. I explained to him about how floats are represented.
+If you are interested you can read up on &lt;a href=&#34;https://docs.python.org/2.7/tutorial/floatingpoint.html&#34;&gt;floating point values in Python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To demonstrate I opened an interpreter and ran this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;0.6&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;0.7999999999999999&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I suggested he try the same by incrementing the value by &lt;code&gt;0.2&lt;/code&gt; and the error went away.
+He looked a little dejected. I asked what this was for and sure enough, it&amp;rsquo;s how he
+animated his graphs, so some points were slightly higher than they should be.&lt;/p&gt;
+
+&lt;p&gt;So be careful when you add code for no other reason than &amp;ldquo;it looks nice&amp;rdquo; as it&amp;rsquo;s
+just another area where you can introduce bugs. In this case it was a pretty small
+issue, but a different feature could affect a larger part of the program or
+even other programs.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Random album generator in python</title>
+      <link>http://unlogic.co.uk/2012/11/06/random-album-generator/</link>
+      <pubDate>Tue, 06 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2012/11/06/random-album-generator/</guid>
+      <description>&lt;p&gt;You may have heard about the &amp;ldquo;random music album&amp;rdquo; thing. Basically it goes like this:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The album cover is the 4th image from a random page of Flickr&amp;rsquo;s interesting pics&lt;/li&gt;
+&lt;li&gt;The band name is the title of a random Wikipedia article&lt;/li&gt;
+&lt;li&gt;The album name comes from the last 3 or 5 words of a famous quote&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is all well and good, but isn&amp;rsquo;t getting all this data manually, and then making the album cover a bit tedious? Sure it is, so let&amp;rsquo;s see how we can do this in python&lt;/p&gt;
+
+&lt;p&gt;Here are some example images generated with this script (click for the full size picture):&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;center%20/images/content/album2.jpg%20585%20585&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;center%20/images/content/album3.jpg%20585%20585&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;center%20/images/content/album4.jpg%20585%20585&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Let&amp;rsquo;s cover our dependencies first. You will need:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;python 2.6 (or similar)&lt;/li&gt;
+&lt;li&gt;PIL (&lt;a href=&#34;http://www.pythonware.com/products/pil/&#34;&gt;python Image Library&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;A &lt;a href=&#34;http://www.flickr.com/services/apps/create/apply/&#34;&gt;Flickr API key&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.gnu.org/software/wget/&#34;&gt;wget&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Not much to ask for is it? So once you&amp;rsquo;ve made sure you have all that, let&amp;rsquo;s start by getting the album cover. This is handled by the &lt;a href=&#34;http://www.flickr.com/services/api/flickr.interestingness.getList.html&#34;&gt;interestingness&lt;/a&gt; part of the API and is a very simple call that will return an XML structure of the photos on that page. Once we have a response we parse the XML and get the elements we need to construct the photo URL. It&amp;rsquo;s a short function and here it is:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getAlbumImage&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;page&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;random&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;randint(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;80&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://api.flickr.com/services/rest/?method=flickr.interestingness.getList&amp;amp;api_key=YOURAPIKEYHERE&amp;amp;per_page=6&amp;amp;page=%d&amp;amp;format=rest&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(page)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;minidom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;parse(urllib&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;urlopen(url))&lt;/span&gt;
+
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getElementsByTagName(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;photo&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;farm_id&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;farm&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;server_id&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;server&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;the_id&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;secret&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;elem&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;secret&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
+    
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;photo_url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://farm%s.staticflickr.com/%s/%s_%s_b.jpg&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(farm_id,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;server_id,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;the_id,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;secret)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;target_photo&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;band.jpg&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;subprocess&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;call([&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/usr/bin/wget&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-O&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;target_photo,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;photo_url])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;First we generate a random number which will be the page number we use in constructing the API URL. Once constructed we use &lt;code&gt;minidom&lt;/code&gt; to parse it and start extracting our data. If you paste the URL into your browser (with your valid API key) you can see the response format. Now that we have all the data we need, we construct our image URL (the format for this is in the docs) and save it to &lt;code&gt;band.jpg&lt;/code&gt; using &lt;code&gt;wget&lt;/code&gt;. You can of course use something else, but this is just easy here.&lt;/p&gt;
+
+&lt;p&gt;Right, onto getting our band name. This is the random Wikipedia article. Luckily Wikipedia has an API also, and doesn&amp;rsquo;t require an API key for this purpose. This is an even shorter function:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getBandName&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;random_wiki_url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://en.wikipedia.org/w/api.php?format=xml&amp;amp;action=query&amp;amp;list=random&amp;amp;rnnamespace=0&amp;amp;rnlimit=1&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;minidom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;parse(urllib&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;urlopen(random_wiki_url))&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;line&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;dom&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getElementsByTagName(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;page&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;):&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;line&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;getAttributeNode(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;title&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;nodeValue&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As above we create the URL, parse the output with minidom and fetch our page title. Done.&lt;/p&gt;
+
+&lt;p&gt;Album title is a little trickier. I couldn&amp;rsquo;t find a decent quote page that offered a free, easy to use API, so I decided to be a little more hacky and just parse the HTML itself. Hey, it works, don&amp;rsquo;t judge me. We need a helper class for this called &lt;code&gt;MyHTMLParser&lt;/code&gt; that derives from python&amp;rsquo;s &lt;a href=&#34;http://docs.python.org/2/library/htmlparser.html?highlight=htmlparser#HTMLParser&#34;&gt;HTMLParser&lt;/a&gt; class.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;MyHTMLParser&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(HTMLParser):&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;__init__&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self):&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;HTMLParser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;__init__(self)&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;False;&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;[]&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;handle_starttag&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tag,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;attrs):&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tag&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;dt&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;attrs[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;][&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;attrs[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;][&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;quote&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
+                &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;True&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;handle_endtag&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;data):&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;pass&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;handle_data&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;data):&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data:&lt;/span&gt;
+            &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;append(data)&lt;/span&gt;
+            &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;get_data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;False&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getAlbumTitle&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;random_quote_url&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://www.quotationspage.com/random.php3&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;page&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;urllib&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;urlopen(random_quote_url)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;read()&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;parser&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;MyHTMLParser()&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;parser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;feed(page)&lt;/span&gt;
+
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;num_quotes&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(parser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;quote&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;parser&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;quotes[random&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;randint(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;num_quotes)]&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;rstrip(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;random&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;randint(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;words&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;quote&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;split()&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(words):&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(words)&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;join(words[&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;last_set:])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The class here is used to parse the HTML from &lt;a href=&#34;http://www.quotationspage.com/random.php3&#34;&gt;http://www.quotationspage.com/random.php3&lt;/a&gt;, specifically the tag that starts with &lt;code&gt;quote&lt;/code&gt;. Once we have that we start capturing the data between that tag and store it in an array. Our &lt;code&gt;getAlbumTitle&lt;/code&gt; function will use this data to select a random quote and then get the last 3 or 5 words from it and join them with spaces before returning that new string.&lt;/p&gt;
+
+&lt;p&gt;So now we have the data that we need, we just need to wrap it all up and generate our final image using &lt;code&gt;PIL&lt;/code&gt;. Surprise, surprise, this isn&amp;rsquo;t a big deal either.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;():&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;band_name&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;getBandName()&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;album_title&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;getAlbumTitle()&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;cover&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;getAlbumImage()&lt;/span&gt;
+
+    &lt;span style=&#34;color: #f92672&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;PIL&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageFont&lt;/span&gt;
+    &lt;span style=&#34;color: #f92672&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;PIL&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;
+    &lt;span style=&#34;color: #f92672&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;PIL&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageDraw&lt;/span&gt;
+
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;fnt&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageFont&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;truetype(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/usr/share/fonts/dejavu/DejaVuSans.ttf&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;lineWidth&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;20&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;open(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;band.jpg&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;imagebg&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;new(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;RGBA&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;size,&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#000000&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #75715e&#34;&gt;# make an entirely black image&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;mask&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;new(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;L&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;size,&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#000000&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;       &lt;span style=&#34;color: #75715e&#34;&gt;# make a mask that masks out all&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageDraw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Draw(image)&lt;/span&gt;                     &lt;span style=&#34;color: #75715e&#34;&gt;# setup to draw on the main image&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;drawmask&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImageDraw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Draw(mask)&lt;/span&gt;                &lt;span style=&#34;color: #75715e&#34;&gt;# setup to draw on the mask&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;drawmask&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;line((&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;lineWidth,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;size[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;],lineWidth),&lt;/span&gt;
+                  &lt;span style=&#34;color: #f8f8f2&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#999999&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;width&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;        &lt;span style=&#34;color: #75715e&#34;&gt;# draw a line on the mask to allow some bg through&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;paste(imagebg,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;mask&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask)&lt;/span&gt;                    &lt;span style=&#34;color: #75715e&#34;&gt;# put the (somewhat) transparent bg on the main&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;text((&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;band_name,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;font&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fnt,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;      &lt;span style=&#34;color: #75715e&#34;&gt;# add some text to the main&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;text((&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;40&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;album_title,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;font&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fnt,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;      &lt;span style=&#34;color: #75715e&#34;&gt;# add some text to the main&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;del&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;draw&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;save(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;out.jpg&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;JPEG&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,quality&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s go over what&amp;rsquo;s happening here. You&amp;rsquo;re welcome to clean it up as an exercise if you wish or think some values (like filenames) etc need configuring. Firstly we call the previously defined functions to fetch our album data and then we start the drawing. I use the &lt;code&gt;DejaVuSans.ttf&lt;/code&gt; font for this example, but you can use any font you have, or even use different fonts for the title and band name, to make your cover look a bit more pleasing. Once the image we saved from Flickr is open, we start writing our title and band name on the album cover, and save out the result as a &lt;code&gt;JPEG&lt;/code&gt;. The code here is commented so I won&amp;rsquo;t go over the details here.&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s all there is to it. If you want the the script as a whole file, you can &lt;a href=&#34;https://gist.github.com/4025200&#34;&gt;get it from this gist&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Show animated gifs using PyQT</title>
+      <link>http://unlogic.co.uk/2012/11/02/animated-gifs-in-pyqt/</link>
+      <pubDate>Fri, 02 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2012/11/02/animated-gifs-in-pyqt/</guid>
+      <description>&lt;p&gt;This is just a quick post to show you how to display animated gifs in PyQt. It&amp;rsquo;s a straightforward process and by the end I will give you a class that wraps up the work for you.&lt;/p&gt;
+
+&lt;p&gt;The way we&amp;rsquo;re going to approach this is by using a &lt;code&gt;QLabel&lt;/code&gt; to render a &lt;code&gt;QMovie&lt;/code&gt;. Assuming we have our gif (&lt;code&gt;anim.gif&lt;/code&gt;) we need to load it into a &lt;code&gt;QMovie&lt;/code&gt; and set it on the &lt;code&gt;QLabel&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll give you the code now:&lt;/p&gt;
+
+&lt;p&gt;{% gist 4000025 %}&lt;/p&gt;
+
+&lt;p&gt;The code should be fairly easy to follow, so I won&amp;rsquo;t spend much time here going over it. If you want to call this from a &lt;code&gt;__main__&lt;/code&gt; function you simply do:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;__name__&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;gif&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/path/to/image.gif&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QApplication(sys&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;argv)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;player&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImagePlayer(gif)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;player&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;show()&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;sys&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;exit(app&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;exec_())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Parsing email in python</title>
+      <link>http://unlogic.co.uk/2012/10/11/parsing-email-in-python/</link>
+      <pubDate>Thu, 11 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2012/10/11/parsing-email-in-python/</guid>
+      <description>&lt;p&gt;I have a domain where I host images. It&amp;rsquo;s nothing fancy, just a collection where gifs and generally humerous images get stored in a custom gallery script.
+I also have a script on my host that I can pass a URL to and it will get the image with wget, put it in the right directory and then curl the import URL for the gallery. So if you&amp;rsquo;ve ever wanted to parse email addresses for content via a script, read on. Example code inside.&lt;/p&gt;
+
+&lt;p&gt;Now this in principle is great, but sometimes I need to add an image from my phone and the whole ssh thing becomes a bit cumbersome. Usually I&amp;rsquo;ll see something in Reeder or some other iPhone app which allows me to email the URL. Perfect. So I wrote a quick script that would do the work for me, and set up an email address that passes any content to this script. The script in question is here:&lt;/p&gt;
+
+&lt;p&gt;{% gist 3872497 %}&lt;/p&gt;
+
+&lt;p&gt;I use the &lt;code&gt;fileinput&lt;/code&gt; module to read the data from stdin and then join it all to a single text chunk. I&amp;rsquo;m not expecting too much data in the email, so this isn&amp;rsquo;t a big issue. Then I extract the message via the &lt;code&gt;email&lt;/code&gt; module and parse the payload in order to get the actual email body, discarding the headers and all the other things I don&amp;rsquo;t need. Assuming people have good etiquette and have the correct signature separator (&lt;code&gt;-- \n&lt;/code&gt;), I also strip off the signature.
+Once I have the body I extract the image URL(s) using regular expressions, and then pass the URL to my import script.&lt;/p&gt;
+
+&lt;p&gt;As you can see this only works with image URLs that are prefixed with &lt;code&gt;http://&lt;/code&gt;. The email address is a random collection of letters and numbers to reduce the likelyhood of just anyone emailling links.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>cmake and gcov</title>
+      <link>http://unlogic.co.uk/2012/08/13/cmake-and-gcov/</link>
+      <pubDate>Mon, 13 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2012/08/13/cmake-and-gcov/</guid>
+      <description>&lt;p&gt;Recently I setup a project that uses CMake as its build tool and &lt;a href=&#34;https://code.google.com/p/googletest/&#34;&gt;googletest&lt;/a&gt; as a unit test framework. As is common place I wanted to make sure that my tests cover as much of the code as possible, so I went and grabbed the trusty gcov/lcov to analyse the tests only to find it wasn&amp;rsquo;t as easy as I expected. I should mention this is the first time I have used CMake aswell as googletest. Granted, googletest is fairly simple and doesn&amp;rsquo;t really complicate things when it comes to getting code coverage. I just had to figure out how we get CMake to build the test runner properly and then how to invoke lcov correctly. Turns out this was fairly easy too, once you ironed out some of the trickier bits and learned a little more about CMake.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code&gt;CMakeLists.txt&lt;/code&gt; file for your test suite you need to add the following (I&amp;rsquo;ve omitted some lines that aren&amp;rsquo;t relevant to this article):&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;PROJECT_TEST_NAME&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;PROJECT_NAME_STR&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;_test&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;CMAKE_CXX_FLAGS&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-g -O0 -Wall -fprofile-arcs -ftest-coverage&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;CMAKE_C_FLAGS&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-g -O0 -Wall -W -fprofile-arcs -ftest-coverage&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;CMAKE_EXE_LINKER_FLAGS&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-fprofile-arcs -ftest-coverage&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;.&lt;/span&gt;   
+&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;.&lt;/span&gt;
+&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;.&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;target_link_libraries(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;PROJECT_TEST_NAME&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;gtest_main&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;gtest&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;pthread&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We need to make sure a debug build is on (&lt;code&gt;-g&lt;/code&gt;), that we build without optimisation (&lt;code&gt;-O0&lt;/code&gt;), and enable profiling (&lt;code&gt;-fprofile-arcs -ftest-coverage&lt;/code&gt;). On the link phase we need to link against the google unit test libraries and pthread. Once you have sucessfully built your unit test you can then use lcov to generate the coverage results. Although you&amp;rsquo;ll soon notice that it might not work. CMake places its files into different directories than you&amp;rsquo;d expect from make or other build systems. So here&amp;rsquo;s what I did to get this to work. Assuming you have a &lt;code&gt;tests&lt;/code&gt; directory in your build, where your tests are and the test runner binary is built into, you have to run the following from that directory (&lt;code&gt;${PROJECTDIR}/build/tests&lt;/code&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;lcov --zerocounters --directory .
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;lcov --capture --initial --directory . --output-file app
+
+&lt;span style=&#34;color: #75715e&#34;&gt;# Now run your test app in the same directory&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;lcov --no-checksum --directory . --capture --output-file app.info
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;genthml app.info
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Now you can point your browser to that directory and you will have the nice html view of your coverage data.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: sometimes I got an error from the second to last line saying it could not find any gcno files. In this case I just ran the test runner again and then ran the last two lines from above again.&lt;/p&gt;
+
+&lt;p&gt;Hope this helps you out in case you have the same issue as me.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Did a change cross a threshold?</title>
+      <link>http://unlogic.co.uk/2011/10/21/did-a-change-cross-a-threshold/</link>
+      <pubDate>Fri, 21 Oct 2011 15:43:01 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2011/10/21/did-a-change-cross-a-threshold/</guid>
+      <description>&lt;p&gt;So recently I needed to check if a change to a number caused it to cross a threshold. In this case, did the change cause a crossing of a threshold that is a multiple of 25? To try and make this a little easier to understand:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;True if the first value is 14 and the new value is 28. (crosses 25)&lt;/li&gt;
+&lt;li&gt;True if the first value is 43 and the new value is 58 . (crosses 50)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You get the idea. So how do we best do it. With some thinking it&amp;rsquo;s actually quite easy as you just base the decision off of the number of multiples each number is of 25:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;prev_multiple&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;t[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;new_multiple&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;new_percentage&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(new_multiple&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;prev_multiple):&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Crossed&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nice and simple :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Shapely Window in PyQT</title>
+      <link>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</link>
+      <pubDate>Fri, 27 May 2011 15:38:21 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</guid>
+      <description>&lt;p&gt;Recently I needed to make a PyQt app where the &lt;strong&gt;window&lt;/strong&gt; is the shape of an image and doesn’t have a border. I say needed, that’s not strictly true, more like wanted to because it’d be more interesting.&lt;/p&gt;
+
+&lt;p&gt;It wasn’t as straight forward as I had hoped but I managed to get it working in the end and here I am about to share it with the world. Here’s what we will need:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;python, Qt, and PyQt installed&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;The image you want to use as the background with transparency. PNG will do nicely&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;A texteditor&lt;/li&gt;
+&lt;li&gt;A cup of coffee&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Set the coffee aside so you don’t knock it over, but keep it within reach. First we need to open up Designer.&lt;/p&gt;
+
+&lt;p&gt;Once open create a new Dialog or MainWindow. Open the resource browser and add your background image to the list of resources. Now right click on the &lt;strong&gt;window&lt;/strong&gt; and select &lt;code&gt;Change styleSheet&lt;/code&gt; (I am using Designer4 in case it looks different for you). Enter the following in the popup, adjusting for names and path as appropriate.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;#Dialog{&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;color:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;rgb(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;image:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;url(:&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;img&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;windowshape&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;png);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Adjusting the &lt;code&gt;#Dialog&lt;/code&gt; to the &lt;strong&gt;window&lt;/strong&gt; name and the url path to your image.&lt;/p&gt;
+
+&lt;p&gt;You should now see the image in the &lt;strong&gt;window&lt;/strong&gt; with a black surround. At this point it’s also good to set the &lt;strong&gt;window&lt;/strong&gt; size to something suitable for your image.&lt;/p&gt;
+
+&lt;p&gt;As per usual you will need to compile your .ui and resource files with pyuic and pyrcc, but details on that are outside the scope of this post.
+So in order to remove the border we call this in our &lt;code&gt;__init__&lt;/code&gt; function&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QMainWindow()&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;setWindowFlags(self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;windowFlags()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;FramelessWindowHint&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;WindowSystemMenuHint)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It’s important to derive your class from &lt;code&gt;QtGui.QMainWindow&lt;/code&gt; otherwise this won’t work.&lt;/p&gt;
+
+&lt;p&gt;Don’t be surprised if under certain &lt;strong&gt;window&lt;/strong&gt; managers you still see a border, not all &lt;strong&gt;window&lt;/strong&gt; managers will render windows without borders from &lt;strong&gt;Qt&lt;/strong&gt;. The settings are just a request rather than a demand. In Fluxbox for instance the border still shows. Gnome and KDE work fine.&lt;/p&gt;
+
+&lt;p&gt;Right, time for a sip of coffee. You earned it. But wait, what about the black colour? We want the &lt;strong&gt;window&lt;/strong&gt; in the shape of the image. Ah yes, we do that by adding this function&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;resizeEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;pixmap&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QPixmap(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;:/img/windowshape.png&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;region&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QRegion(pixmap&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask())&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;setMask(pixmap&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask());&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;This will tell &lt;strong&gt;Qt&lt;/strong&gt; to use the image as a mask for the &lt;strong&gt;window&lt;/strong&gt; region, effectively hiding any parts where the image is transparent.&lt;/p&gt;
+
+&lt;p&gt;More coffee, we&amp;rsquo;re almost there. Right now, as you&amp;rsquo;re swallowing that last sip, you&amp;rsquo;re wondering &amp;ldquo;How do I move or close the &lt;strong&gt;window&lt;/strong&gt; without a border?&amp;ldquo;. Fear not fellow coder for there is a solution for each of these:&lt;/p&gt;
+
+&lt;p&gt;To close the &lt;strong&gt;window&lt;/strong&gt; we just need to add a context menu. Simply done by adding one more function to your class:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;contextMenuEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QMenu(self)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;quitAction&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;addAction(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Quit&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;exec_(self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mapToGlobal(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;pos()))&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;quitAction:&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;close()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;You can of course replace the &lt;code&gt;self.close()&lt;/code&gt; with a call to some confirmation dialog if you want, but that will now enable a right-click menu on your GUI with a quit option. Also you can add keyboard shortcuts to the application as well if you are so inclined.&lt;/p&gt;
+
+&lt;p&gt;Now for moving the thing. Here we need two extra functions, one for the mouse move and one for the mouse press:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;mouseMoveEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;buttons()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;LeftButton):&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;move(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x(),&lt;/span&gt;
+            &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;y()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;y());&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;accept();&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;mousePressEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;button()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;LeftButton):&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;pos();&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;accept();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We just get the click position when the mouse button is pressed, work out the offset from the top left corner of the &lt;strong&gt;window&lt;/strong&gt; (this is what the move function uses) and then when the mouse moves, we move the &lt;strong&gt;window&lt;/strong&gt; with it.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it really. Pretty simple once you know how. Now go and enjoy the rest of that coffee.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

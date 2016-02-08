@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Core Graphics on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/core-graphics/</link>
+    <description>Recent content in Core Graphics on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 12 Apr 2009 15:38:28 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/core-graphics/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Compositing images on an iPhone with Core Graphics</title>
+      <link>http://unlogic.co.uk/2009/04/12/compositing-images-on-an-iphone-with-core-graphics/</link>
+      <pubDate>Sun, 12 Apr 2009 15:38:28 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2009/04/12/compositing-images-on-an-iphone-with-core-graphics/</guid>
+      <description>&lt;p&gt;How do you take two images, one with rotation and scale applied, and compose the two together in memory and save the result to the device? We make use of core graphics and a little bit of math.&lt;/p&gt;
+
+&lt;p&gt;To set the scene properly here’s what we have: we have an image that’s been scaled and rotated and positioned on screen, over which we would like to place an image that will fill the screen and always be the same size, this is the overlay. Our overlay is 320×480 and positioned centrally in the display and contains transparency to let the background show through. Both images are PNG files.&lt;/p&gt;
+
+&lt;p&gt;So what we want to do is create two frames, one for the background image and one for the overlay. Then we create a graphics context for the background image, rotate it, draw our image into it, position it on screen, and then composite the overlay on top of that. Once that’s done we grab the image (now composited) from the graphics context and write it to the device.&lt;/p&gt;
+
+&lt;p&gt;Ready? Then let’s set up a frame for both the background image and the overlay&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;// Assume that overlay and userImage are our UIImages&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// overlay and background images respectively&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// Overlay frame&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGRect&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;frame;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;frame.origin&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;CGPointMake(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;frame.size&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;CGSizeMake(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;320&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;480&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// background frame&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// Scale is the factor the image is scaled by (float)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGRect&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;userImage.size;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size.width&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;*=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;scale;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size.height&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;*=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;scale;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In order to draw our image rotated we actually need to rotate the context and then draw our image into it. We also need to know the size of the rectangle that contains the rotated context. We’ll use some simple trig to work that out. We need this new size in order to correctly position the background, as core graphics uses the top left corner to place the context and after the rotation the top left corner has moved somewhat.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;// Get the size of the background frame (unrotated)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGSize&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;size&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size;&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// Work out the bounding box for the rotated image&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;h&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;size.height;&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;w&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;size.width;&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// Using the trig we need to know 90deg - the actual rotation angle&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;beta&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;DEGREES_TO_RADIANS(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;90.0&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(rotation));&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// Do the trig for the new size&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;h1&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fabs(sin(beta))&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;w&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fabs(cos(beta));&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;w1&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;w&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fabs(sin(beta))&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;h&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;fabs(cos(beta));&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// CG works in radians - Using a macro to do the work&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;angle&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;DEGREES_TO_RADIANS(rotation);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGSize&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tempFrame;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;tempFrame.height&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;h1;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;tempFrame.width&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;w1;&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// Rotation Context starts here&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// draw the image into it&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;UIGraphicsBeginImageContext(tempFrame);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGContextRef&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ctx&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;UIGraphicsGetCurrentContext();&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// Rotate around center&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGContextTranslateCTM(ctx,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tempFrame.width&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tempFrame.height&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGContextRotateCTM(ctx,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;angle);&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;CGContextTranslateCTM(ctx,&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;tempFrame.width&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;tempFrame.height&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// Origin is this for some reason. One day I&amp;#39;ll figure it out&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.origin&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;CGPointMake((w1&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size.width)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt;
+                             &lt;span style=&#34;color: #f8f8f2&#34;&gt;(h1&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size.height)&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// Draw it&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;[userImage.image&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;drawInRect:bgFrame];&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// Get it&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;UIImage&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;copy&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;UIGraphicsGetImageFromCurrentImageContext();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;UIGraphicsEndImageContext();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;You will notice I&amp;rsquo;m a bit bewildered as to why the origin of the background frame is what it is. I figured this out by experimenting a bit, but haven&amp;rsquo;t yet got round to working out the exact science/reason behind it. If you know why, I&amp;rsquo;d appreciate you leaving a comment here, or emailing me, so I can update this page.&lt;/p&gt;
+
+&lt;p&gt;Home stretch now, we&amp;rsquo;re almost done. Just draw the overlay and then nab the contents of the context and write it to the device&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;// On to the comp&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size.height&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;h1;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.size.width&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;w1;&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// position is where the original image was placed on screen&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// in this case the coordinate for the position was the center of the image&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// hence the adjustments&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;bgFrame.origin&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;CGPointMake(position.x&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(bgFrame.size.width&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;),&lt;/span&gt;
+                            &lt;span style=&#34;color: #ae81ff&#34;&gt;480&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(bgFrame.size.height&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2.0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;position.y);&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;UIGraphicsBeginImageContext(frame.size);&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;// draw the background and overlay&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;copy&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;drawInRect:bgFrame];&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;[overlay&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;drawInRect:frame];&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;[overlay&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;release&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;];&lt;/span&gt;
+
+&lt;span style=&#34;color: #75715e&#34;&gt;// Get and save the comp image&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;UIImage&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;newImage&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;UIGraphicsGetImageFromCurrentImageContext();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;UIGraphicsEndImageContext();&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;UIImageWriteToSavedPhotosAlbum(newImage,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;nil,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;nil);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And there we go. You can adjust the &lt;code&gt;UIImageWriteToSavedPhotosAlbum&lt;/code&gt; if you need the callback, but I omitted it in this case.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

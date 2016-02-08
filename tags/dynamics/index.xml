@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dynamics on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/dynamics/</link>
+    <description>Recent content in Dynamics on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 08 Dec 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/dynamics/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Houdini voronoi shatter</title>
+      <link>http://unlogic.co.uk/2012/12/08/houdini-voronoi-shatter/</link>
+      <pubDate>Sat, 08 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2012/12/08/houdini-voronoi-shatter/</guid>
+      <description>&lt;p&gt;Thought I would write about creating a very simple voronoi shatter effect in Houdini and how to explode it. The video below demonstrates the effect we&amp;rsquo;re looking to achieve:&lt;/p&gt;
+
+&lt;p&gt;{% vimeo 55168444 %}&lt;/p&gt;
+
+&lt;p&gt;The process of creating this is very simple, and I learned a few things from setting this up, so I figured I would share and hope you learn something from it too.&lt;/p&gt;
+
+&lt;p&gt;So first we need to drop down a &lt;em&gt;Geometry&lt;/em&gt; node and dive inside. Delete the file node and then create a &lt;em&gt;box&lt;/em&gt; node. This box will be the object we will shatter. But in order to create a voronoi shatter we also need some seed points to generate the pattern with. So let&amp;rsquo;s do that first. We&amp;rsquo;ll use our box to generate the points we need, so drop down a &lt;em&gt;Points From Volume&lt;/em&gt; node and connect the box to its input. Adjust the settings to your liking, or copy the ones below. I kept the number of points low as I wanted fewer and larger pieces.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;content%20/images/content/points_from_vol.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now that we have our points we can drop down a &lt;em&gt;Voronoi Fracture&lt;/em&gt; node and connect the points to its second input. The only setting I changed was to turn on &lt;code&gt;Connect Inside Edges&lt;/code&gt;. Finally we need to connect the &lt;em&gt;box&lt;/em&gt; node to the &lt;em&gt;Voronoi Shatter&amp;rsquo;s&lt;/em&gt; first input. Now make the &lt;em&gt;Voronoi shatter&lt;/em&gt; visible and you should see your fractured geo.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;center%20/images/content/fracture.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Next we&amp;rsquo;ll turn on the dynamics via the rigid bodies shelf at the top. Click &lt;em&gt;RBD Fracture&lt;/em&gt; and make sure the voronoi geo is selected and press enter. If you press play now your object will fall down. Hrmmm, not totally awesome, as we wanted to explode it a little too. So the plan is to make all the pieces explode from the center outwards, like, for example, along the normals of a sphere say? Yes, that sounds about right. Ok, so let&amp;rsquo;s put down a &lt;em&gt;Sphere&lt;/em&gt; and scale it so that it&amp;rsquo;s roughly the same size as the box. Append a &lt;em&gt;Point&lt;/em&gt; node to the sphere and add a &lt;em&gt;Normal&lt;/em&gt; and &lt;em&gt;Velocity&lt;/em&gt; attribute. The &lt;em&gt;Velocity&lt;/em&gt; attribute is under the &lt;em&gt;Particle&lt;/em&gt; tab and we&amp;rsquo;ll set its value to be a facture of the point&amp;rsquo;s normal. Feel free to play with this value to get the efect you want. Basically this will set the point&amp;rsquo;s velocity to the normal at that point, causing the pieces to rediate outwards when the sim starts.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;center%20/images/content/vel_attribute.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Connect the output to the second input of an &lt;em&gt;Attribute Transfer&lt;/em&gt; node and then connect the output of that to the &lt;em&gt;Rest Position&lt;/em&gt; node. Connect the &lt;em&gt;Box&lt;/em&gt; to the first input of the &lt;em&gt;Attribute Transfer&lt;/em&gt; node. This will transfer the point attributes of the &lt;em&gt;Sphere&lt;/em&gt; onto the shattered geo. You should now have a network that looks like this:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;center%20/images/content/finalnetwork.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;And yet still to exploding pieces? Well, we need to tell our solver to use the point velocity. So dive into the &lt;em&gt;Autodop Network&lt;/em&gt; and on the &lt;em&gt;RBD Fracture Object&lt;/em&gt; enable &lt;em&gt;Inherit Velocity From Point Velocity&lt;/em&gt;. Hit play and you should see it explode.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;center%20/images/content/inherit_pv.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

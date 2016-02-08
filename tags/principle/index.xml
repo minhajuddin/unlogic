@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Principle on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/principle/</link>
+    <description>Recent content in Principle on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 29 May 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/principle/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>On YAGNI and TEFNAR</title>
+      <link>http://unlogic.co.uk/2014/05/29/on-yagni-and-tefnar/</link>
+      <pubDate>Thu, 29 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2014/05/29/on-yagni-and-tefnar/</guid>
+      <description>&lt;p&gt;You&amp;rsquo;ve probably heard of &lt;a href=&#34;https://en.wikipedia.org/wiki/You_Ain%27t_Gonna_Need_It&#34;&gt;YAGNI&lt;/a&gt;
+but not of TEFNAR. To recap YAGNI stands for &lt;strong&gt;Y&lt;/strong&gt;ou &lt;strong&gt;A&lt;/strong&gt;in&amp;rsquo;t &lt;strong&gt;G&lt;/strong&gt;onna &lt;strong&gt;N&lt;/strong&gt;eed &lt;strong&gt;I&lt;/strong&gt;t and
+refers to the development principle of that you shouldn&amp;rsquo;t write a feature that no one has asked for
+in the first place as it&amp;rsquo;s probably never going to be needed. Instead wait until
+it&amp;rsquo;s a requirement and implement it then. This saves wasted effort and keeps the code base
+clean and as small as possible.&lt;/p&gt;
+
+&lt;p&gt;TEFNAR stands for &lt;strong&gt;TE&lt;/strong&gt;chnology &lt;strong&gt;F&lt;/strong&gt;or &lt;strong&gt;N&lt;/strong&gt;o &lt;strong&gt;A&lt;/strong&gt;pparent &lt;strong&gt;R&lt;/strong&gt;eason and is a term
+my boss coined (AFAIK). It basically refers to any unnecessary technology that
+doesn&amp;rsquo;t really add any functionality to the product. Sure it might look nice, but
+is there a reason that&amp;rsquo;s there or does that?&lt;/p&gt;
+
+&lt;p&gt;From this you can probably also see that YAGNI applies &lt;em&gt;before&lt;/em&gt; and TEFNAR for &lt;em&gt;after&lt;/em&gt;
+the implementation. So with the background information done let me explain why I am writing
+about this. A few people might not like the idea of YAGI and think it&amp;rsquo;s better to
+add a feature and make a useful app than omit it. Well allow me to give you an example
+from the real world.&lt;/p&gt;
+
+&lt;p&gt;A fellow dev here implemented a feature that showed graphs to the user. He added a
+feature to animate the graph points from 0 to their actual value each time you
+were shown a graph. A very pretty feature indeed, but it doesn&amp;rsquo;t add anything to
+the graph. The animation doesn&amp;rsquo;t represent another bit of data or a sort of
+progress bar, it&amp;rsquo;s just eye candy. I argued that although it&amp;rsquo;s pretty people will
+tire of it after a while. Much like you tire of most little animations you have to sit
+through when you just want the end result. I also argued it&amp;rsquo;s unnecessary complexity
+that adds to the risk of introducing bugs and also adds another thing for future devs
+to debug. Granted, it didn&amp;rsquo;t take him long to code up, but stay tuned, here comes the
+lesson.&lt;/p&gt;
+
+&lt;p&gt;Fast forward a day and I get called over&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Hey Sven, fancy a Python puzzle?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I took the bait and headed over.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;So in the interpreter &lt;code&gt;1.0 &amp;lt; 1.0&lt;/code&gt; is &lt;code&gt;False&lt;/code&gt;, which is correct.
+But now look at this *runs small python script*. See here, &lt;code&gt;1.0 &amp;lt; 1.0 True&lt;/code&gt;
+How is that?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I look at the code and notice he&amp;rsquo;s got a loop that adds 0.1 to a variable and
+compares that to 1.0. I chuckled.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Yeah, that&amp;rsquo;s a different kettle of fish. Floats aren&amp;rsquo;t that accurate that you
+can accumulate like that and expect it to be &lt;em&gt;exactly&lt;/em&gt; 1.0. That&amp;rsquo;s the issue.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;He looked a little confused. I explained to him about how floats are represented.
+If you are interested you can read up on &lt;a href=&#34;https://docs.python.org/2.7/tutorial/floatingpoint.html&#34;&gt;floating point values in Python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To demonstrate I opened an interpreter and ran this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;0.6&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0.1&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;a&lt;/span&gt;
+&lt;span style=&#34;color: #ae81ff&#34;&gt;0.7999999999999999&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I suggested he try the same by incrementing the value by &lt;code&gt;0.2&lt;/code&gt; and the error went away.
+He looked a little dejected. I asked what this was for and sure enough, it&amp;rsquo;s how he
+animated his graphs, so some points were slightly higher than they should be.&lt;/p&gt;
+
+&lt;p&gt;So be careful when you add code for no other reason than &amp;ldquo;it looks nice&amp;rdquo; as it&amp;rsquo;s
+just another area where you can introduce bugs. In this case it was a pretty small
+issue, but a different feature could affect a larger part of the program or
+even other programs.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
