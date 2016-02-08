@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spydersec on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/spydersec/</link>
+    <description>Recent content in Spydersec on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 09 Sep 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/spydersec/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SpyderSec solution</title>
+      <link>http://unlogic.co.uk/2015/09/09/spydersec-solution/</link>
+      <pubDate>Wed, 09 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/09/09/spydersec-solution/</guid>
+      <description>&lt;p&gt;Another day, another VM. Today it&amp;rsquo;s the &lt;a href=&#34;https://www.vulnhub.com/entry/spydersec-challenge,128/&#34;&gt;SpyderSec Challenge&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So let me start it up and get on it.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/nah3Wah.gif&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;As per usual I need the IP of the machine and
+the services it has running (if any). Straight from the Unlogic Cookbook&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~/Downloads# nmap -sn 192.168.56.0/24
+
+Starting Nmap 6.49BETA4 ( https://nmap.org ) at 2015-09-09 16:07 BST
+Nmap scan report for 192.168.56.1
+Host is up (0.00039s latency).
+MAC Address: 0A:00:27:00:00:00 (Unknown)
+Nmap scan report for 192.168.56.100
+Host is up (0.00017s latency).
+MAC Address: 08:00:27:FF:57:41 (Cadmus Computer Systems)
+Nmap scan report for 192.168.56.101
+Host is up (0.00028s latency).
+MAC Address: 08:00:27:56:11:10 (Cadmus Computer Systems)
+Nmap scan report for 192.168.56.102
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 1.77 seconds
+
+root@kali:~/Downloads# nmap -p- -sV 192.168.56.101
+
+Starting Nmap 6.49BETA4 ( https://nmap.org ) at 2015-09-09 16:07 BST
+Nmap scan report for 192.168.56.101
+Host is up (0.00049s latency).
+Not shown: 65533 filtered ports
+PORT   STATE  SERVICE VERSION
+22/tcp closed ssh
+80/tcp open   http    Apache httpd
+MAC Address: 08:00:27:56:11:10 (Cadmus Computer Systems)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 155.80 seconds
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lucky me, only one service running, and it&amp;rsquo;s good old http at that.
+Let&amp;rsquo;s take a look at that page then:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/IiA6MlY.png&#34;&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/IiA6MlY.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Without wasting much time, let&amp;rsquo;s get to the clue hunting. First things first: check the source.
+And there&amp;rsquo;s clue number one, right between those script tags. It evals a function which seems to
+do some text processing. I&amp;rsquo;ll open Firebug to see if that shows anything interesting, and sure
+enough&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;SyntaxError&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;missing&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;before&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;statement&lt;/span&gt;
+    &lt;span style=&#34;color: #ae81ff&#34;&gt;61&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;6&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;65&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;72&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;74&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;28&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;27&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;6&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;d&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;75&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;6&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;64&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;65&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;72&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;e&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;66&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;62&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;69&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;27&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;29&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;b&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So that&amp;rsquo;s the output from the eval. It throws an error because the result isn&amp;rsquo;t valid
+javascript. It seems to me as though it might be HEX. I&amp;rsquo;ll put it through Burp&amp;rsquo;s decoder and
+sure enough it resolves to &lt;code&gt;a:l:e:r:t:(:&#39;:m:u:l:d:e:r:.:f:b:i:&#39;:):;&lt;/code&gt;. That&amp;rsquo;s not going to
+affect the page in any way, but I&amp;rsquo;m sure it&amp;rsquo;s a clue. I&amp;rsquo;ll note it down and carry on exploring.&lt;/p&gt;
+
+&lt;p&gt;The CSS contains a base64 encoded gif. I decided to investigate it by converting it to a file
+and opening it in Gimp to examine it. Nothing much of interest there either. Hexdump also shows
+nothing of note.&lt;/p&gt;
+
+&lt;p&gt;Ok then, apart from that there&amp;rsquo;s nothing of interest in the source, so let me move onto the images on the page.
+There&amp;rsquo;s two images: &lt;code&gt;Challenge.png&lt;/code&gt; and &lt;code&gt;SpyderSecLogo200.png&lt;/code&gt;. On first glance they appear to
+have nothing special about them, but once examined with &lt;code&gt;exiftool&lt;/code&gt; I see something of interest&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~/spydersec# exiftool Challenge.png 
+ExifTool Version Number         : 9.74
+File Name                       : Challenge.png
+Directory                       : .
+File Size                       : 83 kB
+File Modification Date/Time     : 2015:09:01 07:25:59+01:00
+File Access Date/Time           : 2015:09:09 14:29:25+01:00
+File Inode Change Date/Time     : 2015:09:09 14:29:19+01:00
+File Permissions                : rw-r--r--
+File Type                       : PNG
+MIME Type                       : image/png
+Image Width                     : 540
+Image Height                    : 540
+Bit Depth                       : 8
+Color Type                      : RGB with Alpha
+Compression                     : Deflate/Inflate
+Filter                          : Adaptive
+Interlace                       : Noninterlaced
+Background Color                : 255 255 255
+Pixels Per Unit X               : 2835
+Pixels Per Unit Y               : 2835
+Pixel Units                     : meters
+Comment                         : 35:31:3a:35:33:3a:34:36:3a:35:37:3a:36:34:3a:35:38:3a:33:35:3a:
+                                  37:31:3a:36:34:3a:34:35:3a:36:37:3a:36:61:3a:34:65:3a:37:61:3a:
+                                  34:39:3a:33:35:3a:36:33:3a:33:30:3a:37:38:3a:34:32:3a:34:66:3a:
+                                  33:32:3a:36:37:3a:33:30:3a:34:61:3a:35:31:3a:33:64:3a:33:64
+Image Size                      : 540x540
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Hex strings are the order of the day here at SpyderSec. So back to Burp&amp;rsquo;s decoder once more
+after removing all the colons. The string decodes to another hex string. Same dance again, and
+I get a typical base64 string, decode once more and be rewarded with &lt;code&gt;A!Vu~jtH#729sLA;h4%&lt;/code&gt;. Which is
+not encoded anymore. I make a note of it and carry on sleuthing.&lt;/p&gt;
+
+&lt;p&gt;Watch out, here comes the reliable &lt;code&gt;dirbuster&lt;/code&gt;. Running it with the regular word list I discover the &lt;code&gt;v&lt;/code&gt; subdirectory.
+Browsing to that however merely responds with a &lt;code&gt;403 Forbidden&lt;/code&gt; reply. I&amp;rsquo;ve not exhausted all the
+nooks and crannies yet, there&amp;rsquo;s still that cookie jar to poke at.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Firebug -&amp;gt; Cookie tab -&amp;gt; URI /v/81JHPbvyEQ8729161jd6aKQ0N4/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Another clue&amp;hellip;. leading me to a subdirectory under &lt;code&gt;v&lt;/code&gt;. But that&amp;rsquo;s also forbidden. Well, let
+me just plug some of the data we&amp;rsquo;ve found so far into it. The random characters from the
+exif data result in a 404, but the string from the javascript alert box however brings up a
+download dialog for a file called &lt;code&gt;mulder.fbi&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;root@kali:~/spydersec# wget http://192.168.56.101//v/81JHPbvyEQ8729161jd6aKQ0N4/mulder.fbi
+--2015-09-09 17:24:38--  http://192.168.56.101//v/81JHPbvyEQ8729161jd6aKQ0N4/mulder.fbi
+Connecting to 192.168.56.101:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13960421 (13M) [text/plain]
+Saving to: ‘mulder.fbi’
+
+mulder.fbi.1            100%[===============================&amp;gt;]  13.31M  5.52MB/s   in 2.4s   
+
+2015-09-09 17:24:41 (5.52 MB/s) - ‘mulder.fbi’ saved [13960421/13960421]
+
+root@kali:~/spydersec# file mulder.fbi 
+mulder.fbi: ISO Media, MP4 v2 [ISO 14496-14]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;A video file, which when I play it, is the song &amp;ldquo;Twilight Time&amp;rdquo; by &amp;ldquo;The Platters&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;So here I hit another dead end.&lt;/p&gt;
+
+&lt;p&gt;Let me think
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/CbfWCmv.gif&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll take inventory of the clues I have left now:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A music video &amp;ldquo;Twilight time&amp;rdquo; titled &lt;em&gt;mulder.fbi&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;A seeming random string &lt;code&gt;A!Vu~jtH#729sLA;h4%&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So I ask myself, why is a video of a song named &lt;em&gt;mulder.fbi&lt;/em&gt;? So I do a little research
+and after searching for &lt;code&gt;the platters &amp;quot;twilight time&amp;quot; x files&lt;/code&gt; I hit this section in a
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Kill_Switch_(The_X-Files&#34;&gt;Wikipedia article&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;When he puts it into the car stereo, it plays &amp;quot;Twilight Time&amp;quot; 
+by The Platters. However, the agents take it to the Lone Gunmen, 
+who discover that the disc contains a large quantity of encrypted data
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Well if that ain&amp;rsquo;t a clue and a bit! Ok, so a little more research of what data you
+can hide in a video file (search for &lt;code&gt;hiding files video mp4&lt;/code&gt;) I am directed to a
+&lt;a href=&#34;http://lifehacker.com/5771142/embed-a-truecrypt-volume-in-a-playable-video-file&#34;&gt;Lifehacker article&lt;/a&gt;
+describing the process of hiding Truecrypt volumes in MP4s. It mentions a few ways to
+detect such a volume in a video, but to be honest, I might as well just try and mount the volume.
+That should be the easiest and quickest way to see if I am on the right track.&lt;/p&gt;
+
+&lt;p&gt;Sure enough, there&amp;rsquo;s a volume in the video, but it needs a password. Well there&amp;rsquo;s only
+one unused piece of the puzzle left. I plug that in and there&amp;rsquo;s our volume with the &lt;code&gt;flag.txt&lt;/code&gt; file
+which contains:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Congratulations! 
+
+You are a winner. 
+
+Please leave some feedback on your thoughts regarding this challenge.
+Was it fun? Was it hard enough or too easy? 
+What did you like or dislike, what could be done better?
+
+https://www.spydersec.com/feedback
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Well that was a nice challenge, especially the truecrypt volume in the MP4. That&amp;rsquo;s
+something new I learned from this. So thanks to &lt;a href=&#34;https://twitter.com/Spydersec&#34;&gt;@SpyderSec&lt;/a&gt;
+for the challenge, and thanks to you for stopping by to read this.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

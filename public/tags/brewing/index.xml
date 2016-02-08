@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Brewing on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/brewing/</link>
+    <description>Recent content in Brewing on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/brewing/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Brewing with a Pi</title>
+      <link>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s been a while since I&amp;rsquo;ve written here, but that doesn&amp;rsquo;t mean I haven&amp;rsquo;t
+been busy. I&amp;rsquo;ve been working on a DIY version of &lt;a href=&#34;http://www.speidels-braumeister.de/en/braumeister/id-10-20-50-litre-braumeister.html&#34;&gt;Speidel&amp;rsquo;s Braumeister&lt;/a&gt;
+and the software side of things has come along quite nicely.&lt;/p&gt;
+
+&lt;p&gt;The idea is to have a Raspberry Pi controlled beer brewing system for cooking
+the wort across a temperature profile. Much like the Braumeister, or Grainfather
+style brewers. A probe monitors the temperature and will switch the heating on and
+off to maintain the current temperature. You can set how long to hold each temperature
+for and it will just plod through the profile.&lt;/p&gt;
+
+&lt;p&gt;You can also set and hold a temperature if you want to simply heat the wort. A
+pump running at intervals will also be operational during the brew.&lt;/p&gt;
+
+&lt;p&gt;As I said, the software side is coming along, and I&amp;rsquo;ve done a quick test with a Pi
+and the DS18B20 thermo probe, and that&amp;rsquo;s also working. Next up I need to
+get myself a dedicated Pi (perhaps the new Pi Zero) and the rest of the kit, including
+vessels, piping, heating etc. It probably won&amp;rsquo;t be fancy stainless steel like the
+Braumeister, but it should achieve the same end result.
+Once done I will write a complete build process, and the project will be open
+source so everyone can use and improve upon it.&lt;/p&gt;
+
+&lt;p&gt;But more about the software, it&amp;rsquo;s running on &lt;a href=&#34;https://cherrypy.org&#34;&gt;CherryPy&lt;/a&gt; and
+currently looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://i.imgur.com/c4IR4yT.png&#34;&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/c4IR4yT.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/c4IR4yT.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Brewpy interface&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve put the &lt;a href=&#34;https://github.com/Svenito/brewpy&#34;&gt;code on Github&lt;/a&gt; already, so if
+you are keen and fancy building the rest of the kit yourself already, please
+check it out.&lt;/p&gt;
+
+&lt;p&gt;Hopefully I&amp;rsquo;ll get the time to put the rest of the project together early
+next year. Got a house to get up to speed as well, so time is a little limited.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

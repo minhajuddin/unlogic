@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cmake on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/cmake/</link>
+    <description>Recent content in Cmake on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 13 Aug 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>cmake and gcov</title>
+      <link>http://unlogic.co.uk/2012/08/13/cmake-and-gcov/</link>
+      <pubDate>Mon, 13 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2012/08/13/cmake-and-gcov/</guid>
+      <description>&lt;p&gt;Recently I setup a project that uses CMake as its build tool and &lt;a href=&#34;https://code.google.com/p/googletest/&#34;&gt;googletest&lt;/a&gt; as a unit test framework. As is common place I wanted to make sure that my tests cover as much of the code as possible, so I went and grabbed the trusty gcov/lcov to analyse the tests only to find it wasn&amp;rsquo;t as easy as I expected. I should mention this is the first time I have used CMake aswell as googletest. Granted, googletest is fairly simple and doesn&amp;rsquo;t really complicate things when it comes to getting code coverage. I just had to figure out how we get CMake to build the test runner properly and then how to invoke lcov correctly. Turns out this was fairly easy too, once you ironed out some of the trickier bits and learned a little more about CMake.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code&gt;CMakeLists.txt&lt;/code&gt; file for your test suite you need to add the following (I&amp;rsquo;ve omitted some lines that aren&amp;rsquo;t relevant to this article):&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;PROJECT_TEST_NAME&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;PROJECT_NAME_STR&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;_test&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+    
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;CMAKE_CXX_FLAGS&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-g -O0 -Wall -fprofile-arcs -ftest-coverage&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;CMAKE_C_FLAGS&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-g -O0 -Wall -W -fprofile-arcs -ftest-coverage&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;SET(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;CMAKE_EXE_LINKER_FLAGS&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;-fprofile-arcs -ftest-coverage&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;.&lt;/span&gt;   
+&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;.&lt;/span&gt;
+&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;.&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;target_link_libraries(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;PROJECT_TEST_NAME&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;gtest_main&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;gtest&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;pthread&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We need to make sure a debug build is on (&lt;code&gt;-g&lt;/code&gt;), that we build without optimisation (&lt;code&gt;-O0&lt;/code&gt;), and enable profiling (&lt;code&gt;-fprofile-arcs -ftest-coverage&lt;/code&gt;). On the link phase we need to link against the google unit test libraries and pthread. Once you have sucessfully built your unit test you can then use lcov to generate the coverage results. Although you&amp;rsquo;ll soon notice that it might not work. CMake places its files into different directories than you&amp;rsquo;d expect from make or other build systems. So here&amp;rsquo;s what I did to get this to work. Assuming you have a &lt;code&gt;tests&lt;/code&gt; directory in your build, where your tests are and the test runner binary is built into, you have to run the following from that directory (&lt;code&gt;${PROJECTDIR}/build/tests&lt;/code&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;lcov --zerocounters --directory .
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;lcov --capture --initial --directory . --output-file app
+
+&lt;span style=&#34;color: #75715e&#34;&gt;# Now run your test app in the same directory&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;lcov --no-checksum --directory . --capture --output-file app.info
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;$ &lt;/span&gt;genthml app.info
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Now you can point your browser to that directory and you will have the nice html view of your coverage data.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;: sometimes I got an error from the second to last line saying it could not find any gcno files. In this case I just ran the test runner again and then ran the last two lines from above again.&lt;/p&gt;
+
+&lt;p&gt;Hope this helps you out in case you have the same issue as me.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

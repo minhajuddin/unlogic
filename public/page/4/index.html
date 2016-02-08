@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Unlogic &middot; Unlogic</title>
+        <meta name="author">
+        <meta name="description" content="I have a keyboard, a compiler, and a whole load of luck">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="generator" content="Hugo 0.15" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="alternate" type="application/rss+xml" title="Unlogic" />
+          <link href="http://unlogic.co.ukpost/index.xml" rel="feed" type="application/rss+xml" title="Unlogic" />
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,300,700|Noto+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/styles.css">
+        <link rel="icon" href="http://unlogic.co.ukfavicon.ico">
+        <link rel="apple-touch-icon" href="http://unlogic.co.ukapple-touch-icon.png" />
+        <link rel="stylesheet" href="http://unlogic.co.ukcss/highlightjs/monokai.css">
+        <script src="http://unlogic.co.ukjs/vendor/modernizr-2.8.0.min.js"></script>
+        <style>
+        .site-header h2 .logo {
+        background: url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat 0 0;
+        }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .site-header h2 .logo {
+            background-image: url(http://unlogic.co.ukimages/keyboard-feature.jpg);
+        }}
+       .site-header {
+         background: #2a373d url(http://unlogic.co.ukimages/keyboard-feature.jpg) no-repeat center center;
+         z-index: -1;
+         color: #BBB;
+         height: 170px;
+        }
+        </style>
+    </head>
+    <body>
+        
+        <header class="site-header">
+          <div class="transparent-layer">
+              <h2><a style="color: #EEE" href="http://unlogic.co.uk">Unlogic</a></h2>
+          </div>
+        </header>
+
+<div class="container clearfix">
+    <main role="main" class="content">
+        
+        
+            <article class="post">
+    
+<h1><a href="http://unlogic.co.uk/2015/04/08/solving-narnia-part1/" title="Solving Narnia Part 1">Solving Narnia Part 1</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2015.04.08">2015.04.08</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/ctf">ctf</a>, 
+    
+    <a href="http://unlogic.co.uktags/wargame">wargame</a>, 
+    
+    <a href="http://unlogic.co.uktags/overthewire">overthewire</a>, 
+    
+    <a href="http://unlogic.co.uktags/narnia">narnia</a>, 
+    
+    <a href="http://unlogic.co.uktags/security">security</a>
+    
+
+</span>
+</footer>
+
+    <p>Next up we take on Narnia. This is a binary exploit centered wargame, so fire up your debuggers and let&rsquo;s smash those stacks. For levels 5, 6, 7, and 8, see part 2 All levels are in /narnia and both the binary and the source are provided. I&rsquo;ve not included the passwords here, so you&rsquo;ll have to work through the exercises yourself (or find them elsewhere :)) Level 00 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; int main(){ long val=0x41414141; char buf[20]; printf(&quot;Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!\n&quot;); printf(&quot;Here is your chance: &quot;); scanf(&quot;%24s&quot;,&amp;buf); printf(&quot;buf: %s\n&quot;,buf); printf(&quot;val: 0x%08x\n&quot;,val); if(val==0xdeadbeef) system(&quot;/bin/sh&quot;); else { printf(&quot;WAY OFF!!!!\n&quot;); exit(1); } return 0; } Lines 8 and 9 tell us what we need to do.&hellip;</p>
+    <a href="http://unlogic.co.uk/2015/04/08/solving-narnia-part1/" title="Solving Narnia Part 1"> &raquo;</a>
+</article>
+
+        
+            <article class="post">
+    
+<h1><a href="http://unlogic.co.uk/2015/03/25/fix-kali-live-build-error/" title="Fix Kali Live Build error">Fix Kali Live Build error</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2015.03.25">2015.03.25</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/kali">kali</a>, 
+    
+    <a href="http://unlogic.co.uktags/live-build">live build</a>, 
+    
+    <a href="http://unlogic.co.uktags/kali-linux">kali linux</a>
+    
+
+</span>
+</footer>
+
+    <p>I was trying out the Kali Linux live build, and ran into an an issue where the lb build command would throw an error: chroot: failed to run command &lsquo;/usr/bin/env&rsquo;: No such file or directory Turns out this is a Debian bug that&rsquo;s been around since 2013. Luckily the fix is straightforward. First follow the usual live build instructions and then make sure the Kali repo sources are set. Now in order to fix the issue we follow the instructions provided in this bug report.&hellip;</p>
+    <a href="http://unlogic.co.uk/2015/03/25/fix-kali-live-build-error/" title="Fix Kali Live Build error"> &raquo;</a>
+</article>
+
+        
+            <article class="post">
+    
+<h1><a href="http://unlogic.co.uk/2015/03/23/solving-leviathan/" title="Solving Leviathan">Solving Leviathan</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2015.03.23">2015.03.23</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/leviathan">leviathan</a>, 
+    
+    <a href="http://unlogic.co.uktags/over-the-wire">over the wire</a>, 
+    
+    <a href="http://unlogic.co.uktags/security">security</a>, 
+    
+    <a href="http://unlogic.co.uktags/wargames">wargames</a>, 
+    
+    <a href="http://unlogic.co.uktags/ctf">ctf</a>
+    
+
+</span>
+</footer>
+
+    <p>After having done Bandit, let&rsquo;s move on to Leviathan. None of the levels have hints, so there won&rsquo;t be any links to each of the levels. Without further ado, let&rsquo;s get cracking. Level 0 -&gt; 1 Logging in with leviathan0:leviathan0 we take a quick look around to see what we have to work with, if anything leviathan0@melinda:~$ ls -la total 24 drwxr-xr-x 3 root root 4096 Nov 14 10:32 . drwxr-xr-x 167 root root 4096 Mar 21 06:46 ..&hellip;</p>
+    <a href="http://unlogic.co.uk/2015/03/23/solving-leviathan/" title="Solving Leviathan"> &raquo;</a>
+</article>
+
+        
+            <article class="post">
+    
+<h1><a href="http://unlogic.co.uk/2015/03/15/dominos-cli-update/" title="Dominos CLI Update">Dominos CLI Update</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2015.03.15">2015.03.15</time>
+
+</span>
+</footer>
+
+    <p>Small update on some progress and changes. Setting the store is now done by enetering your postcode and the nearest delivery store to that postcode is automatically selected. Setting the address also works and isn&rsquo;t just a stub, and finally it is also able to determine if cash on delivery is available to you, albeit at the end of the process, but that&rsquo;s how they do it. So the API is coming along and the CLI interface (which is mostly just a proof of concept for the API) is also shaping up.&hellip;</p>
+    <a href="http://unlogic.co.uk/2015/03/15/dominos-cli-update/" title="Dominos CLI Update"> &raquo;</a>
+</article>
+
+        
+            <article class="post">
+    
+<h1><a href="http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/" title="Let&#39;s crack Bandit Part 1">Let&#39;s crack Bandit Part 1</a></h1>
+
+<footer class="post-info"> <span class="post-meta"><time datetime="2015.03.13">2015.03.13</time>
+&middot; 
+    
+    <a href="http://unlogic.co.uktags/ctf">ctf</a>, 
+    
+    <a href="http://unlogic.co.uktags/security">security</a>, 
+    
+    <a href="http://unlogic.co.uktags/hack">hack</a>, 
+    
+    <a href="http://unlogic.co.uktags/overthewire">overthewire</a>, 
+    
+    <a href="http://unlogic.co.uktags/bandit">bandit</a>
+    
+
+</span>
+</footer>
+
+    <p>Let&rsquo;s give Bandit from the overthewire war games a going over. I did this a while back, but never really wrote it up, so I&rsquo;m going to do it again and write it up. Remember that you can copy and paste from all the asciinema videos below. Bandit is a CTF/wargame for beginners and a great intro to various linux tools as well. I won&rsquo;t repeat the level summary for each post, instead there&rsquo;s a link to the original page for each section.&hellip;</p>
+    <a href="http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/" title="Let&#39;s crack Bandit Part 1"> &raquo;</a>
+</article>
+
+        
+        <div class="pagination">
+<nav>
+
+    
+	<a class="btn newer" href="http://unlogic.co.uk/page/3/" title="">&laquo; </a>
+	
+
+	<p class="counter"> 4  14</p>
+
+
+	
+	<a class="btn older" href="http://unlogic.co.uk/page/5/" title=""> &raquo;</a>
+	
+
+</nav>
+</div>
+
+    </main>
+
+    <aside class="author">
+  <img class="profile-image" src="http://unlogic.co.ukimages/avatar.jpg" alt="Sven Steinbauer" />
+  <p class="name"> 
+  <strong>Sven Steinbauer</strong></p>
+  <p class="address"></p>
+  <p class="link"></p>
+  <ul class="social">
+    
+<li><a href="//twitter.com/binaryheadache" class="icon-twitter" target="_blank" title="Twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//github.com/svenito" class="icon-github" target="_blank" title="Github"></a></li>
+
+
+
+
+<li><a href="http://unlogic.co.ukpost/index.xml" class="icon-rss" target="_blank" title="RSS"></a></li>
+
+  </ul>
+  <br><br>
+</aside>
+
+</div>
+
+<footer class="main-footer">
+  <div class="container clearfix">
+        <a class="icon-rss" href="http://unlogic.co.ukpost/index.xml" title="RSS"></a>
+        <p>&copy; 2016 &middot; Sven Steinbauer</p>
+  </div>
+</footer>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>window.jQuery || document.write('<script src="http:\/\/unlogic.co.ukjs/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="http://unlogic.co.ukjs/plugins.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hack on Unlogic</title>
+    <link>http://unlogic.co.uk/tags/hack/</link>
+    <description>Recent content in Hack on Unlogic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 13 Mar 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://unlogic.co.uk/tags/hack/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Let&#39;s crack Bandit Part 1</title>
+      <link>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/</link>
+      <pubDate>Fri, 13 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/</guid>
+      <description>
+
+&lt;p&gt;Let&amp;rsquo;s give Bandit from the &lt;a href=&#34;http://overthewire.org/wargames&#34;&gt;overthewire war games&lt;/a&gt;
+a going over. I did this a while back, but never really wrote it up,
+so I&amp;rsquo;m going to do it again and write it up. Remember that you can copy
+and paste from all the &lt;a href=&#34;https://asciinema.org&#34;&gt;asciinema&lt;/a&gt; videos below.&lt;/p&gt;
+
+&lt;p&gt;Bandit is a CTF/wargame for beginners and a great intro to various
+linux tools as well. I won&amp;rsquo;t repeat the level summary for each post, instead
+there&amp;rsquo;s a link to the original page for each section.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;d be interested to know if the asciinema files are preferable over the
+plain text format or not. Let me know in the comments below. I&amp;rsquo;ve used
+asciinema in the first level only, but would post the asciinema vids if they
+are useful.&lt;/p&gt;
+
+&lt;p&gt;&lt;section id=&#34;table-of-contents&#34; class=&#34;toc&#34;&gt;
+&lt;header&gt;
+&lt;h3&gt;Contents&lt;/h3&gt;
+&lt;/header&gt;
+&lt;div id=&#34;drawer&#34; markdown=&#34;1&#34;&gt;
+*  Auto generated table of contents
+{:toc}
+&lt;/div&gt;
+&lt;/section&gt;&lt;!-- /#table-of-contents --&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;level-0-1:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 0 -&amp;gt; 1&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit1.html&#34;&gt;level 00&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Not much to do here but login and read a file so:&lt;/p&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://asciinema.org/a/17664.js&#34; id=&#34;asciicast-17664&#34; async&gt;&lt;/script&gt;
+
+&lt;h1 id=&#34;level-1-2:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 1 -&amp;gt; 2&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit2.html&#34;&gt;level 01&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Using the password from the last session, let&amp;rsquo;s login and look at what&amp;rsquo;s in
+&lt;code&gt;-&lt;/code&gt;. The trick here is that &lt;code&gt;-&lt;/code&gt; is a bit tricky to pass as an argument. Try
+it to see what happens. All we need to do it prefix it with the path:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit1@melinda:~$ ls -la
+total 24
+-rw-r-----   1 bandit2 bandit1   33 Jun  6  2013 -
+drwxr-xr-x   2 root    root    4096 Jun  6  2013 .
+drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..
+-rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout
+-rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc
+-rw-r--r--   1 root    root     675 Apr  3  2012 .profile
+bandit1@melinda:~$ cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id=&#34;level-2-3:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 2 -&amp;gt; 3&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit3.html&#34;&gt;level 02&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Not much trickiness here, merely the spaces in the filename. But with TAB
+completion the escaping of the spaces will be handled for us:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit2@melinda:~$ ls -la
+total 24
+drwxr-xr-x   2 root    root    4096 Jun  6  2013 .
+drwxr-xr-x 160 root    root    4096 Oct 17  2013 ..
+-rw-r--r--   1 root    root     220 Apr  3  2012 .bash_logout
+-rw-r--r--   1 root    root    3486 Apr  3  2012 .bashrc
+-rw-r--r--   1 root    root     675 Apr  3  2012 .profile
+-rw-r-----   1 bandit3 bandit2   33 Jun  6  2013 spaces in this filename
+bandit2@melinda:~$ cat ./spaces&lt;span style=&#34;color: #ae81ff&#34;&gt;\ &lt;/span&gt;in&lt;span style=&#34;color: #ae81ff&#34;&gt;\ &lt;/span&gt;this&lt;span style=&#34;color: #ae81ff&#34;&gt;\ &lt;/span&gt;filename
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id=&#34;level-3-4:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 3 -&amp;gt; 4&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit4.html&#34;&gt;level 03&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hidden file? Just do a long listing with &lt;code&gt;ls -la&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit3@melinda:~$ ls -la
+total 24
+drwxr-xr-x   3 root root 4096 Jun  6  2013 .
+drwxr-xr-x 160 root root 4096 Oct 17  2013 ..
+-rw-r--r--   1 root root  220 Apr  3  2012 .bash_logout
+-rw-r--r--   1 root root 3486 Apr  3  2012 .bashrc
+-rw-r--r--   1 root root  675 Apr  3  2012 .profile
+drwxr-xr-x   2 root root 4096 Jun  6  2013 inhere
+bandit3@melinda:~$ &lt;span style=&#34;color: #f8f8f2&#34;&gt;cd &lt;/span&gt;inhere/
+bandit3@melinda:~/inhere$ ls
+bandit3@melinda:~/inhere$ ls -la
+total 12
+drwxr-xr-x 2 root    root    4096 Jun  6  2013 .
+drwxr-xr-x 3 root    root    4096 Jun  6  2013 ..
+-rw-r----- 1 bandit4 bandit3   33 Jun  6  2013 .hidden
+bandit3@melinda:~/inhere$ cat .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id=&#34;level-4-5:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 4 -&amp;gt; 5&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit5.html&#34;&gt;level 04&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We need to find a human readable file in the &lt;code&gt;inhere&lt;/code&gt; directory. Using the
+power of bash:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit4@melinda:~$ &lt;span style=&#34;color: #f8f8f2&#34;&gt;cd &lt;/span&gt;inhere/
+bandit4@melinda:~/inhere$ &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; f in &lt;span style=&#34;color: #66d9ef&#34;&gt;$(&lt;/span&gt;ls&lt;span style=&#34;color: #66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;do&lt;/span&gt; file ./&lt;span style=&#34;color: #e6db74&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;done&lt;/span&gt;
+./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+bandit4@melinda:~/inhere$ cat ./-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Change into the &lt;code&gt;inhere&lt;/code&gt; directory and then for each file returned by the &lt;code&gt;ls&lt;/code&gt;
+command, get the filetype with the &lt;code&gt;file&lt;/code&gt; command. Only one which is ASCII, so
+that&amp;rsquo;s a good candidate. Sure enough, it&amp;rsquo;s the one we are after.&lt;/p&gt;
+
+&lt;h1 id=&#34;level-5-6:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 5 -&amp;gt; 6&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit6.html&#34;&gt;level 05&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This is similar to the previous level, except now we are looking for something
+with a specific size. Luckily the &lt;code&gt;find&lt;/code&gt; command is just right for this:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit5@melinda:~$ find ./ -size 1033c
+./inhere/maybehere07/.file2
+bandit5@melinda:~$ file ./inhere/maybehere07/.file2
+./inhere/maybehere07/.file2: ASCII text, with very long lines
+bandit5@melinda:~$ cat !&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;$&lt;/span&gt;
+cat ./inhere/maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id=&#34;level-6-7:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 6 -&amp;gt; 7&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit7.html&#34;&gt;level 06&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we need to broaden our search. Once again &lt;code&gt;find&lt;/code&gt; to the rescue. We know
+the user and group that own the file and its size. The user and group might
+be enough already, so let&amp;rsquo;s give that a go&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit6@melinda:~$ &lt;span style=&#34;color: #f8f8f2&#34;&gt;cd&lt;/span&gt; /
+bandit6@melinda:/$ find -user bandit7 -group bandit6  2&amp;gt; /dev/null 
+./var/lib/dpkg/info/bandit7.password
+bandit6@melinda:/$ cat ./var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Perfect. I piped the &lt;code&gt;stderr&lt;/code&gt; to &lt;code&gt;/dev/null&lt;/code&gt; so it doesn&amp;rsquo;t clutter the output
+with files that it can&amp;rsquo;t read.&lt;/p&gt;
+
+&lt;h1 id=&#34;level-7-8:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 7 -&amp;gt; 8&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit8.html&#34;&gt;Level 07&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To find things in a file, &lt;code&gt;grep&lt;/code&gt; is usually the answer. However it&amp;rsquo;s probably
+wise to check the file format first in case all the words are smushed together
+and we need to filter grep again.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit7@melinda:~$ head data.txt 
+Kunming&amp;#39;s	0D0KZ3TdLRBXD8lyd7Bj2hAqnxaMInQe
+multitude&amp;#39;s	8MFZa8yOjTt6m8PvxteTp7XTDFLiuFAk
+audibility	ZeLj0yAw7ylmEoLxSUEqF4iB43c9DN4h
+unadvised	Pgp8X2LSVdNrmIKcJ7Oe8eqTzEVfhGbR
+Brecht&amp;#39;s	uKyKryNUZYFuTQpwRlDqucLLIUbiIMF0
+Alvin	IpQIV6mpjticdB790obqXAvYkAgnDV8E
+insufficient	cgHhWVJahfDqFIe82vOliryQQ8ihGlGN
+Sauterne	UhPBp0A04GkIRfvZnUt1UdwlKU2ViYUd
+cluster	1GeFZ0B6rsEtJ5Sqb5h8Wv7UwG15DQzb
+ember&amp;#39;s	f2XPIE1iDHW9oHPyodPyfTz87DAbWmXu
+bandit7@melinda:~$ grep millionth data.txt 
+millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Luckily it was one word and password per line, so grepping the file worked
+fine.&lt;/p&gt;
+
+&lt;h1 id=&#34;level-8-9:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 8 -&amp;gt; 9&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit9.html&#34;&gt;level 08&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So the only way we know which entry is the password is that it occurs
+only once. For this the linux tool &lt;code&gt;uniq&lt;/code&gt; seems perfect. However it can
+only detect duplicate lines if they are next to each other. To fix this
+we also need to sort the contents of the file and then display only
+unique lines:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit8@melinda:~$ cat data.txt &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; sort &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-9-10:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 9 -&amp;gt; 10&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit10.html&#34;&gt;Level 09&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This &lt;code&gt;data.txt&lt;/code&gt; file is in binary. So in order to find the strings we need
+to dump it as hex, or, even simpler, run it through &lt;code&gt;strings&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit9@melinda:~$ strings data.txt  &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;grep&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt;
+I========== the6
+========== password
+========== ism
+========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-10-11:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 10 -&amp;gt; 11&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit11.html&#34;&gt;Level 10&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Good ol base64. If you haven&amp;rsquo;t seen it before, you&amp;rsquo;ll get to see it a lot
+more if you carry on doing these kind of challenges. Simply done though:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit10@melinda:~$ cat data.txt  &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; base64 -d
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-11-12:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 11 -&amp;gt; 12&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit12.html&#34;&gt;level 11&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The description is a basically a verbose way of saying that the string
+has been encoded with rot13. The quickest way for me to un-rotate it, is
+using python:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit11@melinda:~$ cat data.txt 
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+bandit11@melinda:~$ python -c &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;import codecs;print codecs.decode(&amp;quot;5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh&amp;quot;, &amp;quot;rot13&amp;quot;)&amp;#39;&lt;/span&gt;
+5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-12-13:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 12 -&amp;gt; 13&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit13.html&#34;&gt;Level 12&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From here on it&amp;rsquo;s going to get a little trickier. We know that data.txt is a hexdump
+of a binary, so first let&amp;rsquo;s convert it back to a binary first with &lt;code&gt;xxd&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit12@melinda:/tmp/unl$ cat data.txt &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; xxd -r &amp;gt; data2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Then we can find out the filetype of data2&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit12@melinda:/tmp/unl$ file data2
+data2: gzip compressed data, was &amp;quot;data2.bin&amp;quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;gzip&lt;/code&gt; it is. So uncompress that to data3&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit12@melinda:/tmp/unl$ cat data2 &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; zcat &amp;gt; data3
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;and get its filetype next. I won&amp;rsquo;t go over each step in detail as there&amp;rsquo;s quite
+a few iterations. I&amp;rsquo;ll post the console log of how I got to the flag and hopefully
+that should be clear enough.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit12@melinda:/tmp/unl$ file data3
+data3: bzip2 compressed data, block size = 900k
+bandit12@melinda:/tmp/unl$ bzcat data3 &amp;gt; data4
+bandit12@melinda:/tmp/unl$ file data4
+data4: gzip compressed data, was &amp;quot;data4.bin&amp;quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
+bandit12@melinda:/tmp/unl$ cat data4 &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; zcat &amp;gt; data5
+bandit12@melinda:/tmp/unl$ file data5
+data5: POSIX tar archive (GNU)
+bandit12@melinda:/tmp/unl$ tar xf data5
+bandit12@melinda:/tmp/unl$ ls
+data.txt  data2  data2.bin  data3  data4  data5  data5.bin
+bandit12@melinda:/tmp/unl$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
+bandit12@melinda:/tmp/unl$ tar xf data5.bin
+bandit12@melinda:/tmp/unl$ ls
+data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin
+bandit12@melinda:/tmp/unl$ file data6.bin 
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@melinda:/tmp/unl$ bzcat data6.bin &amp;gt; data7
+bandit12@melinda:/tmp/unl$ file data7
+data7: POSIX tar archive (GNU)
+bandit12@melinda:/tmp/unl$ tar xf data7
+bandit12@melinda:/tmp/unl$ ls
+data.txt  data2  data2.bin  data3  data4  data5  data5.bin  data6.bin  data7  data8.bin
+bandit12@melinda:/tmp/unl$ file data8.bin
+data8.bin: gzip compressed data, was &amp;quot;data9.bin&amp;quot;, from Unix, last modified: Fri Nov 14 10:32:20 2014, max compression
+bandit12@melinda:/tmp/unl$ cat data8.bin &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; zcat &amp;gt; data9
+bandit12@melinda:/tmp/unl$ file data9
+data9: ASCII text
+bandit12@melinda:/tmp/unl$ cat data9 
+The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Basically we identify, extract, repeat, until we&amp;rsquo;re at the plain text file with the
+password.&lt;/p&gt;
+
+&lt;h1 id=&#34;level-13-14:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 13 -&amp;gt; 14&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit14.html&#34;&gt;Level 13&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re given a lot of information here, and one of those is that we get the SSH
+key for the &lt;code&gt;bandit14&lt;/code&gt; user. We can use this to login as that user without knowing
+the password:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit13@melinda:~$ ssh -i ./sshkey.private bandit14@localhost 
+Could not create directory &amp;#39;/home/bandit13/.ssh&amp;#39;.
+The authenticity of host &amp;#39;localhost (127.0.0.1)&amp;#39; can&amp;#39;t be established.
+ECDSA key fingerprint is 05:3a:1c:25:35:0a:ed:2f:cd:87:1c:f6:fe:69:e4:f6.
+Are you sure you want to continue connecting (yes/no)? yes
+.
+.
+bandit14@melinda:~$ cat /etc/bandit_pass/bandit14
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We pass the key as an argument to the ssh command, and connect to the localhost
+as bandit14. Then we can read the file with the password.&lt;/p&gt;
+
+&lt;h1 id=&#34;level-14-15:c0b338e2f736b59776da7641378921cf&#34;&gt;Level 14 -&amp;gt; 15&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit15.html&#34;&gt;Level 14&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This level starts introducing some networking and how to interact with remote
+hosts. Well, in this case it&amp;rsquo;s localhost, but the principle is the same.
+We need to connect to a specific port on localhost and then supply
+the current password. I&amp;rsquo;m using &lt;code&gt;netcat&lt;/code&gt; to do this&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit14@melinda:~$ nc localhost 30000
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;All you get is a blank line when you&amp;rsquo;ve connected. The simply paste in the
+password you logged in with and hit enter.&lt;/p&gt;
+
+&lt;p&gt;Continues with &lt;a href=&#34;http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2&#34;&gt;Let&amp;rsquo;s crack Bandit Part 2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s crack Bandit Part 2</title>
+      <link>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2/</link>
+      <pubDate>Fri, 13 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2/</guid>
+      <description>
+
+&lt;p&gt;Continues on from &lt;a href=&#34;http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1&#34;&gt;Let&amp;rsquo;s crack Bandit Part 1&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;level-15-16:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 15 -&amp;gt; 16&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit16.html&#34;&gt;Level 15&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Eventhough this is very similar to the previous level, it&amp;rsquo;s a little
+more complicated as we need to connect with SSL.
+The simplest way is using &lt;code&gt;openssl&lt;/code&gt; with &lt;code&gt;s_client&lt;/code&gt;. Once connected it&amp;rsquo;s the
+same dance as above&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit15@melinda:~$ openssl s_client -quiet -connect localhost:30001
+depth=0 CN = li190-250.members.linode.com
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = li190-250.members.linode.com
+verify return:1
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+Correct!
+cluFn7wTiGryunymYOu4RcffSxQluehd
+
+read:errno=0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id=&#34;level-16-17:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 16 -&amp;gt; 17&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit17.html&#34;&gt;Level 16&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we have a choice. We run a simple ping scan across the port range and then
+figure out which port is the right one by trying each one. Depending on the number
+of ports open this could take a while or not.
+Let&amp;rsquo;s see how we&amp;rsquo;re going to handle this by seeing which ports are open&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit16@melinda:~$ nmap localhost -p 31000-32000 
+
+Starting Nmap 6.40 ( http://nmap.org ) at 2015-03-20 14:54 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00080s latency).
+Not shown: 996 closed ports
+PORT      STATE SERVICE
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.08 seconds
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Not too bad. Because it&amp;rsquo;s a short list, we can try them one by one, or
+we run a service discovery on them. Service discovery in nmap takes a while,
+so I only scan the ports we are interseted in:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit16@melinda:~$ nmap -sV -p 31046,31518,31691,31790,31960 localhost
+
+Starting Nmap 6.40 ( http://nmap.org ) at 2015-03-20 14:51 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00015s latency).
+PORT      STATE SERVICE VERSION
+31046/tcp open  echo
+31518/tcp open  msdtc   Microsoft Distributed Transaction Coordinator (error)
+31691/tcp open  echo
+31790/tcp open  msdtc   Microsoft Distributed Transaction Coordinator (error)
+31960/tcp open  echo
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now we only have two ports to try, as the others are clearly just echo ports.
+Eliminating one we go ahead and&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit16@melinda:~$ openssl s_client -quiet -connect localhost:31790
+depth=0 CN = li190-250.members.linode.com
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = li190-250.members.linode.com
+verify return:1
+cluFn7wTiGryunymYOu4RcffSxQluehd
+Correct!
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+
+read:errno=0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now copy that key into a new file and use &lt;code&gt;chmod go-rw key&lt;/code&gt; to remove group
+and other read/write. ssh refuses to accept a key that is read/write by
+anyone other than the user who owns the file. Then simply&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit16@melinda:~$ ssh -i /tmp/k.key bandit17@localhost
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id=&#34;level-17-18:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 17 -&amp;gt; 18&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit18.html&#34;&gt;Level 17&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We remain logged in as bandit17 from the previous level. To compare two files
+we need to do a &lt;code&gt;diff&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit17@melinda:~$ diff passwords.old  passwords.new 
+42c42
+&amp;lt; BS8bqB1kqkinKJjuxL6k072Qq9NRwQpR
+---
+&amp;gt; kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The latter output is the entry in the &lt;code&gt;password.new&lt;/code&gt; file, and thus the password
+for bandit18.&lt;/p&gt;
+
+&lt;h1 id=&#34;level-18-19:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 18 -&amp;gt; 19&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit19.html&#34;&gt;Level 18&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oh noes. We get logged out as soon as we log in because some nefarious
+individual has been editing our &lt;code&gt;.bashrc&lt;/code&gt; file. Well in that case
+we need to launch bash without an rc file.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ssh bandit18@bandit.labs.overthewire.org &amp;#39;/bin/bash --norc&amp;#39;
+cat readme
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Because we launched without an rc file there&amp;rsquo;s not going to be a prompt.
+All we need to do is cat the &lt;code&gt;readme&lt;/code&gt; file and the password is ours.&lt;/p&gt;
+
+&lt;h1 id=&#34;level-19-20:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 19 -&amp;gt; 20&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit20.html&#34;&gt;Level 19&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we learn about setuid binaries. Basically this is a binary that a user can
+run, but when executed runs as the setuid user. To explain, long list the file&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit19@melinda:~$ ls -al
+total 28
+drwxr-xr-x   2 root     root     4096 Nov 14 10:32 .
+drwxr-xr-x 167 root     root     4096 Jan 12 17:44 ..
+-rw-r--r--   1 root     root      220 Apr  9  2014 .bash_logout
+-rw-r--r--   1 root     root     3637 Apr  9  2014 .bashrc
+-rw-r--r--   1 root     root      675 Apr  9  2014 .profile
+-rwsr-x---   1 bandit20 bandit19 7370 Nov 14 10:32 bandit20-do
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So you see it&amp;rsquo;s owned by &lt;code&gt;bandit20&lt;/code&gt; and the &lt;em&gt;s&lt;/em&gt; bit is set in &lt;code&gt;-rwsr-x---&lt;/code&gt;. That&amp;rsquo;s
+how we identify setuid binaries.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s make use of it. This will run any command we supply, as the user &lt;code&gt;bandit20&lt;/code&gt;,
+so let&amp;rsquo;s simply print the password&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit19@melinda:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1 id=&#34;level-20-21:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 20 -&amp;gt; 21&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit21.html&#34;&gt;Level 20&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we&amp;rsquo;re entering a more complicated example of networking. Not only do we need
+to connect to a host, we have to create the host to connect to. Once
+&lt;code&gt;suconnect&lt;/code&gt; is connected, we must pass it the password and in return we get the
+one for the next level.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s log into a new shell to create our server with &lt;code&gt;netcat&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit20@melinda:~$ nc -vlk 31337
+Listening on [0.0.0.0] (family 0, port 31337)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The option &lt;code&gt;vlk&lt;/code&gt; is &lt;code&gt;verbose&lt;/code&gt;, &lt;code&gt;listen&lt;/code&gt;, and &lt;code&gt;keep-open&lt;/code&gt;. Ok, we&amp;rsquo;re listening
+and now, from another terminal, we log into level 20 and execute &lt;code&gt;suconnect&lt;/code&gt;. From
+our listening terminal, once we see an established connection, we send the password,
+and get our new one back.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;# terminal 2
+bandit20@melinda:~$ ./suconnect  31337
+
+# terminal 1
+Connection from [127.0.0.1] port 31337 [tcp/*] accepted (family 2, sport 43463)
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-21-22:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 21 -&amp;gt; 22&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit22.html&#34;&gt;Level 21&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;First let&amp;rsquo;s list the crontabs in the directory supplied. Our likely
+candidate is &lt;code&gt;/etc/cron.d/cronjob_bandit22&lt;/code&gt; so let&amp;rsquo;s see what it runs
+and also what that script contains&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cat /etc/cron.d/cronjob_bandit22
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null
+bandit21@melinda:~$ cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 &amp;gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So basically it copies the password for the next level into a file in &lt;code&gt;/tmp&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit21@melinda:~$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-22-23:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 22 -&amp;gt; 23&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit22.html&#34;&gt;Level 22&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Pretty similar to above but with a different script&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit22@melinda:~$ cat /etc/cron.d/cronjob_bandit23
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &amp;amp;&amp;gt; /dev/null
+bandit22@melinda:~$ cat /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d &amp;#39; &amp;#39; -f 1)
+
+echo &amp;quot;Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget&amp;quot;
+
+cat /etc/bandit_pass/$myname &amp;gt; /tmp/$mytarget
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;This script takes the string &lt;code&gt;I am user $myname&lt;/code&gt; and hashes it with an md5
+then puts the next password into a file in &lt;code&gt;/tmp&lt;/code&gt; with that filename. The easiest
+thing to do is to see what the filename will be. It will run as &lt;code&gt;bandit23&lt;/code&gt; so
+&lt;code&gt;whoami&lt;/code&gt; will return that string.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit22@melinda:~$ &lt;span style=&#34;color: #f8f8f2&#34;&gt;echo &lt;/span&gt;I am user bandit23 &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; md5sum &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; cut -d &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39; &amp;#39;&lt;/span&gt; -f 1
+8ca319486bfbbc3663ea0fbe81326349
+bandit22@melinda:~$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-23-24:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 23 -&amp;gt; 24&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit24.html&#34;&gt;Level 23&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once again&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit23@melinda:~$ cat /etc/cron.d/cronjob_bandit24
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &amp;amp;&amp;gt; /dev/null
+bandit23@melinda:~$ cat /usr/bin/cronjob_bandit24.sh
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo &amp;quot;Executing and deleting all scripts in /var/spool/$myname:&amp;quot;
+for i in *;
+do
+    echo &amp;quot;Handling $i&amp;quot;
+    ./$i
+    rm -f $i
+done
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;So anything in &lt;code&gt;/var/spool/bandit24&lt;/code&gt; will get run as bandit24. Checking if we
+can write to that directory show us&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit23@melinda:~$ ls -la /var/spool/
+total 21
+drwxr-xr-x  6 root     root     4096 Nov 15 14:55 .
+drwxr-xr-x 15 root     root     4096 Nov 14 10:32 ..
+drwxrwx---  2 bandit24 bandit23 1024 Mar 20 15:38 bandit24
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;that we can. Excellent. So let&amp;rsquo;s write a script to cat the password to a tmp file.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;!#/bin/bash
+cat /etc/bandit_pass/bandit24 &amp;gt; /tmp/unl.pass
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Make it executable, copy it to the right directory and then harvest the key&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit23@melinda:/tmp$ chmod +x t.sh
+bandit23@melinda:/tmp$ cp t.sh /var/spool/bandit24/
+bandit23@melinda:/tmp$ cat /tmp/unl.pass
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-24-25:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 24 -&amp;gt; 25&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit25.html&#34;&gt;Level 24&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here we need to bruteforce our way to the password. No point entering our
+tries by hand, so let&amp;rsquo;s leverage the power of bash. First create a loop
+to print the values, so we can be sure the input to the netcat command is
+going to be right&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit24@melinda:~$ &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; i in &lt;span style=&#34;color: #66d9ef&#34;&gt;$(&lt;/span&gt;seq -f &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;%04g&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt; 9999&lt;span style=&#34;color: #66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ &amp;#39;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;done&lt;/span&gt;
+.
+.
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ 9856
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ 9857
+.
+.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;seems to ne what we want. Let&amp;rsquo;s actually pass it onto the command. Because each
+iteration will take a while, we have plenty of time to stop it when it finds the
+right answer&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit24@melinda:~$ &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; i in &lt;span style=&#34;color: #66d9ef&#34;&gt;$(&lt;/span&gt;seq -f &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;%04g&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt; 9999&lt;span style=&#34;color: #66d9ef&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ &amp;#39;${&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; nc localhost 30002&lt;span style=&#34;color: #f8f8f2&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;done&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;But who wants to sit there watching a screen? A quick Python script and we can
+leave it running until it finds the right PIN.
+Sometimes you just have to be patient.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;socket&lt;/span&gt;
+
+&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;netcat&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(hostname,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;port,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;content):&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;socket&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;socket(socket&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;AF_INET,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;socket&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;SOCK_STREAM)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;connect((hostname,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;port))&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;sendall(content)&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;shutdown(socket&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;SHUT_WR)&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
+        &lt;span style=&#34;color: #f8f8f2&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;recv(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1024&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;break&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;I am the pincode&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;repr(data):&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;continue&lt;/span&gt;
+
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;Wrong&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;repr(data):&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;no:&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;content&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;else&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;repr(data)&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;content&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
+
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;print&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Connection closed.&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;close()&lt;/span&gt;
+
+&lt;span style=&#34;color: #f92672&#34;&gt;import&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;sys&lt;/span&gt;
+
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;passw&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #f8f8f2&#34;&gt;count&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;span style=&#34;color: #66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;):&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;trypass&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;%s %04d&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(passw,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;count)&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(netcat(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;30002&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;trypass)):&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;break&lt;/span&gt;
+    &lt;span style=&#34;color: #f8f8f2&#34;&gt;count&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;+=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Some time passes&amp;hellip;..&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;no: UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ 5668
+&amp;#39;Correct!\nThe password of user bandit25 is uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG\n\nExiting.\n&amp;#39;
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ 5669
+bandit24@melinda:~$ 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;level-25-26:0e66a8a07761fc75a6c8722719cf3240&#34;&gt;Level 25 -&amp;gt; 26&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://overthewire.org/wargames/bandit/bandit26.html&#34;&gt;Level 25&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so first we need to see what happens when we log in as Bandit26&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit25@melinda:~$ ssh -i bandit26.sshkey bandit26@localhost
+  _                     _ _ _   ___   __  
+ | |                   | (_) | |__ \ / /  
+ | |__   __ _ _ __   __| |_| |_   ) / /_  
+ | &amp;#39;_ \ / _` | &amp;#39;_ \ / _` | | __| / / &amp;#39;_ \ 
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
+Connection to localhost closed.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Hrm&amp;hellip; ok, let&amp;rsquo;s check the shell bandit26 uses:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bandit25@melinda:/home/bandit25$ cat /etc/passwd &lt;span style=&#34;color: #f8f8f2&#34;&gt;|&lt;/span&gt; grep bandit26
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+bandit25@melinda:/home/bandit25$ cat /usr/bin/showtext
+#!/bin/sh
+
+more ~/text.txt
+exit 0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Interesting. So we need to break out of &lt;code&gt;more&lt;/code&gt; somehow. With &lt;code&gt;more&lt;/code&gt; we
+can go into interactive mode if we can figure out how to pause it.
+We can do that by limiting how much it can output to the screen.
+The ASCII art above is about 8 lines, let&amp;rsquo;s resize the terminal to 5 lines
+or something, and when it pauses, hit &amp;lsquo;v&amp;rsquo; to open an editor.&lt;/p&gt;
+
+&lt;p&gt;Once in the editor simply open &lt;code&gt;/etc/bandit_pass/bandit26&lt;/code&gt; and the password
+is: &lt;code&gt;5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s the last password in the list, and thus the end of the game.&lt;/p&gt;
+
+&lt;p&gt;It was good fun and had a nice incrementing level of difficulty&lt;/p&gt;
+
+&lt;p&gt;Hope you had as much fun as me playing this. Next time we&amp;rsquo;ll tackle &lt;code&gt;Leviathan&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>nmap&#39;s idle scan with scapy</title>
+      <link>http://unlogic.co.uk/2014/07/17/nmaps-idle-scan-with-scapy/</link>
+      <pubDate>Thu, 17 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://unlogic.co.uk/2014/07/17/nmaps-idle-scan-with-scapy/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;ve used nmap before you are probably familiar with its idle scan feature.
+Should you not be, go and &lt;a href=&#34;http://nmap.org/book/idlescan.html&#34;&gt;skim the docs&lt;/a&gt;.
+I&amp;rsquo;ll quickly cover the basics here anyway.&lt;/p&gt;
+
+&lt;p&gt;Basically it will allow us to conduct a port scan of a remote host without revealing
+our IP address. This is done by making use of the fact that IP IDs are sequential.
+The images below (courtesy of the namp project documentation) explain this very
+well.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Open Port&lt;/strong&gt;
+&lt;a href=&#34;http://i.imgur.com/MajmRTH.png&#34;&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/MajmRTH.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Closed Port&lt;/strong&gt;
+&lt;a href=&#34;http://i.imgur.com/2UALzzd.png&#34;&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/2UALzzd.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Filtered Port&lt;/strong&gt;
+&lt;a href=&#34;http://i.imgur.com/Yv6hbwL.png&#34;&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/Yv6hbwL.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so that&amp;rsquo;s the short version of the theory and it&amp;rsquo;s relatively painless
+to implement with scapy. Let&amp;rsquo;s take a look at the script:&lt;/p&gt;
+
+&lt;p&gt;{% gist e377713b90525e842266 %}&lt;/p&gt;
+
+&lt;p&gt;You provide the script with a &lt;code&gt;zombie ip&lt;/code&gt;, &lt;code&gt;target ip&lt;/code&gt;, and &lt;code&gt;target port&lt;/code&gt;.
+These should be self explanatory. Then we use scapy to assemble our packets to
+conduct our scan. The &lt;code&gt;p1&lt;/code&gt; SYN/ACK packet will be sent to the zombie so we can
+obtain a current IP ID from the RST response as a reference.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;p2&lt;/code&gt; is a SYN packet which we send to the target with a return address of the
+zombie host. When the target receives this packet it will reply to
+the zombie instead of the source machine (us). The target will respond with a
+SYN/ACK to the &lt;code&gt;p2&lt;/code&gt; packet, but send its response to the zombie instead of us.
+Thus increasing the zobmies IP ID value by one.&lt;/p&gt;
+
+&lt;p&gt;Then we probe the zombie again with a further SYN/ACK packet (this is &lt;code&gt;p3&lt;/code&gt;) to
+find out what the new IP ID is.&lt;/p&gt;
+
+&lt;p&gt;Now we have enough information to determine if the remote port is open or not.
+We subtract the initial IP ID from the final one and print out the status of the port.&lt;/p&gt;
+
+&lt;p&gt;So how do you use it? The important thing is to find a relative inactive machine to
+use as a zombie, as you don&amp;rsquo;t want the IP ID to change while you are conducting
+your probe. I&amp;rsquo;ve had the best results with using networked printers as zombie hosts.
+Unless there&amp;rsquo;s a lot of print jobs going on, they are fairly idle. The printer
+is at &lt;code&gt;10.20.7.1&lt;/code&gt; and I&amp;rsquo;m probing port 80 on &lt;code&gt;10.16.70.8&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; sudo ./idle_scan.py 10.20.7.1 0.16.70.8 80
+WARNING: No route found for IPv6 destination :: (no default route?)
+
+[*] Scan 10.16.70.8 port 80 using 10.20.7.1 as zombie
+[+] Zombie initial IP id 57319
+[+] Zombie final IP id 57321
+[+] Port 80 : open
+
+sudo ./idle_scan.py 10.20.7.1 0.16.70.8 90
+WARNING: No route found for IPv6 destination :: (no default route?)
+
+[*] Scan 10.16.70.8 port 90 using 10.20.7.1 as zombie
+[+] Zombie initial IP id 57341
+[+] Zombie final IP id 57342
+[+] Port 90 : closed
+ 
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And to be sure, let&amp;rsquo;s verify our findings with a proper nmap scan.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; nmap 10.16.70.8 -p80,90
+
+Starting Nmap 5.51 ( http://nmap.org ) at 2014-07-17 13:07 BST
+Nmap scan report for 10.16.70.8 (10.16.70.8)
+Host is up (0.00013s latency).
+PORT   STATE  SERVICE
+80/tcp open   http
+90/tcp closed dnsix
+
+Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Approved.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
