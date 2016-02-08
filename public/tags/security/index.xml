@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Security on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/security/</link>
+    <link>https://svenito.github.io/nowhere/tags/security/</link>
     <description>Recent content in Security on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 09 Sep 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/security/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>SpyderSec solution</title>
-      <link>http://unlogic.co.uk/2015/09/09/spydersec-solution/</link>
+      <link>https://svenito.github.io/nowhere/2015/09/09/spydersec-solution/</link>
       <pubDate>Wed, 09 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/09/09/spydersec-solution/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/09/09/spydersec-solution/</guid>
       <description>&lt;p&gt;Another day, another VM. Today it&amp;rsquo;s the &lt;a href=&#34;https://www.vulnhub.com/entry/spydersec-challenge,128/&#34;&gt;SpyderSec Challenge&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;So let me start it up and get on it.&lt;/p&gt;
@@ -222,10 +222,10 @@ for the challenge, and thanks to you for stopping by to read this.&lt;/p&gt;
     
     <item>
       <title>Nullbyte 1 solution</title>
-      <link>http://unlogic.co.uk/2015/08/25/nullbyte-1-solution/</link>
+      <link>https://svenito.github.io/nowhere/2015/08/25/nullbyte-1-solution/</link>
       <pubDate>Tue, 25 Aug 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/08/25/nullbyte-1-solution/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/08/25/nullbyte-1-solution/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve been AFK for a while because of various reasons, but now I&amp;rsquo;m back and have
@@ -448,10 +448,10 @@ challenges. Thanks to ly0n for creating it.&lt;/p&gt;
     
     <item>
       <title>Honeypotting with Dionaea and Raspi</title>
-      <link>http://unlogic.co.uk/2015/07/16/honeypotting-with-dionaea-and-raspi/</link>
+      <link>https://svenito.github.io/nowhere/2015/07/16/honeypotting-with-dionaea-and-raspi/</link>
       <pubDate>Thu, 16 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/07/16/honeypotting-with-dionaea-and-raspi/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/07/16/honeypotting-with-dionaea-and-raspi/</guid>
       <description>&lt;p&gt;I recently setup a &lt;a href=&#34;http://dionaea.carnivore.it/&#34;&gt;dionaea&lt;/a&gt; honeypot on my Raspberry Pi
 and after tweaking and configuring it for a few days have now got a working setup.
 It&amp;rsquo;s a low interaction honeypot aimed to capture malware rather than ssh bruteforce
@@ -480,10 +480,10 @@ uptime.&lt;/p&gt;
     
     <item>
       <title>I made this: Purplescraper</title>
-      <link>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</link>
+      <link>https://svenito.github.io/nowhere/2015/05/14/i-made-this-purplescraper/</link>
       <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/05/14/i-made-this-purplescraper/</guid>
       <description>&lt;p&gt;Had this script sitting around for a while and I figured I would clean it up
 a bit and share it.&lt;/p&gt;
 
@@ -500,10 +500,10 @@ authorised users via slack file permissions.&lt;/p&gt;
     
     <item>
       <title>Revisiting strong passwords</title>
-      <link>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/14/revisiting-strong-passwords/</link>
       <pubDate>Tue, 14 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/14/revisiting-strong-passwords/</guid>
       <description>
 
 &lt;p&gt;Some time ago I wrote a post about &lt;a href=&#34;http://unlogic.co.uk/2012/06/06/strong-passwords/&#34;&gt;strong passwords&lt;/a&gt;.
@@ -695,10 +695,10 @@ from a large vat of possibilities.&lt;/p&gt;
     
     <item>
       <title>Solving Narnia Part 2</title>
-      <link>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</link>
       <pubDate>Mon, 13 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</guid>
       <description>
 
 &lt;p&gt;Carrying on from &lt;a href=&#34;http://unlogic.co.uk/2015/04/08/solving-narnia-part1/&#34;&gt;Part 1&lt;/a&gt;&lt;/p&gt;
@@ -1441,10 +1441,10 @@ level, I decided to post anyway. I&amp;rsquo;ll update this when I have this fig
     
     <item>
       <title>Solving Narnia Part 1</title>
-      <link>http://unlogic.co.uk/2015/04/08/solving-narnia-part1/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/08/solving-narnia-part1/</link>
       <pubDate>Wed, 08 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/08/solving-narnia-part1/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/08/solving-narnia-part1/</guid>
       <description>
 
 &lt;p&gt;Next up we take on &lt;a href=&#34;http://overthewire.org/wargames/narnia/&#34;&gt;Narnia&lt;/a&gt;. This is a
@@ -2055,10 +2055,10 @@ $ cat /etc/narnia_pass/narnia5
     
     <item>
       <title>Solving Leviathan</title>
-      <link>http://unlogic.co.uk/2015/03/23/solving-leviathan/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/23/solving-leviathan/</link>
       <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/23/solving-leviathan/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/23/solving-leviathan/</guid>
       <description>
 
 &lt;p&gt;After having done &lt;a href=&#34;http://overthewire.org/wargames/bandit/&#34;&gt;Bandit&lt;/a&gt;, let&amp;rsquo;s move
@@ -2328,10 +2328,10 @@ sit down and have a go at this, or other war games without a guide. Challenge yo
     
     <item>
       <title>Let&#39;s crack Bandit Part 1</title>
-      <link>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part1/</link>
       <pubDate>Fri, 13 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part1/</guid>
       <description>
 
 &lt;p&gt;Let&amp;rsquo;s give Bandit from the &lt;a href=&#34;http://overthewire.org/wargames&#34;&gt;overthewire war games&lt;/a&gt;
@@ -2694,10 +2694,10 @@ password you logged in with and hit enter.&lt;/p&gt;
     
     <item>
       <title>Let&#39;s crack Bandit Part 2</title>
-      <link>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part2/</link>
       <pubDate>Fri, 13 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part2/</guid>
       <description>
 
 &lt;p&gt;Continues on from &lt;a href=&#34;http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1&#34;&gt;Let&amp;rsquo;s crack Bandit Part 1&lt;/a&gt;&lt;/p&gt;
@@ -3148,10 +3148,10 @@ is: &lt;code&gt;5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Solving Infosec n00bsCTF</title>
-      <link>http://unlogic.co.uk/2015/03/11/infosec-n00bsctf/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/11/infosec-n00bsctf/</link>
       <pubDate>Wed, 11 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/11/infosec-n00bsctf/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/11/infosec-n00bsctf/</guid>
       <description>
 
 &lt;p&gt;The InfoSec Institue is running a &lt;a href=&#34;http://ctf.infosecinstitute.com/index.php&#34;&gt;n00bsCTF&lt;/a&gt;,
@@ -3739,10 +3739,10 @@ which contains the morsecode for&lt;/p&gt;
     
     <item>
       <title>Capturing smartphone traffic - Part 1</title>
-      <link>http://unlogic.co.uk/2014/05/16/capturing-traffic-from-your-smartphone/</link>
+      <link>https://svenito.github.io/nowhere/2014/05/16/capturing-traffic-from-your-smartphone/</link>
       <pubDate>Fri, 16 May 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/05/16/capturing-traffic-from-your-smartphone/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/05/16/capturing-traffic-from-your-smartphone/</guid>
       <description>
 
 &lt;p&gt;We all carry phones around that are connected to some of network at all times.
@@ -3858,10 +3858,10 @@ discover some interesting things about some apps.&lt;/p&gt;
     
     <item>
       <title>Strong passwords?</title>
-      <link>http://unlogic.co.uk/2012/06/06/strong-passwords/</link>
+      <link>https://svenito.github.io/nowhere/2012/06/06/strong-passwords/</link>
       <pubDate>Wed, 06 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2012/06/06/strong-passwords/</guid>
+      <guid>https://svenito.github.io/nowhere/2012/06/06/strong-passwords/</guid>
       <description>
 
 &lt;p&gt;As I&amp;rsquo;m just going around and updating the passwords to some of my online accounts, which was prompted by &lt;a href=&#34;http://translate.google.com/translate?hl=en&amp;amp;sl=no&amp;amp;tl=en&amp;amp;u=http://www.dagensit.no/article2411857.ece&#34;&gt;this&lt;/a&gt; article, I was wonderingwhat a good password really is. Not just in terms of security but also in terms of user friendliness.&lt;/p&gt;

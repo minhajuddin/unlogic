@@ -1,0 +1,80 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> vim clang autocompletion &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>vim clang autocompletion</h1>
+			  <span class="post-date">Fri, Jul 13, 2012</span>
+			      <p>Code completion. Isn&rsquo;t it nice? Especially when you have a so many APIs that you can&rsquo;t always remember EVERY method, member or class name in it.</p>
+
+<p>Vim. Isn&rsquo;t it powerful? The ease and speed with which it allows you to edit your code and do your work is just lovely.</p>
+
+<p>But code completion in vim? Well yes. You can use ctags. Yes, you can make tag files for ALL your APIs and autocompletion works rather well. I did this and the Qt tags file is 1.7GB. So, urm yeah, that&rsquo;s not entirely awesome either. Plus it doesn&rsquo;t handle things like smart pointers, which you will no doubt come across at some stage.</p>
+
+<p>So come on down <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a>. A little plugin for vim that uses <a href="http://clang.llvm.org/">clang</a> to resolve the necessary symbols. Plus it&rsquo;s reasonably easy to set up. All you need to do is follow the instructions that come with the plugin to install it. You will also need to install/build clang. For our purposes we will only need <code>libclang.so</code> as we will be using the library to do the completion instead of the binary - this is also the faster way. In order to use the library you need to add two things to your <code>.vimrc</code> file</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:clang_use_library <span style="color: #f8f8f2">=</span> <span style="color: #ae81ff">1</span>
+<span style="color: #66d9ef">let</span> <span style="color: #66d9ef">g</span>:clang_library_path <span style="color: #f8f8f2">=</span> <span style="color: #e6db74">&quot;/path/to/libclang&quot;</span>
+</pre></div>
+
+
+<p>The <code>/path/to/libclang</code> is the path where libclang.so is located, not including the file name itself. Once you have set this up we should already see the autocomplete working when you start typing <code>.</code>, <code>-&gt;</code>, or <code>::</code> after a variable. But in order to specify the right paths to header files, we also need to make a <code>.clang_complete</code> file in our project&rsquo;s root directory. This includes the compiler&rsquo;s include flags like <code>-I/path/to/boost</code>. Luckily there&rsquo;s a handy tool that can generate this file from the current Makefile. It&rsquo;s located in <code>~/.vim/bin</code>. All you need to do is build your project by passing <code>CXX='~/.vim/bin/cc_args.py g++'</code> to the make command. For example:</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #960050; background-color: #1e0010">make</span> <span style="color: #f8f8f2">CXX</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;~/.vim/bin/cc_args.py g++&#39;</span>
+</pre></div>
+</p>
+
+<p>I should also mention that symbol resolution is scope dependant in case you see some weird completions. Enjoy.</p>
+
+<p>EDIT 17/11/2012 The <code>.clang_include</code> file should actually be called <code>.clang_complete</code></p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

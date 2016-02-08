@@ -1,0 +1,160 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> nmap&#39;s idle scan with scapy &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>nmap&#39;s idle scan with scapy</h1>
+			  <span class="post-date">Thu, Jul 17, 2014</span>
+			      <p>If you&rsquo;ve used nmap before you are probably familiar with its idle scan feature.
+Should you not be, go and <a href="http://nmap.org/book/idlescan.html">skim the docs</a>.
+I&rsquo;ll quickly cover the basics here anyway.</p>
+
+<p>Basically it will allow us to conduct a port scan of a remote host without revealing
+our IP address. This is done by making use of the fact that IP IDs are sequential.
+The images below (courtesy of the namp project documentation) explain this very
+well.</p>
+
+<p><strong>Open Port</strong>
+<a href="http://i.imgur.com/MajmRTH.png">
+<figure >
+    
+        <img src="http://i.imgur.com/MajmRTH.png" />
+    
+    
+</figure>
+</a></p>
+
+<p><strong>Closed Port</strong>
+<a href="http://i.imgur.com/2UALzzd.png">
+<figure >
+    
+        <img src="http://i.imgur.com/2UALzzd.png" />
+    
+    
+</figure>
+</a></p>
+
+<p><strong>Filtered Port</strong>
+<a href="http://i.imgur.com/Yv6hbwL.png">
+<figure >
+    
+        <img src="http://i.imgur.com/Yv6hbwL.png" />
+    
+    
+</figure>
+</a></p>
+
+<p>Ok, so that&rsquo;s the short version of the theory and it&rsquo;s relatively painless
+to implement with scapy. Let&rsquo;s take a look at the script:</p>
+
+<p>{% gist e377713b90525e842266 %}</p>
+
+<p>You provide the script with a <code>zombie ip</code>, <code>target ip</code>, and <code>target port</code>.
+These should be self explanatory. Then we use scapy to assemble our packets to
+conduct our scan. The <code>p1</code> SYN/ACK packet will be sent to the zombie so we can
+obtain a current IP ID from the RST response as a reference.</p>
+
+<p><code>p2</code> is a SYN packet which we send to the target with a return address of the
+zombie host. When the target receives this packet it will reply to
+the zombie instead of the source machine (us). The target will respond with a
+SYN/ACK to the <code>p2</code> packet, but send its response to the zombie instead of us.
+Thus increasing the zobmies IP ID value by one.</p>
+
+<p>Then we probe the zombie again with a further SYN/ACK packet (this is <code>p3</code>) to
+find out what the new IP ID is.</p>
+
+<p>Now we have enough information to determine if the remote port is open or not.
+We subtract the initial IP ID from the final one and print out the status of the port.</p>
+
+<p>So how do you use it? The important thing is to find a relative inactive machine to
+use as a zombie, as you don&rsquo;t want the IP ID to change while you are conducting
+your probe. I&rsquo;ve had the best results with using networked printers as zombie hosts.
+Unless there&rsquo;s a lot of print jobs going on, they are fairly idle. The printer
+is at <code>10.20.7.1</code> and I&rsquo;m probing port 80 on <code>10.16.70.8</code>.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">$<span style="color: #f92672">]</span> sudo ./idle_scan.py 10.20.7.1 0.16.70.8 80
+WARNING: No route found for IPv6 destination :: (no default route?)
+
+[*] Scan 10.16.70.8 port 80 using 10.20.7.1 as zombie
+[+] Zombie initial IP id 57319
+[+] Zombie final IP id 57321
+[+] Port 80 : open
+
+sudo ./idle_scan.py 10.20.7.1 0.16.70.8 90
+WARNING: No route found for IPv6 destination :: (no default route?)
+
+[*] Scan 10.16.70.8 port 90 using 10.20.7.1 as zombie
+[+] Zombie initial IP id 57341
+[+] Zombie final IP id 57342
+[+] Port 90 : closed
+ 
+</pre></div>
+</p>
+
+<p>And to be sure, let&rsquo;s verify our findings with a proper nmap scan.</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">$<span style="color: #f92672">]</span> nmap 10.16.70.8 -p80,90
+
+Starting Nmap 5.51 ( http://nmap.org ) at 2014-07-17 13:07 BST
+Nmap scan report for 10.16.70.8 (10.16.70.8)
+Host is up (0.00013s latency).
+PORT   STATE  SERVICE
+80/tcp open   http
+90/tcp closed dnsix
+
+Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
+</pre></div>
+</p>
+
+<p>Approved.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

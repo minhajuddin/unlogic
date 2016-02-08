@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unittest on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/unittest/</link>
+    <link>https://svenito.github.io/nowhere/tags/unittest/</link>
     <description>Recent content in Unittest on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 20 Mar 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/unittest/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/unittest/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Unit testing Houdini Python plugins with nose and coverage</title>
-      <link>http://unlogic.co.uk/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</link>
+      <link>https://svenito.github.io/nowhere/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</guid>
       <description>&lt;p&gt;We all know how important unit testing is, right? But often you wonder how can
 you test a not so straight forward tool. In this case we&amp;rsquo;re talking about a
 Python script intended to run inside &lt;a href=&#34;http://sidefx.com&#34;&gt;Houdini&lt;/a&gt;. In my specific

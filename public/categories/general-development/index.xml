@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>General Development on Unlogic</title>
-    <link>http://unlogic.co.uk/categories/general-development/</link>
+    <link>https://svenito.github.io/nowhere/categories/general-development/</link>
     <description>Recent content in General Development on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 04 Mar 2014 10:46:30 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/categories/general-development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/categories/general-development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Get it done</title>
-      <link>http://unlogic.co.uk/2014/03/04/get-it-done/</link>
+      <link>https://svenito.github.io/nowhere/2014/03/04/get-it-done/</link>
       <pubDate>Tue, 04 Mar 2014 10:46:30 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/03/04/get-it-done/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/03/04/get-it-done/</guid>
       <description>&lt;p&gt;A few years ago, during a particularily active developing phase I had an idea for a project.
 I toyed with it in my head and thought about issues I might encounter. Will it work
 in this situation? Is it something that will be useful? How do I make feature X work?

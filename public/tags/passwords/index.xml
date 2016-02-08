@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Passwords on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/passwords/</link>
+    <link>https://svenito.github.io/nowhere/tags/passwords/</link>
     <description>Recent content in Passwords on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 14 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/passwords/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/passwords/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>I made this: Purplescraper</title>
-      <link>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</link>
+      <link>https://svenito.github.io/nowhere/2015/05/14/i-made-this-purplescraper/</link>
       <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/05/14/i-made-this-purplescraper/</guid>
       <description>&lt;p&gt;Had this script sitting around for a while and I figured I would clean it up
 a bit and share it.&lt;/p&gt;
 
@@ -30,10 +30,10 @@ authorised users via slack file permissions.&lt;/p&gt;
     
     <item>
       <title>Revisiting strong passwords</title>
-      <link>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/14/revisiting-strong-passwords/</link>
       <pubDate>Tue, 14 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/14/revisiting-strong-passwords/</guid>
       <description>
 
 &lt;p&gt;Some time ago I wrote a post about &lt;a href=&#34;http://unlogic.co.uk/2012/06/06/strong-passwords/&#34;&gt;strong passwords&lt;/a&gt;.
@@ -225,10 +225,10 @@ from a large vat of possibilities.&lt;/p&gt;
     
     <item>
       <title>Strong passwords?</title>
-      <link>http://unlogic.co.uk/2012/06/06/strong-passwords/</link>
+      <link>https://svenito.github.io/nowhere/2012/06/06/strong-passwords/</link>
       <pubDate>Wed, 06 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2012/06/06/strong-passwords/</guid>
+      <guid>https://svenito.github.io/nowhere/2012/06/06/strong-passwords/</guid>
       <description>
 
 &lt;p&gt;As I&amp;rsquo;m just going around and updating the passwords to some of my online accounts, which was prompted by &lt;a href=&#34;http://translate.google.com/translate?hl=en&amp;amp;sl=no&amp;amp;tl=en&amp;amp;u=http://www.dagensit.no/article2411857.ece&#34;&gt;this&lt;/a&gt; article, I was wonderingwhat a good password really is. Not just in terms of security but also in terms of user friendliness.&lt;/p&gt;

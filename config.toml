@@ -1,4 +1,5 @@
-baseurl = "http://unlogic.co.uk"
+#baseurl = "http://unlogic.co.uk"
+baseurl="https://svenito.github.io/nowhere/"
 title = "Unlogic"
 paginate = 5
 disqusShortname="unlogic"

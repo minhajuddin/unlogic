@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> YouCompleteMe &middot; Unlogic </title>
+
+  
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/poole.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/syntax.css">
+  <link rel="stylesheet" href="http://unlogic.co.ukcss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+</head>
+
+	<body class="">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://unlogic.co.uk"><h1>Unlogic</h1></a>
+      <p class="lead">
+      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://unlogic.co.uk/">Home</a> </li>
+      
+    </ul>
+
+    <p>Sven Steinbauer</p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>YouCompleteMe</h1>
+			  <span class="post-date">Thu, Nov 7, 2013</span>
+			      <p>If you haven&rsquo;t heard of the YouCompleteMe plugin for Vim, headover to
+<a href="http://valloric.github.io/YouCompleteMe/">http://valloric.github.io/YouCompleteMe/</a> and take a look.
+It&rsquo;s a very competent auto completer for a variety of languages. But as always the C style completer takes
+a little bit of work to get going. So just for you, I&rsquo;ve written up how I managed to get it to work
+on 64bit Centos 6.2.</p>
+
+<p>So using <a href="https://github.com/gmarik/vundle">Vundle</a> install YouCompleteMe (referred to as YCM from now on).
+Now we need to build clang. I managed to get this done by following <a href="http://clang.llvm.org/get_started.html">these steps</a>.
+Use <code>CC=&quot;/usr/bin/gcc&quot; CXX=&quot;/usr/bin/g++&quot; ../llvm/configure</code> to configure it.</p>
+
+<p>You will end up with a directory called <code>build</code> that contains almost everything. All you have to do is copy the
+<code>llvm/tools/clang/include/clang-c</code> folder from the original checkout (step 2 if you follow the clang guide) to
+<code>build/include</code>.</p>
+
+<p>Now we need to build the YCM tools according to the docs. Here&rsquo;s the command I used:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%">cmake -G <span style="color: #e6db74">&quot;Unix Makefiles&quot;</span> -DPATH_TO_LLVM_ROOT<span style="color: #f92672">=</span>/tmp/build -DEXTERNAL_LIBCLANG_PATH<span style="color: #f92672">=</span>/tmp/build/Release+Asserts/lib/libclang.so . ~/.vim/bundle/YouCompleteMe/cpp
+</pre></div>
+
+
+<p>adjust the paths as necessary. After the configure stage run</p>
+
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">make ycm_support_libs
+</pre></div>
+</p>
+
+<p>And with some patience you are done.</p>
+
+<p>Now you need to add a <code>.ycm_extra_conf.py</code> to your project and you should start seeing autocompletion.</p>
+
+			</div>
+
+			
+		</div>
+
+  </body>
+</html>

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/python/</link>
+    <link>https://svenito.github.io/nowhere/tags/python/</link>
     <description>Recent content in Python on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 04 Dec 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Brewing with a Pi</title>
-      <link>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</link>
+      <link>https://svenito.github.io/nowhere/2015/12/04/brewing-with-a-pi/</link>
       <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/12/04/brewing-with-a-pi/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/12/04/brewing-with-a-pi/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been a while since I&amp;rsquo;ve written here, but that doesn&amp;rsquo;t mean I haven&amp;rsquo;t
 been busy. I&amp;rsquo;ve been working on a DIY version of &lt;a href=&#34;http://www.speidels-braumeister.de/en/braumeister/id-10-20-50-litre-braumeister.html&#34;&gt;Speidel&amp;rsquo;s Braumeister&lt;/a&gt;
 and the software side of things has come along quite nicely.&lt;/p&gt;
@@ -71,10 +71,10 @@ next year. Got a house to get up to speed as well, so time is a little limited.&
     
     <item>
       <title>Extracting bup files in Linux</title>
-      <link>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</link>
+      <link>https://svenito.github.io/nowhere/2015/09/03/extracting-bup-files-in-linux/</link>
       <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/09/03/extracting-bup-files-in-linux/</guid>
       <description>&lt;p&gt;I recently got hold of some malware that got snapped up by McAfee and stored in a bup file.
 Keen to take a look at it, I researched how to &amp;lsquo;unbup&amp;rsquo; files and found this page:&lt;/p&gt;
 
@@ -93,10 +93,10 @@ at fixing it. Otherwise feel free to fork it and make your own fixes.&lt;/p&gt;
     
     <item>
       <title>CLI Pizza</title>
-      <link>http://unlogic.co.uk/2015/03/04/cli-pizza/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/04/cli-pizza/</link>
       <pubDate>Wed, 04 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/04/cli-pizza/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/04/cli-pizza/</guid>
       <description>&lt;p&gt;Recently someone was talking about ordering Pizza from within
 &lt;a href=&#34;http://sidefx.com&#34;&gt;Houdini&lt;/a&gt;. I figured that it must be possible somehow.
 I looked for an API and only found a US based, possibly out of date,
@@ -122,10 +122,10 @@ on Github once it&amp;rsquo;s more feature complete.&lt;/p&gt;
     
     <item>
       <title>Python: expect the unexpected</title>
-      <link>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</link>
+      <link>https://svenito.github.io/nowhere/2015/01/23/python-expect-the-unexpected/</link>
       <pubDate>Fri, 23 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/01/23/python-expect-the-unexpected/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/01/23/python-expect-the-unexpected/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve not really had much of a play with Python 3, but I&amp;rsquo;m aware of some of its
@@ -209,10 +209,10 @@ perhaps have kept &lt;code&gt;/&lt;/code&gt; as it is and made &lt;code&gt;//&lt
     
     <item>
       <title>[dis]like</title>
-      <link>http://unlogic.co.uk/2015/01/05/dislike/</link>
+      <link>https://svenito.github.io/nowhere/2015/01/05/dislike/</link>
       <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/01/05/dislike/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/01/05/dislike/</guid>
       <description>
 
 &lt;p&gt;Isn&amp;rsquo;t it just like me to start a new year with a post titled &amp;ldquo;[dis]like&amp;rdquo;? It&amp;rsquo;s not as bad as it sounds. I want to write about coding challenge sites and what I like and dislike about them, specifically regarding Python challenges.&lt;/p&gt;
@@ -309,10 +309,10 @@ never get to talk to and explain your code to. But perhaps I&amp;rsquo;m just no
     
     <item>
       <title>Threading Python</title>
-      <link>http://unlogic.co.uk/2014/04/11/threading-python/</link>
+      <link>https://svenito.github.io/nowhere/2014/04/11/threading-python/</link>
       <pubDate>Fri, 11 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/04/11/threading-python/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/04/11/threading-python/</guid>
       <description>&lt;p&gt;Having helped my colleague deal with PyQt threads, I feel that
 this gif sums up threading in Python very well:&lt;/p&gt;
 
@@ -324,10 +324,10 @@ this gif sums up threading in Python very well:&lt;/p&gt;
     
     <item>
       <title>Unit testing Houdini Python plugins with nose and coverage</title>
-      <link>http://unlogic.co.uk/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</link>
+      <link>https://svenito.github.io/nowhere/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</link>
       <pubDate>Thu, 20 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/03/20/unit-testing-houdini-plugins-with-nose-and-coverage/</guid>
       <description>&lt;p&gt;We all know how important unit testing is, right? But often you wonder how can
 you test a not so straight forward tool. In this case we&amp;rsquo;re talking about a
 Python script intended to run inside &lt;a href=&#34;http://sidefx.com&#34;&gt;Houdini&lt;/a&gt;. In my specific
@@ -491,10 +491,10 @@ all I say.&lt;/p&gt;
     
     <item>
       <title>Vim as a Python IDE</title>
-      <link>http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/</link>
+      <link>https://svenito.github.io/nowhere/2013/02/08/vim-as-a-python-ide/</link>
       <pubDate>Fri, 08 Feb 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/</guid>
+      <guid>https://svenito.github.io/nowhere/2013/02/08/vim-as-a-python-ide/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;ve been spending quite a bit of time with our good old buddy Python recently, and when
@@ -804,10 +804,10 @@ about what else is out there.&lt;/p&gt;
     
     <item>
       <title>Random album generator in python</title>
-      <link>http://unlogic.co.uk/2012/11/06/random-album-generator/</link>
+      <link>https://svenito.github.io/nowhere/2012/11/06/random-album-generator/</link>
       <pubDate>Tue, 06 Nov 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2012/11/06/random-album-generator/</guid>
+      <guid>https://svenito.github.io/nowhere/2012/11/06/random-album-generator/</guid>
       <description>&lt;p&gt;You may have heard about the &amp;ldquo;random music album&amp;rdquo; thing. Basically it goes like this:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -968,10 +968,10 @@ about what else is out there.&lt;/p&gt;
     
     <item>
       <title>Parsing email in python</title>
-      <link>http://unlogic.co.uk/2012/10/11/parsing-email-in-python/</link>
+      <link>https://svenito.github.io/nowhere/2012/10/11/parsing-email-in-python/</link>
       <pubDate>Thu, 11 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2012/10/11/parsing-email-in-python/</guid>
+      <guid>https://svenito.github.io/nowhere/2012/10/11/parsing-email-in-python/</guid>
       <description>&lt;p&gt;I have a domain where I host images. It&amp;rsquo;s nothing fancy, just a collection where gifs and generally humerous images get stored in a custom gallery script.
 I also have a script on my host that I can pass a URL to and it will get the image with wget, put it in the right directory and then curl the import URL for the gallery. So if you&amp;rsquo;ve ever wanted to parse email addresses for content via a script, read on. Example code inside.&lt;/p&gt;
 
@@ -988,10 +988,10 @@ Once I have the body I extract the image URL(s) using regular expressions, and t
     
     <item>
       <title>Tube status for Conky</title>
-      <link>http://unlogic.co.uk/2012/06/07/tube-status/</link>
+      <link>https://svenito.github.io/nowhere/2012/06/07/tube-status/</link>
       <pubDate>Thu, 07 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2012/06/07/tube-status/</guid>
+      <guid>https://svenito.github.io/nowhere/2012/06/07/tube-status/</guid>
       <description>&lt;p&gt;Last night I was affected by &amp;ldquo;severe delays on the Central line&amp;rdquo; caused by a burst watermain and bringing part of the line to its knees. Unfortunately I only found this out once I got to the station. Usually the line is well behaved and I have little need to check it often. I know it&amp;rsquo;s really quick to do so and there&amp;rsquo;s a whole host of ways to dit too. But the problems I have with them are:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -1027,10 +1027,10 @@ Once I have the body I extract the image URL(s) using regular expressions, and t
     
     <item>
       <title>Sitting is bad</title>
-      <link>http://unlogic.co.uk/2012/06/06/sitting-is-bad/</link>
+      <link>https://svenito.github.io/nowhere/2012/06/06/sitting-is-bad/</link>
       <pubDate>Wed, 06 Jun 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2012/06/06/sitting-is-bad/</guid>
+      <guid>https://svenito.github.io/nowhere/2012/06/06/sitting-is-bad/</guid>
       <description>&lt;p&gt;So the internet has recently been telling me that sitting is bad. Really bad. Well only if you &lt;a href=&#34;http://www.msnbc.msn.com/id/34956099/ns/health-fitness/t/you-sitting-down-experts-say-itll-kill-you/&#34;&gt;sit&lt;/a&gt; &lt;a href=&#34;http://mashable.com/2011/05/09/sitting-down-infographic/&#34;&gt;for&lt;/a&gt; &lt;a href=&#34;http://lifehacker.com/5800720/the-sitting-is-killing-you-infographic-illustrates-the-stress-of-prolonged-sitting-importance-of-getting-up&#34;&gt;long&lt;/a&gt; &lt;a href=&#34;http://www.sciencedaily.com/releases/2011/07/110712093859.htm&#34;&gt;periods&lt;/a&gt; of time. At my office it is very unlikely that they will be willing to furnish me with a standing desk unless my doctor tells them to. The latter also being unlikely as my back isn&amp;rsquo;t in a bad enough shape (yet).&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;m also not willing to &lt;a href=&#34;http://gregschlom.com/post/4555981908/standing-desk&#34;&gt;make my own&lt;/a&gt; version of a standing desk either, unless it was a better looking one :) So now what? Fear not. It turns out that if you stand for about 5 minutes every hour it already helps &lt;strong&gt;A LOT&lt;/strong&gt;. So that I don&amp;rsquo;t miss my standing breaks, I need a timer. An unobtrusive little app that sits in my taskbar and just alerts me at intervals to take a break and have a stand. Far be it for me to actually go looking for something that does this just how I want it. That sounds like too much work really. Thus I decided to turn it into a project for myself and write my own. I mean, how hard can it be?&lt;/p&gt;
@@ -1045,10 +1045,10 @@ Once I have the body I extract the image URL(s) using regular expressions, and t
     
     <item>
       <title>Shapely Window in PyQT</title>
-      <link>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</link>
+      <link>https://svenito.github.io/nowhere/2011/05/27/shapely-window-in-pyqt/</link>
       <pubDate>Fri, 27 May 2011 15:38:21 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</guid>
+      <guid>https://svenito.github.io/nowhere/2011/05/27/shapely-window-in-pyqt/</guid>
       <description>&lt;p&gt;Recently I needed to make a PyQt app where the &lt;strong&gt;window&lt;/strong&gt; is the shape of an image and doesn’t have a border. I say needed, that’s not strictly true, more like wanted to because it’d be more interesting.&lt;/p&gt;
 
 &lt;p&gt;It wasn’t as straight forward as I had hoped but I managed to get it working in the end and here I am about to share it with the world. Here’s what we will need:&lt;/p&gt;

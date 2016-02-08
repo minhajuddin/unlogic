@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ctf on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/ctf/</link>
+    <link>https://svenito.github.io/nowhere/tags/ctf/</link>
     <description>Recent content in Ctf on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 25 Jun 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Infosec Institute CTF2.0</title>
-      <link>http://unlogic.co.uk/2015/06/25/infosec-institute-ctf2-dot-0/</link>
+      <link>https://svenito.github.io/nowhere/2015/06/25/infosec-institute-ctf2-dot-0/</link>
       <pubDate>Thu, 25 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/06/25/infosec-institute-ctf2-dot-0/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/06/25/infosec-institute-ctf2-dot-0/</guid>
       <description>
 
 &lt;p&gt;The folks over at the &lt;a href=&#34;https://infosecinstitute.com&#34;&gt;Infosec Institue&lt;/a&gt; have released
@@ -584,10 +584,10 @@ relative, which means if I strip off the protocol off the URL, I should be able 
     
     <item>
       <title>Hacky Easter 2015</title>
-      <link>http://unlogic.co.uk/2015/06/01/hacky-easter-2015/</link>
+      <link>https://svenito.github.io/nowhere/2015/06/01/hacky-easter-2015/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/06/01/hacky-easter-2015/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/06/01/hacky-easter-2015/</guid>
       <description>
 
 &lt;p&gt;Another year, another Hacky Easter and a month, of fun, learning, and
@@ -1362,10 +1362,10 @@ sentence.&lt;/p&gt;
     
     <item>
       <title>Solving Narnia Part 2</title>
-      <link>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</link>
       <pubDate>Mon, 13 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/13/solving-narnia-part-2/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/13/solving-narnia-part-2/</guid>
       <description>
 
 &lt;p&gt;Carrying on from &lt;a href=&#34;http://unlogic.co.uk/2015/04/08/solving-narnia-part1/&#34;&gt;Part 1&lt;/a&gt;&lt;/p&gt;
@@ -2108,10 +2108,10 @@ level, I decided to post anyway. I&amp;rsquo;ll update this when I have this fig
     
     <item>
       <title>Vulnhub&#39;s &#39;TopHatSec Freshly&#39;</title>
-      <link>http://unlogic.co.uk/2015/04/11/vulnhubs-freshly/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/11/vulnhubs-freshly/</link>
       <pubDate>Sat, 11 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/11/vulnhubs-freshly/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/11/vulnhubs-freshly/</guid>
       <description>&lt;p&gt;This is my first writeup of a &lt;a href=&#34;https://vulnhub.com&#34;&gt;Vulnhub&lt;/a&gt; wargame: Freshly.&lt;/p&gt;
 
 &lt;p&gt;The challenge is:&lt;/p&gt;
@@ -2509,10 +2509,10 @@ another time.&lt;/p&gt;
     
     <item>
       <title>Solving Narnia Part 1</title>
-      <link>http://unlogic.co.uk/2015/04/08/solving-narnia-part1/</link>
+      <link>https://svenito.github.io/nowhere/2015/04/08/solving-narnia-part1/</link>
       <pubDate>Wed, 08 Apr 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/04/08/solving-narnia-part1/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/04/08/solving-narnia-part1/</guid>
       <description>
 
 &lt;p&gt;Next up we take on &lt;a href=&#34;http://overthewire.org/wargames/narnia/&#34;&gt;Narnia&lt;/a&gt;. This is a
@@ -3123,10 +3123,10 @@ $ cat /etc/narnia_pass/narnia5
     
     <item>
       <title>Solving Leviathan</title>
-      <link>http://unlogic.co.uk/2015/03/23/solving-leviathan/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/23/solving-leviathan/</link>
       <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/23/solving-leviathan/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/23/solving-leviathan/</guid>
       <description>
 
 &lt;p&gt;After having done &lt;a href=&#34;http://overthewire.org/wargames/bandit/&#34;&gt;Bandit&lt;/a&gt;, let&amp;rsquo;s move
@@ -3396,10 +3396,10 @@ sit down and have a go at this, or other war games without a guide. Challenge yo
     
     <item>
       <title>Let&#39;s crack Bandit Part 1</title>
-      <link>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part1/</link>
       <pubDate>Fri, 13 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part1/</guid>
       <description>
 
 &lt;p&gt;Let&amp;rsquo;s give Bandit from the &lt;a href=&#34;http://overthewire.org/wargames&#34;&gt;overthewire war games&lt;/a&gt;
@@ -3762,10 +3762,10 @@ password you logged in with and hit enter.&lt;/p&gt;
     
     <item>
       <title>Let&#39;s crack Bandit Part 2</title>
-      <link>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part2/</link>
       <pubDate>Fri, 13 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part2/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/13/lets-crack-bandit-part2/</guid>
       <description>
 
 &lt;p&gt;Continues on from &lt;a href=&#34;http://unlogic.co.uk/2015/03/13/lets-crack-bandit-part1&#34;&gt;Let&amp;rsquo;s crack Bandit Part 1&lt;/a&gt;&lt;/p&gt;
@@ -4216,10 +4216,10 @@ is: &lt;code&gt;5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z&lt;/code&gt;&lt;/p&gt;
     
     <item>
       <title>Solving Infosec n00bsCTF</title>
-      <link>http://unlogic.co.uk/2015/03/11/infosec-n00bsctf/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/11/infosec-n00bsctf/</link>
       <pubDate>Wed, 11 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/11/infosec-n00bsctf/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/11/infosec-n00bsctf/</guid>
       <description>
 
 &lt;p&gt;The InfoSec Institue is running a &lt;a href=&#34;http://ctf.infosecinstitute.com/index.php&#34;&gt;n00bsCTF&lt;/a&gt;,
@@ -4807,10 +4807,10 @@ which contains the morsecode for&lt;/p&gt;
     
     <item>
       <title>Cracking Nebula Part 2</title>
-      <link>http://unlogic.co.uk/2014/07/02/cracking-nebula-part2/</link>
+      <link>https://svenito.github.io/nowhere/2014/07/02/cracking-nebula-part2/</link>
       <pubDate>Wed, 02 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/07/02/cracking-nebula-part2/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/07/02/cracking-nebula-part2/</guid>
       <description>
 
 &lt;p&gt;On &lt;a href=&#34;http://www.exploit-exercises.com/&#34;&gt;Exploit Exercises&lt;/a&gt; you can find a
@@ -5832,10 +5832,10 @@ new set of tools and ideas in my arsenal for the next challenge.&lt;/p&gt;
     
     <item>
       <title>Cracking Nebula Part 1</title>
-      <link>http://unlogic.co.uk/2014/06/24/cracking-nebula-part1/</link>
+      <link>https://svenito.github.io/nowhere/2014/06/24/cracking-nebula-part1/</link>
       <pubDate>Tue, 24 Jun 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2014/06/24/cracking-nebula-part1/</guid>
+      <guid>https://svenito.github.io/nowhere/2014/06/24/cracking-nebula-part1/</guid>
       <description>
 
 &lt;p&gt;On &lt;a href=&#34;http://www.exploit-exercises.com/&#34;&gt;Exploit Exercises&lt;/a&gt; you can find a

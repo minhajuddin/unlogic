@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Api on Unlogic</title>
-    <link>http://unlogic.co.uk/tags/api/</link>
+    <link>https://svenito.github.io/nowhere/tags/api/</link>
     <description>Recent content in Api on Unlogic</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 04 Mar 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://svenito.github.io/nowhere/tags/api/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>CLI Pizza</title>
-      <link>http://unlogic.co.uk/2015/03/04/cli-pizza/</link>
+      <link>https://svenito.github.io/nowhere/2015/03/04/cli-pizza/</link>
       <pubDate>Wed, 04 Mar 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://unlogic.co.uk/2015/03/04/cli-pizza/</guid>
+      <guid>https://svenito.github.io/nowhere/2015/03/04/cli-pizza/</guid>
       <description>&lt;p&gt;Recently someone was talking about ordering Pizza from within
 &lt;a href=&#34;http://sidefx.com&#34;&gt;Houdini&lt;/a&gt;. I figured that it must be possible somehow.
 I looked for an API and only found a US based, possibly out of date,
