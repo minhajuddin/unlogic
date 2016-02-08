@@ -1,89 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mail on Unlogic</title>
+      <title>Mail on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/mail/</link>
-    <description>Recent content in Mail on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 29 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/mail/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Fri, 29 May 2015 00:00:00 UTC</updated>
     
     <item>
       <title>Burnmail: temporary mail forwarding</title>
       <link>http://unlogic.co.uk/2015/05/29/burnmail-temporary-mail-forwarding/</link>
-      <pubDate>Fri, 29 May 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 29 May 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/05/29/burnmail-temporary-mail-forwarding/</guid>
-      <description>
-
-&lt;p&gt;A while back I got curious about how easy it would be to setup a temporary
-email forwarding service, akin to &lt;a href=&#34;https://meltmail.com/&#34;&gt;Meltmail&lt;/a&gt;. So I got
-to it and made it.&lt;/p&gt;
-
-&lt;p&gt;In essence you will create a temporary email address that will forward all
-mail it receives to your inbox. Once it expires, it drops all incoming mail.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s pretty much ready now, hence why I am posting about it.&lt;/p&gt;
-
-&lt;p&gt;The differences between Burnmail (yeah, best I could do for now) and other
-services is:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;forwarding can be expired by time or by number of received mails&lt;/li&gt;
-&lt;li&gt;all tasks are accomplished through email. There&amp;rsquo;s no web interface&lt;/li&gt;
-&lt;li&gt;forwarding address is based on your original address with a short, random
-string appended, to make it easy to remember.&lt;/li&gt;
-&lt;li&gt;addreses are also easy to type on a mobile device,
-as the extra string consists of digits and lowercase chars only.&lt;/li&gt;
-&lt;li&gt;commands are forgiving and short&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The plan is to clean up the code and then release that on Github, but in the
-meantime feel free to make use of it.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s how to use it:&lt;/p&gt;
-
-&lt;h2 id=&#34;creating-a-new-burnmail-address:e52eba2da256b91bcb5838bbad42c991&#34;&gt;Creating a new Burnmail address&lt;/h2&gt;
-
-&lt;p&gt;To create a new Burnmail address, send an email to &lt;a href=&#34;mailto:burn@kthnxbai.co.uk&#34;&gt;burn@kthnxbai.co.uk&lt;/a&gt;,
-from the address that you want your Burnmail forwarded to. In the subject
-you need to specify the expiration term. The following commands are valid:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;* time [n] - n is 3, 6, 12, 24, or 48 hours. It will automatically
-  select the closest value to the one you specify.
-* uses [n] - n is between 1 and 30. It will be automatically capped to 30.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;By using the &lt;code&gt;time&lt;/code&gt; command you will create an address that expires after &lt;code&gt;n&lt;/code&gt;
-hours. The &lt;code&gt;uses&lt;/code&gt; command creates an address that expires after &lt;code&gt;n&lt;/code&gt; emails have
-been received through that address.&lt;/p&gt;
-
-&lt;p&gt;Once your forwarder has been set up, you will receive a confirmation email with
-your Burnmaill address. Check your spam folder just in case.&lt;/p&gt;
-
-&lt;h2 id=&#34;getting-a-list-of-emails:e52eba2da256b91bcb5838bbad42c991&#34;&gt;Getting a list of emails&lt;/h2&gt;
-
-&lt;p&gt;To get a list of your current Burnmail addresses for an email address,
-send an email to &lt;a href=&#34;mailto:burn@kthnxbai.co.uk&#34;&gt;burn@kthnxbai.co.uk&lt;/a&gt; with the subject &lt;code&gt;stat&lt;/code&gt;.
-An email listing all your current forwarders for that address and their
-expiration terms will be sent to you.&lt;/p&gt;
-
-&lt;h2 id=&#34;deleting-burnmail:e52eba2da256b91bcb5838bbad42c991&#34;&gt;Deleting Burnmail&lt;/h2&gt;
-
-&lt;p&gt;To delete a Burnmail send an email to &lt;a href=&#34;mailto:burn@kthnxbai.co.uk&#34;&gt;burn@kthnxbai.co.uk&lt;/a&gt; with the subject
-&lt;code&gt;kill address&lt;/code&gt;, where &lt;code&gt;address&lt;/code&gt; is the burnmail address to kill.&lt;/p&gt;
-
-&lt;h2 id=&#34;thoughts:e52eba2da256b91bcb5838bbad42c991&#34;&gt;Thoughts?&lt;/h2&gt;
-
-&lt;p&gt;That&amp;rsquo;s it for now. Make sure to check your spam folder if you aren&amp;rsquo;t
-receiving any mail.&lt;/p&gt;
-
-&lt;p&gt;If you have any suggestions for features, or notice something broken,
-please let me know.&lt;/p&gt;
-
-&lt;p&gt;Also bear in mind that it&amp;rsquo;s early days so there might be bugs.&lt;/p&gt;
-</description>
+      <description>A while back I got curious about how easy it would be to setup a temporary email forwarding service, akin to Meltmail. So I got to it and made it. In essence you will create a temporary email address that will forward all mail it receives to your inbox. Once it expires, it drops all incoming mail. It&amp;rsquo;s pretty much ready now, hence why I am posting about it. The differences between Burnmail (yeah, best I could do for now) and other services is: forwarding can be expired by time or by number of received mails all tasks are accomplished through email.</description>
     </item>
     
   </channel>
 </rss>
+

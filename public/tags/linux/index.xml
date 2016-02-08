@@ -1,134 +1,36 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on Unlogic</title>
+      <title>Linux on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/linux/</link>
-    <description>Recent content in Linux on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Sep 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Thu, 03 Sep 2015 00:00:00 UTC</updated>
     
     <item>
       <title>Extracting bup files in Linux</title>
       <link>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</link>
-      <pubDate>Thu, 03 Sep 2015 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 03 Sep 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/09/03/extracting-bup-files-in-linux/</guid>
-      <description>&lt;p&gt;I recently got hold of some malware that got snapped up by McAfee and stored in a bup file.
-Keen to take a look at it, I researched how to &amp;lsquo;unbup&amp;rsquo; files and found this page:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://blog.opensecurityresearch.com/2012/07/unbup-mcafee-bup-extractor-for-linux.html&#34;&gt;http://blog.opensecurityresearch.com/2012/07/unbup-mcafee-bup-extractor-for-linux.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;A slow bash script? A faster script in Perl? No, that won&amp;rsquo;t do. Rather than search
-for a Python implementation I decided to use this as an opportunity to write
-something, and thus my &lt;code&gt;unbup.py&lt;/code&gt; was born. You can get it from my &lt;a href=&#34;https://github.com/Svenito/unbup&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s about as simple as the bash script in terms of features, but it works, and
-it is also fairly fast. I&amp;rsquo;ve only tested it with the one file I have, but if
-you decide to use it, and it doesn&amp;rsquo;t work, send me the bup file and I&amp;rsquo;ll take a look
-at fixing it. Otherwise feel free to fork it and make your own fixes.&lt;/p&gt;
-</description>
+      <description>I recently got hold of some malware that got snapped up by McAfee and stored in a bup file. Keen to take a look at it, I researched how to &amp;lsquo;unbup&amp;rsquo; files and found this page: http://blog.opensecurityresearch.com/2012/07/unbup-mcafee-bup-extractor-for-linux.html A slow bash script? A faster script in Perl? No, that won&amp;rsquo;t do. Rather than search for a Python implementation I decided to use this as an opportunity to write something, and thus my unbup.py was born.</description>
     </item>
     
     <item>
       <title>The joys of server ownership</title>
       <link>http://unlogic.co.uk/2015/05/08/the-joys-of-server-ownership/</link>
-      <pubDate>Fri, 08 May 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 May 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/05/08/the-joys-of-server-ownership/</guid>
-      <description>
-
-&lt;p&gt;This post serves mostly as a &amp;ldquo;note to self&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;I just ordered myself a super cheap VPS from &lt;a href=&#34;http://ramnode.com&#34;&gt;Ramnode&lt;/a&gt; as I have
-a little project I would like to setup and see if I can make it work.&lt;/p&gt;
-
-&lt;p&gt;But first I had to setup the server (Debian 7.0) and it&amp;rsquo;s been a while since I&amp;rsquo;ve done that, so
-some reading was in order to remind myself of all the joys. Thus I decided to note this
-down for myself and anyone else who&amp;rsquo;s interested. So it&amp;rsquo;s not an in depth explanation
-by any means.&lt;/p&gt;
-
-&lt;h2 id=&#34;securing:5917a0b95cbd7d2b1be5f00f2236d291&#34;&gt;Securing&lt;/h2&gt;
-
-&lt;p&gt;I&amp;rsquo;m not looking for bullet proof as this won&amp;rsquo;t be a production server and won&amp;rsquo;t
-hold any sensitive info, but I&amp;rsquo;d like to know that it&amp;rsquo;s at least somewhat locked
-down.&lt;/p&gt;
-
-&lt;p&gt;So first off install &lt;a href=&#34;http://www.fail2ban.org/wiki/index.php/Main_Page&#34;&gt;Fail2ban&lt;/a&gt;. This
-will lock out users who fail to authenticate too often. Ramnode actually have a
-&lt;a href=&#34;https://www.youtube.com/watch?v=GmVoqFv_lGU&#34;&gt;good video on this&lt;/a&gt;. As we&amp;rsquo;ll
-only allow key based authentication it&amp;rsquo;s a bit redundant, but if you want to
-go that way, there&amp;rsquo;s the info.&lt;/p&gt;
-
-&lt;p&gt;Then turn off password authentication for SSH as I&amp;rsquo;ll be using only keys to
-authenticate. Edit &lt;code&gt;/etc/ssh/sshd_conf&lt;/code&gt; and change the following lines to read:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ChallengeResponseAuthentication no
-PasswordAuthentication no
-UsePAM no
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Make sure you have uploaded your &lt;a href=&#34;https://help.ubuntu.com/community/SSH/OpenSSH/Keys&#34;&gt;public key&lt;/a&gt; to
-&lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; and set the permissions on &lt;code&gt;.ssh&lt;/code&gt; and &lt;code&gt;authorized_keys&lt;/code&gt; on the
-server to &lt;code&gt;700&lt;/code&gt; and &lt;code&gt;600&lt;/code&gt; respectively.&lt;/p&gt;
-
-&lt;p&gt;I also changed the default SSH port to something else, as that already keeps the number of automated
-bruteforcers down. Do this by changing the following line in &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Port 22
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Set it to anything that doesn&amp;rsquo;t clash with other services. i.e. not 25 or 80 for example.&lt;/p&gt;
-
-&lt;p&gt;Once configured &lt;code&gt;sudo service sshd reload&lt;/code&gt; to pick up the changes.&lt;/p&gt;
-
-&lt;p&gt;So next up &lt;code&gt;iptables&lt;/code&gt;. I followed &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-ip-tables-on-ubuntu-12-04&#34;&gt;this guide&lt;/a&gt;
-which gives you a good start. Be sure to run &lt;code&gt;sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT&lt;/code&gt; first.
-Otherwise you&amp;rsquo;ll end up blocking your current connection and&amp;hellip; yeah, ok, I made that mistake.&lt;/p&gt;
-
-&lt;p&gt;Then allow what you need and default to dropping the rest. It&amp;rsquo;s all in the URL above, but to re-iterate:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;# Accept connections on port 22
-iptables -A INPUT -p tcp --syn --destination-port 22 -j ACCEPT
-
-# Deny all other input
-iptables -A INPUT -p tcp -syn -j DROP
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You will need to run the first line for each port that needs to be able to accept
-incoming connections.&lt;/p&gt;
-
-&lt;p&gt;I additionally set up &lt;a href=&#34;http://www.zeroflux.org/projects/knock&#34;&gt;knockd&lt;/a&gt; just to play around with it.&lt;/p&gt;
-
-&lt;p&gt;To do this edit &lt;code&gt;/etc/knockd.conf&lt;/code&gt; and set the port sequences. It should have a default
-set for enabling and disabling the ssh port. Edit this to reflect any port changes. If you want to run miltiple commands
-for a knock, simply concatenate the command with &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt;. You can even make one command open
-a port for a given time. As we have our *keep established connections&amp;rdquo; rule in &lt;code&gt;iptables&lt;/code&gt; we
-can do&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;[opencloseSSH]
-        sequence      = 2222:udp,3333:tcp,4444:udp
-        seq_timeout   = 15
-        tcpflags      = syn,ack
-        start_command = /usr/sbin/iptables -A INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT
-        cmd_timeout   = 10
-        stop_command  = /usr/sbin/iptables -D INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Lifted from the docs. This will allow and block only the IP from where the knock originated.&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s all for now. Postfix next time&amp;hellip;.&lt;/p&gt;
-</description>
+      <description>This post serves mostly as a &amp;ldquo;note to self&amp;rdquo;. I just ordered myself a super cheap VPS from Ramnode as I have a little project I would like to setup and see if I can make it work. But first I had to setup the server (Debian 7.0) and it&amp;rsquo;s been a while since I&amp;rsquo;ve done that, so some reading was in order to remind myself of all the joys. Thus I decided to note this down for myself and anyone else who&amp;rsquo;s interested.</description>
     </item>
     
     <item>
       <title>vim clang autocompletion</title>
       <link>http://unlogic.co.uk/2012/07/13/vim-clang/</link>
-      <pubDate>Fri, 13 Jul 2012 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Jul 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/07/13/vim-clang/</guid>
       <description>&lt;p&gt;Code completion. Isn&amp;rsquo;t it nice? Especially when you have a so many APIs that you can&amp;rsquo;t always remember EVERY method, member or class name in it.&lt;/p&gt;
@@ -136,25 +38,9 @@ can do&lt;/p&gt;
 &lt;p&gt;Vim. Isn&amp;rsquo;t it powerful? The ease and speed with which it allows you to edit your code and do your work is just lovely.&lt;/p&gt;
 
 &lt;p&gt;But code completion in vim? Well yes. You can use ctags. Yes, you can make tag files for ALL your APIs and autocompletion works rather well. I did this and the Qt tags file is 1.7GB. So, urm yeah, that&amp;rsquo;s not entirely awesome either. Plus it doesn&amp;rsquo;t handle things like smart pointers, which you will no doubt come across at some stage.&lt;/p&gt;
-
-&lt;p&gt;So come on down &lt;a href=&#34;https://github.com/Rip-Rip/clang_complete&#34;&gt;clang_complete&lt;/a&gt;. A little plugin for vim that uses &lt;a href=&#34;http://clang.llvm.org/&#34;&gt;clang&lt;/a&gt; to resolve the necessary symbols. Plus it&amp;rsquo;s reasonably easy to set up. All you need to do is follow the instructions that come with the plugin to install it. You will also need to install/build clang. For our purposes we will only need &lt;code&gt;libclang.so&lt;/code&gt; as we will be using the library to do the completion instead of the binary - this is also the faster way. In order to use the library you need to add two things to your &lt;code&gt;.vimrc&lt;/code&gt; file&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:clang_use_library &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;g&lt;/span&gt;:clang_library_path &lt;span style=&#34;color: #f8f8f2&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/path/to/libclang&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;The &lt;code&gt;/path/to/libclang&lt;/code&gt; is the path where libclang.so is located, not including the file name itself. Once you have set this up we should already see the autocomplete working when you start typing &lt;code&gt;.&lt;/code&gt;, &lt;code&gt;-&amp;gt;&lt;/code&gt;, or &lt;code&gt;::&lt;/code&gt; after a variable. But in order to specify the right paths to header files, we also need to make a &lt;code&gt;.clang_complete&lt;/code&gt; file in our project&amp;rsquo;s root directory. This includes the compiler&amp;rsquo;s include flags like &lt;code&gt;-I/path/to/boost&lt;/code&gt;. Luckily there&amp;rsquo;s a handy tool that can generate this file from the current Makefile. It&amp;rsquo;s located in &lt;code&gt;~/.vim/bin&lt;/code&gt;. All you need to do is build your project by passing &lt;code&gt;CXX=&#39;~/.vim/bin/cc_args.py g++&#39;&lt;/code&gt; to the make command. For example:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;make&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;CXX&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;#39;~/.vim/bin/cc_args.py g++&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;I should also mention that symbol resolution is scope dependant in case you see some weird completions. Enjoy.&lt;/p&gt;
-
-&lt;p&gt;EDIT 17/11/2012 The &lt;code&gt;.clang_include&lt;/code&gt; file should actually be called &lt;code&gt;.clang_complete&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
   </channel>
 </rss>
+

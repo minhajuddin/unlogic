@@ -1,46 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cli on Unlogic</title>
+      <title>Cli on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/cli/</link>
-    <description>Recent content in Cli on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Mar 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Wed, 04 Mar 2015 00:00:00 UTC</updated>
     
     <item>
       <title>CLI Pizza</title>
       <link>http://unlogic.co.uk/2015/03/04/cli-pizza/</link>
-      <pubDate>Wed, 04 Mar 2015 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 04 Mar 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/03/04/cli-pizza/</guid>
-      <description>&lt;p&gt;Recently someone was talking about ordering Pizza from within
-&lt;a href=&#34;http://sidefx.com&#34;&gt;Houdini&lt;/a&gt;. I figured that it must be possible somehow.
-I looked for an API and only found a US based, possibly out of date,
-&lt;a href=&#34;https://www.npmjs.com/package/dominos&#34;&gt;API for Dominos&lt;/a&gt; written in node.js.
-However I needed one that worked with the UK version of the Dominos site.
-So I began working on deconstructing the URLs that the Dominos site uses to get
-menus, place orders and such, and started building a Python API around that.&lt;/p&gt;
-
-&lt;p&gt;So far I&amp;rsquo;ve got a few features working and am happy with the progress. Here&amp;rsquo;s
-a little video of how it works at this stage:&lt;/p&gt;
-
-&lt;script type=&#34;text/javascript&#34; src=&#34;https://asciinema.org/a/17295.js&#34; id=&#34;asciicast-17295&#34; async&gt;&lt;/script&gt;
-
-&lt;p&gt;Quite a bit to do still, but happy with the progress. I&amp;rsquo;m planning to write up how
-I figured out all the API calls in order to interact with their backend, so stay
-tuned for that. Follow on &lt;a href=&#34;https://www.titter.com/binaryheadache&#34;&gt;Twitter&lt;/a&gt; or
-subscribe to the &lt;a href=&#34;http://unlogic.co.uk/feed.xml&#34;&gt;RSS&lt;/a&gt;. The code will go up
-on Github once it&amp;rsquo;s more feature complete.&lt;/p&gt;
-
-&lt;p&gt;UPDATE: &lt;a href=&#34;https://github.com/Svenito/dominos&#34;&gt;it&amp;rsquo;s on github&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Recently someone was talking about ordering Pizza from within Houdini. I figured that it must be possible somehow. I looked for an API and only found a US based, possibly out of date, API for Dominos written in node.js. However I needed one that worked with the UK version of the Dominos site. So I began working on deconstructing the URLs that the Dominos site uses to get menus, place orders and such, and started building a Python API around that.</description>
     </item>
     
     <item>
       <title>Tube status for Conky</title>
       <link>http://unlogic.co.uk/2012/06/07/tube-status/</link>
-      <pubDate>Thu, 07 Jun 2012 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 07 Jun 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/06/07/tube-status/</guid>
       <description>&lt;p&gt;Last night I was affected by &amp;ldquo;severe delays on the Central line&amp;rdquo; caused by a burst watermain and bringing part of the line to its knees. Unfortunately I only found this out once I got to the station. Usually the line is well behaved and I have little need to check it often. I know it&amp;rsquo;s really quick to do so and there&amp;rsquo;s a whole host of ways to dit too. But the problems I have with them are:&lt;/p&gt;
@@ -52,29 +33,9 @@ on Github once it&amp;rsquo;s more feature complete.&lt;/p&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;So here&amp;rsquo;s what I&amp;rsquo;ve come up with&lt;/p&gt;
-
-&lt;p&gt;A CLI app that checks the tube status for any number of given lines. &amp;ldquo;Yeah, how does that help?&amp;rdquo; I hear you ask. &amp;ldquo;You still have to use it to check it&amp;rdquo; you say. True. But there&amp;rsquo;s another way to use it: Conky.&lt;/p&gt;
-
-&lt;p&gt;I use &lt;a href=&#34;http://conky.sourceforge.net/&#34;&gt;Conky&lt;/a&gt; and I love it. So what better than to have the tube status for the relevant lines &lt;strong&gt;always&lt;/strong&gt; on my desktop and updating every few seconds? So I quickly put together this python script to accomplish the task:&lt;/p&gt;
-
-&lt;p&gt;{% gist 2888187 %}&lt;/p&gt;
-
-&lt;p&gt;And it looks like this:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;center%20/images/content/conky.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;To add it to Conky just edit the &lt;code&gt;.conkyrc&lt;/code&gt; file and add a line like so: &lt;code&gt;$alignr${execi 2 /path/to/tube.py central -s}&lt;/code&gt; where &lt;em&gt;central&lt;/em&gt; is the name(s)  of the line(s) (separate multiple lines with spaces) you want to get statuses for. The full list of lines is &lt;a href=&#34;http://tubeupdates.com/documentation/&#34;&gt;here&lt;/a&gt;. The -s simply tells the script to supress the output of the full message and shows only the line name and short status.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;d be good to know if you find it useful or if you have any suggestions for it.&lt;/p&gt;
 </description>
     </item>
     
   </channel>
 </rss>
+

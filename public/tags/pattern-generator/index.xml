@@ -1,64 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pattern Generator on Unlogic</title>
+      <title>Pattern Generator on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/pattern-generator/</link>
-    <description>Recent content in Pattern Generator on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 16 Jul 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/pattern-generator/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Wed, 16 Jul 2014 00:00:00 UTC</updated>
     
     <item>
       <title>Exploit pattern generator</title>
       <link>http://unlogic.co.uk/2014/07/16/exploit-pattern-generator/</link>
-      <pubDate>Wed, 16 Jul 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 16 Jul 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/07/16/exploit-pattern-generator/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve been playing around with various stack exploits and have made a fair bit
-of use of metasploit&amp;rsquo;s pattern generation and search tools in order to find
-EIP overwrite locations in an overflow string. This works very well indeed,
-but I had a couple of issues: Firstly I had to have my Kali (or whatever
-pentest distro) VM running. Secondly running the scripts was very slow. Go on
-give them a go.&lt;/p&gt;
-
-&lt;p&gt;I was told about &lt;a href=&#34;https://github.com/longld/peda&#34;&gt;peda&lt;/a&gt; which is a
-Python Exploit Development Assistance for GDB. This is great, but I am playing
-some war games on either virtual machines or remote boxes where I can&amp;rsquo;t install
-things like this. And I didn&amp;rsquo;t want to have to copy binaries around all the time
-either. So I looked for some alternatives. There were (unsurprisingly) quite
-a few, but they were in Perl or Ruby. I was seeking a Python implementation.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/Svenito/exploit-pattern&#34;&gt;So I rolled my own&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It will generate a pattern exactly like the Metasploit one up to a maximum of
-20280 characters in length. Usage is dead simple. To generate a pattern just
-supply the desired length:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&amp;gt; pattern.py 100
-Aa0Aa0Aa1Aa1Aa2Aa2Aa3Aa3Aa4Aa4Aa5Aa5Aa6Aa6Aa7Aa7Aa8Aa8Aa9Aa9Ab0Ab0Ab1Ab1Ab2Ab
-2Ab3Ab3Ab4Ab4Ab5Ab5Ab6A
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;And to search for a pattern:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&amp;gt; pattern.py Bf4
-Pattern Bf4 first occurrence at position 942 in pattern.
-$&amp;gt; pattern.py Bf4B
-Pattern Bf4B first occurrence at position 942 in pattern.
-$&amp;gt; pattern.py 0x42346642
-Pattern 0x42346642 first occurrence at position 942 in pattern.
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;As you can see it converts the hex representation to the correct pattern. The
-position is &lt;strong&gt;0&lt;/strong&gt;(zero) indexed. I&amp;rsquo;ll have to double check how Metasploit&amp;rsquo;s version
-returns the offset to match that.&lt;/p&gt;
-
-&lt;p&gt;Not sure how often you need a pattern above 20k characters, but if you do,
-let me know and I&amp;rsquo;ll work on it.&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;ve been playing around with various stack exploits and have made a fair bit of use of metasploit&amp;rsquo;s pattern generation and search tools in order to find EIP overwrite locations in an overflow string. This works very well indeed, but I had a couple of issues: Firstly I had to have my Kali (or whatever pentest distro) VM running. Secondly running the scripts was very slow. Go on give them a go.</description>
     </item>
     
   </channel>
 </rss>
+

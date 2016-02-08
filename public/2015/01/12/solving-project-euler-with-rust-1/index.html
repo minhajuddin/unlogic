@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Solving Project Euler with Rust 1 - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/01/12/solving-project-euler-with-rust-1/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Solving Project Euler with Rust 1 &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Solving Project Euler with Rust 1</h1>
+        <span class="post-meta">Jan 12, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Solving Project Euler with Rust 1</h1>
-			  <span class="post-date">Mon, Jan 12, 2015</span>
-			      <p>It&rsquo;s time to poke at <a href="http://www.rust-lang.org/">Rust</a> a little bit. And what
+      <article class="post-content">
+      <p>It&rsquo;s time to poke at <a href="http://www.rust-lang.org/">Rust</a> a little bit. And what
 better way to get acquainted with a new language than to solve
 some problems with it? And seeing as there&rsquo;s not always a suitably
 simple problem handy, I&rsquo;ve picked some problems from <a href="https://projecteuler.net">Project Euler</a>
@@ -71,15 +72,15 @@ read the <a href="http://rustbyexample.com/">Rust By Example</a> pages and the n
 
 <p>First let&rsquo;s define some structure:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> solve(max_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2">) </span><span style="color: #f92672">-&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2"> {</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> result </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> max_num;</span>
-<span style="color: #f8f8f2">    result</span>
-<span style="color: #f8f8f2">}</span>
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">max_num</span><span class="o">:</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_num</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> main() {</span>
-<span style="color: #f8f8f2">    println</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Total sum: {}&quot;</span><span style="color: #f8f8f2">, solve(</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">));</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
+<span class="k">fn</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Total sum: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 
 <p><code>cargo run</code> simply prints out <code>Total sum: 10</code>. That&rsquo;s what we expect. I use <code>let result = 10;</code>
@@ -88,15 +89,15 @@ omitted is our return value. So far, so good.</p>
 
 <p>Let&rsquo;s try to sum up the relevant numbers with a hard coded max value of 10.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> solve(max_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2">) </span><span style="color: #f92672">-&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2"> {</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> numbers </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> range(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">, max_num).filter(</span><span style="color: #f92672">|</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">|</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">||</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    numbers.fold(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">, </span><span style="color: #f92672">|</span><span style="color: #f8f8f2">acc, x</span><span style="color: #f92672">|</span><span style="color: #f8f8f2"> acc </span><span style="color: #f92672">+</span><span style="color: #f8f8f2"> x)</span>
-<span style="color: #f8f8f2">}</span>
+<div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">max_num</span><span class="o">:</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">max_num</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">numbers</span><span class="p">.</span><span class="n">fold</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">|</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> main() {</span>
-<span style="color: #f8f8f2">    println</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Total sum: {}&quot;</span><span style="color: #f8f8f2">, solve(</span><span style="color: #ae81ff">10</span><span style="color: #f8f8f2">));</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
+<span class="k">fn</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Total sum: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 
 <p>Looks fun, right? So what&rsquo;s going on? First we generate a range iterator of numbers
@@ -120,19 +121,19 @@ gets assigned to <code>acc</code> to each entry <code>x</code>. Ultimately it&rs
 <p>Functionally we&rsquo;re done. The problem is solved as far as the initial requirement are concerned.
 But I want to add some user input, so let&rsquo;s go over that part next.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> solve(max_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2">) </span><span style="color: #f92672">-&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2"> {</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> numbers </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> range(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">, max_num).filter(</span><span style="color: #f92672">|</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">|</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">||</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    numbers.fold(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">, </span><span style="color: #f92672">|</span><span style="color: #f8f8f2">acc, x</span><span style="color: #f92672">|</span><span style="color: #f8f8f2"> acc </span><span style="color: #f92672">+</span><span style="color: #f8f8f2"> x)</span>
-<span style="color: #f8f8f2">}</span>
+<p><div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">max_num</span><span class="o">:</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">max_num</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">numbers</span><span class="p">.</span><span class="n">fold</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">|</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> main() {</span>
-<span style="color: #f8f8f2">    print</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Enter the max number: &quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> input </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> std</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">io</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">stdin().read_line().ok().expect(</span><span style="color: #e6db74">&quot;Failed to read line&quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> input_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> Option</span><span style="color: #f92672">&lt;</span><span style="color: #66d9ef">i32</span><span style="color: #f92672">&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> input.trim().parse();</span>
-<span style="color: #f8f8f2">    </span>
-<span style="color: #f8f8f2">    println</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Total sum: {}&quot;</span><span style="color: #f8f8f2">, solve(input_num));</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
+<span class="k">fn</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">print</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Enter the max number: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">stdin</span><span class="p">().</span><span class="n">read_line</span><span class="p">().</span><span class="n">ok</span><span class="p">().</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;Failed to read line&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input_num</span><span class="o">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">parse</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Total sum: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">input_num</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 </p>
 
 <p>We read the user input and make sure it was read ok (this is explained in detail in the book)
@@ -148,50 +149,50 @@ at the nd of the input and the <code>parse</code> does the conversion.</p>
 <p>Right, because it&rsquo;s still an <code>Option&lt;i32&gt;</code> type. Helpfully the book explains that we need to
 unwrap the <code>Option</code>, and the best way to do this is with <code>match</code>:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> solve(max_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2">) </span><span style="color: #f92672">-&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2"> {</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> numbers </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> range(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">, max_num).filter(</span><span style="color: #f92672">|</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">|</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">||</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    numbers.fold(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">, </span><span style="color: #f92672">|</span><span style="color: #f8f8f2">acc, x</span><span style="color: #f92672">|</span><span style="color: #f8f8f2"> acc </span><span style="color: #f92672">+</span><span style="color: #f8f8f2"> x)</span>
-<span style="color: #f8f8f2">}</span>
+<p><div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="k">fn</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">max_num</span><span class="o">:</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">max_num</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">numbers</span><span class="p">.</span><span class="n">fold</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">|</span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">|</span><span class="w"> </span><span class="n">acc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> main() {</span>
-<span style="color: #f8f8f2">    print</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Enter the max number: &quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> input </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> std</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">io</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">stdin().read_line().ok().expect(</span><span style="color: #e6db74">&quot;Failed to read line&quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> input_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> Option</span><span style="color: #f92672">&lt;</span><span style="color: #66d9ef">i32</span><span style="color: #f92672">&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> input.trim().parse();</span>
-<span style="color: #f8f8f2">    </span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> num </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">match</span><span style="color: #f8f8f2"> input_num {</span>
-<span style="color: #f8f8f2">        Some(num) </span><span style="color: #f92672">=&gt;</span><span style="color: #f8f8f2"> num,</span>
-<span style="color: #f8f8f2">        None      </span><span style="color: #f92672">=&gt;</span><span style="color: #f8f8f2"> {</span>
-<span style="color: #f8f8f2">            println</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Please input a number!&quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">            </span><span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">        }</span>
-<span style="color: #f8f8f2">    };</span>
+<span class="k">fn</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">print</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Enter the max number: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">stdin</span><span class="p">().</span><span class="n">read_line</span><span class="p">().</span><span class="n">ok</span><span class="p">().</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;Failed to read line&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input_num</span><span class="o">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">parse</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">input_num</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nb">None</span><span class="w">      </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Please input a number!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-<span style="color: #f8f8f2">    println</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Total sum: {}&quot;</span><span style="color: #f8f8f2">, solve(num));</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
+<span class="w">    </span><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Total sum: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">num</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 </p>
 
 <p>Let&rsquo;s run this and see what happens:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">ninja:euler_1 unlogic$ cargo run
-   Compiling euler_1 v0.0.1 (file:///work/code/rust/euler/euler_1)
-/work/code/rust/euler/euler_1/src/main.rs:2:19: 2:24 warning: use of unstable item: will be replaced by range notation, #[warn(unstable)] on by default
-/work/code/rust/euler/euler_1/src/main.rs:2     let numbers = range(1, max_num).filter(|i| *i % 3 == 0 || *i % 5 == 0);
-                                                              ^~~~~
-/work/code/rust/euler/euler_1/src/main.rs:8:34: 8:45 warning: use of unstable item, #[warn(unstable)] on by default
-/work/code/rust/euler/euler_1/src/main.rs:8     let input = std::io::stdin().read_line().ok().expect(&quot;Failed to read line&quot;);
-                                                                             ^~~~~~~~~~~
-/work/code/rust/euler/euler_1/src/main.rs:8:17: 8:31 warning: use of unstable item, #[warn(unstable)] on by default
-/work/code/rust/euler/euler_1/src/main.rs:8     let input = std::io::stdin().read_line().ok().expect(&quot;Failed to read line&quot;);
-                                                            ^~~~~~~~~~~~~~
-/work/code/rust/euler/euler_1/src/main.rs:9:47: 9:54 warning: use of unstable item: this method was just created, #[warn(unstable)] on by default
-/work/code/rust/euler/euler_1/src/main.rs:9     let input_num: Option&lt;i32&gt; = input.trim().parse();
-                                                                                          ^~~~~~~
-     Running `target/euler_1`
-Enter the max number: 1000
-Total sum: 233168
-ninja:euler_1 unlogic$
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">ninja:euler_1 unlogic$</span> cargo run
+<span class="go">   Compiling euler_1 v0.0.1 (file:///work/code/rust/euler/euler_1)</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:2:19: 2:24 warning: use of unstable item: will be replaced by range notation, #[warn(unstable)] on by default</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:2     let numbers = range(1, max_num).filter(|i| *i % 3 == 0 || *i % 5 == 0);</span>
+<span class="go">                                                              ^~~~~</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:8:34: 8:45 warning: use of unstable item, #[warn(unstable)] on by default</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:8     let input = std::io::stdin().read_line().ok().expect(&quot;Failed to read line&quot;);</span>
+<span class="go">                                                                             ^~~~~~~~~~~</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:8:17: 8:31 warning: use of unstable item, #[warn(unstable)] on by default</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:8     let input = std::io::stdin().read_line().ok().expect(&quot;Failed to read line&quot;);</span>
+<span class="go">                                                            ^~~~~~~~~~~~~~</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:9:47: 9:54 warning: use of unstable item: this method was just created, #[warn(unstable)] on by default</span>
+<span class="go">/work/code/rust/euler/euler_1/src/main.rs:9     let input_num: Option&lt;i32&gt; = input.trim().parse();</span>
+<span class="go">                                                                                          ^~~~~~~</span>
+<span class="go">     Running `target/euler_1`</span>
+<span class="go">Enter the max number: 1000</span>
+<span class="go">Total sum: 233168</span>
+<span class="gp">ninja:euler_1 unlogic$</span>
+</code></pre></div>
 </p>
 
 <p>Some warnings about unstable calls, but it&rsquo;s an Alpha release, so what else can we expect? But the end
@@ -202,37 +203,95 @@ result is there.</p>
 <p>UPDATE: I posted this on <a href="https://www.reddit.com/r/rust/comments/2s9lam/just_started_playing_with_rust_heres_a_write_up/">reddit</a>
 and having taken some suggestions on board, I have made some small changes:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">use</span><span style="color: #f8f8f2"> std</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">iter</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">AdditiveIterator;</span>
+<p><div class="highlight"><pre><code class="language-rust" data-lang="rust"><span class="kn">use</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">iter</span><span class="o">::</span><span class="n">AdditiveIterator</span><span class="p">;</span><span class="w"></span>
 
-<span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> solve(max_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2">) </span><span style="color: #f92672">-&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">i32</span><span style="color: #f8f8f2"> {</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">mut</span><span style="color: #f8f8f2"> numbers </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> (</span><span style="color: #ae81ff">1.</span><span style="color: #f8f8f2">.max_num).filter(</span><span style="color: #f92672">|</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">|</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">||</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">*</span><span style="color: #f8f8f2">i </span><span style="color: #f92672">%</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">5</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">==</span><span style="color: #f8f8f2"> </span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    numbers.sum()</span>
-<span style="color: #f8f8f2">}</span>
+<span class="k">fn</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">max_num</span><span class="o">:</span><span class="w"> </span><span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">i32</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1.</span><span class="p">.</span><span class="n">max_num</span><span class="p">).</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">numbers</span><span class="p">.</span><span class="n">sum</span><span class="p">()</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span style="color: #66d9ef">fn</span><span style="color: #f8f8f2"> main() {</span>
-<span style="color: #f8f8f2">    print</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Enter the max number: &quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> input </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> std</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">io</span><span style="color: #f92672">::</span><span style="color: #f8f8f2">stdin().read_line().ok().expect(</span><span style="color: #e6db74">&quot;Failed to read line&quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> input_num</span><span style="color: #f92672">:</span><span style="color: #f8f8f2"> Option</span><span style="color: #f92672">&lt;</span><span style="color: #66d9ef">i32</span><span style="color: #f92672">&gt;</span><span style="color: #f8f8f2"> </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> input.trim().parse();</span>
-<span style="color: #f8f8f2">            </span>
-<span style="color: #f8f8f2">    </span><span style="color: #66d9ef">let</span><span style="color: #f8f8f2"> num </span><span style="color: #f92672">=</span><span style="color: #f8f8f2"> </span><span style="color: #66d9ef">match</span><span style="color: #f8f8f2"> input_num {</span>
-<span style="color: #f8f8f2">        Some(num) </span><span style="color: #f92672">=&gt;</span><span style="color: #f8f8f2"> num,</span>
-<span style="color: #f8f8f2">        None      </span><span style="color: #f92672">=&gt;</span><span style="color: #f8f8f2"> {</span>
-<span style="color: #f8f8f2">            println</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Please input a number!&quot;</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">            </span><span style="color: #66d9ef">return</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">        }</span>
-<span style="color: #f8f8f2">    };</span>
+<span class="k">fn</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">print</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Enter the max number: &quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">io</span><span class="o">::</span><span class="n">stdin</span><span class="p">().</span><span class="n">read_line</span><span class="p">().</span><span class="n">ok</span><span class="p">().</span><span class="n">expect</span><span class="p">(</span><span class="s">&quot;Failed to read line&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">input_num</span><span class="o">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">trim</span><span class="p">().</span><span class="n">parse</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="n">input_num</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nb">Some</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">num</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nb">None</span><span class="w">      </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Please input a number!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-<span style="color: #f8f8f2">    println</span><span style="color: #f92672">!</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&quot;Total sum: {}&quot;</span><span style="color: #f8f8f2">, solve(num));</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
+<span class="w">    </span><span class="nb">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Total sum: {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">solve</span><span class="p">(</span><span class="n">num</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 </p>
 
 <p>Also made the code (and all future solutions) available on <a href="https://github.com/Svenito/euler_rust">Github</a></p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/rust">rust</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/project%20euler">project euler</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/programming">programming</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/learning">learning</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/01\/12\/solving-project-euler-with-rust-1\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

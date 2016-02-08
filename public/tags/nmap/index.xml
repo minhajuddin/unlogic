@@ -1,123 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nmap on Unlogic</title>
+      <title>Nmap on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/nmap/</link>
-    <description>Recent content in Nmap on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 17 Jul 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Thu, 17 Jul 2014 00:00:00 UTC</updated>
     
     <item>
       <title>nmap&#39;s idle scan with scapy</title>
       <link>http://unlogic.co.uk/2014/07/17/nmaps-idle-scan-with-scapy/</link>
-      <pubDate>Thu, 17 Jul 2014 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 17 Jul 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/07/17/nmaps-idle-scan-with-scapy/</guid>
-      <description>&lt;p&gt;If you&amp;rsquo;ve used nmap before you are probably familiar with its idle scan feature.
-Should you not be, go and &lt;a href=&#34;http://nmap.org/book/idlescan.html&#34;&gt;skim the docs&lt;/a&gt;.
-I&amp;rsquo;ll quickly cover the basics here anyway.&lt;/p&gt;
-
-&lt;p&gt;Basically it will allow us to conduct a port scan of a remote host without revealing
-our IP address. This is done by making use of the fact that IP IDs are sequential.
-The images below (courtesy of the namp project documentation) explain this very
-well.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Open Port&lt;/strong&gt;
-&lt;a href=&#34;http://i.imgur.com/MajmRTH.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/MajmRTH.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Closed Port&lt;/strong&gt;
-&lt;a href=&#34;http://i.imgur.com/2UALzzd.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/2UALzzd.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Filtered Port&lt;/strong&gt;
-&lt;a href=&#34;http://i.imgur.com/Yv6hbwL.png&#34;&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;http://i.imgur.com/Yv6hbwL.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ok, so that&amp;rsquo;s the short version of the theory and it&amp;rsquo;s relatively painless
-to implement with scapy. Let&amp;rsquo;s take a look at the script:&lt;/p&gt;
-
-&lt;p&gt;{% gist e377713b90525e842266 %}&lt;/p&gt;
-
-&lt;p&gt;You provide the script with a &lt;code&gt;zombie ip&lt;/code&gt;, &lt;code&gt;target ip&lt;/code&gt;, and &lt;code&gt;target port&lt;/code&gt;.
-These should be self explanatory. Then we use scapy to assemble our packets to
-conduct our scan. The &lt;code&gt;p1&lt;/code&gt; SYN/ACK packet will be sent to the zombie so we can
-obtain a current IP ID from the RST response as a reference.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;p2&lt;/code&gt; is a SYN packet which we send to the target with a return address of the
-zombie host. When the target receives this packet it will reply to
-the zombie instead of the source machine (us). The target will respond with a
-SYN/ACK to the &lt;code&gt;p2&lt;/code&gt; packet, but send its response to the zombie instead of us.
-Thus increasing the zobmies IP ID value by one.&lt;/p&gt;
-
-&lt;p&gt;Then we probe the zombie again with a further SYN/ACK packet (this is &lt;code&gt;p3&lt;/code&gt;) to
-find out what the new IP ID is.&lt;/p&gt;
-
-&lt;p&gt;Now we have enough information to determine if the remote port is open or not.
-We subtract the initial IP ID from the final one and print out the status of the port.&lt;/p&gt;
-
-&lt;p&gt;So how do you use it? The important thing is to find a relative inactive machine to
-use as a zombie, as you don&amp;rsquo;t want the IP ID to change while you are conducting
-your probe. I&amp;rsquo;ve had the best results with using networked printers as zombie hosts.
-Unless there&amp;rsquo;s a lot of print jobs going on, they are fairly idle. The printer
-is at &lt;code&gt;10.20.7.1&lt;/code&gt; and I&amp;rsquo;m probing port 80 on &lt;code&gt;10.16.70.8&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; sudo ./idle_scan.py 10.20.7.1 0.16.70.8 80
-WARNING: No route found for IPv6 destination :: (no default route?)
-
-[*] Scan 10.16.70.8 port 80 using 10.20.7.1 as zombie
-[+] Zombie initial IP id 57319
-[+] Zombie final IP id 57321
-[+] Port 80 : open
-
-sudo ./idle_scan.py 10.20.7.1 0.16.70.8 90
-WARNING: No route found for IPv6 destination :: (no default route?)
-
-[*] Scan 10.16.70.8 port 90 using 10.20.7.1 as zombie
-[+] Zombie initial IP id 57341
-[+] Zombie final IP id 57342
-[+] Port 90 : closed
- 
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;And to be sure, let&amp;rsquo;s verify our findings with a proper nmap scan.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;$&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; nmap 10.16.70.8 -p80,90
-
-Starting Nmap 5.51 ( http://nmap.org ) at 2014-07-17 13:07 BST
-Nmap scan report for 10.16.70.8 (10.16.70.8)
-Host is up (0.00013s latency).
-PORT   STATE  SERVICE
-80/tcp open   http
-90/tcp closed dnsix
-
-Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Approved.&lt;/p&gt;
-</description>
+      <description>If you&amp;rsquo;ve used nmap before you are probably familiar with its idle scan feature. Should you not be, go and skim the docs. I&amp;rsquo;ll quickly cover the basics here anyway. Basically it will allow us to conduct a port scan of a remote host without revealing our IP address. This is done by making use of the fact that IP IDs are sequential. The images below (courtesy of the namp project documentation) explain this very well.</description>
     </item>
     
   </channel>
 </rss>
+

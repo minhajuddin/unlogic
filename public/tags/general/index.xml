@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>General on Unlogic</title>
+      <title>General on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/general/</link>
-    <description>Recent content in General on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 12 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/general/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Sat, 12 Apr 2014 00:00:00 UTC</updated>
     
     <item>
       <title>Thoughts on piracy</title>
       <link>http://unlogic.co.uk/2014/04/12/thoughts-on-piracy/</link>
-      <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 12 Apr 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/04/12/thoughts-on-piracy/</guid>
       <description>&lt;p&gt;Piracy is rampant, or so certain media and copyright trolls would lead you to believe.
@@ -19,68 +20,9 @@ I&amp;rsquo;m not sure how true this is as I have no access to figures proving i
 require me to define at what level copying copyrighted stuff becomes &lt;em&gt;rampant&lt;/em&gt;. Besides,
 this is not really what I wanted to write about. I&amp;rsquo;m more interested in airing a few
 thoughts I&amp;rsquo;ve had about some of the things going on around piracy.&lt;/p&gt;
-
-&lt;p&gt;Piracy, in the copyright sense, has been around for as long as can remember. Copying a
-tape (a magnetic ribbon that stored data for those not as ancient as me) was not
-a big issue. In fact companies manufactured tape decks with two cassette players
-built in. Sometimes there was even a &amp;ldquo;High speed dub&amp;rdquo; option. Manufacturers enabled
-you to copy content from one tape to another.&lt;/p&gt;
-
-&lt;p&gt;At this point though the physical media still had to be handed from person to person,
-which meant it would take some time to reach a significant number of people. The internet
-however changes that, you dump a small file on a tracker site and you&amp;rsquo;ve made it available
-to millions. So I guess that&amp;rsquo;s enough reasons for all this copyright hoo-hah to increase
-along side this.&lt;/p&gt;
-
-&lt;p&gt;So in this game we have three key players:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The copyright owner&lt;/li&gt;
-&lt;li&gt;The pirate&lt;/li&gt;
-&lt;li&gt;The anti-piracy company (on behalf of he copyright owner)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;But here&amp;rsquo;s the thing I don&amp;rsquo;t get: anti-piracy companies. I get what they do, but I don&amp;rsquo;t
-get their stance. They get paid by a copyright holder (say Warner Brothers) to track down
-who is distributing their property illegally. I won&amp;rsquo;t get into the whole definition of
-&lt;em&gt;property&lt;/em&gt; after you make a purchase now either. So back to these anti-piracy folks.
-They figure out who (or what IP) is distributing said data. They then send them some letters
-asking for payment and threaten with court&amp;hellip; you know the deal.&lt;/p&gt;
-
-&lt;p&gt;Every so often you hear these people complain about the evil of pirates, the damaging intents
-of the people who wrote things like BitTorrent etc. They wish they were never born, never
-made usenet, no one should pirate blah blah.&lt;/p&gt;
-
-&lt;p&gt;But correct me if I am wrong: these people&amp;rsquo;s livelihood depends on pirates. Depends on this
-technology. Especially BitTorrent which makes it so much easier to track down violators.
-At least those that don&amp;rsquo;t know how to protect themselves. If people stopped pirating then
-these are the first people to suffer.&lt;/p&gt;
-
-&lt;p&gt;If the people who stopped pirating also didn&amp;rsquo;t buy the stuff they pirated, then the studio
-wouldn&amp;rsquo;t benefit either. Chances are that most of the people who pirate will buy the things
-they like/want anyway and have other reasons to pirate. Those that pirate because they can&amp;rsquo;t/won&amp;rsquo;t
-buy the products won&amp;rsquo;t buy the products either way. People pirate for all manner of reasons, not
-just because they refuse to pay for it. Perhaps they cannot buy it where they live, or they want
-to watch a DVD they bought a while ago but have moved to a different region and no longer have the
-ability to play their film. It&amp;rsquo;s not always to get on over of the &lt;em&gt;big guys&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;So if piracy came to an end, what would happen? Anti-piracy companies would go away and that&amp;rsquo;s
-about it. Sure, there might be some small increase in takings for movies etc, but I doubt it would
-be anything noticeable. You might also suggest that piracy is a free form of advertising. If
-person X says that they saw an early preview of a movie and loved it, chances are that person Y
-will go see it. At the very least more and more people are talking about it. Be that movies, games,
-books, music, what have you, the word gets around.&lt;/p&gt;
-
-&lt;p&gt;Perhaps I am wrong though. I am just writing down my thoughts. I don&amp;rsquo;t claim to have done
-extensive reasearch on this. These are just my opinions. Perhaps revenue for these
-companies would increase drastically. Then again if you notice that a decent film makes a
-killing at the box office, where a less that decent film flops, perhaps these big companies
-should start making stuff people actually don&amp;rsquo;t feel like they are wasting money if they spend
-it on your product. Alternatively you could lower prices and then going to see a movie that turns
-out to suck won&amp;rsquo;t be such a big loss. You&amp;rsquo;d spend a few units of your currency and if you didn&amp;rsquo;t like
-it, then so what? Fork over 10 times that and you&amp;rsquo;ll think twice before you spend it.&lt;/p&gt;
 </description>
     </item>
     
   </channel>
 </rss>
+

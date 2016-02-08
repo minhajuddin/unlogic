@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Compositing images on an iPhone with Core Graphics - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2009/04/12/compositing-images-on-an-iphone-with-core-graphics/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Compositing images on an iPhone with Core Graphics &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Compositing images on an iPhone with Core Graphics</h1>
+        <span class="post-meta">Apr 12, 2009 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Compositing images on an iPhone with Core Graphics</h1>
-			  <span class="post-date">Sun, Apr 12, 2009</span>
-			      <p>How do you take two images, one with rotation and scale applied, and compose the two together in memory and save the result to the device? We make use of core graphics and a little bit of math.</p>
+      <article class="post-content">
+      <p>How do you take two images, one with rotation and scale applied, and compose the two together in memory and save the result to the device? We make use of core graphics and a little bit of math.</p>
 
 <p>To set the scene properly here’s what we have: we have an image that’s been scaled and rotated and positioned on screen, over which we would like to place an image that will fill the screen and always be the same size, this is the overlay. Our overlay is 320×480 and positioned centrally in the display and contains transparency to let the background show through. Both images are PNG files.</p>
 
@@ -56,96 +57,148 @@
 
 <p>Ready? Then let’s set up a frame for both the background image and the overlay</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">// Assume that overlay and userImage are our UIImages</span>
-<span style="color: #75715e">// overlay and background images respectively</span>
-<span style="color: #75715e">// Overlay frame</span>
-<span style="color: #f8f8f2">CGRect</span> <span style="color: #f8f8f2">frame;</span>
-<span style="color: #f8f8f2">frame.origin</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">CGPointMake(</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">0</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">frame.size</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">CGSizeMake(</span><span style="color: #ae81ff">320</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">480</span><span style="color: #f8f8f2">);</span>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// Assume that overlay and userImage are our UIImages</span>
+<span class="c1">// overlay and background images respectively</span>
+<span class="c1">// Overlay frame</span>
+<span class="bp">CGRect</span> <span class="n">frame</span><span class="p">;</span>
+<span class="n">frame</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="n">frame</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span><span class="mi">480</span><span class="p">);</span>
 
-<span style="color: #75715e">// background frame</span>
-<span style="color: #75715e">// Scale is the factor the image is scaled by (float)</span>
-<span style="color: #f8f8f2">CGRect</span> <span style="color: #f8f8f2">bgFrame;</span>
-<span style="color: #f8f8f2">bgFrame.size</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">userImage.size;</span>
-<span style="color: #f8f8f2">bgFrame.size.width</span> <span style="color: #f92672">*=</span> <span style="color: #f8f8f2">scale;</span>
-<span style="color: #f8f8f2">bgFrame.size.height</span> <span style="color: #f92672">*=</span> <span style="color: #f8f8f2">scale;</span>
-</pre></div>
+<span class="c1">// background frame</span>
+<span class="c1">// Scale is the factor the image is scaled by (float)</span>
+<span class="bp">CGRect</span> <span class="n">bgFrame</span><span class="p">;</span>
+<span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">userImage</span><span class="p">.</span><span class="n">size</span><span class="p">;</span>
+<span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">*=</span> <span class="n">scale</span><span class="p">;</span>
+<span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">*=</span> <span class="n">scale</span><span class="p">;</span>
+</code></pre></div>
 
 
 <p>In order to draw our image rotated we actually need to rotate the context and then draw our image into it. We also need to know the size of the rectangle that contains the rotated context. We’ll use some simple trig to work that out. We need this new size in order to correctly position the background, as core graphics uses the top left corner to place the context and after the rotation the top left corner has moved somewhat.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">// Get the size of the background frame (unrotated)</span>
-<span style="color: #f8f8f2">CGSize</span> <span style="color: #f8f8f2">size</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">bgFrame.size;</span>
+<p><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// Get the size of the background frame (unrotated)</span>
+<span class="bp">CGSize</span> <span class="n">size</span> <span class="o">=</span> <span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">;</span>
 
-<span style="color: #75715e">// Work out the bounding box for the rotated image</span>
-<span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">h</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">size.height;</span>
-<span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">w</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">size.width;</span>
-<span style="color: #75715e">// Using the trig we need to know 90deg - the actual rotation angle</span>
-<span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">beta</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">DEGREES_TO_RADIANS(</span><span style="color: #ae81ff">90.0</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">(rotation));</span>
+<span class="c1">// Work out the bounding box for the rotated image</span>
+<span class="kt">float</span> <span class="n">h</span> <span class="o">=</span> <span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">w</span> <span class="o">=</span> <span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+<span class="c1">// Using the trig we need to know 90deg - the actual rotation angle</span>
+<span class="kt">float</span> <span class="n">beta</span> <span class="o">=</span> <span class="n">DEGREES_TO_RADIANS</span><span class="p">(</span><span class="mf">90.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">rotation</span><span class="p">));</span>
 
-<span style="color: #75715e">// Do the trig for the new size</span>
-<span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">h1</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">fabs(sin(beta))</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">w</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">fabs(cos(beta));</span>
-<span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">w1</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">w</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">fabs(sin(beta))</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">h</span><span style="color: #f92672">*</span><span style="color: #f8f8f2">fabs(cos(beta));</span>
-<span style="color: #75715e">// CG works in radians - Using a macro to do the work</span>
-<span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">angle</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">DEGREES_TO_RADIANS(rotation);</span>
-<span style="color: #f8f8f2">CGSize</span> <span style="color: #f8f8f2">tempFrame;</span>
-<span style="color: #f8f8f2">tempFrame.height</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h1;</span>
-<span style="color: #f8f8f2">tempFrame.width</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">w1;</span>
+<span class="c1">// Do the trig for the new size</span>
+<span class="kt">float</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">h</span><span class="o">*</span><span class="n">fabs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">))</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">fabs</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">beta</span><span class="p">));</span>
+<span class="kt">float</span> <span class="n">w1</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">fabs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">))</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">fabs</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">beta</span><span class="p">));</span>
+<span class="c1">// CG works in radians - Using a macro to do the work</span>
+<span class="kt">float</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">DEGREES_TO_RADIANS</span><span class="p">(</span><span class="n">rotation</span><span class="p">);</span>
+<span class="bp">CGSize</span> <span class="n">tempFrame</span><span class="p">;</span>
+<span class="n">tempFrame</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">h1</span><span class="p">;</span>
+<span class="n">tempFrame</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">w1</span><span class="p">;</span>
 
-<span style="color: #75715e">// Rotation Context starts here</span>
-<span style="color: #75715e">// draw the image into it</span>
-<span style="color: #f8f8f2">UIGraphicsBeginImageContext(tempFrame);</span>
-<span style="color: #f8f8f2">CGContextRef</span> <span style="color: #f8f8f2">ctx</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">UIGraphicsGetCurrentContext();</span>
-<span style="color: #75715e">// Rotate around center</span>
-<span style="color: #f8f8f2">CGContextTranslateCTM(ctx,</span> <span style="color: #f8f8f2">tempFrame.width</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">tempFrame.height</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">);</span>
-<span style="color: #f8f8f2">CGContextRotateCTM(ctx,</span> <span style="color: #f8f8f2">angle);</span>
-<span style="color: #f8f8f2">CGContextTranslateCTM(ctx,</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">tempFrame.width</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f92672">-</span><span style="color: #f8f8f2">tempFrame.height</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">);</span>
+<span class="c1">// Rotation Context starts here</span>
+<span class="c1">// draw the image into it</span>
+<span class="n">UIGraphicsBeginImageContext</span><span class="p">(</span><span class="n">tempFrame</span><span class="p">);</span>
+<span class="n">CGContextRef</span> <span class="n">ctx</span> <span class="o">=</span> <span class="n">UIGraphicsGetCurrentContext</span><span class="p">();</span>
+<span class="c1">// Rotate around center</span>
+<span class="n">CGContextTranslateCTM</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">tempFrame</span><span class="p">.</span><span class="n">width</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">tempFrame</span><span class="p">.</span><span class="n">height</span><span class="o">/</span><span class="mf">2.0</span><span class="p">);</span>
+<span class="n">CGContextRotateCTM</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">angle</span><span class="p">);</span>
+<span class="n">CGContextTranslateCTM</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="o">-</span><span class="n">tempFrame</span><span class="p">.</span><span class="n">width</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="n">tempFrame</span><span class="p">.</span><span class="n">height</span><span class="o">/</span><span class="mf">2.0</span><span class="p">);</span>
 
-<span style="color: #75715e">// Origin is this for some reason. One day I&#39;ll figure it out</span>
-<span style="color: #f8f8f2">bgFrame.origin</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">CGPointMake((w1</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">bgFrame.size.width)</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">,</span>
-                             <span style="color: #f8f8f2">(h1</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">bgFrame.size.height)</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">);</span>
+<span class="c1">// Origin is this for some reason. One day I&#39;ll figure it out</span>
+<span class="n">bgFrame</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">((</span><span class="n">w1</span> <span class="o">-</span> <span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span>
+                             <span class="p">(</span><span class="n">h1</span> <span class="o">-</span> <span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span><span class="p">);</span>
 
-<span style="color: #75715e">// Draw it</span>
-<span style="color: #f8f8f2">[userImage.image</span> <span style="color: #f8f8f2">drawInRect:bgFrame];</span>
+<span class="c1">// Draw it</span>
+<span class="p">[</span><span class="n">userImage</span><span class="p">.</span><span class="n">image</span> <span class="nl">drawInRect</span><span class="p">:</span><span class="n">bgFrame</span><span class="p">];</span>
 
-<span style="color: #75715e">// Get it</span>
-<span style="color: #f8f8f2">UIImage</span> <span style="color: #f92672">*</span><span style="color: #66d9ef">copy</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">UIGraphicsGetImageFromCurrentImageContext();</span>
-<span style="color: #f8f8f2">UIGraphicsEndImageContext();</span>
-</pre></div>
+<span class="c1">// Get it</span>
+<span class="bp">UIImage</span> <span class="o">*</span><span class="k">copy</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">();</span>
+<span class="n">UIGraphicsEndImageContext</span><span class="p">();</span>
+</code></pre></div>
 </p>
 
 <p>You will notice I&rsquo;m a bit bewildered as to why the origin of the background frame is what it is. I figured this out by experimenting a bit, but haven&rsquo;t yet got round to working out the exact science/reason behind it. If you know why, I&rsquo;d appreciate you leaving a comment here, or emailing me, so I can update this page.</p>
 
 <p>Home stretch now, we&rsquo;re almost done. Just draw the overlay and then nab the contents of the context and write it to the device</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #75715e">// On to the comp</span>
-<span style="color: #f8f8f2">bgFrame.size.height</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">h1;</span>
-<span style="color: #f8f8f2">bgFrame.size.width</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">w1;</span>
-<span style="color: #75715e">// position is where the original image was placed on screen</span>
-<span style="color: #75715e">// in this case the coordinate for the position was the center of the image</span>
-<span style="color: #75715e">// hence the adjustments</span>
-<span style="color: #f8f8f2">bgFrame.origin</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">CGPointMake(position.x</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">(bgFrame.size.width</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">),</span>
-                            <span style="color: #ae81ff">480</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">(bgFrame.size.height</span><span style="color: #f92672">/</span><span style="color: #ae81ff">2.0</span><span style="color: #f8f8f2">)</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">position.y);</span>
+<p><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// On to the comp</span>
+<span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">h1</span><span class="p">;</span>
+<span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">w1</span><span class="p">;</span>
+<span class="c1">// position is where the original image was placed on screen</span>
+<span class="c1">// in this case the coordinate for the position was the center of the image</span>
+<span class="c1">// hence the adjustments</span>
+<span class="n">bgFrame</span><span class="p">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="o">/</span><span class="mf">2.0</span><span class="p">),</span>
+                            <span class="mi">480</span> <span class="o">-</span> <span class="p">(</span><span class="n">bgFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
 
-<span style="color: #f8f8f2">UIGraphicsBeginImageContext(frame.size);</span>
-<span style="color: #75715e">// draw the background and overlay</span>
-<span style="color: #f8f8f2">[</span><span style="color: #66d9ef">copy</span> <span style="color: #f8f8f2">drawInRect:bgFrame];</span>
-<span style="color: #f8f8f2">[overlay</span> <span style="color: #f8f8f2">drawInRect:frame];</span>
-<span style="color: #f8f8f2">[overlay</span> <span style="color: #66d9ef">release</span><span style="color: #f8f8f2">];</span>
+<span class="n">UIGraphicsBeginImageContext</span><span class="p">(</span><span class="n">frame</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+<span class="c1">// draw the background and overlay</span>
+<span class="p">[</span><span class="k">copy</span> <span class="nl">drawInRect</span><span class="p">:</span><span class="n">bgFrame</span><span class="p">];</span>
+<span class="p">[</span><span class="n">overlay</span> <span class="nl">drawInRect</span><span class="p">:</span><span class="n">frame</span><span class="p">];</span>
+<span class="p">[</span><span class="n">overlay</span> <span class="k">release</span><span class="p">];</span>
 
-<span style="color: #75715e">// Get and save the comp image</span>
-<span style="color: #f8f8f2">UIImage</span> <span style="color: #f92672">*</span><span style="color: #f8f8f2">newImage</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">UIGraphicsGetImageFromCurrentImageContext();</span>
-<span style="color: #f8f8f2">UIGraphicsEndImageContext();</span>
-<span style="color: #f8f8f2">UIImageWriteToSavedPhotosAlbum(newImage,</span> <span style="color: #f8f8f2">self,</span> <span style="color: #f8f8f2">nil,</span> <span style="color: #f8f8f2">nil);</span>
-</pre></div>
+<span class="c1">// Get and save the comp image</span>
+<span class="bp">UIImage</span> <span class="o">*</span><span class="n">newImage</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">();</span>
+<span class="n">UIGraphicsEndImageContext</span><span class="p">();</span>
+<span class="n">UIImageWriteToSavedPhotosAlbum</span><span class="p">(</span><span class="n">newImage</span><span class="p">,</span> <span class="nb">self</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="nb">nil</span><span class="p">);</span>
+</code></pre></div>
 </p>
 
 <p>And there we go. You can adjust the <code>UIImageWriteToSavedPhotosAlbum</code> if you need the callback, but I omitted it in this case.</p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/core%20graphics">core graphics</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/iPhone">iPhone</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2009\/04\/12\/compositing-images-on-an-iphone-with-core-graphics\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

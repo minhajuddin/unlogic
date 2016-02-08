@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Infosec Institute CTF2.0 - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/06/25/infosec-institute-ctf2-dot-0/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Infosec Institute CTF2.0 &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Infosec Institute CTF2.0</h1>
+        <span class="post-meta">Jun 25, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Infosec Institute CTF2.0</h1>
-			  <span class="post-date">Thu, Jun 25, 2015</span>
-			      
+      <article class="post-content">
+      
 
 <p>The folks over at the <a href="https://infosecinstitute.com">Infosec Institue</a> have released
 their <a href="http://ctf.infosecinstitute.com/ctf2/">second CTF</a>. Here&rsquo;s how I got on&hellip;</p>
@@ -147,8 +148,8 @@ other thing under our control.</p>
 
 <p>I&rsquo;m going to guess that code looks somewhat like this:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">eval (&quot;print $num1 $op $num2;&quot;);
-</pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">eval (&quot;print $num1 $op $num2;&quot;);</span>
+</code></pre></div>
 
 
 <p>So I need to change the operand to something that prints <code>phpinfo</code> but leaves the rest of the statement
@@ -210,9 +211,9 @@ once again, changing the <code>lastname</code> field to a <code>textarea</code> 
 <p>Now I can have multiple lines and enter a real carriage return into the field. My last
 name will be</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">alpha7
-role:admin
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">alpha7</span>
+<span class="go">role:admin</span>
+</code></pre></div>
 
 
 <p>And after a login with the new creds:</p>
@@ -371,8 +372,8 @@ is submitted back to itself.</p>
 <p>Using this we can inject something into the field to hopefully reflect our data on the page.
 By employing the <code>arg</code> paramater we can close the <code>input</code> tag, and the inject our <code>h1</code> tags:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">http://ctf.infosecinstitute.com/ctf2/exercises/ex7.php?arg=&#39;&gt;&lt;h1&gt;username&lt;/h1&gt;
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">http://ctf.infosecinstitute.com/ctf2/exercises/ex7.php?arg=&#39;&gt;&lt;h1&gt;username&lt;/h1&gt;</span>
+</code></pre></div>
 
 
 <p>Submitting that puts <code>username</code> on the page surrounded by <code>h1</code> tags and nabs the flag</p>
@@ -394,15 +395,15 @@ By employing the <code>arg</code> paramater we can close the <code>input</code> 
 things I upload an image to see how it behaves. Once uploaded I click on the example links and notice that
 images are fetched via an id. The URL is</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">http://ctf.infosecinstitute.com/ctf2/exercises/ex8.php?attachment_id=1
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">http://ctf.infosecinstitute.com/ctf2/exercises/ex8.php?attachment_id=1</span>
+</code></pre></div>
 
 
 <p>So let me see if I can access an image via another ID, for example <code>id=4</code>.
 I get the message:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">This attachment is currently under review by our editors. 
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">This attachment is currently under review by our editors. </span>
+</code></pre></div>
 
 
 <p>So no. Checking out the image URL for one of the chess images shows me that the images
@@ -419,8 +420,8 @@ is trying to interpret the file as an image, which it clearly isn&rsquo;t. There
 to get at my image. How about the object reference in the URL <code>http://ctf.infosecinstitute.com/ctf2/exercises/ex8.php?attachment_id=1</code>
 for example? Maybe if I just reference the filename directly?</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">http://ctf.infosecinstitute.com/ctf2/exercises/ex8.php?file=index.jpg
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">http://ctf.infosecinstitute.com/ctf2/exercises/ex8.php?file=index.jpg</span>
+</code></pre></div>
 
 
 <p>Success</p>
@@ -457,16 +458,16 @@ no login, so how can the page know who to show? There&rsquo;s one place left: th
 
 <p>This is &ldquo;JOHN+DOE&rdquo; encoded as base64 as it turns out. One thing to note is when you</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">echo Sk9ITitET0u= | base64 -d
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">echo Sk9ITitET0u= | base64 -d</span>
+</code></pre></div>
 
 
 <p>there is no newline at end of the name. So to encode <code>MARY+JANE</code> correctly I need to
 use echo with the <code>-n</code> flag:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">$&gt; <span style="color: #f8f8f2">echo</span> -n MARY+JANE <span style="color: #f8f8f2">|</span> base64
-TUFSWStKQU5F
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span>&gt; <span class="nb">echo</span> -n MARY+JANE <span class="p">|</span> base64
+<span class="go">TUFSWStKQU5F</span>
+</code></pre></div>
 
 
 <p>Editing the cookie and inserting that base64 string will show us Mary Jane&rsquo;s details.</p>
@@ -506,14 +507,14 @@ along I can win one game. So let&rsquo;s find out where my current win/loss coun
 
 <p>In the Javscript I find a structure that does this:</p>
 
-
+<p>
 <figure >
     
         <img src="http://i.imgur.com/gZghIIn.png" />
     
     
 </figure>
-
+</p>
 
 <p>but all this does is increment and decrement the values. Clearly that data is stored somewhere.
 Turns out that this <code>localstorage</code> is in the DOM. Using the <em>DOM</em> tab in Firebug I can find
@@ -576,8 +577,8 @@ john the ripper. So why not download it and give it a try?</p>
 
 <p>I fire up <code>wfuzz</code> with the following commandline</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">$&gt; wfuzz -c -z file,/usr/share/wordlists/password-2011.lst --hw Incorrect -d <span style="color: #e6db74">&quot;username=admin&amp;password=FUZZ&amp;logIn=Login&quot;</span> <span style="color: #e6db74">&quot;http://ctf.infosecinstitute.com/ctf2/exercises/ex12.php&quot;</span>
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span>&gt; wfuzz -c -z file,/usr/share/wordlists/password-2011.lst --hw Incorrect -d <span class="s2">&quot;username=admin&amp;password=FUZZ&amp;logIn=Login&quot;</span> <span class="s2">&quot;http://ctf.infosecinstitute.com/ctf2/exercises/ex12.php&quot;</span>
+</code></pre></div>
 </p>
 
 <p>Within a few seconds I get a hit with <code>princess</code>. Enter that with the username <code>admin</code> and onto the next level</p>
@@ -614,10 +615,74 @@ relative, which means if I strip off the protocol off the URL, I should be able 
 
 <p>Thanks to the Infosec Institute for another great CTF!</p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/infosec">infosec</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/ctf">ctf</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/n00bs">n00bs</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/walkthrough">walkthrough</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/solution">solution</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/capture%20the%20flag">capture the flag</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/06\/25\/infosec-institute-ctf2-dot-0\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

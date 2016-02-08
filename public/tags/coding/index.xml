@@ -1,142 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Coding on Unlogic</title>
+      <title>Coding on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/coding/</link>
-    <description>Recent content in Coding on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 05 Jan 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Mon, 05 Jan 2015 00:00:00 UTC</updated>
     
     <item>
       <title>[dis]like</title>
       <link>http://unlogic.co.uk/2015/01/05/dislike/</link>
-      <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 05 Jan 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/01/05/dislike/</guid>
-      <description>
-
-&lt;p&gt;Isn&amp;rsquo;t it just like me to start a new year with a post titled &amp;ldquo;[dis]like&amp;rdquo;? It&amp;rsquo;s not as bad as it sounds. I want to write about coding challenge sites and what I like and dislike about them, specifically regarding Python challenges.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-i-like:c115de6831872c5792ce99c89a150515&#34;&gt;What I Like&lt;/h2&gt;
-
-&lt;p&gt;I take part in coding challenges regularily for various reasons and I get a great deal of benefit from them. Albeit some challenges are a bit contrived, they do offer some great practice in problem solving and writing clean code.&lt;/p&gt;
-
-&lt;p&gt;I recommend to anyone interesting in improving their coding skills to go to some programming challenge sites and home your skills. The problems are very varied and of different difficulties so there&amp;rsquo;s something for everyone.&lt;/p&gt;
-
-&lt;p&gt;I frequent &lt;a href=&#34;https://checkio.org&#34;&gt;checkIO&lt;/a&gt; and &lt;a href=&#34;https://codewars.com&#34;&gt;Codewars&lt;/a&gt; and have even submitted some challenges to the Codewars site. The benefit of attempting to solve the challenges is one thing, but to me the best return is from reading other people&amp;rsquo;s solutions. Solving a problem one way, and then seeing how someone else solved it is very interesting and great learning experience.&lt;/p&gt;
-
-&lt;p&gt;But this is also where the trouble begins.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-i-dislike:c115de6831872c5792ce99c89a150515&#34;&gt;What I Dislike&lt;/h2&gt;
-
-&lt;p&gt;Let me begin by going over some parts of the &lt;a href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;&gt;PEP20&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;Readability counts.&lt;/li&gt;
-&lt;li&gt;Special cases aren&amp;rsquo;t special enough to break the rules.&lt;/li&gt;
-&lt;li&gt;Although practicality beats purity.&lt;/li&gt;
-&lt;li&gt;Errors should never pass silently.&lt;/li&gt;
-&lt;li&gt;Unless explicitly silenced.&lt;/li&gt;
-&lt;li&gt;In the face of ambiguity, refuse the temptation to guess.&lt;/li&gt;
-&lt;li&gt;There should be one&amp;ndash; and preferably only one &amp;ndash;obvious way to do it.&lt;/li&gt;
-&lt;li&gt;Although that way may not be obvious at first unless you&amp;rsquo;re Dutch.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In this case I want to refer to &lt;em&gt;There should be one&amp;ndash; and preferably only one &amp;ndash;obvious way to do it.&lt;/em&gt;
-I admit, this is ambiguous for a good reason. What is this &lt;em&gt;obvious&lt;/em&gt; way? Taking the rest of the PEP20
-into account we can sort of gleen a definition for this, but it&amp;rsquo;s still open to interpretation by the
-developer. So what&amp;rsquo;s my issue here? Head over to one of these sites and look at a list of submitted solutions.
-You get a lot of variety, some clever, some clear, some long, some short. A whole mixture of ways of doing it.
-To me this goes against the whole Python way of &lt;em&gt;only one way&lt;/em&gt;. Sure, there&amp;rsquo;s a wrong and a right, or to be more
-precise, a bad, good and a better way to complete the task.&lt;/p&gt;
-
-&lt;p&gt;The sites will let people vote on solutions that other developers like or think are best. I however don&amp;rsquo;t always
-agree with the general concensus. Sometimes I look at the top few solutions, and while clever, and quite pythonic in
-certain ways, they are often not very clear. &lt;em&gt;Readability counts&lt;/em&gt;. Of course you are clever and can make use
-of some of Python&amp;rsquo;s awesome features and libraries, but not everyone you are going to be working with is going to
-be that clever, or that well versed in Python.&lt;/p&gt;
-
-&lt;p&gt;This is what matters to me. I look for readable code, because in a shared development environment you cannot rely on
-the original developer to be around forever. One day they will leave and their smarts will go with them.
-Then the slightly more elaborate code will be easier for the next person to pick up and the smart code will be left
-to degrade and possibly be re-written. While you might think that the next developer will love your smart and
-cryptic one-liners, they are most likely cursing your name. Consider having to debug someone else&amp;rsquo;s
-regular expression.&lt;/p&gt;
-
-&lt;p&gt;I don&amp;rsquo;t mean that &lt;em&gt;all&lt;/em&gt; top posts are bad, not by a long run. I have seen some very nice, elegant solutions in the top
-3 voted posts, but a lot of the time people tend to reward cleverness over clarity or maintainability. Of course
-in a programming challenge game that&amp;rsquo;s ok, I guess it&amp;rsquo;s part of the game, but outside of this, I look for different
-values. CheckIO has a nice feature where solutions can be divided into different categories: clear, creative, speedy,
-and uncategorised. I find that people on Codewars tend to favour the less readable (to me) solutions.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll give you an example from CheckIO&amp;rsquo;s &amp;ldquo;Weak Point&amp;rdquo; challenge. The aim was to calculate the sum of
-each column and row of a matrix and return the row, column with the lowest sum. The top clear answer is this:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;weak_point&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(matrix):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;len(matrix)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;row&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;min(range(n),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;r:sum(matrix[r][c]&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;c&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;range(n)))&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;col&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;min(range(n),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;c:sum(matrix[r][c]&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;r&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;range(n)))&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;row,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;col&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;I like this. It&amp;rsquo;s concise, makes use of some handy Python features and is readable. However, compare to this:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;weak_point&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(matrix):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;rows,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;cols&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;map(sum,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;matrix),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;map(sum,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;zip(&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;matrix))&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;rows&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;index(min(rows)),&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;cols&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;index(min(cols))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;This is the second most popular answer, and I would prefer this over the top one. To me this is more readable
-and easier to understand. There are fewer nested conditionals and statements, and it makes sense (assuming you
-understand how &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;zip&lt;/code&gt; work).
-Granted, this is my opinion and that doesn&amp;rsquo;t mean anyone who voted for the other answer is wrong,
-I am merely trying to say that if there is one way to do it, then how come there are so many ways to do it, and
-most of them don&amp;rsquo;t seem wrong? Should we also go for cleverness over maintainability and clarity? Perhaps I
-am expecting the wrong thing from challenge site submissions.&lt;/p&gt;
-
-&lt;h2 id=&#34;summary-tl-dr:c115de6831872c5792ce99c89a150515&#34;&gt;Summary (TL;DR)&lt;/h2&gt;
-
-&lt;p&gt;Programming challenge sites are great for improving your skills but be careful about learning how to be too
-clever. Being clever on your own and on challenge sites is great practice, but isn&amp;rsquo;t always the best way
-to solve an issue on a project that is or will me maintained by other people who you may
-never get to talk to and explain your code to. But perhaps I&amp;rsquo;m just not as good at reading Python anymore.&lt;/p&gt;
-</description>
+      <description>Isn&amp;rsquo;t it just like me to start a new year with a post titled &amp;ldquo;[dis]like&amp;rdquo;? It&amp;rsquo;s not as bad as it sounds. I want to write about coding challenge sites and what I like and dislike about them, specifically regarding Python challenges. What I Like I take part in coding challenges regularily for various reasons and I get a great deal of benefit from them. Albeit some challenges are a bit contrived, they do offer some great practice in problem solving and writing clean code.</description>
     </item>
     
     <item>
       <title>Effort Vs Benefit</title>
       <link>http://unlogic.co.uk/2014/03/12/effort-vs-benefit/</link>
-      <pubDate>Wed, 12 Mar 2014 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 12 Mar 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/03/12/effort-vs-benefit/</guid>
-      <description>&lt;p&gt;How often have you thought: &amp;ldquo;Everything would be a lot better if this
-tool worked faster&amp;rdquo;? Probably quite often. You&amp;rsquo;ve most likely also heard the
-saying &amp;ldquo;Don&amp;rsquo;t optimise prematurely&amp;rdquo;. It&amp;rsquo;s true, there&amp;rsquo;s no point making
-something faster if you don&amp;rsquo;t know it&amp;rsquo;s too slow. Don&amp;rsquo;t waste time on
-trying to optimise before you get some metrics telling you it needs it.&lt;/p&gt;
-
-&lt;p&gt;What you might not have thought about though is whether the speed increase
-is actually worth it. Sure, for something like game development where
-every nanosecond matters it&amp;rsquo;s very critical, but in other situations,
-it really depends on how the performance impacts the user&amp;rsquo;s workflow.&lt;/p&gt;
-
-&lt;p&gt;A paper from 2011 titles &lt;a href=&#34;https://www.dropbox.com/s/rqc3xpmtskxcxov/workflow.pdf&#34;&gt;The Workflow Scale&lt;/a&gt; covers this subject very well. It is targeted at
-a specific industry and workflow, but the same applies elsewhere.
-It says that the benefit of a speed increase to a workflow depends on
-how it changes the behaviour of the user. It&amp;rsquo;s a short but well
-written paper that every developer should read.&lt;/p&gt;
-
-&lt;p&gt;I appreciate that it doesn&amp;rsquo;t apply to all cases, but it&amp;rsquo;s information
-that should be taken on board. The next time you decide you should spend
-some time improving the speed of a certain task, consider if the payoff is
-worth the time you will spend making the improvement.&lt;/p&gt;
-</description>
+      <description>How often have you thought: &amp;ldquo;Everything would be a lot better if this tool worked faster&amp;rdquo;? Probably quite often. You&amp;rsquo;ve most likely also heard the saying &amp;ldquo;Don&amp;rsquo;t optimise prematurely&amp;rdquo;. It&amp;rsquo;s true, there&amp;rsquo;s no point making something faster if you don&amp;rsquo;t know it&amp;rsquo;s too slow. Don&amp;rsquo;t waste time on trying to optimise before you get some metrics telling you it needs it. What you might not have thought about though is whether the speed increase is actually worth it.</description>
     </item>
     
   </channel>
 </rss>
+

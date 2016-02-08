@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SpyderSec solution - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/09/09/spydersec-solution/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> SpyderSec solution &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">SpyderSec solution</h1>
+        <span class="post-meta">Sep 9, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>SpyderSec solution</h1>
-			  <span class="post-date">Wed, Sep 9, 2015</span>
-			      <p>Another day, another VM. Today it&rsquo;s the <a href="https://www.vulnhub.com/entry/spydersec-challenge,128/">SpyderSec Challenge</a></p>
+      <article class="post-content">
+      <p>Another day, another VM. Today it&rsquo;s the <a href="https://www.vulnhub.com/entry/spydersec-challenge,128/">SpyderSec Challenge</a></p>
 
 <p>So let me start it up and get on it.</p>
 
@@ -64,36 +65,36 @@
 <p>As per usual I need the IP of the machine and
 the services it has running (if any). Straight from the Unlogic Cookbook</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~/Downloads# nmap -sn 192.168.56.0/24
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">root@kali:~/Downloads#</span> nmap -sn 192.168.56.0/24
 
-Starting Nmap 6.49BETA4 ( https://nmap.org ) at 2015-09-09 16:07 BST
-Nmap scan report for 192.168.56.1
-Host is up (0.00039s latency).
-MAC Address: 0A:00:27:00:00:00 (Unknown)
-Nmap scan report for 192.168.56.100
-Host is up (0.00017s latency).
-MAC Address: 08:00:27:FF:57:41 (Cadmus Computer Systems)
-Nmap scan report for 192.168.56.101
-Host is up (0.00028s latency).
-MAC Address: 08:00:27:56:11:10 (Cadmus Computer Systems)
-Nmap scan report for 192.168.56.102
-Host is up.
-Nmap done: 256 IP addresses (4 hosts up) scanned in 1.77 seconds
+<span class="go">Starting Nmap 6.49BETA4 ( https://nmap.org ) at 2015-09-09 16:07 BST</span>
+<span class="go">Nmap scan report for 192.168.56.1</span>
+<span class="go">Host is up (0.00039s latency).</span>
+<span class="go">MAC Address: 0A:00:27:00:00:00 (Unknown)</span>
+<span class="go">Nmap scan report for 192.168.56.100</span>
+<span class="go">Host is up (0.00017s latency).</span>
+<span class="go">MAC Address: 08:00:27:FF:57:41 (Cadmus Computer Systems)</span>
+<span class="go">Nmap scan report for 192.168.56.101</span>
+<span class="go">Host is up (0.00028s latency).</span>
+<span class="go">MAC Address: 08:00:27:56:11:10 (Cadmus Computer Systems)</span>
+<span class="go">Nmap scan report for 192.168.56.102</span>
+<span class="go">Host is up.</span>
+<span class="go">Nmap done: 256 IP addresses (4 hosts up) scanned in 1.77 seconds</span>
 
-root@kali:~/Downloads# nmap -p- -sV 192.168.56.101
+<span class="gp">root@kali:~/Downloads#</span> nmap -p- -sV 192.168.56.101
 
-Starting Nmap 6.49BETA4 ( https://nmap.org ) at 2015-09-09 16:07 BST
-Nmap scan report for 192.168.56.101
-Host is up (0.00049s latency).
-Not shown: 65533 filtered ports
-PORT   STATE  SERVICE VERSION
-22/tcp closed ssh
-80/tcp open   http    Apache httpd
-MAC Address: 08:00:27:56:11:10 (Cadmus Computer Systems)
+<span class="go">Starting Nmap 6.49BETA4 ( https://nmap.org ) at 2015-09-09 16:07 BST</span>
+<span class="go">Nmap scan report for 192.168.56.101</span>
+<span class="go">Host is up (0.00049s latency).</span>
+<span class="go">Not shown: 65533 filtered ports</span>
+<span class="go">PORT   STATE  SERVICE VERSION</span>
+<span class="go">22/tcp closed ssh</span>
+<span class="go">80/tcp open   http    Apache httpd</span>
+<span class="go">MAC Address: 08:00:27:56:11:10 (Cadmus Computer Systems)</span>
 
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 155.80 seconds
-</pre></div>
+<span class="go">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span>
+<span class="go">Nmap done: 1 IP address (1 host up) scanned in 155.80 seconds</span>
+</code></pre></div>
 
 
 <p>Lucky me, only one service running, and it&rsquo;s good old http at that.
@@ -113,9 +114,9 @@ And there&rsquo;s clue number one, right between those script tags. It evals a f
 do some text processing. I&rsquo;ll open Firebug to see if that shows anything interesting, and sure
 enough</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">SyntaxError</span><span style="color: #f92672">:</span> <span style="color: #a6e22e">missing</span> <span style="color: #f8f8f2">;</span> <span style="color: #a6e22e">before</span> <span style="color: #a6e22e">statement</span>
-    <span style="color: #ae81ff">61</span><span style="color: #f92672">:</span><span style="color: #ae81ff">6</span><span style="color: #a6e22e">c</span><span style="color: #f92672">:</span><span style="color: #ae81ff">65</span><span style="color: #f92672">:</span><span style="color: #ae81ff">72</span><span style="color: #f92672">:</span><span style="color: #ae81ff">74</span><span style="color: #f92672">:</span><span style="color: #ae81ff">28</span><span style="color: #f92672">:</span><span style="color: #ae81ff">27</span><span style="color: #f92672">:</span><span style="color: #ae81ff">6</span><span style="color: #a6e22e">d</span><span style="color: #f92672">:</span><span style="color: #ae81ff">75</span><span style="color: #f92672">:</span><span style="color: #ae81ff">6</span><span style="color: #a6e22e">c</span><span style="color: #f92672">:</span><span style="color: #ae81ff">64</span><span style="color: #f92672">:</span><span style="color: #ae81ff">65</span><span style="color: #f92672">:</span><span style="color: #ae81ff">72</span><span style="color: #f92672">:</span><span style="color: #ae81ff">2</span><span style="color: #a6e22e">e</span><span style="color: #f92672">:</span><span style="color: #ae81ff">66</span><span style="color: #f92672">:</span><span style="color: #ae81ff">62</span><span style="color: #f92672">:</span><span style="color: #ae81ff">69</span><span style="color: #f92672">:</span><span style="color: #ae81ff">27</span><span style="color: #f92672">:</span><span style="color: #ae81ff">29</span><span style="color: #f92672">:</span><span style="color: #ae81ff">3</span><span style="color: #a6e22e">b</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">SyntaxError</span><span class="o">:</span> <span class="nx">missing</span> <span class="p">;</span> <span class="nx">before</span> <span class="nx">statement</span>
+    <span class="mi">61</span><span class="o">:</span><span class="mi">6</span><span class="nx">c</span><span class="o">:</span><span class="mi">65</span><span class="o">:</span><span class="mi">72</span><span class="o">:</span><span class="mi">74</span><span class="o">:</span><span class="mi">28</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="mi">6</span><span class="nx">d</span><span class="o">:</span><span class="mi">75</span><span class="o">:</span><span class="mi">6</span><span class="nx">c</span><span class="o">:</span><span class="mi">64</span><span class="o">:</span><span class="mi">65</span><span class="o">:</span><span class="mi">72</span><span class="o">:</span><span class="mi">2</span><span class="nx">e</span><span class="o">:</span><span class="mi">66</span><span class="o">:</span><span class="mi">62</span><span class="o">:</span><span class="mi">69</span><span class="o">:</span><span class="mi">27</span><span class="o">:</span><span class="mi">29</span><span class="o">:</span><span class="mi">3</span><span class="nx">b</span>
+</code></pre></div>
 
 
 <p>So that&rsquo;s the output from the eval. It throws an error because the result isn&rsquo;t valid
@@ -131,34 +132,34 @@ nothing of note.</p>
 There&rsquo;s two images: <code>Challenge.png</code> and <code>SpyderSecLogo200.png</code>. On first glance they appear to
 have nothing special about them, but once examined with <code>exiftool</code> I see something of interest</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~/spydersec# exiftool Challenge.png 
-ExifTool Version Number         : 9.74
-File Name                       : Challenge.png
-Directory                       : .
-File Size                       : 83 kB
-File Modification Date/Time     : 2015:09:01 07:25:59+01:00
-File Access Date/Time           : 2015:09:09 14:29:25+01:00
-File Inode Change Date/Time     : 2015:09:09 14:29:19+01:00
-File Permissions                : rw-r--r--
-File Type                       : PNG
-MIME Type                       : image/png
-Image Width                     : 540
-Image Height                    : 540
-Bit Depth                       : 8
-Color Type                      : RGB with Alpha
-Compression                     : Deflate/Inflate
-Filter                          : Adaptive
-Interlace                       : Noninterlaced
-Background Color                : 255 255 255
-Pixels Per Unit X               : 2835
-Pixels Per Unit Y               : 2835
-Pixel Units                     : meters
-Comment                         : 35:31:3a:35:33:3a:34:36:3a:35:37:3a:36:34:3a:35:38:3a:33:35:3a:
-                                  37:31:3a:36:34:3a:34:35:3a:36:37:3a:36:61:3a:34:65:3a:37:61:3a:
-                                  34:39:3a:33:35:3a:36:33:3a:33:30:3a:37:38:3a:34:32:3a:34:66:3a:
-                                  33:32:3a:36:37:3a:33:30:3a:34:61:3a:35:31:3a:33:64:3a:33:64
-Image Size                      : 540x540
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">root@kali:~/spydersec#</span> exiftool Challenge.png 
+<span class="go">ExifTool Version Number         : 9.74</span>
+<span class="go">File Name                       : Challenge.png</span>
+<span class="go">Directory                       : .</span>
+<span class="go">File Size                       : 83 kB</span>
+<span class="go">File Modification Date/Time     : 2015:09:01 07:25:59+01:00</span>
+<span class="go">File Access Date/Time           : 2015:09:09 14:29:25+01:00</span>
+<span class="go">File Inode Change Date/Time     : 2015:09:09 14:29:19+01:00</span>
+<span class="go">File Permissions                : rw-r--r--</span>
+<span class="go">File Type                       : PNG</span>
+<span class="go">MIME Type                       : image/png</span>
+<span class="go">Image Width                     : 540</span>
+<span class="go">Image Height                    : 540</span>
+<span class="go">Bit Depth                       : 8</span>
+<span class="go">Color Type                      : RGB with Alpha</span>
+<span class="go">Compression                     : Deflate/Inflate</span>
+<span class="go">Filter                          : Adaptive</span>
+<span class="go">Interlace                       : Noninterlaced</span>
+<span class="go">Background Color                : 255 255 255</span>
+<span class="go">Pixels Per Unit X               : 2835</span>
+<span class="go">Pixels Per Unit Y               : 2835</span>
+<span class="go">Pixel Units                     : meters</span>
+<span class="go">Comment                         : 35:31:3a:35:33:3a:34:36:3a:35:37:3a:36:34:3a:35:38:3a:33:35:3a:</span>
+<span class="go">                                  37:31:3a:36:34:3a:34:35:3a:36:37:3a:36:61:3a:34:65:3a:37:61:3a:</span>
+<span class="go">                                  34:39:3a:33:35:3a:36:33:3a:33:30:3a:37:38:3a:34:32:3a:34:66:3a:</span>
+<span class="go">                                  33:32:3a:36:37:3a:33:30:3a:34:61:3a:35:31:3a:33:64:3a:33:64</span>
+<span class="go">Image Size                      : 540x540</span>
+</code></pre></div>
 </p>
 
 <p>Hex strings are the order of the day here at SpyderSec. So back to Burp&rsquo;s decoder once more
@@ -178,20 +179,20 @@ me just plug some of the data we&rsquo;ve found so far into it. The random chara
 exif data result in a 404, but the string from the javascript alert box however brings up a
 download dialog for a file called <code>mulder.fbi</code>.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">root@kali:~/spydersec# wget http://192.168.56.101//v/81JHPbvyEQ8729161jd6aKQ0N4/mulder.fbi
---2015-09-09 17:24:38--  http://192.168.56.101//v/81JHPbvyEQ8729161jd6aKQ0N4/mulder.fbi
-Connecting to 192.168.56.101:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 13960421 (13M) [text/plain]
-Saving to: ‘mulder.fbi’
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">root@kali:~/spydersec#</span> wget http://192.168.56.101//v/81JHPbvyEQ8729161jd6aKQ0N4/mulder.fbi
+<span class="go">--2015-09-09 17:24:38--  http://192.168.56.101//v/81JHPbvyEQ8729161jd6aKQ0N4/mulder.fbi</span>
+<span class="go">Connecting to 192.168.56.101:80... connected.</span>
+<span class="go">HTTP request sent, awaiting response... 200 OK</span>
+<span class="go">Length: 13960421 (13M) [text/plain]</span>
+<span class="go">Saving to: ‘mulder.fbi’</span>
 
-mulder.fbi.1            100%[===============================&gt;]  13.31M  5.52MB/s   in 2.4s   
+<span class="go">mulder.fbi.1            100%[===============================&gt;]  13.31M  5.52MB/s   in 2.4s   </span>
 
-2015-09-09 17:24:41 (5.52 MB/s) - ‘mulder.fbi’ saved [13960421/13960421]
+<span class="go">2015-09-09 17:24:41 (5.52 MB/s) - ‘mulder.fbi’ saved [13960421/13960421]</span>
 
-root@kali:~/spydersec# file mulder.fbi 
-mulder.fbi: ISO Media, MP4 v2 [ISO 14496-14]
-</pre></div>
+<span class="gp">root@kali:~/spydersec#</span> file mulder.fbi 
+<span class="go">mulder.fbi: ISO Media, MP4 v2 [ISO 14496-14]</span>
+</code></pre></div>
 </p>
 
 <p>A video file, which when I play it, is the song &ldquo;Twilight Time&rdquo; by &ldquo;The Platters&rdquo;.</p>
@@ -219,10 +220,10 @@ mulder.fbi: ISO Media, MP4 v2 [ISO 14496-14]
 and after searching for <code>the platters &quot;twilight time&quot; x files</code> I hit this section in a
 <a href="https://en.wikipedia.org/wiki/Kill_Switch_(The_X-Files">Wikipedia article</a>)</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">When he puts it into the car stereo, it plays &quot;Twilight Time&quot; 
+<p><div class="highlight"><pre><code class="language-text" data-lang="text">When he puts it into the car stereo, it plays &quot;Twilight Time&quot; 
 by The Platters. However, the agents take it to the Lone Gunmen, 
 who discover that the disc contains a large quantity of encrypted data
-</pre></div>
+</code></pre></div>
 </p>
 
 <p>Well if that ain&rsquo;t a clue and a bit! Ok, so a little more research of what data you
@@ -236,7 +237,7 @@ That should be the easiest and quickest way to see if I am on the right track.</
 one unused piece of the puzzle left. I plug that in and there&rsquo;s our volume with the <code>flag.txt</code> file
 which contains:</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">Congratulations! 
+<p><div class="highlight"><pre><code class="language-text" data-lang="text">Congratulations! 
 
 You are a winner. 
 
@@ -245,17 +246,81 @@ Was it fun? Was it hard enough or too easy?
 What did you like or dislike, what could be done better?
 
 https://www.spydersec.com/feedback
-</pre></div>
+</code></pre></div>
 </p>
 
 <p>Well that was a nice challenge, especially the truecrypt volume in the MP4. That&rsquo;s
 something new I learned from this. So thanks to <a href="https://twitter.com/Spydersec">@SpyderSec</a>
 for the challenge, and thanks to you for stopping by to read this.</p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/vulnhub">vulnhub</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/spydersec">spydersec</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/infosec">infosec</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/security">security</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/walkthrough">walkthrough</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/solution">solution</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/09\/09\/spydersec-solution\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

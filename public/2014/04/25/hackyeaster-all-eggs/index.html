@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hackyeaster All Eggs - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2014/04/25/hackyeaster-all-eggs/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> Hackyeaster All Eggs &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">Hackyeaster All Eggs</h1>
+        <span class="post-meta">Apr 25, 2014 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>Hackyeaster All Eggs</h1>
-			  <span class="post-date">Fri, Apr 25, 2014</span>
-			      
+      <article class="post-content">
+      
 
 <p>I started writing these up as separate posts, but then I figured it&rsquo;d be neater to post them all in one.</p>
 
@@ -106,10 +107,10 @@ you want with a <code>.png</code> extension. Then click <strong>Convert</strong>
 
 <p>Alternatively create a new HTML file and in the header add:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">body {
-    background-image: url(&quot;data:image/png;base64,<span style="color: #f92672">&lt;base64</span> <span style="color: #a6e22e">data</span> <span style="color: #a6e22e">follows</span> <span style="color: #a6e22e">here</span><span style="color: #f92672">&gt;</span>&quot;);
+<div class="highlight"><pre><code class="language-html" data-lang="html">body {
+    background-image: url(&quot;data:image/png;base64,<span class="nt">&lt;base64</span> <span class="na">data</span> <span class="na">follows</span> <span class="na">here</span><span class="nt">&gt;</span>&quot;);
 }
-</pre></div>
+</code></pre></div>
 
 
 <p>making sure you add the <code>body</code> tags. View the page in your browser and scan one of the eggs.</p>
@@ -225,14 +226,14 @@ it was the text <strong>XHV R* TYNEAP</strong>. Given it&rsquo;s a computer text
 
 <p>In order to decipher the text and get the possible keyword we need to setup something like this:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">-----------------------------------------------------
+<div class="highlight"><pre><code class="language-text" data-lang="text">-----------------------------------------------------
 | T | H | E |   | A | * |   | S | E | A | R | C | H |
 -----------------------------------------------------
 | X | H | V |   | R | * |   | T | Y | N | E | A | P |
 =====================================================
 |   |   |   |   |   |   |   |   |   |   |   |   |   |
 -----------------------------------------------------
-</pre></div>
+</code></pre></div>
 
 
 <p>The top row is the plain text we expect, the second row is the cipher text and the bottom row
@@ -240,27 +241,27 @@ the key (or part of it). In order to get the key we reverse the lookup into the
 vignere table. Look for the expected plaintext letter in the top row and go down
 until you find the matching cipher letter. Then look across to find the key&rsquo;s letter.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">-----------------------------------------------------
+<div class="highlight"><pre><code class="language-text" data-lang="text">-----------------------------------------------------
 | T | H | E |   | A | * |   | S | E | A | R | C | H |
 -----------------------------------------------------
 | X | H | V |   | R | * |   | T | Y | N | E | A | P |
 =====================================================
 | E | A | R |   | R | * |   | B | U | N | N | Y | I |
 -----------------------------------------------------
-</pre></div>
+</code></pre></div>
 
 
 <p>We&rsquo;re getting something here, specifically <strong>BUNNYI</strong>. The <strong>THE</strong> looks like a wrong guess. Let&rsquo;s try
 another possible 3 letter word:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">-------------
+<div class="highlight"><pre><code class="language-text" data-lang="text">-------------
 | F | O | R |
 -------------
 | X | H | V |
 =============
 | S | T | E |
 -------------
-</pre></div>
+</code></pre></div>
 
 
 <p>This gives us <strong>EASTERBUNNY</strong> - <strong>much</strong> more likely to be correct. So let&rsquo;s copy out the text from the pdf
@@ -298,37 +299,37 @@ the file, and then use your favourite image editor to combine the two halves.</p
 
 <p>We&rsquo;re told what to do, so let&rsquo;s do that</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">$&gt;</span> netcat hackyeaster.hacking-lab.com 1234
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$&gt;</span> netcat hackyeaster.hacking-lab.com 1234
 Enter your guess, dude:
 123456789
-I need <span style="color: #ae81ff">20</span> digits, dude!
-</pre></div>
+I need <span class="m">20</span> digits, dude!
+</code></pre></div>
 
 
 <p>Ok, so not enough digits, let&rsquo;s try 20</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">$&gt;</span> netcat hackyeaster.hacking-lab.com 1234
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$&gt;</span> netcat hackyeaster.hacking-lab.com 1234
 Enter your guess, dude:
 12345678901234567890
 0&lt;
-</pre></div>
+</code></pre></div>
 
 
 <p>Hrmm. What does that mean? Let&rsquo;s change the command a little to make reentering
 the numbers easier</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">$&gt;</span> <span style="color: #f8f8f2">echo </span>12345678901234567890<span style="color: #f8f8f2">|</span> netcat hackyeaster.hacking-lab.com 1234
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$&gt;</span> <span class="nb">echo </span>12345678901234567890<span class="p">|</span> netcat hackyeaster.hacking-lab.com 1234
 Enter your guess, dude:
 0&lt;
-</pre></div>
+</code></pre></div>
 
 
 <p>Let&rsquo;s the edit the input from the first number.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">$&gt;</span> <span style="color: #f8f8f2">echo </span>22345678901234567890<span style="color: #f8f8f2">|</span> netcat hackyeaster.hacking-lab.com 1234
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$&gt;</span> <span class="nb">echo </span>22345678901234567890<span class="p">|</span> netcat hackyeaster.hacking-lab.com 1234
 Enter your guess, dude:
 1&lt;
-</pre></div>
+</code></pre></div>
 
 
 <p>Ahhh so it seems that the first digit tells us how many numbers are correct
@@ -428,7 +429,7 @@ Each components is an index into one part. The letters tell you the line, the <e
 
 <p>I ended up with this (forgive the crap ASCII table. I&rsquo;ll see about getting a nicer one):</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">-----------------------------------------
+<p><div class="highlight"><pre><code class="language-text" data-lang="text">-----------------------------------------
 ||    i      ||     ii    ||     iii   ||
 -----------------------------------------
 || 1 | 2 | 3 || 1 | 2 | 3 || 1 | 2 | 3 ||
@@ -439,15 +440,64 @@ Each components is an index into one part. The letters tell you the line, the <e
 -----------------------------------------
 || G | H | I || P | Q | R || Y | Z |   ||
 -----------------------------------------
-</pre></div>
+</code></pre></div>
 </p>
 
 <p>So <em>Dii2</em> translates to <code>n</code>. Use the table to get the full text</p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/hackyeaster">hackyeaster</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2014\/04\/25\/hackyeaster-all-eggs\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

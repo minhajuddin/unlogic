@@ -1,150 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pyqt on Unlogic</title>
+      <title>Pyqt on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/pyqt/</link>
-    <description>Recent content in Pyqt on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 02 Nov 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/pyqt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Fri, 02 Nov 2012 00:00:00 UTC</updated>
     
     <item>
       <title>Show animated gifs using PyQT</title>
       <link>http://unlogic.co.uk/2012/11/02/animated-gifs-in-pyqt/</link>
-      <pubDate>Fri, 02 Nov 2012 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 02 Nov 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/11/02/animated-gifs-in-pyqt/</guid>
-      <description>&lt;p&gt;This is just a quick post to show you how to display animated gifs in PyQt. It&amp;rsquo;s a straightforward process and by the end I will give you a class that wraps up the work for you.&lt;/p&gt;
-
-&lt;p&gt;The way we&amp;rsquo;re going to approach this is by using a &lt;code&gt;QLabel&lt;/code&gt; to render a &lt;code&gt;QMovie&lt;/code&gt;. Assuming we have our gif (&lt;code&gt;anim.gif&lt;/code&gt;) we need to load it into a &lt;code&gt;QMovie&lt;/code&gt; and set it on the &lt;code&gt;QLabel&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll give you the code now:&lt;/p&gt;
-
-&lt;p&gt;{% gist 4000025 %}&lt;/p&gt;
-
-&lt;p&gt;The code should be fairly easy to follow, so I won&amp;rsquo;t spend much time here going over it. If you want to call this from a &lt;code&gt;__main__&lt;/code&gt; function you simply do:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;__name__&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;:&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;gif&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;/path/to/image.gif&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;app&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QApplication(sys&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;argv)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;player&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ImagePlayer(gif)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;player&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;show()&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;sys&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;exit(app&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;exec_())&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-</description>
+      <description>This is just a quick post to show you how to display animated gifs in PyQt. It&amp;rsquo;s a straightforward process and by the end I will give you a class that wraps up the work for you. The way we&amp;rsquo;re going to approach this is by using a QLabel to render a QMovie. Assuming we have our gif (anim.gif) we need to load it into a QMovie and set it on the QLabel.</description>
     </item>
     
     <item>
       <title>Sitting is bad</title>
       <link>http://unlogic.co.uk/2012/06/06/sitting-is-bad/</link>
-      <pubDate>Wed, 06 Jun 2012 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 06 Jun 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/06/06/sitting-is-bad/</guid>
-      <description>&lt;p&gt;So the internet has recently been telling me that sitting is bad. Really bad. Well only if you &lt;a href=&#34;http://www.msnbc.msn.com/id/34956099/ns/health-fitness/t/you-sitting-down-experts-say-itll-kill-you/&#34;&gt;sit&lt;/a&gt; &lt;a href=&#34;http://mashable.com/2011/05/09/sitting-down-infographic/&#34;&gt;for&lt;/a&gt; &lt;a href=&#34;http://lifehacker.com/5800720/the-sitting-is-killing-you-infographic-illustrates-the-stress-of-prolonged-sitting-importance-of-getting-up&#34;&gt;long&lt;/a&gt; &lt;a href=&#34;http://www.sciencedaily.com/releases/2011/07/110712093859.htm&#34;&gt;periods&lt;/a&gt; of time. At my office it is very unlikely that they will be willing to furnish me with a standing desk unless my doctor tells them to. The latter also being unlikely as my back isn&amp;rsquo;t in a bad enough shape (yet).&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m also not willing to &lt;a href=&#34;http://gregschlom.com/post/4555981908/standing-desk&#34;&gt;make my own&lt;/a&gt; version of a standing desk either, unless it was a better looking one :) So now what? Fear not. It turns out that if you stand for about 5 minutes every hour it already helps &lt;strong&gt;A LOT&lt;/strong&gt;. So that I don&amp;rsquo;t miss my standing breaks, I need a timer. An unobtrusive little app that sits in my taskbar and just alerts me at intervals to take a break and have a stand. Far be it for me to actually go looking for something that does this just how I want it. That sounds like too much work really. Thus I decided to turn it into a project for myself and write my own. I mean, how hard can it be?&lt;/p&gt;
-
-&lt;p&gt;Turns out: not so hard at all. After about an hour of hacking around with some PyQt I made this: &lt;a href=&#34;https://github.com/Svenito/EasyTimer&#34;&gt;https://github.com/Svenito/EasyTimer&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It runs in the system tray, lets you set a custom timer period and then it pops up a window once the time expires. Not tested to destruction or particularily pretty, but it does what it needs to do. I&amp;rsquo;ll need to tweak some dialogs and add some little features, but if you want to do yourself a favour and take regular breaks, grab the timer and give it a go.&lt;/p&gt;
-
-&lt;p&gt;Right, time for a stand me thinks&amp;hellip;.&lt;/p&gt;
-</description>
+      <description>So the internet has recently been telling me that sitting is bad. Really bad. Well only if you sit for long periods of time. At my office it is very unlikely that they will be willing to furnish me with a standing desk unless my doctor tells them to. The latter also being unlikely as my back isn&amp;rsquo;t in a bad enough shape (yet). I&amp;rsquo;m also not willing to make my own version of a standing desk either, unless it was a better looking one :) So now what?</description>
     </item>
     
     <item>
       <title>Shapely Window in PyQT</title>
       <link>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</link>
-      <pubDate>Fri, 27 May 2011 15:38:21 +0000</pubDate>
+      <pubDate>Fri, 27 May 2011 15:38:21 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2011/05/27/shapely-window-in-pyqt/</guid>
       <description>&lt;p&gt;Recently I needed to make a PyQt app where the &lt;strong&gt;window&lt;/strong&gt; is the shape of an image and doesn’t have a border. I say needed, that’s not strictly true, more like wanted to because it’d be more interesting.&lt;/p&gt;
-
-&lt;p&gt;It wasn’t as straight forward as I had hoped but I managed to get it working in the end and here I am about to share it with the world. Here’s what we will need:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;python, Qt, and PyQt installed&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;The image you want to use as the background with transparency. PNG will do nicely&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;A texteditor&lt;/li&gt;
-&lt;li&gt;A cup of coffee&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Set the coffee aside so you don’t knock it over, but keep it within reach. First we need to open up Designer.&lt;/p&gt;
-
-&lt;p&gt;Once open create a new Dialog or MainWindow. Open the resource browser and add your background image to the list of resources. Now right click on the &lt;strong&gt;window&lt;/strong&gt; and select &lt;code&gt;Change styleSheet&lt;/code&gt; (I am using Designer4 in case it looks different for you). Enter the following in the popup, adjusting for names and path as appropriate.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;#Dialog{&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;color:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;rgb(&lt;/span&gt;&lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;background&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;image:&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;url(:&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;img&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;windowshape&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;png);&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Adjusting the &lt;code&gt;#Dialog&lt;/code&gt; to the &lt;strong&gt;window&lt;/strong&gt; name and the url path to your image.&lt;/p&gt;
-
-&lt;p&gt;You should now see the image in the &lt;strong&gt;window&lt;/strong&gt; with a black surround. At this point it’s also good to set the &lt;strong&gt;window&lt;/strong&gt; size to something suitable for your image.&lt;/p&gt;
-
-&lt;p&gt;As per usual you will need to compile your .ui and resource files with pyuic and pyrcc, but details on that are outside the scope of this post.
-So in order to remove the border we call this in our &lt;code&gt;__init__&lt;/code&gt; function&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QMainWindow()&lt;/span&gt;
-&lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;setWindowFlags(self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;win&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;windowFlags()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;FramelessWindowHint&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;|&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;WindowSystemMenuHint)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;It’s important to derive your class from &lt;code&gt;QtGui.QMainWindow&lt;/code&gt; otherwise this won’t work.&lt;/p&gt;
-
-&lt;p&gt;Don’t be surprised if under certain &lt;strong&gt;window&lt;/strong&gt; managers you still see a border, not all &lt;strong&gt;window&lt;/strong&gt; managers will render windows without borders from &lt;strong&gt;Qt&lt;/strong&gt;. The settings are just a request rather than a demand. In Fluxbox for instance the border still shows. Gnome and KDE work fine.&lt;/p&gt;
-
-&lt;p&gt;Right, time for a sip of coffee. You earned it. But wait, what about the black colour? We want the &lt;strong&gt;window&lt;/strong&gt; in the shape of the image. Ah yes, we do that by adding this function&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;resizeEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;pixmap&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QPixmap(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;:/img/windowshape.png&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;region&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QRegion(pixmap&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask())&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;setMask(pixmap&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mask());&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;This will tell &lt;strong&gt;Qt&lt;/strong&gt; to use the image as a mask for the &lt;strong&gt;window&lt;/strong&gt; region, effectively hiding any parts where the image is transparent.&lt;/p&gt;
-
-&lt;p&gt;More coffee, we&amp;rsquo;re almost there. Right now, as you&amp;rsquo;re swallowing that last sip, you&amp;rsquo;re wondering &amp;ldquo;How do I move or close the &lt;strong&gt;window&lt;/strong&gt; without a border?&amp;ldquo;. Fear not fellow coder for there is a solution for each of these:&lt;/p&gt;
-
-&lt;p&gt;To close the &lt;strong&gt;window&lt;/strong&gt; we just need to add a context menu. Simply done by adding one more function to your class:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;contextMenuEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtGui&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;QMenu(self)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;quitAction&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;addAction(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;Quit&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;)&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;menu&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;exec_(self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;mapToGlobal(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;pos()))&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;action&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;quitAction:&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;close()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;You can of course replace the &lt;code&gt;self.close()&lt;/code&gt; with a call to some confirmation dialog if you want, but that will now enable a right-click menu on your GUI with a quit option. Also you can add keyboard shortcuts to the application as well if you are so inclined.&lt;/p&gt;
-
-&lt;p&gt;Now for moving the thing. Here we need two extra functions, one for the mouse move and one for the mouse press:&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;mouseMoveEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;buttons()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;LeftButton):&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;move(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;x(),&lt;/span&gt;
-            &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;y()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;y());&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;accept();&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;mousePressEvent&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;(self,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event):&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;(event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;button()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;QtCore&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Qt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;LeftButton):&lt;/span&gt;
-        &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;drag_position&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;globalPos()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;self&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;pos();&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;event&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;accept();&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;We just get the click position when the mouse button is pressed, work out the offset from the top left corner of the &lt;strong&gt;window&lt;/strong&gt; (this is what the move function uses) and then when the mouse moves, we move the &lt;strong&gt;window&lt;/strong&gt; with it.&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s it really. Pretty simple once you know how. Now go and enjoy the rest of that coffee.&lt;/p&gt;
 </description>
     </item>
     
   </channel>
 </rss>
+

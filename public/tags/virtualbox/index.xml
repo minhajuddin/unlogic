@@ -1,48 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Virtualbox on Unlogic</title>
+      <title>Virtualbox on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/virtualbox/</link>
-    <description>Recent content in Virtualbox on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 27 May 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Tue, 27 May 2014 00:00:00 UTC</updated>
     
     <item>
       <title>Fixing Kali VM after dist-upgrade</title>
       <link>http://unlogic.co.uk/2014/05/27/fixing-kali-vm-after-dist-upgrade/</link>
-      <pubDate>Tue, 27 May 2014 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 May 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/05/27/fixing-kali-vm-after-dist-upgrade/</guid>
-      <description>&lt;p&gt;I just did a &lt;code&gt;apt-get dist-upgrade&lt;/code&gt; to bump up to Kali 1.0.7.
-I&amp;rsquo;ve got it running on VirtualBox, and after it booted back up all the
-VBoxAddition features were gone and the keyboard and mouse in X no longer
-worked. GRUB was fine however. Poking around the logs a little I discovered
-some issues with the mouse driver. Perhaps that was it, but why?&lt;/p&gt;
-
-&lt;p&gt;Long story short it took quite a bit of digging, but I eventually managed
-to fix it. First thing is that the &lt;code&gt;pcscd&lt;/code&gt; group just &lt;em&gt;dissapeared&lt;/em&gt;.
-All the following commands assume you are root, otherwise
-prefix them with &lt;code&gt;sudo&lt;/code&gt;. So I ran&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;groupadd pcscd&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;to add the group back in. Then run&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;apt-get install linux-headers-$(uname -r)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This will take a little while. Once done run&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;/etc/init.d/vboxadd setup&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And it will build the kernel modules for the additons. One more reboot
-and you should be back to a working system with all the integration you
-had before.&lt;/p&gt;
-
-&lt;p&gt;I have no idea why this happens, but hopefully this post will help you
-should you have the same problem.&lt;/p&gt;
-</description>
+      <description>I just did a apt-get dist-upgrade to bump up to Kali 1.0.7. I&amp;rsquo;ve got it running on VirtualBox, and after it booted back up all the VBoxAddition features were gone and the keyboard and mouse in X no longer worked. GRUB was fine however. Poking around the logs a little I discovered some issues with the mouse driver. Perhaps that was it, but why? Long story short it took quite a bit of digging, but I eventually managed to fix it.</description>
     </item>
     
   </channel>
 </rss>
+

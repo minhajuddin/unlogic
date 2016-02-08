@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code on Unlogic</title>
+      <title>Code on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/code/</link>
-    <description>Recent content in Code on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 10 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Thu, 10 Apr 2014 00:00:00 UTC</updated>
     
     <item>
       <title>Rekindling old flames</title>
       <link>http://unlogic.co.uk/2014/04/10/rekindling-old-flames/</link>
-      <pubDate>Thu, 10 Apr 2014 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 10 Apr 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/04/10/rekindling-old-flames/</guid>
-      <description>&lt;p&gt;Some time ago, some long, long time ago, I started working on a ray tracer. Yes, you&amp;rsquo;re
-right, the world doesn&amp;rsquo;t need another ray tracer. I wasn&amp;rsquo;t writing another ray tracer though.
-I was writing the ray tracer from &lt;a href=&#34;http://www.raytracegroundup.com/&#34;&gt;this book&lt;/a&gt;. Well,
-not line for line, but I was using it for the most part and just adjusting a few things
-to my liking and style. Initially I started it because I was curious how these things
-really work under the hood. The principles and concepts of a ray tracer weren&amp;rsquo;t
-foreign to me, but to actually implement one, component by component, that was new.
-Then the project ground to a halt for what reason(s) I can&amp;rsquo;t recall.&lt;/p&gt;
-
-&lt;p&gt;So fast forward today and, feeling somewhat ashamed about it, I&amp;rsquo;ve decided to revive the project and
-post the code on github. Right now I need to make sure the build still works and
-that my system has all the dependencies, after that I&amp;rsquo;ll push the code to
-&lt;a href=&#34;https://github.com/Svenito/lemon&#34;&gt;https://github.com/Svenito/lemon&lt;/a&gt; then I&amp;rsquo;ll continue
-building on the code from the book, chapter by chapter until, one day, Lemon will be complete.&lt;/p&gt;
-</description>
+      <description>Some time ago, some long, long time ago, I started working on a ray tracer. Yes, you&amp;rsquo;re right, the world doesn&amp;rsquo;t need another ray tracer. I wasn&amp;rsquo;t writing another ray tracer though. I was writing the ray tracer from this book. Well, not line for line, but I was using it for the most part and just adjusting a few things to my liking and style. Initially I started it because I was curious how these things really work under the hood.</description>
     </item>
     
   </channel>
 </rss>
+

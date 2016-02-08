@@ -1,284 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Passwords on Unlogic</title>
+      <title>Passwords on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/passwords/</link>
-    <description>Recent content in Passwords on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 14 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/passwords/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Thu, 14 May 2015 00:00:00 UTC</updated>
     
     <item>
       <title>I made this: Purplescraper</title>
       <link>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</link>
-      <pubDate>Thu, 14 May 2015 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 14 May 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/05/14/i-made-this-purplescraper/</guid>
-      <description>&lt;p&gt;Had this script sitting around for a while and I figured I would clean it up
-a bit and share it.&lt;/p&gt;
-
-&lt;p&gt;Get &lt;a href=&#34;https://github.com/Svenito/purplescraper&#34;&gt;Purplescraper from my Github&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In short: you give it a starting directory, which will usually be where all the user
-directories are, and it will go get all &lt;code&gt;.purple/accounts.xml&lt;/code&gt; files and extract
-any usernames and passwords it finds into a new file.&lt;/p&gt;
-
-&lt;p&gt;Useful to make sure none of your sensitive data is available to other, non
-authorised users via slack file permissions.&lt;/p&gt;
-</description>
+      <description>Had this script sitting around for a while and I figured I would clean it up a bit and share it. Get Purplescraper from my Github In short: you give it a starting directory, which will usually be where all the user directories are, and it will go get all .purple/accounts.xml files and extract any usernames and passwords it finds into a new file. Useful to make sure none of your sensitive data is available to other, non authorised users via slack file permissions.</description>
     </item>
     
     <item>
       <title>Revisiting strong passwords</title>
       <link>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</link>
-      <pubDate>Tue, 14 Apr 2015 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 14 Apr 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/04/14/revisiting-strong-passwords/</guid>
-      <description>
-
-&lt;p&gt;Some time ago I wrote a post about &lt;a href=&#34;http://unlogic.co.uk/2012/06/06/strong-passwords/&#34;&gt;strong passwords&lt;/a&gt;.
-That was three years ago and I figured I might as well revist what I wrote back then.&lt;/p&gt;
-
-&lt;p&gt;Since then technology has moved on a lot, and the number of password breaches has increased,
-aswell as the number of reports mocking our poorly chosen passwords.&lt;/p&gt;
-
-&lt;p&gt;As far as I am concerned, I am still using 15-18 random character passwords. I&amp;rsquo;m no longer
-lowercase only, but a mixture of upper, lower, digit, and punctuation. The length depends
-on how long I am allowed to make my passwords. Believe it or not, some sites limit you to
-a maximum length of 12, possibly less on some sites. Silly huh? Not only that, but still they
-tell me my 18 character password without punctuation or digits is less secure than a
-4 character mixed character password. Hmph.&lt;/p&gt;
-
-&lt;p&gt;But what is cropping up more and more, and what I wanted to write about, is the password
-rules on signup pages. For example &amp;ldquo;Your password must be at least 8
-characters long, contain one upper case letter, and a number.&amp;rdquo; Sometimes a &lt;em&gt;special
-character&lt;/em&gt; is thrown into the mix too. The issue here is, that although your final
-password is more secure (in theory), the search space for a valid password is reduced.
-With some attackers being able to generate 1 trillion guesses per second, keeping the
-size of the search space large will help.&lt;/p&gt;
-
-&lt;p&gt;By how much difference does it make? Well that&amp;rsquo;s what I want to figure out.&lt;/p&gt;
-
-&lt;p&gt;So using the commonly used english alphabet with digits and
-special characters we have the following available&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Name&lt;/th&gt;
-&lt;th&gt;Content&lt;/th&gt;
-&lt;th&gt;Character Count&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;lower&lt;/td&gt;
-&lt;td&gt;abcdefghijklmnopqrstuvwxyz&lt;/td&gt;
-&lt;td&gt;26&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;upper&lt;/td&gt;
-&lt;td&gt;ABCDEFGHIJKLMNOPQRSTUVWXYZ&lt;/td&gt;
-&lt;td&gt;26&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;digits&lt;/td&gt;
-&lt;td&gt;0123456789&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;special&lt;/td&gt;
-&lt;td&gt;!&amp;ldquo;#$%&amp;amp;&amp;lsquo;()*+,-./:;&amp;lt;=&amp;gt;?@[]^_{|}~`&lt;/td&gt;
-&lt;td&gt;32&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Let&amp;rsquo;s assume that I have a list of password hashes from somewhere. I know
-that the password is exactly 6 characters long (which I think is
-a reasonably common password length these days), and I also know what rules
-govern the choice of password when it is created. We&amp;rsquo;ll look at these rules in
-turn and see how much difference they make. I fix the password length so I don&amp;rsquo;t
-introduce too many variables.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll be basing the calculations of a few assumptions:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Hashes are SHA256&lt;/li&gt;
-&lt;li&gt;We have a &lt;em&gt;reasonable&lt;/em&gt; PC available (1x NVidia gtx580), managing 355 Mh/s (355,000,000 hashes/s) (&lt;a href=&#34;https://hashcat.net/oclhashcat/#performance&#34;&gt;ref&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;These are pure bruteforce attacks. No wordlists, permutation or combination attacks&lt;/li&gt;
-&lt;li&gt;Timings for each attack assume &lt;em&gt;worst case&lt;/em&gt;. i.e. we have to run through all guesses.
-Usually an attack stops when a valid match is found, shortening the attack.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let&amp;rsquo;s analyse how different password creation rules affect the duration of the attack.&lt;/p&gt;
-
-&lt;p&gt;For reference, these are the number of possible combinations for each set of
-characters&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Possible characters&lt;/th&gt;
-&lt;th&gt;Character count&lt;/th&gt;
-&lt;th&gt;Number of combinations&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;lower only&lt;/td&gt;
-&lt;td&gt;26&lt;/td&gt;
-&lt;td&gt;308,915,776&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;upper and lower&lt;/td&gt;
-&lt;td&gt;52&lt;/td&gt;
-&lt;td&gt;19,770,609,664&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;upper, lower, digits&lt;/td&gt;
-&lt;td&gt;62&lt;/td&gt;
-&lt;td&gt;56,800,235,584&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;upper, lower, digits, special&lt;/td&gt;
-&lt;td&gt;94&lt;/td&gt;
-&lt;td&gt;689,869,781,056&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;no-rules:419b03a80de203f007f6beb7b93557c6&#34;&gt;No rules&lt;/h2&gt;
-
-&lt;p&gt;Using any combination of characters the number of possible passwords is &lt;em&gt;689,869,781,056&lt;/em&gt;.
-It would take &lt;em&gt;1943.29 seconds&lt;/em&gt; (689,869,781,056 / 355,000,000) to crack this password.
-That&amp;rsquo;s just over half an hour.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Attack time&lt;/em&gt;: 1943.29seconds&lt;/p&gt;
-
-&lt;h2 id=&#34;at-least-one-upper-case:419b03a80de203f007f6beb7b93557c6&#34;&gt;At least one upper case&lt;/h2&gt;
-
-&lt;p&gt;If we are forced to chose at least one upper case character, we are also saying that
-there are no passwords now with just lowercase characters. The number of possible
-combinations is now &lt;em&gt;689,869,781,056 - 308,915,776 = 689,560,865,280&lt;/em&gt;, or &lt;em&gt;99%&lt;/em&gt; of
-the original search space. This is a small impact of only 1 second.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Attack time&lt;/em&gt;: 1942.42seconds&lt;/p&gt;
-
-&lt;h2 id=&#34;at-least-one-upper-case-and-one-digit:419b03a80de203f007f6beb7b93557c6&#34;&gt;At least one upper case and one digit&lt;/h2&gt;
-
-&lt;p&gt;Now we know that there are no passwords with just lowercase, or with lower and uppercase only.
-Therefore we can also remove these from the list of possibilities. Our new number is now
-&lt;em&gt;689,869,781,056 - 308,915,776 - 19,770,609,664 = 669,790,255,616&lt;/em&gt; or &lt;em&gt;97%&lt;/em&gt; of our search space.
-Now we&amp;rsquo;re starting to see savings of up around 100seconds. In the grand scheme of things,
-still not much&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Attack time&lt;/em&gt;: 1886.73seconds&lt;/p&gt;
-
-&lt;h2 id=&#34;must-contain-all-of-the-above:419b03a80de203f007f6beb7b93557c6&#34;&gt;Must contain all of the above&lt;/h2&gt;
-
-&lt;p&gt;Upper, lower, digits, and special all need to be present. Therefore we can remove all the
-other possiblities for a grand total of:
-&lt;em&gt;689,869,781,056 - 308,915,776 - 19,770,609,664 - 56,800,235,584 = 612,990,020,032&lt;/em&gt; or
-&lt;em&gt;88%&lt;/em&gt; of the original. Now we&amp;rsquo;ve saved another 100 seconds.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Attack time&lt;/em&gt;: 1726.73seconds&lt;/p&gt;
-
-&lt;h2 id=&#34;conclusion:419b03a80de203f007f6beb7b93557c6&#34;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Although contrived, this scenario should indicate that &lt;em&gt;forcing&lt;/em&gt; people to do
-things in the interest of security can help attackers too. If we are allowed
-to use any character out of the full set, an attack would have taken 4 minutes more than
-if we are forced to create a &lt;em&gt;secure&lt;/em&gt; password that &lt;em&gt;must&lt;/em&gt; use certain characters.
-The difference isn&amp;rsquo;t much if you look above, but bear in mind that the longest attack
-is &lt;em&gt;1.12&lt;/em&gt; times longer. If we extrapolate this to a 8 character password,
-it&amp;rsquo;s a difference of almost 2 years (51.18 vs 49.7).&lt;/p&gt;
-
-&lt;p&gt;Needless to say, knowing the minimum length reduces the search space once again,
-because now I won&amp;rsquo;t even bother with anything below 8 characters. That&amp;rsquo;s a fairly big
-chunk of possibilities.&lt;/p&gt;
-
-&lt;p&gt;The times can be further optimised by employing wordlists, known substitutions and other
-rules. The more you know about the nature of the password, the less time it takes
-to crack it. Yes, applying rules and substitutions to wordlists takes time, but it&amp;rsquo;s
-insignificant to the amount of time they can shave off of a brute force attack. And
-the more an attacker knows about the nature and composition of your password, the
-better they can tailor their wordlists.&lt;/p&gt;
-
-&lt;p&gt;Even &lt;a href=&#34;http://www.wired.com/2015/04/snowden-sexy-margaret-thatcher-password-isnt-so-sexy/&#34;&gt;Edward Snowden&amp;rsquo;s advice isn&amp;rsquo;t bulletrpoof&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The key really is not to force people to have a specific password combination, but
-to encourage good password creation. Long, random, and unpredictable, passwords
-from a large vat of possibilities.&lt;/p&gt;
-
-&lt;p&gt;Don&amp;rsquo;t tell attackers what the password isn&amp;rsquo;t. Let them guess.&lt;/p&gt;
-</description>
+      <description>Some time ago I wrote a post about strong passwords. That was three years ago and I figured I might as well revist what I wrote back then. Since then technology has moved on a lot, and the number of password breaches has increased, aswell as the number of reports mocking our poorly chosen passwords. As far as I am concerned, I am still using 15-18 random character passwords. I&amp;rsquo;m no longer lowercase only, but a mixture of upper, lower, digit, and punctuation.</description>
     </item>
     
     <item>
       <title>Strong passwords?</title>
       <link>http://unlogic.co.uk/2012/06/06/strong-passwords/</link>
-      <pubDate>Wed, 06 Jun 2012 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 06 Jun 2012 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2012/06/06/strong-passwords/</guid>
-      <description>
-
-&lt;p&gt;As I&amp;rsquo;m just going around and updating the passwords to some of my online accounts, which was prompted by &lt;a href=&#34;http://translate.google.com/translate?hl=en&amp;amp;sl=no&amp;amp;tl=en&amp;amp;u=http://www.dagensit.no/article2411857.ece&#34;&gt;this&lt;/a&gt; article, I was wonderingwhat a good password really is. Not just in terms of security but also in terms of user friendliness.&lt;/p&gt;
-
-&lt;p&gt;I use &lt;a href=&#34;http://www.lastpass.com&#34;&gt;Lastpass&lt;/a&gt; to manage my passwords and have it auto fill in my credentials on various sites. This works well until I need to manually enter them on another device (iPhone for example - I haven&amp;rsquo;t got a premium subscription yet) or have to type it in just because.&lt;/p&gt;
-
-&lt;p&gt;We know that everywhere suggests some wonderfully random characters of at least 8 characters in length and Lastpass actually provides a tool to generate these:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;k%U94*7r&lt;/li&gt;
-&lt;li&gt;66ds}9R&lt;/li&gt;
-&lt;li&gt;9^wtH7xo&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Here we have some 8 character examples for apparently fairly secure options. Fine. They probably are secure. But do you really want to type those in using a touch keyboard on a phone?&lt;/p&gt;
-
-&lt;p&gt;Now here&amp;rsquo;s my suggestion: &lt;strong&gt;Three or more random, unrelated words making one password.&lt;/strong&gt;
-For example:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;tarnishedmoleclouds&lt;/li&gt;
-&lt;li&gt;refriedchutneygarbage&lt;/li&gt;
-&lt;li&gt;turkeyloadedparasol&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Those of you who read &lt;a href=&#34;http://xkcd.com/936/&#34;&gt;XKCD&lt;/a&gt; should already be on the same page as me. Not only are these more memorable (which if you use a password manager is irrelevant) but also much easier to type in on any type of keyboard. But that&amp;rsquo;s not all. Let&amp;rsquo;s have a look at bruteforce times using &lt;a href=&#34;http://www.lockdown.co.uk/?pg=combi&#34;&gt;these tables&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In the first case we have 8 character passwords made up of &amp;ldquo;Mixed upper and lower case alphabet and common symbols.&amp;rdquo;. According to the relevant table (and we are assuming a reasonably competent team of crackers using a &lt;a href=&#34;http://www.lockdown.co.uk/?pg=combi#classE&#34;&gt;class E&lt;/a&gt; attack) these passwords can be cracked in 346days. Not too bad really. But let&amp;rsquo;s see how that compares to &amp;ldquo;The full alphabet, either upper or lower case (not both in this case)&amp;rdquo;. Picking one password from above (refriedchutneygarbage) with 21 characters it would take at least 6.3trillions years to break. Much better. Heck, even with 1000,000,000 guesses per second you&amp;rsquo;re still looking at 631billion years.&lt;/p&gt;
-
-&lt;p&gt;I can&amp;rsquo;t say how much of an impact adding/removing spaces has on the timings though - if any one knows, or has any insights, do share in the comments. Is using spaces better, the same, or worse than not using spaces? Theoretically I&amp;rsquo;d imagine that it&amp;rsquo;d be better with spaces as that&amp;rsquo;s an extra character to add to the list.&lt;/p&gt;
-
-&lt;h2 id=&#34;update:abb71b3d5285572362ebe516c3dc67ed&#34;&gt;UPDATE&lt;/h2&gt;
-
-&lt;p&gt;Having said the above, it&amp;rsquo;s worth also assuming that any competent cracker will be using wordlists too, and not just brute forcing the password. According to the &lt;a href=&#34;http://oxforddictionaries.com/words/how-many-words-are-there-in-the-english-language&#34;&gt;Oxford English Dictionary&lt;/a&gt; there are about 140,000 words in use. This number is a bit high as most of us won&amp;rsquo;t know, or use them all. So to get a more realistic number, I&amp;rsquo;ve looked at some common wordlists you can find on the internet and the word count we&amp;rsquo;re looking at is around 50,000 to 70,000.&lt;/p&gt;
-
-&lt;p&gt;Given that (as mentioned in the comments) we essentially have a 3 character password with a much larger search space, we can do the math. Three words, 60,000 (taking the middle word count) words will give us 216trillion possibilities. At a rate of 10,000,000 passwords per second it would take around 250 days to crack. Not too shabby still, but not as good as initially hoped, and also worse than your &amp;lsquo;messy&amp;rsquo; passwords.&lt;/p&gt;
-
-&lt;p&gt;So my solution to generating secure, but still easily typeable passwords, is to generate 15-20 character long passwords made only of random alphabetical characters rather than words. In this case the figures above will still hold true.&lt;/p&gt;
-
-&lt;p&gt;As a quick sampler of a generated password with 16 characters, lowercase only, and pronouncable:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;alicattervetonstou&lt;/li&gt;
-&lt;li&gt;molyciontivenzagol&lt;/li&gt;
-&lt;li&gt;audentophitendowdy&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;harder to remember, harder to crack but still easily typed out even with an onscreen keyboard. The pronounceable part is optional but it might aid in remembering the password better.&lt;/p&gt;
+      <description>&lt;p&gt;As I&amp;rsquo;m just going around and updating the passwords to some of my online accounts, which was prompted by &lt;a href=&#34;http://translate.google.com/translate?hl=en&amp;amp;sl=no&amp;amp;tl=en&amp;amp;u=http://www.dagensit.no/article2411857.ece&#34;&gt;this&lt;/a&gt; article, I was wonderingwhat a good password really is. Not just in terms of security but also in terms of user friendliness.&lt;/p&gt;
 </description>
     </item>
     
   </channel>
 </rss>
+

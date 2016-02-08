@@ -1,54 +1,55 @@
-	<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The joys of server ownership - Unlogic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://unlogic.co.uk/2015/05/08/the-joys-of-server-ownership/">
 
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title> The joys of server ownership &middot; Unlogic </title>
+  
 
   
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/poole.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/syntax.css">
-  <link rel="stylesheet" href="http://unlogic.co.uk/css/hyde.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  
 
   
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://unlogic.co.uk/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="http://unlogic.co.uk/favicon.png">
-
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Unlogic" />
+
+  <link rel="stylesheet" type="text/css" href="http://unlogic.co.uk//css/combined-min.css">
+
 </head>
+<body class="">
 
-	<body class="">
-		<div class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="http://unlogic.co.uk/"><h1>Unlogic</h1></a>
-      <p class="lead">
-       I have a keyboard, a compiler, and a whole load of luck 
-      </p>
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://unlogic.co.uk/" class="site-title">Unlogic</a>
+      <nav class="site-nav right">
+      <a href="http://unlogic.co.uk/tags">Tags</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
     </div>
-
-    <ul class="sidebar-nav">
-      <li><a href="http://unlogic.co.uk/">Home</a> </li>
-      
-    </ul>
-
-    <p>Sven Steinbauer</p>
   </div>
-</div>
+</header>
 
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">The joys of server ownership</h1>
+        <span class="post-meta">May 8, 2015 by </span><br>
+        
+      </div>
 
-		<div class="content container">
-			<div class="post">
-			 	<h1>The joys of server ownership</h1>
-			  <span class="post-date">Fri, May 8, 2015</span>
-			      
+      <article class="post-content">
+      
 
 <p>This post serves mostly as a &ldquo;note to self&rdquo;.</p>
 
@@ -75,10 +76,10 @@ go that way, there&rsquo;s the info.</p>
 <p>Then turn off password authentication for SSH as I&rsquo;ll be using only keys to
 authenticate. Edit <code>/etc/ssh/sshd_conf</code> and change the following lines to read:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">ChallengeResponseAuthentication no
-PasswordAuthentication no
-UsePAM no
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">ChallengeResponseAuthentication no</span>
+<span class="go">PasswordAuthentication no</span>
+<span class="go">UsePAM no</span>
+</code></pre></div>
 
 
 <p>Make sure you have uploaded your <a href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys">public key</a> to
@@ -88,8 +89,8 @@ server to <code>700</code> and <code>600</code> respectively.</p>
 <p>I also changed the default SSH port to something else, as that already keeps the number of automated
 bruteforcers down. Do this by changing the following line in <code>/etc/ssh/sshd_config</code></p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%">Port 22
-</pre></div>
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">Port 22</span>
+</code></pre></div>
 
 
 <p>Set it to anything that doesn&rsquo;t clash with other services. i.e. not 25 or 80 for example.</p>
@@ -102,12 +103,12 @@ Otherwise you&rsquo;ll end up blocking your current connection and&hellip; yeah,
 
 <p>Then allow what you need and default to dropping the rest. It&rsquo;s all in the URL above, but to re-iterate:</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"># Accept connections on port 22
-iptables -A INPUT -p tcp --syn --destination-port 22 -j ACCEPT
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">#</span> Accept connections on port 22
+<span class="go">iptables -A INPUT -p tcp --syn --destination-port 22 -j ACCEPT</span>
 
-# Deny all other input
-iptables -A INPUT -p tcp -syn -j DROP
-</pre></div>
+<span class="gp">#</span> Deny all other input
+<span class="go">iptables -A INPUT -p tcp -syn -j DROP</span>
+</code></pre></div>
 
 
 <p>You will need to run the first line for each port that needs to be able to accept
@@ -121,24 +122,85 @@ for a knock, simply concatenate the command with <code>&amp;&amp;</code>. You ca
 a port for a given time. As we have our *keep established connections&rdquo; rule in <code>iptables</code> we
 can do</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%">[opencloseSSH]
-        sequence      = 2222:udp,3333:tcp,4444:udp
-        seq_timeout   = 15
-        tcpflags      = syn,ack
-        start_command = /usr/sbin/iptables -A INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT
-        cmd_timeout   = 10
-        stop_command  = /usr/sbin/iptables -D INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT
-</pre></div>
+<p><div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">[opencloseSSH]</span>
+<span class="go">        sequence      = 2222:udp,3333:tcp,4444:udp</span>
+<span class="go">        seq_timeout   = 15</span>
+<span class="go">        tcpflags      = syn,ack</span>
+<span class="go">        start_command = /usr/sbin/iptables -A INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT</span>
+<span class="go">        cmd_timeout   = 10</span>
+<span class="go">        stop_command  = /usr/sbin/iptables -D INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT</span>
+</code></pre></div>
 </p>
 
 <p>Lifted from the docs. This will allow and block only the IP from where the knock originated.</p>
 
 <p>That&rsquo;s all for now. Postfix next time&hellip;.</p>
 
-			</div>
+      </article>
 
-			
-		</div>
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://unlogic.co.uk//tags/server">server</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/linux">linux</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/vps">vps</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/howto">howto</a>
+        
+            ,&nbsp;
+            <a href="http://unlogic.co.uk//tags/iptables">iptables</a>
+        
+      </p>
 
-  </body>
+      
+<div id="disqus_thread">
+  <script type="text/javascript">
+     var disqus_shortname = "unlogic";
+     var disqus_identifier = "\/2015\/05\/08\/the-joys-of-server-ownership\/";
+
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</div>
+
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://unlogic.co.uk/index.xml"></a>
+
+<a class="fa fa-twitter twitter" href="https://twitter.com/binaryheadache"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://unlogic.co.uk/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+</body>
 </html>
+

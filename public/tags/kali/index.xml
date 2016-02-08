@@ -1,87 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kali on Unlogic</title>
+      <title>Kali on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/tags/kali/</link>
-    <description>Recent content in Kali on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 25 Mar 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/tags/kali/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Wed, 25 Mar 2015 00:00:00 UTC</updated>
     
     <item>
       <title>Fix Kali Live Build error</title>
       <link>http://unlogic.co.uk/2015/03/25/fix-kali-live-build-error/</link>
-      <pubDate>Wed, 25 Mar 2015 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 25 Mar 2015 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2015/03/25/fix-kali-live-build-error/</guid>
-      <description>&lt;p&gt;I was trying out the Kali Linux live build, and ran into an an issue where
-the &lt;code&gt;lb build&lt;/code&gt; command would throw an error: &lt;code&gt;chroot: failed to run command &#39;/usr/bin/env&#39;: No such file or directory&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Turns out this is a Debian bug that&amp;rsquo;s been around since 2013. Luckily the fix
-is straightforward. First follow the usual &lt;a href=&#34;http://docs.kali.org/development/live-build-a-custom-kali-iso&#34;&gt;live build instructions&lt;/a&gt;
-and then make sure the &lt;a href=&#34;http://docs.kali.org/general-use/kali-linux-sources-list-repositories&#34;&gt;Kali repo sources are set&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Now in order to fix the issue we follow the instructions provided in
-&lt;a href=&#34;https://bugs.kali.org/view.php?id=270&#34;&gt;this bug report&lt;/a&gt;. I&amp;rsquo;ll write it down here,
-in case I need to refer back to it later. I&amp;rsquo;ve also updated the version of
-the &lt;code&gt;libdebian-installer&lt;/code&gt; package to the latest available at this time.&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;apt-get remove --purge libdebian-installer4
-wget http://ftp.debian.org/debian/pool/main/libd/libdebian-installer/libdebian-installer_0.99.tar.xz
-tar xvf libdebian-installer_0.99.tar.xz
-cd libdebian-installer-0.99
-grep -R parser_rfc822 src
-apt-get install automake libtool
-autoreconf -i -v
-./configure
-make
-make install
-git clone git://git.kali.org/live-build-config.git
-cd live-build-config/
-lb config
-lb build
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;After this the build ran fine.&lt;/p&gt;
-</description>
+      <description>I was trying out the Kali Linux live build, and ran into an an issue where the lb build command would throw an error: chroot: failed to run command &#39;/usr/bin/env&#39;: No such file or directory Turns out this is a Debian bug that&amp;rsquo;s been around since 2013. Luckily the fix is straightforward. First follow the usual live build instructions and then make sure the Kali repo sources are set. Now in order to fix the issue we follow the instructions provided in this bug report.</description>
     </item>
     
     <item>
       <title>Fixing Kali VM after dist-upgrade</title>
       <link>http://unlogic.co.uk/2014/05/27/fixing-kali-vm-after-dist-upgrade/</link>
-      <pubDate>Tue, 27 May 2014 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 27 May 2014 00:00:00 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/05/27/fixing-kali-vm-after-dist-upgrade/</guid>
-      <description>&lt;p&gt;I just did a &lt;code&gt;apt-get dist-upgrade&lt;/code&gt; to bump up to Kali 1.0.7.
-I&amp;rsquo;ve got it running on VirtualBox, and after it booted back up all the
-VBoxAddition features were gone and the keyboard and mouse in X no longer
-worked. GRUB was fine however. Poking around the logs a little I discovered
-some issues with the mouse driver. Perhaps that was it, but why?&lt;/p&gt;
-
-&lt;p&gt;Long story short it took quite a bit of digging, but I eventually managed
-to fix it. First thing is that the &lt;code&gt;pcscd&lt;/code&gt; group just &lt;em&gt;dissapeared&lt;/em&gt;.
-All the following commands assume you are root, otherwise
-prefix them with &lt;code&gt;sudo&lt;/code&gt;. So I ran&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;groupadd pcscd&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;to add the group back in. Then run&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;apt-get install linux-headers-$(uname -r)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This will take a little while. Once done run&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;/etc/init.d/vboxadd setup&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;And it will build the kernel modules for the additons. One more reboot
-and you should be back to a working system with all the integration you
-had before.&lt;/p&gt;
-
-&lt;p&gt;I have no idea why this happens, but hopefully this post will help you
-should you have the same problem.&lt;/p&gt;
-</description>
+      <description>I just did a apt-get dist-upgrade to bump up to Kali 1.0.7. I&amp;rsquo;ve got it running on VirtualBox, and after it booted back up all the VBoxAddition features were gone and the keyboard and mouse in X no longer worked. GRUB was fine however. Poking around the logs a little I discovered some issues with the mouse driver. Perhaps that was it, but why? Long story short it took quite a bit of digging, but I eventually managed to fix it.</description>
     </item>
     
   </channel>
 </rss>
+

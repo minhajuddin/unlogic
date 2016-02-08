@@ -1,40 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>General Development on Unlogic</title>
+      <title>General Development on Unlogic </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>http://unlogic.co.uk/categories/general-development/</link>
-    <description>Recent content in General Development on Unlogic</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 04 Mar 2014 10:46:30 +0000</lastBuildDate>
-    <atom:link href="http://unlogic.co.uk/categories/general-development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+    <updated>Tue, 04 Mar 2014 10:46:30 UTC</updated>
     
     <item>
       <title>Get it done</title>
       <link>http://unlogic.co.uk/2014/03/04/get-it-done/</link>
-      <pubDate>Tue, 04 Mar 2014 10:46:30 +0000</pubDate>
+      <pubDate>Tue, 04 Mar 2014 10:46:30 UTC</pubDate>
       
       <guid>http://unlogic.co.uk/2014/03/04/get-it-done/</guid>
-      <description>&lt;p&gt;A few years ago, during a particularily active developing phase I had an idea for a project.
-I toyed with it in my head and thought about issues I might encounter. Will it work
-in this situation? Is it something that will be useful? How do I make feature X work?
-Do I need it to also do this? The usual stuff. So much so I never got round to starting it.
-I figured it&amp;rsquo;s ok, because someone else has done it and executed in a much better way.
-Besides, who&amp;rsquo;d want to use it anyway, right? It would only have been me.&lt;/p&gt;
-
-&lt;p&gt;So now I am browsing my newsfeed and come across this: &lt;a href=&#34;https://flutterapp.com/&#34;&gt;https://flutterapp.com/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s pretty much what I was aiming to make back then. Just goes to show you doesn&amp;rsquo;t it,
-if you have an idea just go make it happen. Just because someone else has made it doesn&amp;rsquo;t
-mean you shouldn&amp;rsquo;t make it again if you want. Perhaps you can do it better? We&amp;rsquo;re not all
-innovators, but we are all capable to make something different and perhaps better.
-If you can&amp;rsquo;t quite figure out how to do it, don&amp;rsquo;t let that stop you from at least making a start.
-Do something, anything, to get started. That&amp;rsquo;s the hard part. Once you get started don&amp;rsquo;t force
-yourself to make it work in a day, or a week even. Take your time, do it as long as you enjoy it.&lt;/p&gt;
-
-&lt;p&gt;So I&amp;rsquo;m going to take some of my own medicine and make a start on this project myself. It&amp;rsquo;s been a
-long time coming after all.&lt;/p&gt;
-</description>
+      <description>A few years ago, during a particularily active developing phase I had an idea for a project. I toyed with it in my head and thought about issues I might encounter. Will it work in this situation? Is it something that will be useful? How do I make feature X work? Do I need it to also do this? The usual stuff. So much so I never got round to starting it.</description>
     </item>
     
   </channel>
 </rss>
+

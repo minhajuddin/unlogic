@@ -1,16 +1,13 @@
 baseurl = "http://unlogic.co.uk/"
 title = "Unlogic"
 paginate = 5
-disqusShortname="unlogic"
-theme = "hugo-minimalist"
+theme = "pixyll"
 
+author = "Sven"
 canonifyurls = true
 
 pygmentsuseclasses=true
 pygmentsstyle="monokai"
-
-[author]
-name = "Sven Steinbauer"
 
 [permalinks]
 
@@ -18,12 +15,14 @@ page = "/:title"
 post = "/:year/:month/:day/:title"
 
 [params]
+paginate = true
 header_background="images/keyboard-feature.jpg"
 header_title="Unlogic"
 description="I have a keyboard, a compiler, and a whole load of luck"
-author="Sven Steinbauer"
 avatar="images/avatar.jpg"
 copyright="Sven Steinbauer"
+twitter_username = "binaryheadache"
+disqus_shortname = "unlogic"
 
 [social]
 github="svenito"
